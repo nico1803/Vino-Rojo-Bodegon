@@ -1,9 +1,7 @@
 const {Router} = require('express')
-const helloworld = require('./helloworld')
-const food = require ('./foods')
 const router = Router()
+const foods = require('./foods.routes')
 
-router.get('/', food) // El router junta todas las rutas (funciones) de /routes
-router.get('/hello', helloworld) // El router junta todas las rutas (funciones) de /routes
+router.use('/foods', foods)
 
 module.exports = router
