@@ -3,6 +3,8 @@ require('dotenv').config();
 const URL = process.env.MONGO;///uri de mongo///
 
 /////conexion a mongoose/////
+mongoose.set('strictQuery', true);
+
 const connection = mongoose.connect(URL,{
     useNewUrlParser: true, 
     useUnifiedTopology: true,

@@ -1,7 +1,9 @@
-const app = require('./app')
-const connection = require('./database/connection')
+const app = require('./src/app')
+const connection = require('./src/database/connection')
 
-connection.then(conn => {
+const PORT = process.env.PORT || 3001;
+
+connection.then(() => {
     console.log('database connected')
     app.listen(PORT, () => {
         console.log(`App listening on port ${PORT}`)
@@ -12,4 +14,3 @@ connection.then(conn => {
     })
 })
 
-const PORT = process.env.PORT || 3001
