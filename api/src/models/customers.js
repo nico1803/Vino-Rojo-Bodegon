@@ -27,5 +27,6 @@ const schema = mongoose.Schema({
         default: new Date(),
     }
 });
+
 const Customer = mongoose.model('customer', schema);
 module.exports = Customer
