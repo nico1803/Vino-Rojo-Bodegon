@@ -13,7 +13,6 @@ export default function Detail() {
     <button>AÑADIR</button>
     <button>⭐</button>
     </div>
-
     </>)
   }
 
