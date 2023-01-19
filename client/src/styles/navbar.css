@@ -39,7 +39,7 @@ nav ul li a, nav ul li a:visited {
     text-decoration: none;
 }
 nav ul li a:hover, nav ul li a:visited:hover {
-    background: #2581dc;
+    background: #131313;
     color: #fff;
 }
 nav ul li a:not(:only-child):after, nav ul li a:visited:not(:only-child):after {

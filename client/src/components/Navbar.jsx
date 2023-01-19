@@ -35,42 +35,4 @@ export default function Navbar() {
 
   )
 }
-<section class="navigation">
-  <div class="nav-container">
-    <div class="brand">
-      <Link to="/"><img className='imga' src={logoImg}  alt="Logo image" /></Link>
-    </div>
-    <nav>
-      <div class="nav-mobile"><a id="nav-toggle" href="#!"><span></span></a></div>
-      <ul class="nav-list">
-        <li>
-          <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">About</a>
-        </li>
-        <li>
-          <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Services</a>
-          <ul class="nav-dropdown">
-            <li>
-              <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">s1</a>
-            </li>
-            <li>
-              <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">s2</a>
-            </li>
-            <li>
-              <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">s3</a>
-            </li>
-          </ul>
-        </li>
-        <li>
-          <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Pricing</a>
-        </li>
-        <li>
-          <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Portfolio</a>
-        </li>
-        <li>
-          <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Contact</a>
-        </li>
-      </ul>
-    </nav>
-  </div>
-</section>
 
