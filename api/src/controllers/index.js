@@ -1,18 +1,6 @@
 
 const Food = require('../models/foods');
-
-// class foodController { // foodContoller.findAll
-//     constructor(){}
-
-//     async findAll() {
-//         try {
-//             return await Food.find().lean();
-//         } catch (error) {
-//             throw error;
-//         }
-//     };   
-
-// };
+const Customer = require('../models/customers');
 
 const getFoods = async () => {
     try {
@@ -36,10 +24,18 @@ const findById = async (id) => {
 
 const deleteFood = async (id) => {
     return await Food.findByIdAndDelete(id);
-}
+};
 
 const editFood = async (id, name, price, description, type, image) => {
     return await Food.findByIdAndUpdate(id, {name, price, description, type, image});
+};
+
+const createCustomer = async (name, password, email) => {
+    return await Customer.create({name, password, email});
+};
+
+const getByType = async (type) => {
+    return await Food.find({type: type}).lean();
 }
 
-module.exports = {getFoods, createFood, findById, deleteFood, editFood};
+module.exports = {getFoods, createFood, findById, deleteFood, editFood, createCustomer, getByType};
