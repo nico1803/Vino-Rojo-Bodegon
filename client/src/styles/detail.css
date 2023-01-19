@@ -1,0 +1,72 @@
+.ProductPrinInfo{
+/* $100 */
+
+
+position: absolute;
+width: 178px;
+height: 80px;
+
+font-family: 'Lilita One';
+font-style: normal;
+font-weight: 400;
+font-size: 80px;
+line-height: 100%;
+/* identical to box height, or 80px */
+
+text-transform: capitalize;
+
+color: #614C3C;
+
+
+
+/* Rectangle 13 */
+
+
+position: absolute;
+width: 705px;
+height: 662px;
+
+/* background: url(pexels-posawee-suwannaphati-391213.jpg); */
+mix-blend-mode: normal;
+filter: drop-shadow(15px 15px 15px rgba(0, 0, 0, 0.25));
+border-radius: 20px;
+
+
+/* nombre del producto */
+
+
+position: absolute;
+width: 543px;
+height: 300px;
+
+font-family: 'Lilita One';
+font-style: normal;
+font-weight: 400;
+font-size: 100px;
+line-height: 100%;
+/* or 100px */
+
+text-transform: uppercase;
+
+color: #614C3C;
+
+
+
+/* Lorem ipsum es el texto que se usa habitualmente en diseño gráfico en demostraciones de tipografías o de borradores de diseño para probar el diseño visual antes de insertar el texto final. */
+
+
+position: absolute;
+width: 861px;
+height: 120px;
+
+font-family: 'Questrial';
+font-style: normal;
+font-weight: 400;
+font-size: 30px;
+line-height: 100%;
+/* or 30px */
+
+text-transform: capitalize;
+
+color: #000000;
+}
