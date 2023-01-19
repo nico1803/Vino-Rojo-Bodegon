@@ -18,7 +18,7 @@ const getFoods = async () => {
     try {
          return await Food.find().lean();
       } catch (error) {
-         console.log(error);;
+         console.log(error);
      }     
 };   
     
