@@ -1,5 +1,5 @@
 import React from 'react'
-import ProductoImage from '../assets/PIDEA.jpg'
+import ProductoImage from '../assets/LogoBarril.png'
 import '../styles/detail.css'
 
 
