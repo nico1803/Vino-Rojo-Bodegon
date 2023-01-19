@@ -22,6 +22,9 @@ const schema = mongoose.Schema({
         type:'String',
         require:true,
     },
+    admin: {
+        default: false
+    },
     timestamp:{
         type: 'Date',
         default: new Date(),

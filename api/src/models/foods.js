@@ -15,11 +15,11 @@ const schema = mongoose.Schema({
         require:true,
     },
     price:{
-        type:'Double',
+        type:'Number',
         require:true,
     },
     review:{
-        type:'Double',
+        type:'Number',
         require:false,
     },
     type:{
