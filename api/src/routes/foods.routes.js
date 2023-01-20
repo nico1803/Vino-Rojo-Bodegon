@@ -47,7 +47,7 @@ router.put('/edit/:idFood', async (req, res) => {
     const {idFood} = req.params;
     const {name, type, description, image, price} = req.body;
     try {
-        await editFood(idFood, name, type, description, image, price);
+        await editFood(idFood, name, image, description, price, type);
         res.status(200).send('La receta fue actualizada');
     } catch (error) {
         

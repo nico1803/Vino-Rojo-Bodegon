@@ -26,7 +26,7 @@ const deleteFood = async (id) => {
     return await Food.findByIdAndDelete(id);
 };
 
-const editFood = async (id, name, price, description, type, image) => {
+const editFood = async (id, name, image, description, price, type) => { // 'image': 'hola' 
     return await Food.findByIdAndUpdate(id, {name, price, description, type, image});
 };
 
