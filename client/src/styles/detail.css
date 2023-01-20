@@ -1,190 +1,192 @@
 
 @font-face {
-    font-family: 'Lilita One';
-    src: url("../fonts/LilitaOne-Regular.ttf");
+  font-family: 'Lilita One';
+  src: url("../fonts/LilitaOne-Regular.ttf");
 }
 html, body {
-  background: #FCEEB5;
+background: #FCEEB5;
 }
 
 .center {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
+position: absolute;
+top: 50%;
+left: 50%;
+-webkit-transform: translate(-50%, -50%);
 }
 
 .card , .card.green{
-  width: 750px;
-  height: 350px;
-  background-color: #fff;
-  background: linear-gradient(#f8f8f8, #fff);
-  box-shadow: 0 8px 16px -8px rgba(0,0,0,0.4);
-  border-radius: 6px;
-  position: relative;
+width: 750px;
+height: 350px;
+background-color: #fff;
+background: linear-gradient(#f8f8f8, #fff);
+box-shadow: 0 8px 16px -8px rgba(0,0,0,0.4);
+border-radius: 30px;
+position: relative;
 
 }
 
 .card, .card.green h1 {
-  text-align: center;
-  
+text-align: center;
+
 
 }
 
 .card.green .additional {
-  position: absolute;
-  width: 350px;
-  height: 100%;
-  background: linear-gradient(#614C3C, #614C3C);
-  transition: width 0.4s;
-  overflow: hidden;
-  z-index: 2;
+position: absolute;
+width: 350px;
+height: 100%;
+background: linear-gradient(#614C3C, #614C3C);
+transition: width 0.4s;
+overflow: hidden;
+z-index: 2;
+border-radius: 30px;
 }
 
 
 
 
 .card:hover .additional {
-  width: 100%;
-  border-radius: 0 5px 5px 0;
+width: 100%;
+border-radius: 30px;
 }
 
 .card .additional .user-card {
-  width: 350px;
-  height: 350px;
-  position: relative;
-  float: left;
+width: 350px;
+height: 350px;
+position: relative;
+float: left;
+ border-radius: 30px;
 }
 
 .card .additional .user-card::after {
-  content: "";
-  display: block;
-  position: absolute;
-  top: 10%;
-  right: -2px;
-  height: 80%;
-  border-left: 2px solid rgba(0,0,0,0.025);
+content: "";
+display: block;
+position: absolute;
+top: 10%;
+right: -2px;
+height: 80%;
+border-left: 2px solid rgba(0,0,0,0.025);
 }
 
 .card .additional .user-card .points {
-  top: 15%;
-  color: #fff;
-  text-transform: uppercase;
-  font-size: 1.5em;
-  font-weight: bold;
-  background: rgba(0,0,0,0.15);
-  padding: 0.125rem 0.75rem;
-  border-radius: 100px;
-  white-space: nowrap;
+top: 15%;
+color: #fff;
+text-transform: uppercase;
+font-size: 1.5em;
+font-weight: bold;
+background: rgba(0,0,0,0.15);
+padding: 0.125rem 0.75rem;
+border-radius: 100px;
+white-space: nowrap;
 }
 
 .card .additional .user-card .points {
-  top: 85%;
+top: 85%;
 }
 
 .card .additional .user-card svg {
-  top: 50%;
+top: 50%;
 }
 
 .card .additional .more-info {
-  width: 300px;
-  float: left;
-  position: absolute;
-  margin-left: 400px;
-  height: 100%;
+width: 300px;
+float: left;
+position: absolute;
+margin-left: 400px;
+height: 100%;
 }
 
 .card .additional .more-info  h1 {
-  color: #fff;
-  margin-bottom: 0;
-  font-family: 'Lilita One';
-  font-size: 40px;
+color: #fff;
+margin-bottom: 0;
+font-family: 'Lilita One';
+font-size: 40px;
 }
 
 .card.green .additional .more-info  h1 {
-  color: #ffffff;
-  
-  
+color: #ffffff;
+
+
 }
 
 .card .additional .coords {
-  margin: 0 1rem;
-  color: #fff;
-  font-size: 1rem;
+margin: 0 1rem;
+color: #fff;
+font-size: 1rem;
 }
 
 .card.green .additional .coords {
-  color: #ffffff;
+color: #ffffff;
 }
 
 .card .additional .coords span + span {
-  float: right;
+float: right;
 }
 
 .card .additional .stats {
-  font-size: 2rem;
-  display: flex;
-  position: absolute;
-  bottom: 1rem;
-  left: 1rem;
-  right: 1rem;
-  top: auto;
-  color: #fff;
+font-size: 2rem;
+display: flex;
+position: absolute;
+bottom: 1rem;
+left: 1rem;
+right: 1rem;
+top: auto;
+color: #fff;
 }
 
 .card.green .additional .stats {
-  color: #ffffff;
+color: #ffffff;
 }
 
 .card .additional .stats > div {
-  flex: 1;
-  text-align: center;
+flex: 1;
+text-align: center;
 }
 
 .card .additional .stats i {
-  display: block;
+display: block;
 }
 
 .card .additional .stats div.title {
-  font-size: 0.75rem;
-  font-weight: bold;
-  text-transform: uppercase;
+font-size: 0.75rem;
+font-weight: bold;
+text-transform: uppercase;
 }
 
 .card .additional .stats div.value {
-  font-size: 1.5rem;
-  font-weight: bold;
-  line-height: 1.5rem;
+font-size: 1.5rem;
+font-weight: bold;
+line-height: 1.5rem;
 }
 
 .card .additional .stats div.value.infinity {
-  font-size: 2.5rem;
+font-size: 2.5rem;
 }
 
 .card .general {
-  width: 350px;
-  height: 100%;
-  position: absolute;
-  float: left;
-  margin-left: 367px;
-  
+width: 350px;
+height: 100%;
+position: absolute;
+float: left;
+margin-left: 367px;
+
 }
 
 .card .general h1{
-    color: #614C3C;
-    margin-bottom: 0;
-    font-family: 'Lilita One';
-    font-size: 40px;
+  color: #614C3C;
+  margin-bottom: 0;
+  font-family: 'Lilita One';
+  font-size: 40px;
 }
 
 
 
 
 .more {
-  position: absolute;
-  bottom: 1rem;
-  right: -1rem;
-  font-size: 0.9em;
+position: absolute;
+bottom: 1rem;
+right: -1rem;
+font-size: 0.9em;
 }
 
 
