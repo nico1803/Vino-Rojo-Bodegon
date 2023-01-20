@@ -1,8 +1,9 @@
 const express = require('express')
 const router = require('./routes/api')
-
+const cors = require('cors')
 const app = express()
 //middlewares
+app.use(cors())
 app.use(express.json());
 
 

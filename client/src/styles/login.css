@@ -1,4 +1,4 @@
-.card {
+.cardg {
     --background:linear-gradient(-120deg, #4285f4, #34a853, #fbbc05, #ea4335);
     width: 500px;
     height: 600px;
@@ -15,7 +15,7 @@
     -webkit-transform: translate(-50%, -50%);
    }
    
-   .card::after {
+   .cardg::after {
     position: absolute;
     content: "";
     top: 30px;
@@ -31,7 +31,7 @@
     transition: opacity .5s;
    }
    
-   .card-info {
+   .cardg-info {
 --color: transparent;
     background: var(--color);
     color: var(--color);
@@ -44,17 +44,17 @@
     border-radius: .7rem;
    }
    
-   .card .title {
+   .cardg .title {
     font-weight: bold;
     letter-spacing: .1em;
    }
    
    /*Hover*/
-   .card:hover::after {
+   .cardg:hover::after {
     opacity: 0;
    }
    
-   .card:hover .card-info {
+   .cardg:hover .card-info {
     color: #fff;
     transition: color 1s;
     font-size: 45px
