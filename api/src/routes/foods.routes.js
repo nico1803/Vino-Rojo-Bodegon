@@ -1,6 +1,5 @@
 const {Router} = require('express');
-const {getFoods, createFood, findById, deleteFood, editFood} = require('../controllers/index')
-const Food = require('../models/foods');
+const {getFoods, createFood, findById, deleteFood, editFood} = require('../controllers/index');
 
 const router = Router();
 
@@ -9,7 +8,7 @@ router.get('/', async (req, res) => {
         const foods = await getFoods();
         res.status(200).json(foods);
     } catch (error) {
-        res.send(error)
+        res.status(400).send(error)
     }
 });
 
@@ -19,7 +18,7 @@ router.post('/post', async (req, res) => {
         await createFood(name, image, type, description, price);
         res.status(200).send('La receta fue añadida');
     } catch (error) {
-        res.send(error);
+        res.status(400).send(error);
     }
 });
 
@@ -39,7 +38,7 @@ router.delete('/:idFood', async (req, res) => {
         await deleteFood(idFood);
         res.status(200).send('La receta fue eliminada correctamente')
     } catch (error) {
-        res.send(error);
+        res.status(400).send(error);
     }
 });
 
@@ -50,7 +49,7 @@ router.put('/edit/:idFood', async (req, res) => {
         await editFood(idFood, name, image, description, price, type);
         res.status(200).send('La receta fue actualizada');
     } catch (error) {
-        
+        res.status(400).send(error);
     }
 })
 
