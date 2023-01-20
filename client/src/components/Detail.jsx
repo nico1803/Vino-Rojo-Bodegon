@@ -11,7 +11,7 @@ export default function Detail() {
         <div class="card green">
           <div class="additional">
             <div class="user-card">
-              <img src={ProductoImage} alt="product image" />
+              <img className="imgproduct" src={ProductoImage} alt="product image" />
               <div class="points center">$100</div>
             </div>
             <div class="more-info">

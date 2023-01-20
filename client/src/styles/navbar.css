@@ -54,12 +54,7 @@ nav ul li ul li a {
     padding: 15px;
     line-height: 20px;
 }
-.nav-dropdown {
-    position: absolute;
-    display: none;
-    z-index: 1;
-    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.15);
-}
+
 /* Mobile navigation */
 .nav-mobile {
     display: none;
@@ -144,8 +139,37 @@ article {
 
 
 .imga{
-    margin-top: 6px;
+    margin-top: 10px;
     width: 50px;
     align-items: center;
+    border-radius: 30px;
     
 }
+.imga1{
+    width: 40px;
+    align-items: center;
+    border-radius: 30px;
+    
+}
+
+/* [!] */
+
+.dropbtn {
+    padding: 16px;
+    cursor: pointer;
+}
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+.dropdown-content {
+    display: none;
+    position: absolute;
+    width: 100%;
+
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
