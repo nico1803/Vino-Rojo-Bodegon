@@ -31,11 +31,6 @@ export default function Home() {
   }, []);
 
 
-
- 
-
-
- 
 //{filteredDogs.length?filteredDogs.slice(page*8,page*8+8).map(dog=><Card dog={dog}/>):dogs.slice(page*8,page*8+8).map(dog=><Card dog={dog}/>)}
 //
 
@@ -43,13 +38,10 @@ export default function Home() {
   return (<>
     <Navbar/>
     <Filters/>
-  <div className='flex flex-row'>
-    
-
-
+  <div className=''>
     <div>
       <SearchBar/>
-      <div className="flex flex-wrap"> 
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4"> 
         {food.map((el) => {return (<Card food={el}/>)})}
       </div>
     </div>
