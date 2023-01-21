@@ -4,19 +4,17 @@ import SearchBar from './SearchBar';
 
 //name, image, description, price, review, type, _id
 export default function Card({food}) {
-
     return (
-        
-    <div className="card lg:card-side bg-base-100 shadow-xl">
-            <figure><img className='w-[400px] h-[300px]' src={food.image}/></figure>
-        <div className="flex justify-end">
-            <h2 className="card-title">{food.name}</h2>
-            <p>{food.description}</p>
-            <p>{food.price}</p>
-            <div className="card-actions justify-end">
-            <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Comprar</button>
+        <div className="flex justify-center">
+            <div className="flex flex-col md:flex-row md:max-w-xl rounded-lg bg-white shadow-lg lg:container lg:mx-auto">
+            <img className=" w-full h-96 md:h-auto object-cover md:w-48 rounded-t-lg md:rounded-none md:rounded-l-lg" src={food.image} alt="imgNotFound" />
+            <div className="p-6 flex flex-col justify-start">
+                <h5 className="text-gray-900 text-xl font-medium mb-2">{food.name}</h5>
+                <p className="text-gray-700 text-base mb-4 break-normal">{food.description}</p>
+                <p className="text-gray-900 text-s">${food.price}</p>
+                <p className="text-gray-600 text-s">{food.type}</p>
+            </div>
             </div>
         </div>
-    </div>
     )
-}
+};
