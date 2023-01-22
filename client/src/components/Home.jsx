@@ -1,5 +1,4 @@
 import React from 'react';
-import Navbar from './Navbar';
 import Card from './Card';
 import '../styles/home.css';
 import Detail from "./Detail";
@@ -24,7 +23,6 @@ export default function Home() {
   const food2 = axios.get('http://localhost:3001/foods')
     .then(function(value){
       setfood(value.data)
-      console.log(food)
   })
 
 
@@ -36,7 +34,6 @@ export default function Home() {
 
 /* */
   return (<>
-    <Navbar/>
     <Filters/>
   <div className=''>
     <div>

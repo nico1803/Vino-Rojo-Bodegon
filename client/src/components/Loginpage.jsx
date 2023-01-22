@@ -4,20 +4,26 @@ import { gapi } from "gapi-script";
 import GoogleLogin from "react-google-login";
 import LogGoogle from "../assets/google.png";
 import swal from "sweetalert";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { GoogleLogout } from 'react-google-login';
+import { useDispatch, useSelector } from 'react-redux';
+import { getUser } from '../redux/actions.js'
 
 
  function Login() {
+  const dispatch = useDispatch()  
+  
   const clientID =
     "773413580776-bs3kqrn62tfkdmjhek5d5d0gdt3c2cke.apps.googleusercontent.com";
 
-  const history = useHistory();
+  const history = useNavigate();
   const [user, setUser] = useState({});
   const [loggeIn, setLoggetInfo] = useState(false);
 
   const onSuccess = (response) => {
     setUser(response.profileObj);
+    dispatch(getUser(response.profileObj))
+    console.log(response)
     document.getElementsByClassName("btn").hidden = true;
   };
   const onFailure = (response) => {
@@ -44,8 +50,8 @@ import { GoogleLogout } from 'react-google-login';
       );
     } else {
       return swal("¡GENIAL!", "Disfruta  nuetra pagina!", "success") &&
-      history.push("/home");
-    }
+      history("/");
+    } 
   }
 
 

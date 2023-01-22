@@ -1,15 +1,23 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import logoImg from "../assets/LogoBarril.png";
 import UserPhoto from "../assets/user.png";
 import "../styles/navbar.css";
+import GoogleLogin from "react-google-login";
+import { useSelector } from 'react-redux';
+
+
 
 export default function Navbar() {
+  let [user, setUser] = useState([])
+  const googleUser = useSelector((state) => state)
+  console.log('googleUser from navBar: ', googleUser?.user)  
+
   return (
     <section class="navigation">
       <div class="nav-container">
-        <div class="brand">
-          <Link to="/home">
+        <div class="brand"> 
+          <Link to="/">
             <img className="imga" src={logoImg} alt="Logo image" />
           </Link>
         </div>
@@ -36,7 +44,7 @@ export default function Navbar() {
             </li>
             <li className="dropdown">
               <button className="dropbtn">
-                <img className="imga1" src={UserPhoto} />
+                <img className="imga1" src={googleUser?.user ? googleUser.user.imageUrl : UserPhoto} />
               </button>
               <ul className="dropdown-content">
                 <li>

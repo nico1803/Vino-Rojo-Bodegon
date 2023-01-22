@@ -1,6 +1,7 @@
 import axios from 'axios';
 
 export const GET_FOODS = 'GET_FOODS'
+export const GET_USER = 'GET_USER'
 
 export function getFoods(){
     return async function(dispatch) {
@@ -13,3 +14,15 @@ export function getFoods(){
         })
     }
 };
+
+export function getUser(user){
+    console.log('user form actions: ', user)
+    return function(dispatch) {
+        return dispatch({
+            type: 'GET_USER',
+            payload: user
+
+        })
+    }
+};
+
