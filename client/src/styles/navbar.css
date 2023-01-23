@@ -1,6 +1,7 @@
 .navigation {
     height: 70px;
-    background:brown;
+    background: linear-gradient(#614C3C, #614C3C);
+    box-shadow: 0 8px 16px -8px rgba(0,0,0,0.4);
 }
 .brand {
     position: absolute;
@@ -34,12 +35,12 @@ nav ul li a, nav ul li a:visited {
     display: block;
     padding: 0 20px;
     line-height: 70px;
-    background: brown;
+    background: linear-gradient(#614C3C, #614C3C);
     color: #fff;
     text-decoration: none;
 }
 nav ul li a:hover, nav ul li a:visited:hover {
-    background: #2581dc;
+    background: #271e18;
     color: #fff;
 }
 nav ul li a:not(:only-child):after, nav ul li a:visited:not(:only-child):after {
@@ -53,12 +54,7 @@ nav ul li ul li a {
     padding: 15px;
     line-height: 20px;
 }
-.nav-dropdown {
-    position: absolute;
-    display: none;
-    z-index: 1;
-    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.15);
-}
+
 /* Mobile navigation */
 .nav-mobile {
     display: none;
@@ -143,8 +139,37 @@ article {
 
 
 .imga{
-    margin-top: 6px;
+    margin-top: 10px;
     width: 50px;
     align-items: center;
+    border-radius: 30px;
     
 }
+.imga1{
+    width: 40px;
+    align-items: center;
+    border-radius: 30px;
+    
+}
+
+/* [!] */
+
+.dropbtn {
+    padding: 16px;
+    cursor: pointer;
+}
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+.dropdown-content {
+    display: none;
+    position: absolute;
+    width: 100%;
+
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+

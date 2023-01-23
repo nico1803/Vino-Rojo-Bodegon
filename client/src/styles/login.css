@@ -1,0 +1,94 @@
+/*Magic card*/
+.cardlogin {
+    width: 500px;
+    height: 450px;
+    background: #f5f5f5;
+    overflow: visible;
+    box-shadow: 0 5px 20px 2px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+top: 50%;
+left: 50%;
+-webkit-transform: translate(-50%, -50%);
+border-radius: 30px;
+   }
+   
+   .cardg-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2em;
+    padding: 0 1rem;
+   }
+   
+   .cardg-img {
+    --size: 100px;
+    width: var(--size);
+    height: var(--size);
+    border-radius: 50%;
+    transform: translateY(-50%);
+    position: relative;
+    transition: all .3s ease-in-out;
+   }
+   
+   .cardg-img::before {
+    content: "";
+    border-radius: inherit;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 90%;
+    height: 90%;
+    transform: translate(-50%, -50%);
+   }
+   @font-face {
+    font-family: "Questrial";
+    src: url("../fonts/Questrial-Regular.ttf");
+   }
+   /*Text*/
+   
+   .text-body {
+    font-size: .8em;
+    text-align: center;
+    color: #6f6d78;
+    font-weight: 400;
+    font-style: italic;
+    font-family: "Questrial";
+    margin-bottom: 30px;
+   }
+   
+.profile-image{
+    margin: 10px;
+}
+/* this button is inspired from this -- https://www.newline.co/pricing */
+.buttonl {
+  margin-top: 5px;
+  margin-bottom: 20px;
+    --width: 150px;
+    --timing: 2s;
+    border: 0;
+    width: var(--width);
+    padding-block: 1em;
+    color: #fff;
+    font-weight: bold;
+    font-size: 1em;
+    background: rgb(64, 192, 87);
+    transition: all 0.2s;
+    border-radius: 3px;
+  }
+  
+  .buttonl:hover {
+    background-image: linear-gradient(to right,#ea4335, #ea4335 16.65%, rgb(190, 75, 219) 16.65%, rgb(190, 75, 219) 33.3%, #4285f4 33.3%, #4285f4 49.95%, #34a853 49.95%,#34a853 66.6%,#fbbc05 66.6%, #fbbc05 83.25%, rgb(253, 126, 20) 83.25%, rgb(253, 126, 20) 100%, rgb(250, 82, 82) 100%);
+    animation: var(--timing) linear dance6123 infinite;
+    transform: scale(1.1) translateY(-1px);
+  }
+  
+  @keyframes dance6123 {
+    to {
+      background-position: var(--width);
+    }
+  }
+  
+  
