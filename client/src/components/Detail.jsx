@@ -5,7 +5,6 @@ import Navbar from "./Navbar";
 
 export default function Detail() {
   return (
-
       <div class="center">
         <div class="card green">
           <div class="additional">
