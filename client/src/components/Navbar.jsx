@@ -37,7 +37,9 @@ export default function Navbar() {
               </a>
             </li>
             <li>
-              <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Soporte</a>
+              <Link to='/contact'>
+              <a>Contacto</a>
+              </Link>
             </li>
             <li>
               <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Carrito</a>

@@ -23,6 +23,7 @@ import { getUser } from '../redux/actions.js'
   const onSuccess = (response) => {
     setUser(response.profileObj);
     dispatch(getUser(response.profileObj))
+    
     console.log(response)
     document.getElementsByClassName("btn").hidden = true;
   };
@@ -56,44 +57,71 @@ import { getUser } from '../redux/actions.js'
 
 
 
-  return (
+  return (<>
     <div className="cardlogin">
-      <div class="cardg-img">
-        <img src={LogGoogle} />
-      </div>
-      <div class="cardg-info">
-        <p class="text-body">
-          Por tu comodidad y seguridad, ¡accede a través de Google!
-        </p>
-      </div><div>
-      </div>
-      <div class={user ? "profile" : "hidden"}>
-        <img className="profile-image" src={user.imageUrl} />
-        <h3>{user.name}</h3>
-        <div>
-        {user.email===undefined
-          ?       <GoogleLogin
-          clientId={clientID}
-          onSuccess={onSuccess}
-          onFailure={onFailure}
-          isSignedIn={true}
-          buttonText="Continue  with Google"
-          cookiePolicy={"single_host_origin"}
-        />
-          :       <GoogleLogout 
-          clientId={clientID}
-          buttonText="Logout"
-          onLogoutSuccess={handleLogout}
-        >
-        </GoogleLogout>
-        }
-      </div>
-      </div>
-      <button className="buttonl" onClick={(e) => handlesubmit(e)}>
-        Acceder
-      </button>
-
+        <div class="cardg-img">
+          <img src={LogGoogle} />
+        </div>
+        <div class="cardg-info">
+          <p class="text-body">
+            Por tu comodidad y seguridad, ¡accede a través de Google!
+          </p>
+        </div><div>
+        </div>
+        <div class={user ? "profile" : "hidden"}>
+          <img className="profile-image" src={user.imageUrl} />
+          <h3>{user.name}</h3>
+          <div>
+          {user.email===undefined
+            ?       <GoogleLogin
+            clientId={clientID}
+            onSuccess={onSuccess}
+            onFailure={onFailure}
+            isSignedIn={true}
+            buttonText="Continue  with Google"
+            cookiePolicy={"single_host_origin"}
+          />
+            :       <GoogleLogout 
+            clientId={clientID}
+            buttonText="Logout"
+            onLogoutSuccess={handleLogout}
+          >
+          </GoogleLogout>
+          }
+        </div>
+        </div>
+        <button className="buttonl" onClick={(e) => handlesubmit(e)}>
+          Acceder
+        </button>
     </div>
-  );
+
+
+    {/* <div className="form__loginDB">
+      <div class="login-box">
+  <h2>Login</h2>
+  <form>
+    <div class="user-box">
+      <input type="text" name="" required=""/>
+      <label>Username</label>
+    </div>
+    <div class="user-box">
+      <input type="password" name="" required=""/>
+      <label>Password</label>
+    </div>
+    <a href="#">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      Submit
+    </a>
+  </form>
+</div>
+    </div> */}
+
+
+
+
+  </>);
 }
 export default Login;
