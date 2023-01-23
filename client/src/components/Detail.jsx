@@ -5,8 +5,7 @@ import Navbar from "./Navbar";
 
 export default function Detail() {
   return (
-    <>
-      <Navbar />
+
       <div class="center">
         <div class="card green">
           <div class="additional">
@@ -41,6 +40,5 @@ export default function Detail() {
           </div>
         </div>
       </div>
-    </>
   );
 }
