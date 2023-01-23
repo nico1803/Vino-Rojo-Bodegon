@@ -38,4 +38,16 @@ const getByType = async (type) => {
     return await Food.find({type: type}).lean();
 }
 
-module.exports = {getFoods, createFood, findById, deleteFood, editFood, createCustomer, getByType};
+const getCustomers = async () => {
+    return await Customer.find().lean();
+};
+
+const emailValidation = async (email) => {
+    let filter = await Customer.findOne({email: email});
+    if(filter.length){
+        return true
+    };
+    return false;
+}
+
+module.exports = {getFoods, getCustomers, createFood, findById, deleteFood, editFood, createCustomer, getByType, emailValidation};
