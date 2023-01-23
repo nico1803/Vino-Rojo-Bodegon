@@ -1,9 +1,30 @@
-import React from "react";
+import React,{useEffect, useState} from "react";
+import { useParams } from "react-router-dom";
+import axios from "axios";
 import ProductoImage from "../assets/LogoBarril.png";
 import "../styles/detail.css";
 import Navbar from "./Navbar";
 
+
 export default function Detail() {
+  let idFood = useParams()
+  let [food, setfood] = useState([])
+  // const dispatch = useDispatch()
+  // const allFoods = useSelector((state) => state.allFoods)
+
+  useEffect(()=>{
+ 
+  const food2 = axios.get(`http://localhost:3001/foods/`,{idFood})
+    .then(function(value){
+      setfood(value.data)
+  })
+  console.log(idFood)
+  console.log(food)
+  
+
+
+  }, []);
+
   return (
       <div class="center">
         <div class="card green">
