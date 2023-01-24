@@ -21,7 +21,13 @@ function Login() {
 
   const onSuccess = (response) => {
     setUser(response.profileObj);
+
     dispatch(getUser(response.profileObj));
+
+    dispatch(getUser(response.profileObj))
+    
+    console.log(response)
+
     document.getElementsByClassName("btn").hidden = true;
   };
   const onFailure = (response) => {
@@ -52,7 +58,6 @@ function Login() {
       );
     }
   }
-
 
 
   return (
@@ -130,7 +135,7 @@ function Login() {
           </div>
         </div>
       </div>
-    </div>
+      </div>
   );
 }
 export default Login;
