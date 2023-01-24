@@ -2,6 +2,7 @@ import axios from 'axios';
 
 export const GET_FOODS = 'GET_FOODS'
 export const GET_USER = 'GET_USER'
+export const POST_FOOD = 'POST_FOOD'
 
 export function getFoods(){
     return async function(dispatch) {
@@ -25,4 +26,14 @@ export function getUser(user){
         })
     }
 };
+
+export function postFood(payload){
+    return async function(dispatch){
+      await axios.post('/foods.routes',payload)
+        dispatch ({
+            type: 'POST_FOOD',
+            payload
+        })
+    }
+}
 
