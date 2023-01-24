@@ -30,7 +30,7 @@ const editFood = async (id, name, image, description, price, type) => { // 'imag
     return await Food.findByIdAndUpdate(id, {name, price, description, type, image});
 };
 
-const createCustomer = async (name, password, email) => {
+const createCustomer = async (name, email, password) => {
     return await Customer.create({name, password, email});
 };
 
@@ -43,11 +43,21 @@ const getCustomers = async () => {
 };
 
 const emailValidation = async (email) => {
-    let filter = await Customer.findOne({email: email});
-    if(filter.length){
-        return true
-    };
-    return false;
+    const filter = await Customer.findOne({email: email});
+    if(!filter) {
+        return false;
+    } else {
+        return true;
+    }
+};
+
+const deleteCustomer = async (id) => {
+    return await Customer.findByIdAndDelete(id);
+};
+
+const updateCustomer = async (id, name, password, email) => {
+    return await Customer.findByIdAndUpdate(id, {name, password, email});
 }
 
-module.exports = {getFoods, getCustomers, createFood, findById, deleteFood, editFood, createCustomer, getByType, emailValidation};
+module.exports = {getFoods, deleteCustomer, getCustomers, createFood, findById, deleteFood, 
+                  editFood, createCustomer, getByType, emailValidation, updateCustomer};
