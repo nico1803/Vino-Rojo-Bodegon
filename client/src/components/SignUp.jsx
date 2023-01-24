@@ -13,35 +13,11 @@ import logoImg from "../assets/LogoBarril.png";
 function SignUp() {
   const dispatch = useDispatch();
 
-  const clientID =
-    "773413580776-bs3kqrn62tfkdmjhek5d5d0gdt3c2cke.apps.googleusercontent.com";
-
   const history = useNavigate();
-  const [user, setUser] = useState({});
-  const [loggeIn, setLoggetInfo] = useState(false);
-
-  const onSuccess = (response) => {
-    setUser(response.profileObj);
-    dispatch(getUser(response.profileObj));
-    document.getElementsByClassName("btn").hidden = true;
-  };
-  const onFailure = (response) => {
-    console.log("Something went wrong");
-  };
-  const handleLogout = () => {
-    setUser({});
-  };
-  useEffect(() => {
-    function start() {
-      gapi.client.init({
-        clientId: clientID,
-      });
-    }
-    gapi.load("client:auth2", start);
-  });
+//hacer nueva lidacion segun como se requieran los datos, dependiento de la forma de recibimieto de la db
   function handlesubmit(e) {
     e.preventDefault();
-    if (user.email === undefined) {
+    if ( undefined) {
       return swal(
         "UUPS!",
         "Antes debes acceder con Google o con tu cuenta Vino Rojo Bodegón, lo siento.",
@@ -75,7 +51,7 @@ function SignUp() {
             <div class="login-form">
               <h2>Login</h2>
 
-              <div class={user ? "profile" : "hidden"}>
+              <div>
                 <form>
                   <p>
                     <label>
