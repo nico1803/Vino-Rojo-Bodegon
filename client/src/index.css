@@ -1,3 +1,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+    margin: 0;
+    position: relative;
+    padding-bottom: 139em;
+    min-height: 100vh;
+}
