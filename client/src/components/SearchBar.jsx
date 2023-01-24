@@ -9,10 +9,10 @@ export default function SearchBar() {
         event.preventDefault();
     }
     return (
-        <div>
-            <div class="flex-row rounded-2xl border-0 bg-stone-900 scroll-p-3">
-                <button type="submit" onClick={event => handleClick(event)} class="rounded-l-lg text-base basis-1  p-0.5 bg-stone-500 hover:bg-stone-700 border-0">Buscar</button>
-                <input type="text" name="Buscar plato" id="" class="rounded-r-lg p-0.5 bg-stone-200 border-0 caret-red-400"/>
+        <div class="place-items-center flex justify-center">
+            <div>
+                <button type="submit" onClick={event => handleClick(event)} class="rounded-l-lg text-base basis-1  p-0.5 bg-stone-500 hover:bg-stone-700 border-0 w-32">Buscar</button>
+                <input type="text" name="Buscar plato" id="" class="rounded-r-lg p-0.5 bg-stone-200 border-0 caret-red-400 w-96"/>
             </div>
         </div>
     )

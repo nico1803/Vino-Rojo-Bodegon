@@ -5,7 +5,7 @@ import axios from "axios";
 import ProductoImage from "../assets/LogoBarril.png";
 import "../styles/detail.css";
 import Navbar from "./Navbar";
-import { AiFillStar, AiOutlineStar } from "react-icons/ai";
+//import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 import { postFood } from "../redux/actions";
 
 
@@ -83,7 +83,19 @@ function handleChange(e){
          <form  onSubmit={(e)=>{handleSubmit(e)}} className="popup">
         <div className="content-form">
           <h1>Review</h1>
-          {Array(5).fill().map((_, index) => (
+          
+        </div>
+        <textarea placeholder="coment here..."></textarea>
+        <button>Submit</button>
+      </form>
+
+      
+    </div>
+  );
+}
+
+/**
+ {Array(5).fill().map((_, index) => (
             number >= index + 1 ?
               <AiFillStar
                 onChange={(e)=>{handleChange(e)}}
@@ -101,12 +113,6 @@ function handleChange(e){
 
           ))}
 
-        </div>
-        <textarea placeholder="coment here..."></textarea>
-        <button>Submit</button>
-      </form>
+ 
 
-      
-    </div>
-  );
-}
+ */
