@@ -8,8 +8,9 @@ import { useNavigate } from "react-router-dom";
 import { GoogleLogout } from "react-google-login";
 import { useDispatch, useSelector } from "react-redux";
 import { getUser } from "../redux/actions.js";
+import logoImg from "../assets/LogoBarril.png";
 
-function Login() {
+function SignUp() {
   const dispatch = useDispatch();
 
   const clientID =
@@ -61,15 +62,13 @@ function Login() {
         <div class="container">
           <div class="col-left">
             <div class="login-text">
-              <h2>Welcome Back</h2>
+              <h2>¡Gracias por confiar en nosotros!</h2>
               <p>
                 Create your account.
                 <br />
                 It's totally free.
               </p>
-              <a class="btn" href="/signup">
-                Sign Up
-              </a>
+             
             </div>
           </div>
           <div class="col-right">
@@ -77,38 +76,24 @@ function Login() {
               <h2>Login</h2>
 
               <div class={user ? "profile" : "hidden"}>
-                <img className="photo" src={user.imageUrl} />
-                <div>
-                  {user.email === undefined ? <br /> : <h3> <strong>¡Hola! {user.name}.</strong></h3>}
-                </div>
-
-                <div>
-                  {user.email === undefined ? (
-                    <GoogleLogin
-                      clientId={clientID}
-                      onSuccess={onSuccess}
-                      onFailure={onFailure}
-                      isSignedIn={true}
-                      buttonText="Continue  with Google"
-                      cookiePolicy={"single_host_origin"}
-                    />
-                  ) : (
-                    <GoogleLogout
-                      clientId={clientID}
-                      buttonText="Logout"
-                      onLogoutSuccess={handleLogout}
-                    ></GoogleLogout>
-                  )}
-                </div>
-                <div className="middel"><strong> or login with</strong> </div>
                 <form>
                   <p>
                     <label>
-                      Username or email address<span>*</span>
+                      Username<span>*</span>
                     </label>
                     <input
                       type="text"
-                      placeholder="Username or Email"
+                      placeholder="Username"
+                      required
+                    />
+                  </p>
+                  <p>
+                    <label>
+                    email address<span>*</span>
+                    </label>
+                    <input
+                      type="text"
+                      placeholder="Email"
                       required
                     />
                   </p>
@@ -119,10 +104,13 @@ function Login() {
                     <input type="password" placeholder="Password" required />
                   </p>
                   <p>
-                    <input type="submit" id="submit" value="Ingresar" onClick={(e) => handlesubmit(e)} />
+                    <label>
+                      Repeat Password<span>*</span>
+                    </label>
+                    <input type="password" placeholder=" Repeat Password" required />
                   </p>
                   <p>
-                    <a href="https://www.youtube.com/watch?v=pF-3S-HTJSg" target="_blank">Forget Password?</a>
+                    <input type="submit" id="submit" value="Crear" onClick={(e) => handlesubmit(e)} />
                   </p>
                 </form>
               </div>
@@ -133,4 +121,4 @@ function Login() {
     </div>
   );
 }
-export default Login;
+export default SignUp;

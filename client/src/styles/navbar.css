@@ -1,3 +1,10 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+
 .navigation {
     height: 70px;
     background: linear-gradient(#614C3C, #614C3C);
@@ -151,6 +158,7 @@ article {
     border-radius: 30px;
     
 }
+
 
 /* [!] */
 
