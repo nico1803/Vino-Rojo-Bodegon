@@ -36,7 +36,7 @@ export default function Detail() {
     e.preventDefault();
     
         dispatch(postFood(setfood))
-        alert('Se ha creado la receta exitosamente')
+        alert('Tu comentario se envio correctamente')
       
 }
 function handleChange(e){
