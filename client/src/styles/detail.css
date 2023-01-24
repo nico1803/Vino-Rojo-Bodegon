@@ -45,6 +45,9 @@ text-align: center;
 
 .imgproduct{
   border-radius: 30px;
+  height: 400px;
+  width: 400px;
+
 }
 
 .card:hover .additional {
