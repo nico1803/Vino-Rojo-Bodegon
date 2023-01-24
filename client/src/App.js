@@ -6,6 +6,7 @@ import Login from "./components/Loginpage"
 import Navbar from './components/Navbar';
 import SignUp from "./components/SignUp"
 import Contact from './components/Contact';
+import Footer from './components/Footer';
 
 
 
@@ -24,6 +25,7 @@ function App() {
 
         <Route path='/contact' element={<Contact/>}/>
       </Routes>
+    <Footer/>
   </>);
 }
  
