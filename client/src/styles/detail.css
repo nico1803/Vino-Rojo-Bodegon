@@ -224,3 +224,21 @@ text-transform: uppercase;
 color: #614C3C;
 }
 
+
+/* STAR */
+
+.content-star {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+}
+
+.content-star input[type="radio"]{
+display: none;
+}
+
+.content-star .star{
+  cursor: pointer;
+  transition: color 200ms;
+}
