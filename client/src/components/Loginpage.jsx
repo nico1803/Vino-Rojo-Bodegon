@@ -59,6 +59,44 @@ function Login() {
     }
   }
 
+//state para guardar el input del email y el password, y si hay mas input se añade a este objeto
+const [formData, setFormData]=useState({
+  username:"",
+  email:"",
+  password:""
+});
+
+const handlerChange = (e)=>{
+  e.preventDefault();
+  setFormData({
+    ...formData,
+    [e.target.name]:e.target.value
+  })
+  console.log(formData)
+}
+
+//se puede hacer un state por cada input
+// const[email,setEmail]=useState("");
+// const[password, setPassword]=useState("");
+
+
+const handleSubmit = async e => {
+    e.preventDefault();
+try {
+  //envia la info de los inputs convertida a un json (formData)
+  const data = JSON.stringify(formData);
+  console.log(data)
+  //envio un fecth a la url del servidor que va a la ruta del post de customers con un objeto de configuracion donde le paso el metodo de la request, el body que contiene la data en formato json y un header para especificar que es un json el que estoy  enviando
+   await fetch("http://localhost:3001/login", {
+    method: "POST",
+    body: console.log(data),
+    headers: { "Content-Type": "application/json" }
+  });
+
+} catch (err) {
+  console.error(err);
+}
+  };
 
   return (
     <div className="cuerpito">
@@ -106,22 +144,30 @@ function Login() {
                   )}
                 </div>
                 <div className="middel"><strong> or login with</strong> </div>
-                <form>
+                <form onSubmit={handleSubmit}>
                   <p>
                     <label>
                       Username or email address<span>*</span>
                     </label>
                     <input
                       type="text"
+                      value={formData.email || formData.username}
                       placeholder="Username or Email"
                       required
+                      name="email"
+                      onChange={handlerChange}
                     />
                   </p>
                   <p>
                     <label>
                       Password<span>*</span>
                     </label>
-                    <input type="password" placeholder="Password" required />
+                    <input type="password"
+                     placeholder="Password"
+                     value={formData.password}
+                      required 
+                      name="password"
+                      onChange={handlerChange}/>
                   </p>
                   <p>
                     <input type="submit" id="submit" value="Ingresar" onClick={(e) => handlesubmit(e)} />
