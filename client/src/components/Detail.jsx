@@ -7,22 +7,17 @@ import Navbar from "./Navbar";
 
 
 export default function Detail() {
-  let idFood = useParams()
+  let {id} = useParams()
   let [food, setfood] = useState([])
   // const dispatch = useDispatch()
   // const allFoods = useSelector((state) => state.allFoods)
 
   useEffect(()=>{
  
-  const food2 = axios.get(`http://localhost:3001/foods/`,{idFood})
+  const food = axios.get(`http://localhost:3001/foods/${id}`)
     .then(function(value){
       setfood(value.data)
   })
-  console.log(idFood)
-  console.log(food)
-  
-
-
   }, []);
 
   return (
@@ -31,15 +26,13 @@ export default function Detail() {
           <div class="additional">
             <div class="user-card">
               <img className="imgproduct" src={ProductoImage} alt="product image" />
-              <div class="points center">$100</div>
+              <div class="points center">{food.price+'$'}</div>
             </div>
             <div class="more-info">
-              <h1>Nombre Producto</h1>
+              <h1>{food.name}</h1>
               <div class="coords">
                 <span>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce
-                  a volutpat mauris, at molestie lacus. Nam vestibulum sodales
-                  odio ut pulvinar.
+                  {food.description}
                 </span>
               </div>
               <div class="stats">
@@ -50,11 +43,9 @@ export default function Detail() {
             </div>
           </div>
           <div class="general">
-            <h1>Nombre Producto</h1>
+            <h1>{food.name}</h1>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce a
-              volutpat mauris, at molestie lacus. Nam vestibulum sodales odio ut
-              pulvinar.
+            {food.description}
             </p>
             <span class="more">Mouse over the card for more info</span>
           </div>
