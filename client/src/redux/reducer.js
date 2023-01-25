@@ -1,4 +1,4 @@
-import { GET_FOODS, GET_USER, POST_FOOD } from "./actions";
+import { GET_FOODS, GET_USER, POST_FOOD, FOOD_BY_TYPE} from "./actions";
 
 let initialState = {
     allFoods: [],
@@ -24,5 +24,11 @@ export default function rootReducer(state = initialState, action) {
                 ...state,
                 allFoods: [action.payload,...state.allRecipes]
             }
+        case FOOD_BY_TYPE: {
+            return {
+                ...state,
+                allFoods: action.payload
+            }
+        }
     }
 }
