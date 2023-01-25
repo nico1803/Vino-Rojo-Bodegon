@@ -12,23 +12,69 @@ import logoImg from "../assets/LogoBarril.png";
 
 function SignUp() {
   const dispatch = useDispatch();
-
+  const expcorreo= /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$/
+  const  expcontraseña = /^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$/
+  const expusuario = /^[a-zA-Z]{3,15}$/
+  
   const history = useNavigate();
-//hacer nueva lidacion segun como se requieran los datos, dependiento de la forma de recibimieto de la db
-  function handlesubmit(e) {
+
+//state para guardar el input del email y el password, y si hay mas input se añade a este objeto
+const [formData, setFormData]=useState({
+  username:"",
+  email:"",
+  password:"",
+  repeatpassword:"",
+});
+
+const handlerChange = (e)=>{
+  e.preventDefault();
+  setFormData({
+    ...formData,
+    [e.target.name]:e.target.value
+  })
+  console.log(formData)
+}
+
+//se puede hacer un state por cada input
+// const[email,setEmail]=useState("");
+// const[password, setPassword]=useState("");
+
+
+const handleSubmit = async e => {
     e.preventDefault();
-    if ( undefined) {
-      return swal(
-        "UUPS!",
-        "Antes debes acceder con Google o con tu cuenta Vino Rojo Bodegón, lo siento.",
-        "error"
-      );
-    } else {
-      return (
-        swal("¡GENIAL!", "Disfruta  nuetra pagina!", "success") && history("/")
-      );
-    }
-  }
+try {
+  //envia la info de los inputs convertida a un json (formData)
+  const data = JSON.stringify(formData);
+  console.log(data)
+  //envio un fecth a la url del servidor que va a la ruta del post de customers con un objeto de configuracion donde le paso el metodo de la request, el body que contiene la data en formato json y un header para especificar que es un json el que estoy  enviando
+   await fetch("http://localhost:3001/login", {
+    method: "POST",
+    body: console.log(data),
+    headers: { "Content-Type": "application/json" }
+  });
+
+} catch (err) {
+  console.error(err);
+}
+  };
+
+
+//hacer nueva lidacion segun como se requieran los datos, dependiento de la forma de recibimieto de la db
+function handlesubmit(e) {
+  e.preventDefault();
+  if(!expusuario.test(formData.username)){return swal("UPS!", "Tu usuario debe contener más de 3 caracteres o no pasarte de los 15", "warning")}
+  if(!formData.email){return swal("UPS!", "¡Antes escribe tu email!", "warning")}
+  if(!expcorreo.test(formData.email)){return swal ("UPS!", "Esto no parece un email.","warning" )}
+  if(!formData.password){return swal("UPS", "Antes escribe tu contraseña!", "warning")}
+  if(!expcontraseña.test(formData.password)){return swal ("UPS!", "Contraseña con al menos 8 caracteres, con al menos una letra minúscula, una mayúscula, un dígito y un caracter especial", "warning")}
+
+if(formData.password !== formData.repeatpassword){return swal("UPS!", "La contraseña no coincide", "error")}
+    if(formData.username && formData.email && formData.password === formData.repeatpassword ) {
+      return swal("¡ESTUPENDO!", "Ahora inicia sesión!", "success") && history("/login")
+      } 
+
+
+}
 
 
 
@@ -52,38 +98,56 @@ function SignUp() {
               <h2>Login</h2>
 
               <div>
-                <form>
+                <form onSubmit={handleSubmit}>
                   <p>
                     <label>
-                      Username<span>*</span>
+                      Usuario<span>*</span>
                     </label>
                     <input
                       type="text"
-                      placeholder="Username"
+                      placeholder="Usuario"
                       required
+                      value={formData.username}
+                      name="username"
+                      onChange={handlerChange}
                     />
                   </p>
                   <p>
                     <label>
-                    email address<span>*</span>
+                    Dirección de Correo<span>*</span>
                     </label>
                     <input
-                      type="text"
+                      type="email"
                       placeholder="Email"
                       required
+                      name="email"
+                      value={formData.email}
+                      onChange={handlerChange}
+                      
                     />
                   </p>
                   <p>
                     <label>
-                      Password<span>*</span>
+                      Contraseña<span>*</span>
                     </label>
-                    <input type="password" placeholder="Password" required />
+                    <input type="password"
+                     placeholder="Contraseña"
+                     value={formData.password}
+                      required 
+                      name="password"
+                      onChange={handlerChange}/>
                   </p>
                   <p>
                     <label>
                       Repeat Password<span>*</span>
                     </label>
-                    <input type="password" placeholder=" Repeat Password" required />
+                    <input type="password"
+                     placeholder="Repite tu contraseña" 
+                     value={formData.repeatpassword}
+                     required 
+                     name="repeatpassword"
+                     onChange={handlerChange}
+                     />
                   </p>
                   <p>
                     <input type="submit" id="submit" value="Crear" onClick={(e) => handlesubmit(e)} />

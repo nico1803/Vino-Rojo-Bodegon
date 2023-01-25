@@ -18,6 +18,13 @@ function Login() {
   const history = useNavigate();
   const [user, setUser] = useState({});
   const [loggeIn, setLoggetInfo] = useState(false);
+  //state para guardar el input del email y el password, y si hay mas input se añade a este objeto
+const [formData, setFormData]=useState({
+  email:"",
+  password:""
+});
+// const expRegular = /^[a-zA-Z]{2,15}$/;
+const expcorreo= /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$/
 
   const onSuccess = (response) => {
     setUser(response.profileObj);
@@ -46,25 +53,24 @@ function Login() {
   });
   function handlesubmit(e) {
     e.preventDefault();
-    if (user.email === undefined) {
+    if(!formData.email){return swal("UPS!", "¡Antes escribe tu email!", "warning")}
+    if(!expcorreo.test(formData.email)){return swal ("UPS!", "Esto no parece un email.","warning" )}
+    if(!formData.password){return swal("UPS", "Antes escribe tu contraseña!", "warning")}
+    if (user.email === undefined && !formData.email && !formData.password ) {
       return swal(
         "UUPS!",
         "Antes debes acceder con Google o con tu cuenta Vino Rojo Bodegón, lo siento.",
         "error"
-      );
-    } else {
-      return (
-        swal("¡GENIAL!", "Disfruta  nuetra pagina!", "success") && history("/")
-      );
-    }
+        );
+      } 
+      if (user.email !== undefined){return swal("¡GENIAL!", "Disfruta  nuetra pagina!", "success") && history("/")}
+      if(formData.email && formData.password ) {
+        return swal("¡GENIAL!", "Disfruta  nuetra pagina!", "success") && history("/")
+        } 
+
+
   }
 
-//state para guardar el input del email y el password, y si hay mas input se añade a este objeto
-const [formData, setFormData]=useState({
-  username:"",
-  email:"",
-  password:""
-});
 
 const handlerChange = (e)=>{
   e.preventDefault();
@@ -75,9 +81,7 @@ const handlerChange = (e)=>{
   console.log(formData)
 }
 
-//se puede hacer un state por cada input
-// const[email,setEmail]=useState("");
-// const[password, setPassword]=useState("");
+
 
 
 const handleSubmit = async e => {
@@ -104,20 +108,20 @@ try {
         <div class="container">
           <div class="col-left">
             <div class="login-text">
-              <h2>Welcome Back</h2>
+              <h2>Bienvenido!</h2>
               <p>
-                Create your account.
+                Crea una cuenta,
                 <br />
-                It's totally free.
+                es totalmente gratis!.
               </p>
               <a class="btn" href="/signup">
-                Sign Up
+                ¡registrarte!
               </a>
             </div>
           </div>
           <div class="col-right">
             <div class="login-form">
-              <h2>Login</h2>
+              <h2>Inicio de Sesión.</h2>
 
               <div class={user ? "profile" : "hidden"}>
                 <img className="photo" src={user.imageUrl} />
@@ -143,16 +147,16 @@ try {
                     ></GoogleLogout>
                   )}
                 </div>
-                <div className="middel"><strong> or login with</strong> </div>
+                <div className="middel"><strong>  O Ingresa con: </strong> </div>
                 <form onSubmit={handleSubmit}>
                   <p>
                     <label>
-                      Username or email address<span>*</span>
+                      Dirección Email<span>*</span>
                     </label>
                     <input
-                      type="text"
-                      value={formData.email || formData.username}
-                      placeholder="Username or Email"
+                      type="email"
+                      value={formData.email}
+                      placeholder="Email"
                       required
                       name="email"
                       onChange={handlerChange}
@@ -160,10 +164,10 @@ try {
                   </p>
                   <p>
                     <label>
-                      Password<span>*</span>
+                      Contraseña<span>*</span>
                     </label>
                     <input type="password"
-                     placeholder="Password"
+                     placeholder="Contraseña"
                      value={formData.password}
                       required 
                       name="password"
