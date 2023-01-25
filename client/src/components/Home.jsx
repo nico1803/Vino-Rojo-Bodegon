@@ -37,7 +37,7 @@ export default function Home() {
       <Recipescard/>
   </div>
   <Link to="/detail">
-    <img src={ProductoImage}/>
+    <img src={ProductoImage} className='md:w-1/2 lg:w-1/4 m-auto mb-10'/>
   </Link>
   </>)
 };

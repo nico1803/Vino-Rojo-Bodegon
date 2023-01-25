@@ -1,0 +1,264 @@
+[33mcommit 7ace5a5e97dc798c289d5991abef9db737bc3c7d[m[33m ([m[1;36mHEAD -> [m[1;32mDEMO-2[m[33m, [m[1;31morigin/DEMO-2[m[33m)[m
+Author: Naanita <sebastian.grajales15@gmail.com>
+Date:   Tue Jan 24 14:12:49 2023 -0500
+
+    detail
+
+[33mcommit fc0e7e92dc270e0828c99e066d17be8c2c47e852[m
+Author: dariorojas6 <dario43055@gmail.com>
+Date:   Tue Jan 24 10:28:16 2023 -0300
+
+    cambios en las actions-reducer-details
+
+[33mcommit 6818df5bee4f0201950b67b074fdaaaccc2b4161[m
+Author: dariorojas6 <dario43055@gmail.com>
+Date:   Tue Jan 24 10:24:14 2023 -0300
+
+    cambios en las actions-reducer-detail
+
+[33mcommit 6a8234dd36fc66d18c026be0fdc579ff42b678fc[m
+Author: Nicolas Beovide <nico1803o@hotmail.com.ar>
+Date:   Tue Jan 24 03:40:48 2023 -0300
+
+    Feat (detail) component axios+state+info
+
+[33mcommit d1c6699c33c56708ce9920ea4f9f4359082a8bc2[m
+Author: Naanita <sebastian.grajales15@gmail.com>
+Date:   Mon Jan 23 20:17:05 2023 -0500
+
+    signup
+
+[33mcommit c3762adee654444434daba9d4c8d4a9a81345b26[m
+Merge: 9293ed2 c127f76
+Author: Naanita <sebastian.grajales15@gmail.com>
+Date:   Mon Jan 23 20:10:02 2023 -0500
+
+    allLoginpage/Contact
+
+[33mcommit 9293ed2fb0cc5bc359e64f3c9426a6a095874b43[m
+Author: Naanita <sebastian.grajales15@gmail.com>
+Date:   Mon Jan 23 20:02:16 2023 -0500
+
+    alllogin
+
+[33mcommit c127f76a83fa8e5b22f51d132ab3171146eae9e7[m
+Merge: 3ce35f3 4b971ce
+Author: dariorojas6 <dario43055@gmail.com>
+Date:   Mon Jan 23 19:50:01 2023 -0300
+
+    cambios en detail
+
+[33mcommit 3ce35f30c54d6f5714b26f8457f643f258a3ee5f[m
+Author: dariorojas6 <dario43055@gmail.com>
+Date:   Mon Jan 23 19:48:07 2023 -0300
+
+    cambios en detail
+
+[33mcommit 4b971cee913dfbe0ed88bbe98e3f281c3108c789[m
+Author: Nicolas Beovide <nico1803o@hotmail.com.ar>
+Date:   Mon Jan 23 19:21:06 2023 -0300
+
+    Feat (contact) fix loggin
+
+[33mcommit d6c6a4a4405eba1799760cfb2cdbc77b860ec303[m
+Author: Nicolas Beovide <nico1803o@hotmail.com.ar>
+Date:   Mon Jan 23 17:23:21 2023 -0300
+
+    change
+
+[33mcommit f1f0da03516da52dbbd13613da442548e4060a83[m[33m ([m[1;32minit[m[33m)[m
+Author: Nicolas Beovide <nico1803o@hotmail.com.ar>
+Date:   Mon Jan 23 17:20:44 2023 -0300
+
+    (BRANCH) DEMO-2 init
+
+[33mcommit e8eec0c761d41adf0a713ac635d2180e017b65f9[m[33m ([m[1;31morigin/main[m[33m, [m[1;32mmain[m[33m)[m
+Merge: 7bbb8e3 8f0cb02
+Author: consbenjamin <106201629+consbenjamin@users.noreply.github.com>
+Date:   Mon Jan 23 16:46:16 2023 -0300
+
+    Merge pull request #4 from nico1803/BACK-2
+    
+    Back 2
+
+[33mcommit 7bbb8e35996917c169351d9e56f3f99e23fce69a[m
+Merge: 29b1a20 f09fd37
+Author: consbenjamin <106201629+consbenjamin@users.noreply.github.com>
+Date:   Mon Jan 23 16:45:42 2023 -0300
+
+    Merge pull request #3 from nico1803/FRONT-2
+    
+    Front 2
+
+[33mcommit f09fd37cd3a7af56bffc8f9192e17dc82e7d209f[m[33m ([m[1;31morigin/FRONT-2[m[33m, [m[1;32mFRONT-2[m[33m)[m
+Author: Nicolas Beovide <nico1803o@hotmail.com.ar>
+Date:   Sun Jan 22 08:42:38 2023 -0300
+
+    FIX (loggin + redux) loginState
+
+[33mcommit ac21b34d0d401f846e11728486938e4153cbe7c5[m
+Merge: 80dc9c1 700ad07
+Author: Naanita <sebastian.grajales15@gmail.com>
+Date:   Sat Jan 21 15:28:22 2023 -0500
+
+    Merge branch 'FRONT-2' of https://github.com/nico1803/Vino-Rojo-Bodegon into FRONT-2
+
+[33mcommit 80dc9c1bacff8deae3ec40881dee2d8a415bc877[m
+Author: Naanita <sebastian.grajales15@gmail.com>
+Date:   Sat Jan 21 15:27:57 2023 -0500
+
+    login
+
+[33mcommit 700ad07b775159f6a646046e5fae01d2e7d51101[m
+Author: Constantino Abba <cons_benjamin9@outlook.com>
+Date:   Sat Jan 21 15:26:35 2023 -0300
+
+    feat(component:card) card listo
+
+[33mcommit 7d9edb1d57b8984545a1f3481004323adc3f8299[m
+Author: Naanita <sebastian.grajales15@gmail.com>
+Date:   Fri Jan 20 18:39:48 2023 -0500
+
+    logincard
+
+[33mcommit 231852eac21302c4534eb8965e32f632a030a140[m
+Merge: 0bc0700 69a6237
+Author: Naanita <sebastian.grajales15@gmail.com>
+Date:   Fri Jan 20 18:15:44 2023 -0500
+
+    detail
+
+[33mcommit 0bc0700871e1f9eb4b37c712a2895427ca11c46c[m
+Author: Naanita <sebastian.grajales15@gmail.com>
+Date:   Fri Jan 20 18:04:31 2023 -0500
+
+    login/nav/detail
+
+[33mcommit 69a6237a9fefaa614ff75d2864f814af7ae58891[m
+Author: Nicolas Beovide <nico1803o@hotmail.com.ar>
+Date:   Fri Jan 20 19:46:13 2023 -0300
+
+    Feat (components / states) Card,Home,Filters,Sarchbar,Detail,Navbar
+
+[33mcommit 8f0cb02623582484f87e06f4c82379226a3b0877[m[33m ([m[1;31morigin/BACK-2[m[33m)[m
+Author: Lauti Posti <lautaropostiglione@gmail.com>
+Date:   Fri Jan 20 19:36:21 2023 -0300
+
+    Arreglos es foods.routes
+
+[33mcommit 834743c8adb10201504a682a15ef3b1d29e92a68[m
+Author: Lauti Posti <lautaropostiglione@gmail.com>
+Date:   Fri Jan 20 19:10:21 2023 -0300
+
+    Cambios en el put
+
+[33mcommit 179578eb9c6ff583f419818d0d4b53a37a891d9f[m
+Author: Naanita <sebastian.grajales15@gmail.com>
+Date:   Fri Jan 20 15:18:33 2023 -0500
+
+    DETAILCARD
+
+[33mcommit 7733192a24587abbd8e4324eae6821a7af2264c4[m
+Merge: 2182234 c1b8721
+Author: Naanita <sebastian.grajales15@gmail.com>
+Date:   Thu Jan 19 17:50:23 2023 -0500
+
+    Merge branch 'FRONT-2' of https://github.com/nico1803/Vino-Rojo-Bodegon into FRONT-2
+
+[33mcommit 218223473e3b7333bf95c8c720da08febcca3109[m
+Author: Naanita <sebastian.grajales15@gmail.com>
+Date:   Thu Jan 19 17:49:31 2023 -0500
+
+    detail
+
+[33mcommit c1b87210e4d0ccac77ef88180ce5e1fe7b3d325d[m
+Merge: 847eec5 a51f6e9
+Author: Nicolas Beovide <nico1803o@hotmail.com.ar>
+Date:   Thu Jan 19 19:49:19 2023 -0300
+
+    Merge branch 'FRONT-2' of https://github.com/nico1803/Vino-Rojo-Bodegon into FRONT-2
+
+[33mcommit 847eec535a925acc92eff924a956919f0759103e[m
+Author: Nicolas Beovide <nico1803o@hotmail.com.ar>
+Date:   Thu Jan 19 19:48:47 2023 -0300
+
+    Feat ( REDUX ) morgan+sotre,actions,reducers
+
+[33mcommit 45d5010f607bf19782fdb914ce635670f938d913[m
+Author: Lauti Posti <lautaropostiglione@gmail.com>
+Date:   Thu Jan 19 19:27:09 2023 -0300
+
+    Agregadas rutas de filtrados, nuevos controllers, actualizado modelo customers
+
+[33mcommit 04d3025ad8c832d357b551e0b245e93366f195a7[m
+Author: Lauti Posti <lautaropostiglione@gmail.com>
+Date:   Thu Jan 19 17:34:48 2023 -0300
+
+    BACK-2
+
+[33mcommit a51f6e9ba673a31c38aa3a96e1840df80cdf34d4[m
+Author: Naanita <sebastian.grajales15@gmail.com>
+Date:   Thu Jan 19 15:33:55 2023 -0500
+
+    change
+
+[33mcommit f13a1e2b018be751d621e63ad164b4999a8eff1f[m
+Author: Nicolas Beovide <nico1803o@hotmail.com.ar>
+Date:   Thu Jan 19 17:12:27 2023 -0300
+
+    Feat ( branch ) FRONT-2
+
+[33mcommit 29b1a2048e2f94e987399a35aa20f956cc6111a2[m
+Merge: 396046e 237f64a
+Author: nico1803 <104478980+nico1803@users.noreply.github.com>
+Date:   Thu Jan 19 17:04:44 2023 -0300
+
+    Merge pull request #2 from nico1803/FRONT
+    
+    Front
+
+[33mcommit 396046e8be0c72c340f95aa00d4d09d130c0fcc8[m
+Merge: 864949a 1f9fd6f
+Author: nico1803 <104478980+nico1803@users.noreply.github.com>
+Date:   Thu Jan 19 17:00:37 2023 -0300
+
+    Merge pull request #1 from nico1803/Back
+    
+    Back
+
+[33mcommit 237f64a6017debf1f9b0b92e3be8714b933164cf[m[33m ([m[1;32mFRONT[m[33m)[m
+Author: Naanita <sebastian.grajales15@gmail.com>
+Date:   Thu Jan 19 14:42:15 2023 -0500
+
+    Carddetail
+
+[33mcommit c0b238f4dd78eb17df5a86496d509b27c94573b8[m
+Merge: c4223a0 70758df
+Author: Constantino Abba <cons_benjamin9@outlook.com>
+Date:   Thu Jan 19 16:30:37 2023 -0300
+
+    merge solved
+
+[33mcommit c4223a02259931982705b2404a2a321673141d4d[m
+Merge: 2cf50c6 f291368
+Author: Constantino Abba <cons_benjamin9@outlook.com>
+Date:   Thu Jan 19 16:28:52 2023 -0300
+
+    message merge
+
+[33mcommit 70758df9d210adba1066203853f1137ade99b9ae[m
+Author: Naanita <sebastian.grajales15@gmail.com>
+Date:   Thu Jan 19 14:14:53 2023 -0500
+
+    Navbar
+
+[33mcommit 1f9fd6fff3dab57005ea6b9884655ec2ee7d18d0[m[33m ([m[1;31morigin/Back[m[33m)[m
+Merge: 3e95e93 470973a
+Author: Lauti Posti <lautaropostiglione@gmail.com>
+Date:   Thu Jan 19 16:09:53 2023 -0300
+
+    Co-authored-by: Estefania Delgado Hoyos <EstefaniaDelgado@users.noreply.github.com>
+    Co-authored-by: Franco Herrera Ruiz <Saponka@users.noreply.github.com>
+    Co-authored-by: Dario <dariorojas6@users.noreply.github.com>
+
+[33mcommit 3e95e93208b1d417f8
