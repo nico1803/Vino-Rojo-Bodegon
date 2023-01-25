@@ -26,7 +26,7 @@ router.post('/post', async (req, res) => {
 router.get('/:idDrink', async (req, res) => {
     const {idDrink} = req.params;
     try {
-        const drink = await findByIdDrink(idFood);
+        const drink = await findByIdDrink(idDrink);
         res.status(200).json(drink);
     } catch (error) {
         res.status(400).send('No se encontro la bebida');
