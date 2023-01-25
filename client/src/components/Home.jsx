@@ -15,7 +15,7 @@ import Recipescard from './RecipesCard';
 
 
 export default function Home() {
-  let [food, setfood] = useState([])
+  let [food, setfood] = useState([]);
   // const dispatch = useDispatch()
   // const allFoods = useSelector((state) => state.allFoods)
 
