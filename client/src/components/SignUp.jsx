@@ -11,6 +11,7 @@ import { getUser } from "../redux/actions.js";
 import logoImg from "../assets/LogoBarril.png";
 
 function SignUp() {
+
   const dispatch = useDispatch();
   const expcorreo= /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$/
   const  expcontraseña = /^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$/
@@ -41,21 +42,25 @@ const handlerChange = (e)=>{
 //hacer nueva lidacion segun como se requieran los datos, dependiento de la forma de recibimieto de la db
  async function handlesubmit(e) {
   e.preventDefault();
-  try {
-    //envia la info de los inputs convertida a un json (formData)
-    const data = JSON.stringify(formData);
-    console.log(data)
-    //envio un fecth a la url del servidor que va a la ruta del post de customers con un objeto de configuracion donde le paso el metodo de la request, el body que contiene la data en formato json y un header para especificar que es un json el que estoy  enviando
-     await fetch("http://localhost:3001/login", {
-      method: "POST",
-      body: data,
-      headers: { "Content-Type": "application/json" }
-    });
-    
-    } catch (err) {
-    console.error(err);
-    }
 
+   try {
+        //envia la info de los inputs convertida a un json (formData)
+        const data = JSON.stringify(formData);
+        console.log(data)
+        //envio un fecth a la url del servidor que va a la ruta del post de customers con un objeto de configuracion donde le paso el metodo de la request, el body que contiene la data en formato json y un header para especificar que es un json el que estoy  enviando
+         await fetch("http://localhost:3001/login", {
+          method: "POST",
+          body: data,
+          headers: { "Content-Type": "application/json" }
+        });
+        
+        } catch (err) {
+        console.error(err);
+        }
+    
+
+      
+  
   
   if(!expusuario.test(formData.name)){return swal("UPS!", "Tu usuario debe contener más de 3 caracteres o no pasarte de los 15", "warning")}
   if(!formData.email){return swal("UPS!", "¡Antes escribe tu email!", "warning")}
@@ -65,11 +70,10 @@ const handlerChange = (e)=>{
 
 if(formData.password !== formData.repeatpassword){return swal("UPS!", "La contraseña no coincide", "error")}
     if(formData.name && formData.email && formData.password === formData.repeatpassword ) {
-      return swal("¡ESTUPENDO!", "Ahora inicia sesión!", "success") && history("/login")
+      return swal("¡ESTUPENDO!", "Ahora inicia sesión!", "success") 
       };
 
-
-      
+     
 
 };
 
