@@ -41,7 +41,7 @@ export default function Footer () {
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 text-center pt-2 text-gray-400 text-sm pb-8">
                 <span>© 2023. All rights reserved.</span>
-                <a className='' href="https://www.instagram.com/vino.rojo.bodegon/"><AiOutlineInstagram className='inline-flex items-center w-[1.6em] h-[1.6em] rounded-full p-1 bg-gray-700 text-xl hover:text-gray-100 hover:bg-red-500 duration-300'/></a>
+                <a className='flex justify-end items-center' href="https://www.instagram.com/vino.rojo.bodegon/"><AiOutlineInstagram className='inline-flex items-center w-[1.6em] h-[1.6em] rounded-full p-1 bg-gray-700 text-xl hover:text-gray-100 hover:bg-red-500 duration-300'/><span className='p-1 text-md'>Instagram</span></a>
             </div>
         </footer>
     )

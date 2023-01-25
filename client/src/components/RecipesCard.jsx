@@ -12,6 +12,8 @@ export default function Recipescard() {
         setVisible(prevValue => prevValue + 12);
     }
 
+    
+
     useEffect(()=>{
         const food2 = axios.get('http://localhost:3001/foods')
           .then(function(value){
@@ -26,7 +28,7 @@ export default function Recipescard() {
                     <SearchBar/>
                 </div>
 
-                <div class="grid sm:grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="grid sm:grid-cols-1 md:grid-cols-2 gap-4 h-[960px] overflow-auto scroll-smooth">
                     {food.slice(0, visible).map((el) => {return (<Card food={el}/>)})}
                 </div>
                 <div className="flex justify-center mt-3">

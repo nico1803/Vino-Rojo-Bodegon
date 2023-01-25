@@ -2,9 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+    height: 100%;
+    box-sizing: border-box;
+}
+
 body {
     margin: 0;
+    box-sizing: inherit;
     position: relative;
-    padding-bottom: 60em;
+    padding-bottom: 80em;
     min-height: 100vh;
 }
