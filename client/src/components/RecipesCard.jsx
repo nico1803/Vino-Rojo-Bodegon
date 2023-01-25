@@ -22,13 +22,13 @@ export default function Recipescard() {
 
     return (
         <div >
-            <div class="bg-slate-900 p-3 m-5 rounded-lg w-2/3 max-w-2/3 float-right">
+            <div className="bg-slate-900 p-3 m-5 rounded-lg w-2/3 max-w-2/3 float-right">
 
-                <div class="p-5 ">
+                <div className="p-5 ">
                     <SearchBar/>
                 </div>
 
-                <div class="grid sm:grid-cols-1 md:grid-cols-2 gap-4 h-[960px] overflow-auto scroll-smooth">
+                <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-4 h-[960px] overflow-auto scroll-smooth">
                     {food.slice(0, visible).map((el) => {return (<Card food={el}/>)})}
                 </div>
                 <div className="flex justify-center mt-3">

@@ -11,25 +11,25 @@ import { useSelector } from 'react-redux';
 export default function Navbar() {
   let [user, setUser] = useState([])
   const googleUser = useSelector((state) => state)
-  console.log('googleUser from navBar: ', googleUser?.user)  
 
   return (
-    <section class="navigation">
-      <div class="nav-container">
-        <div class="brand"> 
+    <section className="navigation">
+      <div className="nav-container">
+        <div className="brand"> 
           <Link to="/">
             <img className="imga" src={logoImg} alt="Logo image" />
           </Link>
         </div>
         <nav>
-          <div class="nav-mobile">
+          <div className="nav-mobile">
             <a id="nav-toggle" href="#!">
               <span></span>
             </a>
           </div>
-          <ul class="nav-list">
+          <ul className="nav-list">
             <li>
-              <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Nosotros</a>
+              <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">
+                Nosotros</a>
             </li>
             <li>
               <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">
@@ -42,13 +42,15 @@ export default function Navbar() {
               </Link>
             </li>
             <li>
-              <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Carrito</a>
+              <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">
+                Carrito</a>
             </li>
             <li className="dropdown">
               <button className="dropbtn">
                 <img className="imga1" src={googleUser?.user ? googleUser.user.imageUrl : UserPhoto} />
               </button>
-              <ul className="dropdown-content">
+              <ul className="dropdown-content z-50">
+
                 <li>
                   <Link to="/login">
                     <a>Profile</a>
@@ -59,6 +61,7 @@ export default function Navbar() {
                     <a>Login</a>
                   </Link>
                 </li>
+
               </ul>
             </li>
           </ul>
