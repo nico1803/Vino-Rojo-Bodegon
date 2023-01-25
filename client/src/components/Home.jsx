@@ -9,7 +9,14 @@ import { Link } from 'react-router-dom';
 
 
 export default function Home() {
+  let [food, setfood] = useState([]);
 
+  useEffect(()=>{
+ 
+  const food2 = axios.get('http://localhost:3001/foods')
+    .then(function(value){
+      setfood(value.data)
+  })}, []);
 
   return (
   <>
