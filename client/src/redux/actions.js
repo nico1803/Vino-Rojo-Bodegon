@@ -3,6 +3,7 @@ import axios from 'axios';
 export const GET_FOODS = 'GET_FOODS'
 export const GET_USER = 'GET_USER'
 export const POST_FOOD = 'POST_FOOD'
+export const FOOD_BY_TYPE = 'FOOD_BY_TYPE'
 
 export function getFoods(){
     return async function(dispatch) {
@@ -36,4 +37,14 @@ export function postFood(payload){
         })
     }
 }
+
+export function foodTypes(payload) {
+    return async function(dispatch){
+        await axios.get(`http://localhost:3001/filters/${payload}`)
+        dispatch ({
+            type: 'FOOD_BY_TYPE',
+            payload
+        })
+    };
+};
 

@@ -31,7 +31,9 @@ const editFood = async (id, name, image, description, price, type) => { // 'imag
 };
 
 const createCustomer = async (name, email, password) => {
+    
     return await Customer.create({name, password, email});
+
 };
 
 const getByType = async (type) => {

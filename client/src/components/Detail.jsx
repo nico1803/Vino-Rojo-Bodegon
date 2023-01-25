@@ -89,13 +89,13 @@ export default function Detail() {
               <input
                 type="radio"
                 name="rating"
-                value={ratingValue}
+                value={food.review}
                 onClick={() => setRating(ratingValue)}
               />
               <FaStar
                 className="star"
                 color={ratingValue <= (hover || rating) ? "#ffc107" : "#e4e5e9"}
-                size={40}
+                size={35}
                 onMouseEnter={() => setHover(ratingValue)}
                 onMouseLeave={() => setHover(null)}
               />
@@ -104,49 +104,6 @@ export default function Detail() {
           );
         })}
       </div>
-
-      {/* <form  onSubmit={(e)=>{handleSubmit(e)}} className="popup">
-        <div className="content-form">
-          <h1>Review</h1>
-          
-        </div>
-        <textarea placeholder="coment here..."></textarea>
-        <button>Submit</button>
-      </form>
-
-      
-    </div>
-  );
-}
-
-/**
- {Array(5).fill().map((_, index) => (
-            number >= index + 1 ?
-              <AiFillStar
-                onChange={(e)=>{handleChange(e)}}
-                size={50}
-              // onMouseOver={()=>setHoverStar(index+1)}
-              // onMouseLeave={()=>setHoverStar(undefined)}
-
-               style={{ color: 'orange' }} onClick={()=>setNumber(index + 1) }/>
-              
-
-
-              : <AiOutlineStar
-              size={50}
-              // onMouseOver={()=>setHoverStar(index+1)}
-              // onMouseLeave={()=>setHoverStar(undefined)}
-               style={{ color: 'orange' }} onClick={()=>setNumber(index + 1)} />
-
-
-          ))}
-
-        </div>
-        <textarea placeholder="coment here..."></textarea>
-        <button>Submit</button>
-      </form> */}
-
-
     </div>
   );
 }
