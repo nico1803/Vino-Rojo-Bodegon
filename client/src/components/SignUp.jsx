@@ -67,7 +67,17 @@ const sendEmail = async(e)=>{
 /////// HANDLER SUBMIT ///////
   async function handlesubmit(e) {
     e.preventDefault();
-    const res = await fetch("http://localhost:3001/email", {
+      //envia la info de los inputs convertida a un json (formData)
+      const data = JSON.stringify(formData);
+      console.log(data);
+      //envio un fecth a la url del servidor que va a la ruta del post de customers con un objeto de configuracion donde le paso el metodo de la request, el body que contiene la data en formato json y un header para especificar que es un json el que estoy  enviando
+      await fetch("http://localhost:3001/login", {
+        method: "POST",
+        body: data,
+        headers: { "Content-Type": "application/json" },
+      });
+      
+        const res = await fetch("http://localhost:3001/email", {
           method: "POST",
           body: JSON.stringify({semail}),
           headers:{
@@ -80,17 +90,8 @@ const sendEmail = async(e)=>{
         }else{
           console.log("email send!");
         }
-      //envia la info de los inputs convertida a un json (formData)
-      const data = JSON.stringify(formData);
-      console.log(data);
-      //envio un fecth a la url del servidor que va a la ruta del post de customers con un objeto de configuracion donde le paso el metodo de la request, el body que contiene la data en formato json y un header para especificar que es un json el que estoy  enviando
-      await fetch("http://localhost:3001/login", {
-        method: "POST",
-        body: data,
-        headers: { "Content-Type": "application/json" },
-      });
       
-      
+
     if (formData) {
       return (
         swal("¡ESTUPENDO!", "Ahora inicia sesión!", "success") &&
