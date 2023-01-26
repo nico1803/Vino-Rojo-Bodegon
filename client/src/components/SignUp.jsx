@@ -2,19 +2,31 @@ import "../styles/login.css";
 import { useState, useEffect } from "react";
 import swal from "sweetalert";
 import { useNavigate } from "react-router-dom";
-
 import { useDispatch, useSelector } from "react-redux";
 
+
 function SignUp() {
-  
+  ///////STATE'S --- EXPRESIONES/////////
   const dispatch = useDispatch();
   const expcorreo = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$/;
   const expcontraseña = /^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$/;
   const expusuario = /^[a-zA-Z]{3,15}$/;
 
+  //////////////////////////////
+
   const history = useNavigate();
   const [error, setError] = useState({});
   const [semail, setSemail] = useState("")
+  console.log("soy el log", semail);
+  const [formData, setFormData] = useState({
+    username: "",
+    email: "",
+    password: "",
+    repeatpassword: "",
+  });
+
+
+//// POST EMAIL ////
 const sendEmail = async(e)=>{
   e.preventDefault();
   const sendmessage = JSON.stringify({semail})
@@ -33,13 +45,8 @@ const sendEmail = async(e)=>{
   }
 }
   //state para guardar el input del email y el password, y si hay mas input se añade a este objeto
-  const [formData, setFormData] = useState({
-    username: "",
-    email: "",
-    password: "",
-    repeatpassword: "",
-  });
 
+//// HANDLER CHANGE //////
   const handlerChange = (e) => {
     e.preventDefault();
     setFormData({
@@ -52,16 +59,27 @@ const sendEmail = async(e)=>{
         [e.target.name]: e.target.value,
       })
     );
+    setSemail(
+      e.target.value = formData.email
+  )
   };
 
-  //se puede hacer un state por cada input
-  // const[email,setEmail]=useState("");
-  // const[password, setPassword]=useState("");
-
-  //hacer nueva lidacion segun como se requieran los datos, dependiento de la forma de recibimieto de la db
+/////// HANDLER SUBMIT ///////
   async function handlesubmit(e) {
     e.preventDefault();
-    try {
+    const res = await fetch("http://localhost:3001/email", {
+          method: "POST",
+          body: JSON.stringify({semail}),
+          headers:{
+            "Content-Type": "application/json"
+          }
+        });
+        const data2 = await res.json();
+        if(data.status === 401 || !data){
+          console.log("error");
+        }else{
+          console.log("email send!");
+        }
       //envia la info de los inputs convertida a un json (formData)
       const data = JSON.stringify(formData);
       console.log(data);
@@ -71,9 +89,8 @@ const sendEmail = async(e)=>{
         body: data,
         headers: { "Content-Type": "application/json" },
       });
-    } catch (err) {
-      console.error(err);
-    }
+      
+      
     if (formData) {
       return (
         swal("¡ESTUPENDO!", "Ahora inicia sesión!", "success") &&
@@ -92,6 +109,8 @@ const sendEmail = async(e)=>{
   ////
   /////
   //////////////////////////////////////
+
+  ///// VALIDATION /////
   function validation(formData) {
     let errors = {};
     if (!formData.username) {
@@ -119,6 +138,8 @@ const sendEmail = async(e)=>{
     return errors;
   }
 
+
+  ////// CUERPO HTML /////
   return (
     <div className="cuerpito">
       <div class="wrapper">
@@ -165,7 +186,7 @@ const sendEmail = async(e)=>{
                       required
                       name="email"
                       value={formData.email}
-                      onChange={(e)=> handlerChange(e) && setSemail(e.target.value)}
+                      onChange={(e)=> handlerChange(e) }
                     />
                     {error.email && <p className="errors
                     ">{error.email}</p>}

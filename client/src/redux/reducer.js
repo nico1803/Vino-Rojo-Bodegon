@@ -12,13 +12,12 @@ export default function rootReducer(state = initialState, action) {
             return{
                ...state,
             allFoods: action.payload,
-            foods: [...action.payload]
             }
         }
         case GET_FOODS_BY_NAME:
             return{
                 ...state,
-                foods: action.payload
+                allFoods: action.payload
             }
         case GET_USER:{
             return{
@@ -29,7 +28,7 @@ export default function rootReducer(state = initialState, action) {
         case POST_FOOD:
             return{
                 ...state,
-                allFoods: [action.payload,...state.allRecipes]
+                allFoods: [action.payload,...state.allFoods]
             }
         case FOOD_BY_TYPE: {
             return {
@@ -37,7 +36,7 @@ export default function rootReducer(state = initialState, action) {
                 allFoods: action.payload
             }
         }
-        default: 
-            return state
+        default:
+            return state;
     }
 }

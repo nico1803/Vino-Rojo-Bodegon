@@ -1,26 +1,28 @@
+
 const {Router} = require("express")
 const nodemailer = require("nodemailer")
 const router = Router();
-
-router.post("/email", (req, res )=> {
-    const {email} = req.body
-    console.log("email enviado");
+router.post("/", (req, res )=> {
+    const {semail} = req.body
     try {
         const transporter =nodemailer.createTransport({
             service:"gmail",
             auth:{
                 user:process.env.EMAIL,
                 pass:process.env.PASS
-            }   
-    
+            }    
+      
         })
         const mailoptions = {
             from: process.env.EMAIL,
-            to: email,
-            subject:"Hola! Tenemos buenas noticias", 
-        html:"<h1> ¡TU CUENTA FUE CREADA EXITOSAMENTE! </h1>"
-        }
+            to: semail,
+            subject:"Hola! Tenemos buenas noticias para ti!", 
+        html:'<h1>¡Tu cuenta fue creada con exito!</h1> <img src="https://img.freepik.com/vector-gratis/casa-dos-pisos_1308-16176.jpg"/>'
 
+
+        
+        
+        }
 
         transporter.sendMail(mailoptions,(error, info)=>{
             if(error){
@@ -37,4 +39,4 @@ router.post("/email", (req, res )=> {
 
 })
 
-module.exports = router;
+module.exports = router; 
