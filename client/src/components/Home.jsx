@@ -1,7 +1,5 @@
 import React from 'react';
 import '../styles/home.css';
-import axios from "axios";
-import { useEffect, useState } from 'react';
 import Filters from './Filters';
 import Recipescard from './RecipesCard';
 import ProductoImage from "../assets/LogoBarril.png";
@@ -9,14 +7,6 @@ import { Link } from 'react-router-dom';
 
 
 export default function Home() {
-  let [food, setfood] = useState([]);
-
-  useEffect(()=>{
- 
-  const food2 = axios.get('http://localhost:3001/foods')
-    .then(function(value){
-      setfood(value.data)
-  })}, []);
 
   return (
   <>

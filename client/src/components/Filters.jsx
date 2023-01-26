@@ -14,7 +14,7 @@ export default function Filters() {
     
     <div className="flex justify-center float-left bg-slate-900 p-5 pr-5 pl-5 m-10 rounded-lg w-1/4 grid grid-cols-3 gap-8 w-auto h-auto">
 
-        <div className="hover:bg-rose-900 bg-red-800 p-3 rounded-full w-[5rem] h-[5rem] m-5" onClick={() => handleClick("null")}>
+        <div className="hover:bg-rose-900 bg-red-800 p-3 rounded-full w-[5rem] h-[5rem] m-5" onClick={null}>
 
             <span className="text-gray-200 flex justify-center">
                 <i className="ri-goblet-line text-[40px]"></i>
@@ -36,7 +36,7 @@ export default function Filters() {
             </span>
         </div>
 
-        <div className="hover:bg-rose-900 bg-red-800 p-3 rounded-full w-[5rem] h-[5rem] m-5" onClick={() => handleClick("Null")}>
+        <div className="hover:bg-rose-900 bg-red-800 p-3 rounded-full w-[5rem] h-[5rem] m-5" onClick={null}>
 
             <span className="text-gray-200 flex justify-center">
                 <i className="ri-knife-line text-[40px]"></i>
