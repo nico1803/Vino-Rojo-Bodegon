@@ -3,14 +3,36 @@ const {getFoods, createFood, findById, deleteFood, editFood} = require('../contr
 
 const router = Router();
 
-router.get('/', async (req, res) => {
+// router.get('/', async (req, res) => {
+//     try {
+//         const foods = await getFoods();
+//         res.status(200).json(foods);
+//     } catch (error) {
+//         res.status(400).send(error)
+//     }
+// });
+
+router.get("/", async (req, res) => {
     try {
-        const foods = await getFoods();
-        res.status(200).json(foods);
+      const { name } = req.query;
+      const allFoods= await getFoods();
+  
+      if (name) {
+        const foodName = allFoods.filter((food) =>
+          food.name.toLowerCase().includes(name.toLowerCase())
+        );
+        if (foodName.length > 0) {
+          res.status(200).send(foodName);
+        } else {
+          res.status(400).send("Food not found");
+        }
+      } else {
+        res.status(200).send(allFoods);
+      }
     } catch (error) {
-        res.status(400).send(error)
+      res.status(400).json({ error: error.message });
     }
-});
+  });
 
 router.post('/post', async (req, res) => {
     const {name, image, type, description, price} = req.body;

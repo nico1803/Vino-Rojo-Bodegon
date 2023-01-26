@@ -4,6 +4,7 @@ export const GET_FOODS = 'GET_FOODS'
 export const GET_USER = 'GET_USER'
 export const POST_FOOD = 'POST_FOOD'
 export const FOOD_BY_TYPE = 'FOOD_BY_TYPE'
+export const GET_FOODS_BY_NAME = 'GET_FOODS_BY_NAME'
 
 export function getFoods(){
     return async function(dispatch) {
@@ -47,4 +48,14 @@ export function foodTypes(payload) {
         })
     };
 };
+
+export function getFoodsByName(name){
+    return async function(dispatch){
+        const resu =  await axios.get(`http://localhost:3001/foods?name=${name}`)
+        dispatch({
+            type: "GET_FOODS_BY_NAME",
+            payload: resu.data
+        })
+    }
+}
 
