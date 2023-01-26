@@ -5,15 +5,15 @@ export const GET_USER = 'GET_USER'
 export const POST_FOOD = 'POST_FOOD'
 export const FOOD_BY_TYPE = 'FOOD_BY_TYPE'
 
-export function getFoods(){
-    return async function(dispatch) {
-        const json = await axios.get('http://localhost:3001/foods');
-        console.log("aca", json)
-        return dispatch({
-            type: 'GET_FOODS',
-            payload: json.data
-
-        })
+export const getFoods = () => {
+    return async (dispatch) => {
+        try {      
+            let data = await axios.get('http://localhost:3001/foods');
+            console.log("action", data.data);        
+            return dispatch({ type: GET_FOODS, payload: data.data });
+        } catch(e) {
+            console.error(e);
+        }
     }
 };
 
@@ -40,10 +40,12 @@ export function postFood(payload){
 
 export function foodTypes(payload) {
     return async function(dispatch){
-        await axios.get(`http://localhost:3001/filters/${payload}`)
+        const filtered = await axios.get(`http://localhost:3001/filters/${payload}`)
+        console.log(filtered.data)
         dispatch ({
             type: 'FOOD_BY_TYPE',
-            payload
+            payload: filtered.data
+
         })
     };
 };

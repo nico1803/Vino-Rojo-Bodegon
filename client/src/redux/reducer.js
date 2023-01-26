@@ -2,6 +2,7 @@ import { GET_FOODS, GET_USER, POST_FOOD, FOOD_BY_TYPE} from "./actions";
 
 let initialState = {
     allFoods: [],
+    foods: [],
     user:[],
 }
 
@@ -10,7 +11,7 @@ export default function rootReducer(state = initialState, action) {
         case GET_FOODS:{
             return{
                ...state,
-            foods: action.payload,
+            allFoods: action.payload,
             }
         }
         case GET_USER:{
@@ -22,7 +23,7 @@ export default function rootReducer(state = initialState, action) {
         case POST_FOOD:
             return{
                 ...state,
-                allFoods: [action.payload,...state.allRecipes]
+                allFoods: [action.payload,...state.allFoods]
             }
         case FOOD_BY_TYPE: {
             return {
@@ -30,5 +31,7 @@ export default function rootReducer(state = initialState, action) {
                 allFoods: action.payload
             }
         }
+        default:
+            return state;
     }
 }

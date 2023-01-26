@@ -1,14 +1,13 @@
 import React from "react";
-import { Dispatch } from "react";
 import { useDispatch } from "react-redux";
+import { foodTypes } from "../redux/actions";
 
 
 export default function Filters() {
     const dispatch = useDispatch();
 
     function handleClick(event) {
-        event.preventDefault();
-        dispatch();
+        dispatch(foodTypes(event));
     }
 
     return (
@@ -26,7 +25,7 @@ export default function Filters() {
             </span>
         </div>
 
-        <div className="hover:bg-rose-900 bg-red-800 p-3 rounded-full w-[5rem] h-[5rem] m-5">
+        <div className="hover:bg-rose-900 bg-red-800 p-3 rounded-full w-[5rem] h-[5rem] m-5" onClick={() => handleClick("Guarnicion")}>
 
             <span className="text-gray-200 flex justify-center">
                 <i className="ri-seedling-line text-[40px]"></i>
@@ -37,7 +36,7 @@ export default function Filters() {
             </span>
         </div>
 
-        <div className="hover:bg-rose-900 bg-red-800 p-3 rounded-full w-[5rem] h-[5rem] m-5">
+        <div className="hover:bg-rose-900 bg-red-800 p-3 rounded-full w-[5rem] h-[5rem] m-5" onClick={null}>
 
             <span className="text-gray-200 flex justify-center">
                 <i className="ri-knife-line text-[40px]"></i>
@@ -48,7 +47,7 @@ export default function Filters() {
             </span>
         </div>
 
-        <div className="hover:bg-rose-900 bg-red-800 p-3 rounded-full w-[5rem] h-[5rem] m-5">
+        <div className="hover:bg-rose-900 bg-red-800 p-3 rounded-full w-[5rem] h-[5rem] m-5" onClick={() => handleClick("Plato Principal")}>
 
             <span className="text-gray-200 flex justify-center">
                 <i className="ri-restaurant-2-line text-[40px]"></i>
@@ -59,7 +58,7 @@ export default function Filters() {
             </span>
         </div>
 
-        <div className="hover:bg-rose-900 bg-red-800 p-3 rounded-full w-[5rem] h-[5rem] m-5">
+        <div className="hover:bg-rose-900 bg-red-800 p-3 rounded-full w-[5rem] h-[5rem] m-5" onClick={() => handleClick("Postre")}>
 
             <span className="text-gray-200 flex justify-center">
                 <i className="ri-trophy-line text-[40px]"></i>
