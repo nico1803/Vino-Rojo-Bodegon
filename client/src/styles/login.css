@@ -218,3 +218,8 @@
 .middel{
   margin: 10px;
 }
+
+.errors{
+  font-style: italic;
+ line-height:-500px
+ }

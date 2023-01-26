@@ -5,77 +5,119 @@ import { useNavigate } from "react-router-dom";
 
 import { useDispatch, useSelector } from "react-redux";
 
-
 function SignUp() {
-
+  
   const dispatch = useDispatch();
-  const expcorreo= /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$/
-  const  expcontraseña = /^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$/
-  const expusuario = /^[a-zA-Z]{3,15}$/
-  
+  const expcorreo = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$/;
+  const expcontraseña = /^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$/;
+  const expusuario = /^[a-zA-Z]{3,15}$/;
+
   const history = useNavigate();
-
-//state para guardar el input del email y el password, y si hay mas input se añade a este objeto
-const [formData, setFormData]=useState({
-  username:"",
-  email:"",
-  password:"",
-  repeatpassword:"",
-});
-
-const handlerChange = (e)=>{
+  const [error, setError] = useState({});
+  const [semail, setSemail] = useState("")
+const sendEmail = async(e)=>{
   e.preventDefault();
-  setFormData({
-    ...formData,
-    [e.target.name]:e.target.value
-  })
-  console.log(formData)
-}
-
-//se puede hacer un state por cada input
-// const[email,setEmail]=useState("");
-// const[password, setPassword]=useState("");
-
-
-
-//hacer nueva lidacion segun como se requieran los datos, dependiento de la forma de recibimieto de la db
- async function handlesubmit(e) {
-  e.preventDefault();
-  try {
-    //envia la info de los inputs convertida a un json (formData)
-    const data = JSON.stringify(formData);
-    console.log(data)
-    //envio un fecth a la url del servidor que va a la ruta del post de customers con un objeto de configuracion donde le paso el metodo de la request, el body que contiene la data en formato json y un header para especificar que es un json el que estoy  enviando
-     await fetch("http://localhost:3001/login", {
-      method: "POST",
-      body: data,
-      headers: { "Content-Type": "application/json" }
-    });
-    
-    } catch (err) {
-    console.error(err);
+  const sendmessage = JSON.stringify({semail})
+  const res = await fetch("http://localhost:3001/email", {
+    method: "POST",
+    body: sendmessage,
+    headers:{
+      "Content-Type": "application/json"
     }
+  });
+  const data = await res.json();
+  if(data.status === 401 || !data){
+    console.log("error");
+  }else{
+    console.log("email send!");
+  }
+}
+  //state para guardar el input del email y el password, y si hay mas input se añade a este objeto
+  const [formData, setFormData] = useState({
+    username: "",
+    email: "",
+    password: "",
+    repeatpassword: "",
+  });
 
-  
-  if(!expusuario.test(formData.name)){return swal("UPS!", "Tu usuario debe contener más de 3 caracteres o no pasarte de los 15", "warning")}
-  if(!formData.email){return swal("UPS!", "¡Antes escribe tu email!", "warning")}
-  if(!expcorreo.test(formData.email)){return swal ("UPS!", "Esto no parece un email.","warning" )}
-  if(!formData.password){return swal("UPS", "Antes escribe tu contraseña!", "warning")}
-  if(!expcontraseña.test(formData.password)){return swal ("UPS!", "Contraseña con al menos 8 caracteres, con al menos una letra minúscula, una mayúscula, un dígito y un caracter especial", "warning")}
+  const handlerChange = (e) => {
+    e.preventDefault();
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+    setError(
+      validation({
+        ...formData,
+        [e.target.name]: e.target.value,
+      })
+    );
+  };
 
-if(formData.password !== formData.repeatpassword){return swal("UPS!", "La contraseña no coincide", "error")}
-    if(formData.name && formData.email && formData.password === formData.repeatpassword ) {
-      return swal("¡ESTUPENDO!", "Ahora inicia sesión!", "success") && history("/login")
-      };
+  //se puede hacer un state por cada input
+  // const[email,setEmail]=useState("");
+  // const[password, setPassword]=useState("");
 
-
-      
-
-};
-
-
-
-
+  //hacer nueva lidacion segun como se requieran los datos, dependiento de la forma de recibimieto de la db
+  async function handlesubmit(e) {
+    e.preventDefault();
+    try {
+      //envia la info de los inputs convertida a un json (formData)
+      const data = JSON.stringify(formData);
+      console.log(data);
+      //envio un fecth a la url del servidor que va a la ruta del post de customers con un objeto de configuracion donde le paso el metodo de la request, el body que contiene la data en formato json y un header para especificar que es un json el que estoy  enviando
+      await fetch("http://localhost:3001/login", {
+        method: "POST",
+        body: data,
+        headers: { "Content-Type": "application/json" },
+      });
+    } catch (err) {
+      console.error(err);
+    }
+    if (formData) {
+      return (
+        swal("¡ESTUPENDO!", "Ahora inicia sesión!", "success") &&
+        history("/login")
+      );
+    }
+  }
+  /////////////////////////////////////////////
+  /////
+  ////
+  ///
+  //
+  //state.id // formData.email = formData.email = return "correo ya existe"
+  //
+  ///
+  ////
+  /////
+  //////////////////////////////////////
+  function validation(formData) {
+    let errors = {};
+    if (!formData.username) {
+      errors.username = "El usuario es requerido.";
+    } else if (!expusuario.test(formData.username)) {
+      errors.username =
+        "Tu usuario debe contener más de 3 caracteres o no pasarte de los 15, y no puede contener numeros.";
+    }
+    if (!formData.email) {
+      errors.email = "El email es requerido.";
+    } else if (!expcorreo.test(formData.email)) {
+      errors.email = "Esto no parece un email.";
+    }
+    if (!formData.password) {
+      errors.password = "La contraseña es requerida.";
+    } else if (!expcontraseña.test(formData.password)) {
+      errors.password =
+        "Tu contraseña debe tener al menos 8 caracteres, con al menos una letra minúscula, una mayúscula, un dígito y un caracter especial.";
+    }
+    if (!formData.repeatpassword) {
+      errors.repeatpassword = "Repite tu contraseña.";
+    } else if (formData.password !== formData.repeatpassword) {
+      errors.repeatpassword = "Tu contraseña no coincide.";
+    }
+    return errors;
+  }
 
   return (
     <div className="cuerpito">
@@ -89,7 +131,6 @@ if(formData.password !== formData.repeatpassword){return swal("UPS!", "La contra
                 <br />
                 It's totally free.
               </p>
-             
             </div>
           </div>
           <div class="col-right">
@@ -97,7 +138,7 @@ if(formData.password !== formData.repeatpassword){return swal("UPS!", "La contra
               <h2>Login</h2>
 
               <div>
-                <form onSubmit={handleSubmit}>
+                <form onSubmit={(e) => handlesubmit(e)}>
                   <p>
                     <label>
                       Usuario<span>*</span>
@@ -110,10 +151,13 @@ if(formData.password !== formData.repeatpassword){return swal("UPS!", "La contra
                       name="username"
                       onChange={handlerChange}
                     />
+                    {error.username && (
+                      <p className="errors">{error.username}</p>
+                    )}
                   </p>
                   <p>
                     <label>
-                    Dirección de Correo<span>*</span>
+                      Dirección de Correo<span>*</span>
                     </label>
                     <input
                       type="email"
@@ -121,35 +165,56 @@ if(formData.password !== formData.repeatpassword){return swal("UPS!", "La contra
                       required
                       name="email"
                       value={formData.email}
-                      onChange={handlerChange}
-                      
+                      onChange={(e)=> handlerChange(e) && setSemail(e.target.value)}
                     />
+                    {error.email && <p className="errors
+                    ">{error.email}</p>}
                   </p>
                   <p>
                     <label>
                       Contraseña<span>*</span>
                     </label>
-                    <input type="password"
-                     placeholder="Contraseña"
-                     value={formData.password}
-                      required 
+                    <input
+                      type="password"
+                      placeholder="Contraseña"
+                      value={formData.password}
+                      required
                       name="password"
-                      onChange={handlerChange}/>
+                      onChange={handlerChange}
+                    />
+                    {error.password && (
+                      <p className="errors">{error.password}</p>
+                    )}
                   </p>
                   <p>
                     <label>
                       Repeat Password<span>*</span>
                     </label>
-                    <input type="password"
-                     placeholder="Repite tu contraseña" 
-                     value={formData.repeatpassword}
-                     required 
-                     name="repeatpassword"
-                     onChange={handlerChange}
-                     />
+                    <input
+                      type="password"
+                      placeholder="Repite tu contraseña"
+                      value={formData.repeatpassword}
+                      required
+                      name="repeatpassword"
+                      onChange={handlerChange}
+                    />
+                    {error.repeatpassword && (
+                      <p className="errors">{error.repeatpassword}</p>
+                    )}
                   </p>
                   <p>
-                    <input type="submit" id="submit" value="Crear" onClick={(e) => handlesubmit(e)} />
+                    <button
+                      type="submit"
+                      disabled={
+                        error.username ||
+                        error.email ||
+                        error.password ||
+                        error.repeatpassword
+                      }
+                    >
+                      {" "}
+                      Crear{" "}
+                    </button>
                   </p>
                 </form>
               </div>
