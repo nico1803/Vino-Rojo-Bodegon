@@ -2,6 +2,7 @@
 const Food = require('../models/foods');
 const Drink = require('../models/drinks')
 const Customer = require('../models/customers');
+const bcrypt = require ('bcryptjs');
 
 const getFoods = async () => {
     try {
@@ -58,10 +59,9 @@ const editDrink = async (id, name, image, description, price, type) => { // 'ima
     return await Drink.findByIdAndUpdate(id, {name, price, description, type, image});
 };
 
-const createCustomer = async (name, email, password) => {
-    
+const createCustomer = async (name, email, hashedPassword) => {
+    const password = bcrypt.hashSync(hashedPassword, bcrypt.genSaltSync(10));
     return await Customer.create({name, password, email});
-
 };
 
 const getByType = async (type) => {
