@@ -15,6 +15,9 @@ function SignUp() {
   const history = useNavigate();
   const [error, setError] = useState({});
   const [semail, setSemail] = useState("")
+console.log("soy el log", semail);
+
+
 const sendEmail = async(e)=>{
   e.preventDefault();
   const sendmessage = JSON.stringify({semail})
@@ -52,6 +55,9 @@ const sendEmail = async(e)=>{
         [e.target.name]: e.target.value,
       })
     );
+    setSemail(
+   e.target.value,
+  )
   };
 
   //se puede hacer un state por cada input
@@ -165,7 +171,7 @@ const sendEmail = async(e)=>{
                       required
                       name="email"
                       value={formData.email}
-                      onChange={(e)=> handlerChange(e) && setSemail(e.target.value)}
+                      onChange={(e)=> handlerChange(e) }
                     />
                     {error.email && <p className="errors
                     ">{error.email}</p>}
