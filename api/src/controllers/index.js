@@ -64,6 +64,11 @@ const createCustomer = async (name, email, hashedPassword) => {
     return await Customer.create({name, password, email});
 };
 
+//encontrar el cliente por el email
+const findCustomerByEmail = async(email)=>{
+    return await Customer.findOne({email:email})
+}
+
 const getByType = async (type) => {
     return await Food.find({type: type}).lean();
 }
@@ -90,4 +95,4 @@ const updateCustomer = async (id, name, password, email) => {
 }
 
 module.exports = {getFoods, deleteCustomer, getCustomers, createFood, findById, deleteFood, 
-                  editFood, createCustomer, getByType, emailValidation, updateCustomer, createDrink, getDrinks, findByIdDrink, deleteDrink, editDrink};
+                  editFood, createCustomer, getByType, emailValidation, updateCustomer, createDrink, getDrinks, findByIdDrink, deleteDrink, editDrink, findCustomerByEmail};
