@@ -5,6 +5,8 @@ export const GET_USER = 'GET_USER'
 export const POST_FOOD = 'POST_FOOD'
 export const FOOD_BY_TYPE = 'FOOD_BY_TYPE'
 export const GET_FOODS_BY_NAME = 'GET_FOODS_BY_NAME'
+export const CART_ADD = 'CART_ADD'
+export const CART_REMOVE = 'CART_REMOVE'
 
 export const getFoods = () => {
     return async (dispatch) => {
@@ -63,6 +65,26 @@ export function getFoodsByName(name){
        catch(error){
         console.log(`el ${name} no existe`)
        }
+    }
+}
+
+export function cartAdd(payload){
+    return async function(dispatch){
+        console.log(payload)
+        dispatch({
+            type: 'CART_ADD',
+            payload
+        })
+    }
+}
+
+export function cartRemove(payload){
+    return async function(dispatch){
+        console.log(payload)
+        dispatch({
+            type: 'CART_REMOVE',
+            payload
+        })
     }
 }
 

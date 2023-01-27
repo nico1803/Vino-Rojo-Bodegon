@@ -6,7 +6,7 @@ import ProductoImage from "../assets/LogoBarril.png";
 import "../styles/detail.css";
 import Navbar from "./Navbar";
 import { FaStar } from "react-icons/fa";
-import { postFood } from "../redux/actions";
+import { postFood, cartAdd } from "../redux/actions";
 
 
 
@@ -67,7 +67,7 @@ export default function Detail() {
             </div>
             <div class="stats">
               <div>
-                <button className="buttonpay">añadir</button>
+                <button onClick={()=>dispatch(cartAdd(food._id))} className="buttonpay">añadir</button>
               </div>
             </div>
           </div>
