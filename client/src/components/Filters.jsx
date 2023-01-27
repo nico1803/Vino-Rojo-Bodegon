@@ -36,7 +36,7 @@ export default function Filters() {
             </span>
         </div>
 
-        <div className="hover:bg-rose-900 bg-red-800 p-3 rounded-full w-[5rem] h-[5rem] m-5" onClick={null}>
+        <div className="hover:bg-rose-900 bg-red-800 p-3 rounded-full w-[5rem] h-[5rem] m-5" onClick={() => handleClick("Entrada")}>
 
             <span className="text-gray-200 flex justify-center">
                 <i className="ri-knife-line text-[40px]"></i>
