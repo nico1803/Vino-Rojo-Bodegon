@@ -127,10 +127,10 @@ const sendEmail = async(e)=>{
 
   return (
     <div className="cuerpito">
-      <div class="wrapper">
-        <div class="container">
-          <div class="col-left">
-            <div class="login-text">
+      <div className="wrapper">
+        <div className="container">
+          <div className="col-left">
+            <div className="login-text">
               <h2>¡Gracias por confiar en nosotros!</h2>
               <p>
                 Create your account.
@@ -139,8 +139,8 @@ const sendEmail = async(e)=>{
               </p>
             </div>
           </div>
-          <div class="col-right">
-            <div class="login-form">
+          <div className="col-right">
+            <div className="login-form">
               <h2>Login</h2>
 
               <div>
