@@ -6,6 +6,7 @@ export const POST_FOOD = 'POST_FOOD'
 export const FOOD_BY_TYPE = 'FOOD_BY_TYPE'
 export const GET_FOODS_BY_NAME = 'GET_FOODS_BY_NAME'
 
+
 export const getFoods = () => {
     return async (dispatch) => {
         try {      

@@ -1,4 +1,4 @@
-import { GET_FOODS, GET_USER, POST_FOOD, FOOD_BY_TYPE, GET_FOODS_BY_NAME } from "./actions";
+import { GET_FOODS, GET_USER, POST_FOOD, FOOD_BY_TYPE, GET_FOODS_BY_NAME, GET_CUSTOMERS } from "./actions";
 
 const initialState = {
     allFoods: [],
