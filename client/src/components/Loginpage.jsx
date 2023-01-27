@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 import { GoogleLogout } from "react-google-login";
 import { useDispatch, useSelector } from "react-redux";
 import { getUser } from "../redux/actions.js";
+import axios from "axios";
 
 function Login() {
   const dispatch = useDispatch();
@@ -86,16 +87,15 @@ const handlerChange = (e)=>{
 
 const handleSubmit = async e => {
     e.preventDefault();
+    console.log('handleSubmit')
 try {
   //envia la info de los inputs convertida a un json (formData)
-  const data = JSON.stringify(formData);
-  console.log(data)
   //envio un fecth a la url del servidor que va a la ruta del post de customers con un objeto de configuracion donde le paso el metodo de la request, el body que contiene la data en formato json y un header para especificar que es un json el que estoy  enviando
-   await fetch("http://localhost:3001/login", {
-    method: "POST",
-    body: console.log(data),
-    headers: { "Content-Type": "application/json" }
-  });
+  const {data: {ok, token}} = await axios.post("http://localhost:3001/login/signin", formData);
+  if (ok) {
+    console.log("token -->", token)
+    localStorage.setItem('token', token)
+  }
 
 } catch (err) {
   console.error(err);
@@ -174,7 +174,7 @@ try {
                       onChange={handlerChange}/>
                   </p>
                   <p>
-                    <input type="submit" id="submit" value="Ingresar" onClick={(e) => handlesubmit(e)} />
+                    <input type="submit" id="submit" value="Ingresar" />
                   </p>
                   <p>
                     <a href="https://www.youtube.com/watch?v=pF-3S-HTJSg" target="_blank">Forget Password?</a>
