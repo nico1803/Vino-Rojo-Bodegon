@@ -17,6 +17,12 @@ function SignUp() {
   const history = useNavigate();
   const [error, setError] = useState({});
   const [semail, setSemail] = useState("")
+
+///->
+  const[email,setEmail]=useState("");
+  const[username, setUsername]=useState("");
+
+
   console.log("soy el log", semail);
   const [formData, setFormData] = useState({
     username: "",
@@ -26,24 +32,7 @@ function SignUp() {
   });
 
 
-//// POST EMAIL ////
-const sendEmail = async(e)=>{
-  e.preventDefault();
-  const sendmessage = JSON.stringify({semail})
-  const res = await fetch("http://localhost:3001/email", {
-    method: "POST",
-    body: sendmessage,
-    headers:{
-      "Content-Type": "application/json"
-    }
-  });
-  const data = await res.json();
-  if(data.status === 401 || !data){
-    console.log("error");
-  }else{
-    console.log("email send!");
-  }
-}
+
   //state para guardar el input del email y el password, y si hay mas input se añade a este objeto
 
 //// HANDLER CHANGE //////
@@ -62,11 +51,18 @@ const sendEmail = async(e)=>{
     setSemail(
       e.target.value = formData.email
   )
+  setEmail(
+    e.target.value = formData.email
+  )
+  setUsername(
+    e.target.value = formData.username
+  )
   };
 
 /////// HANDLER SUBMIT ///////
   async function handlesubmit(e) {
     e.preventDefault();
+    ///////////////////CREACION USUARIO////////////////////
       //envia la info de los inputs convertida a un json (formData)
       const data = JSON.stringify(formData);
       console.log(data);
@@ -76,7 +72,7 @@ const sendEmail = async(e)=>{
         body: data,
         headers: { "Content-Type": "application/json" },
       });
-      
+      //////////////////////ENVIO DE CORREO //////////////
         const res = await fetch("http://localhost:3001/email", {
           method: "POST",
           body: JSON.stringify({semail}),
@@ -85,12 +81,39 @@ const sendEmail = async(e)=>{
           }
         });
         const data2 = await res.json();
-        if(data.status === 401 || !data){
+        if(data2.status === 401 || !data2){
           console.log("error");
         }else{
           console.log("email send!");
         }
-      
+        ////////////////VALIDACION CORREO////////////
+        const emailv = await fetch("http://localhost:3001/email", {
+          method: "POST",
+          body: JSON.stringify({email}),
+          headers:{
+            "Content-Type": "application/json"
+          }
+        });
+        const data3 = await emailv.json();
+        if(data3.status === 401 || !data3){
+          swal("¡NOO!", "Parece que el correo ya esta en uso.", "error")
+        }else{
+          console.log("Correo en buen estado");
+        }
+        //////// VALIDACION USERNAME////////
+        const usernamev = await fetch("http://localhost:3001/username", {
+          method: "POST",
+          body: JSON.stringify({username}),
+          headers:{
+            "Content-Type": "application/json"
+          }
+        });
+        const data4 = await usernamev.json();
+        if(data4.status === 401 || !data4){
+          swal("¡NOO!", "Parece que el usurio ya esta en uso.", "error")
+        }else{
+          console.log("Correo en buen estado");
+        }
 
     if (formData) {
       return (
@@ -138,7 +161,7 @@ const sendEmail = async(e)=>{
     }
     return errors;
   }
-
+  //mandar user - email al back, desde el back hacer la validacion desde el back y retornar la validacion desde el back si existe.
 
   ////// CUERPO HTML /////
   return (

@@ -28,7 +28,7 @@ router.post("/", (req, res )=> {
             if(error){
                 console.log("Error", error);
             }else{
-                console.log("Email sent" + info.response);
+                console.log("Email send" + info.response);
                 res.status(201).json({status:201, info})
             }
         })

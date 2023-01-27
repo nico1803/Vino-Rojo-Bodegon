@@ -85,7 +85,14 @@ const emailValidation = async (email) => {
         return true;
     }
 };
-
+const userValidation = async (username) => {
+    const filter1 = await Customer.findOne({name: username});
+    if(!filter1) {
+        return false;
+    } else {
+        return true;
+    }
+};
 const deleteCustomer = async (id) => {
     return await Customer.findByIdAndDelete(id);
 };
@@ -95,4 +102,4 @@ const updateCustomer = async (id, name, password, email) => {
 }
 
 module.exports = {getFoods, deleteCustomer, getCustomers, createFood, findById, deleteFood, 
-                  editFood, createCustomer, getByType, emailValidation, updateCustomer, createDrink, getDrinks, findByIdDrink, deleteDrink, editDrink, findCustomerByEmail};
+                  editFood, createCustomer, getByType, emailValidation, updateCustomer, createDrink, getDrinks, findByIdDrink, deleteDrink, editDrink, findCustomerByEmail, userValidation};
