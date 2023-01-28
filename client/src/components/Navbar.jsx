@@ -42,8 +42,8 @@ export default function Navbar() {
               </Link>
             </li>
             <li>
-              <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">
-                Carrito</a>
+              <Link to="/cart">
+                Carrito</Link>
             </li>
             <li className="dropdown">
               <button className="dropbtn">

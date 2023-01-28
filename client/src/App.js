@@ -7,6 +7,8 @@ import Navbar from './components/Navbar';
 import SignUp from "./components/SignUp"
 import Contact from './components/Contact';
 import Footer from './components/Footer';
+import ShoppingCart from './components/ShoppingCart'
+
 
 
 
@@ -24,6 +26,8 @@ function App() {
         <Route path='/signup'element={<SignUp/>}/>
 
         <Route path='/contact' element={<Contact/>}/>
+
+        <Route path='/cart' element={<ShoppingCart/>}/>
       </Routes>
     <Footer/>
   </>);

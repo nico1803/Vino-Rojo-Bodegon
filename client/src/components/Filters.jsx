@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { foodTypes } from "../redux/actions";
+import { foodTypes, getFoods } from "../redux/actions";
 
 
 export default function Filters() {
@@ -8,11 +8,15 @@ export default function Filters() {
 
     function handleClick(event) {
         dispatch(foodTypes(event));
+    };
+
+    const handleClear = () => {
+        dispatch(getFoods())
     }
 
     return (
     
-    <div className="flex justify-center float-left bg-slate-900 p-5 pr-5 pl-5 m-10 rounded-lg w-1/4 grid grid-cols-3 gap-8 w-auto h-auto">
+    <div className="justify-center float-left bg-slate-900 p-5 pr-5 pl-5 m-10 rounded-lg w-1/4 grid grid-cols-3 gap-8 h-auto">
 
         <div className="hover:bg-rose-900 bg-red-800 p-3 rounded-full w-[5rem] h-[5rem] m-5" onClick={null}>
 
@@ -68,6 +72,18 @@ export default function Filters() {
                 POSTRES
             </span>
         </div>
+        
+        <div className="hover:bg-rose-900 bg-red-800 p-3 rounded-full w-[5rem] h-[5rem] m-5" onClick={() => handleClear()}>
+
+            <span className="text-gray-200 flex justify-center">
+                <i className="ri-filter-off-line text-[40px]"></i>
+                
+            </span>
+            <span className="text-gray-200 flex justify-center text-center m-2 leading-[18px]">
+                LIMPIAR FILTROS
+            </span>
+        </div>
+
 
     </div>)
 }
