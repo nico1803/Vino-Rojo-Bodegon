@@ -80,19 +80,19 @@ router.get('/:email', async (req, res) => {
 });
 /////// ------->
 
-router.post('/email', async (req, res) => {
-  const { email } = req.body;
-  try {
-    let validate = await emailValidation(email);
-    if (validate == true) {
-      return res.status(400).send('Este email ya está en uso');
-    } else if (validate ==  false) {
-      return res.send('El mail se puede utilizar');
-    }
-  } catch (error) {
-    res.send(error);
-  }
-});
+// router.post('/email', async (req, res) => {
+//   const { email } = req.body;
+//   try {
+//     let validate = await emailValidation(email);
+//     if (validate == true) {
+//       return res.status(400).send('Este email ya está en uso');
+//     } else if (validate ==  false) {
+//       return res.send('El mail se puede utilizar');
+//     }
+//   } catch (error) {
+//     res.send(error);
+//   }
+// });
 router.post('/username', async (req, res) => {
   const { username } = req.body;
   try {

@@ -20,10 +20,11 @@ function SignUp() {
 
 ///->
   const[email,setEmail]=useState("");
+  console.log("confirmar correo;", email);
   const[username, setUsername]=useState("");
+  console.log("confirmar usurio;", username);
 
-
-  console.log("soy el log", semail);
+  console.log("envio de correo  confirmación a:", semail);
   const [formData, setFormData] = useState({
     username: "",
     email: "",
@@ -62,6 +63,35 @@ function SignUp() {
 /////// HANDLER SUBMIT ///////
   async function handlesubmit(e) {
     e.preventDefault();
+////////////////VALIDACION CORREO////////////
+const emailv = await fetch("http://localhost:3001/email", {
+  method: "POST",
+  body: JSON.stringify({email}),
+  headers:{
+    "Content-Type": "application/json"
+  }
+});
+const data3 = await emailv.json();
+if(data3.status === 401 || !data3){
+  swal("¡NOO!", "Parece que el correo ya esta en uso.", "error")
+}else{
+  console.log("Correo en buen estado");
+}
+//////// VALIDACION USERNAME////////
+const usernamev = await fetch("http://localhost:3001/username", {
+  method: "POST",
+  body: JSON.stringify({username}),
+  headers:{
+    "Content-Type": "application/json"
+  }
+});
+const data4 = await usernamev.json();
+if(data4.status === 401 || !data4){
+  swal("¡NOO!", "Parece que el usurio ya esta en uso.", "error")
+}else{
+  console.log("Correo en buen estado");
+}
+
     ///////////////////CREACION USUARIO////////////////////
       //envia la info de los inputs convertida a un json (formData)
       const data = JSON.stringify(formData);
@@ -86,34 +116,7 @@ function SignUp() {
         }else{
           console.log("email send!");
         }
-        ////////////////VALIDACION CORREO////////////
-        const emailv = await fetch("http://localhost:3001/email", {
-          method: "POST",
-          body: JSON.stringify({email}),
-          headers:{
-            "Content-Type": "application/json"
-          }
-        });
-        const data3 = await emailv.json();
-        if(data3.status === 401 || !data3){
-          swal("¡NOO!", "Parece que el correo ya esta en uso.", "error")
-        }else{
-          console.log("Correo en buen estado");
-        }
-        //////// VALIDACION USERNAME////////
-        const usernamev = await fetch("http://localhost:3001/username", {
-          method: "POST",
-          body: JSON.stringify({username}),
-          headers:{
-            "Content-Type": "application/json"
-          }
-        });
-        const data4 = await usernamev.json();
-        if(data4.status === 401 || !data4){
-          swal("¡NOO!", "Parece que el usurio ya esta en uso.", "error")
-        }else{
-          console.log("Correo en buen estado");
-        }
+        
 
     if (formData) {
       return (
