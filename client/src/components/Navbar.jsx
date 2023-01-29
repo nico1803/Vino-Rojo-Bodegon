@@ -9,7 +9,6 @@ import { useSelector } from 'react-redux';
 
 
 export default function Navbar() {
-  let [user, setUser] = useState([])
   const googleUser = useSelector((state) => state)
 
   return (
@@ -53,7 +52,6 @@ export default function Navbar() {
               <h3 className="w-[150px] h-[70px] text-center text-[#fff] block py-[18px]">Carrito</h3>
             </Link>
           </div>
-
 
             <div className="relative inline-block h-[70px] w-[70px] group">
 

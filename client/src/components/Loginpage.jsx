@@ -104,26 +104,26 @@ try {
 
   return (
     <div className="cuerpito">
-      <div class="wrapper">
-        <div class="container">
-          <div class="col-left">
-            <div class="login-text">
+      <div className="wrapper">
+        <div className="container">
+          <div className="col-left">
+            <div className="login-text">
               <h2>Bienvenido!</h2>
               <p>
                 Crea una cuenta,
                 <br />
                 es totalmente gratis!.
               </p>
-              <a class="btn" href="/signup">
+              <a className="btn" href="/signup">
                 ¡registrarte!
               </a>
             </div>
           </div>
-          <div class="col-right">
-            <div class="login-form">
+          <div className="col-right">
+            <div className="login-form">
               <h2>Inicio de Sesión.</h2>
 
-              <div class={user ? "profile" : "hidden"}>
+              <div className={user ? "profile" : "hidden"}>
                 <img className="photo" src={user.imageUrl} />
                 <div>
                   {user.email === undefined ? <br /> : <h3> <strong>¡Hola! {user.name}.</strong></h3>}

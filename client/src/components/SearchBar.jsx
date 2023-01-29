@@ -3,20 +3,14 @@ import { useState} from "react";
 import {useDispatch} from 'react-redux'
 import { getFoodsByName } from "../redux/actions";
 export default function SearchBar() {
-const dispatch = useDispatch();
-const [input,setInput] = useState('')
-// const [inputText, setInputtext] = useState("");
 
-    // let handleClick = (event) => {
-    //     event.preventDefault();
-
-    // }
+    const dispatch = useDispatch();
+    const [input,setInput] = useState('')
 
     function handleChange(e){
         e.preventDefault();
         setInput(e.target.value);
     }
-
 
     function handleSubmit(e){
         e.preventDefault();

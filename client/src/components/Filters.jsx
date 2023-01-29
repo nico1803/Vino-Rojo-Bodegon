@@ -22,8 +22,8 @@ export default function Filters() {
 
             <span className="text-gray-200 flex justify-center">
                 <i className="ri-goblet-line text-[40px]"></i>
-                
             </span>
+
             <span className="text-gray-200 flex justify-center m-2">
                 BEBIDAS
             </span>
@@ -33,8 +33,8 @@ export default function Filters() {
 
             <span className="text-gray-200 flex justify-center">
                 <i className="ri-seedling-line text-[40px]"></i>
-                
             </span>
+
             <span className="text-gray-200 flex justify-center m-2">
                 GUARNICION
             </span>
@@ -44,8 +44,8 @@ export default function Filters() {
 
             <span className="text-gray-200 flex justify-center">
                 <i className="ri-knife-line text-[40px]"></i>
-                
             </span>
+
             <span className="text-gray-200 flex justify-center m-2">
                 ENTRADAS
             </span>
@@ -55,8 +55,8 @@ export default function Filters() {
 
             <span className="text-gray-200 flex justify-center">
                 <i className="ri-restaurant-2-line text-[40px]"></i>
-                
             </span>
+
             <span className="text-gray-200 flex justify-center m-2">
                 PRINCIPAL
             </span>
@@ -66,8 +66,8 @@ export default function Filters() {
 
             <span className="text-gray-200 flex justify-center">
                 <i className="ri-trophy-line text-[40px]"></i>
-                
             </span>
+
             <span className="text-gray-200 flex justify-center m-2">
                 POSTRES
             </span>
@@ -77,8 +77,8 @@ export default function Filters() {
 
             <span className="text-gray-200 flex justify-center">
                 <i className="ri-filter-off-line text-[40px]"></i>
-                
             </span>
+            
             <span className="text-gray-200 flex justify-center text-center m-2 leading-[18px]">
                 LIMPIAR FILTROS
             </span>

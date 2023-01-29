@@ -17,6 +17,7 @@ export default function Card({food}) {
                     <p className="text-gray-600 text-s">{food.type}</p>
                 </div>
             </div>
+            
         </div>
         </Link>
     )

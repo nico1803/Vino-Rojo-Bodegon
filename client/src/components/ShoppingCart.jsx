@@ -9,8 +9,6 @@ export default function ShoppingCart() {
 
   const dispatch = useDispatch();
   const carro = useSelector((state)=> state);
-  console.log(carro)
-
 
   return (
     <div>{carro.cart.map((el, i) => {return (<><Card food={el} key={i} /><button onClick={()=>dispatch(cartRemove(el._id))}>X ELIMIAR CARD X</button></>)})}
