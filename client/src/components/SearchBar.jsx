@@ -27,9 +27,7 @@ const [input,setInput] = useState('')
             alert('Coloca un nombre de comida')
             setInput('')
         }
-       
     }
-    console.log(input)
 
     return (
         <div className="place-items-center flex justify-start">

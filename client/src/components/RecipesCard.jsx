@@ -14,9 +14,6 @@ export default function Recipescard() {
     }, [dispatch]);
 
 
-    const [allFoods2, setAllFoods2] = useState([]);
-
-
     let [visible, setVisible] = useState(12);
     const showMoreFoods = () => {
         setVisible(prevValue => prevValue + 12);
@@ -24,7 +21,7 @@ export default function Recipescard() {
 
     
 
-    if ( !recetas.length ) return (
+    if (!recetas.length) return (
         <Loading/>
     )
     return(
@@ -35,7 +32,7 @@ export default function Recipescard() {
                     <SearchBar/>
                 </div>
 
-                <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-4 h-[960px] overflow-auto scroll-smooth">
+                <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-4 h-[960px] grid-flow-row auto-rows-max overflow-auto scroll-smooth">
                     {recetas?.slice(0, visible).map((el, i) => {return (<Card food={el} key={i} />)})}
                     
                 </div>
