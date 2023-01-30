@@ -3,7 +3,7 @@ import gif from '../assets/chefGIF.gif'
 import '../styles/loading.css'
 
 
-function Loading() {
+export default function Loading() {
   return (<div className='flex bg-slate-900 p-3 m-5 rounded-lg w-2/3 max-w-2/3'>
 
     <img src={gif} alt='Gif not Found' className='w-1/3 padding mx-32'/>
@@ -23,4 +23,3 @@ function Loading() {
   )
 }
 
-export default Loading
