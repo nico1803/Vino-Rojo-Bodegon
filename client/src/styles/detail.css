@@ -9,7 +9,7 @@ background: #FCEEB5;
 
 .center {
 position: absolute;
-top: 50%;
+top: 40%;
 left: 50%;
 -webkit-transform: translate(-50%, -50%);
 }
@@ -45,6 +45,9 @@ text-align: center;
 
 .imgproduct{
   border-radius: 30px;
+  height: 400px;
+  width: 400px;
+
 }
 
 .card:hover .additional {
@@ -221,3 +224,21 @@ text-transform: uppercase;
 color: #614C3C;
 }
 
+
+/* STAR */
+
+.content-star {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+}
+
+.content-star input[type="radio"]{
+display: none;
+}
+
+.content-star .star{
+  cursor: pointer;
+  transition: color 200ms;
+}

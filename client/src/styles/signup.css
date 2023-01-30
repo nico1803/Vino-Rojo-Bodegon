@@ -1,0 +1,366 @@
+
+/* sda */
+
+/* * * * * General CSS * * * * */
+
+.cuerpito {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    color: #666666;
+  
+  }
+  
+  .wrapper {
+    margin: 0 auto;
+    width: 400%;
+    max-width: 1240px;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+  
+  .container {
+    position: relative;
+    width: 100%;
+    max-width: 650px;
+    height: auto;
+    display: flex;
+    background: #ffffff;
+    box-shadow: 0 0 5px #999999;
+  }
+  
+  .credit {
+    position: relative;
+    margin: 25px auto 0 auto;
+    width: 100%;
+    text-align: center;
+    color: #666666;
+    font-size: 16px;
+    font-weight: 400;
+  }
+  
+  .credit a {
+    color: #222222;
+    font-size: 16px;
+    font-weight: 600;
+  }
+  
+  .col-left,
+  .col-right {
+    padding: 30px;
+    display: flex;
+  }
+  
+  .col-left {
+    width: 70%;
+    -webkit-clip-path: polygon(0 0, 0% 100%, 100% 0);
+    clip-path: polygon(0 0, 0% 100%, 100% 0);
+    background: #614C3C;
+  }
+  
+  .col-right {
+    padding: 60px 30px;
+    width: 50%;
+    margin-left: -10%;
+  }
+  
+  @media(max-width: 575.98px) {
+    .container {
+      flex-direction: column;
+      box-shadow: none;
+    }
+  
+    .col-left,
+    .col-right {
+      width: 100%;
+      margin: 0;
+      -webkit-clip-path: none;
+      clip-path: none;
+    }
+  
+    .col-right {
+      padding: 30px;
+    }
+  }
+  
+  .login-text {
+    position: relative;
+    width: 100%;
+    color: #ffffff;
+  }
+  
+  .login-text h2 {
+    margin: 0 0 15px 0;
+    font-size: 30px;
+    font-weight: 700;
+  }
+  
+  .login-text p {
+    margin: 0 0 20px 0;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 22px;
+  }
+  
+  .login-text .btn {
+    display: inline-block;
+    padding: 7px 20px;
+    font-size: 16px;
+    letter-spacing: 1px;
+    text-decoration: none;
+    border-radius: 30px;
+    color: #ffffff;
+    outline: none;
+    border: 1px solid #ffffff;
+    box-shadow: inset 0 0 0 0 #614C3C;
+    transition: .3s;
+    -webkit-transition: .3s;
+  }
+  .photo{
+    border-radius: 50px;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 5px;
+    }
+  
+  .login-text .btn:hover {
+    color: #614C3C;
+    box-shadow: inset 150px 0 0 0 #ffffff;
+  }
+  
+  .login-form {
+    position: relative;
+    width: 100%;
+  }
+  
+  .login-form h2 {
+    margin: 0 0 15px 0;
+    font-size: 22px;
+    font-weight: 700;
+  }
+  
+  .login-form p {
+    margin: 0 0 10px 0;
+    text-align: left;
+    color: #666666;
+    font-size: 15px;
+  }
+  
+  .login-form p:last-child {
+    margin: 0;
+    padding-top: 3px;
+  }
+  
+  .login-form p a {
+    color: #614C3C;
+    font-size: 14px;
+    text-decoration: none;
+  }
+  
+  .login-form label {
+    display: block;
+    width: 100%;
+    margin-bottom: 2px;
+    letter-spacing: .5px;
+  }
+  
+  .login-form p:last-child label {
+    width: 60%;
+    float: left;
+  }
+  
+  .login-form label span {
+    color: #ff574e;
+    padding-left: 2px;
+  }
+  
+  .login-form input {
+    display: block;
+    width: 100%;
+    height: 35px;
+    padding: 0 10px;
+    outline: none;
+    border: 1px solid #cccccc;
+    border-radius: 30px;
+  }
+  
+  .login-form input:focus {
+    border-color: #ff574e;
+  }
+  
+  .login-form button,
+  .login-form input[type=submit] {
+    display: inline-block;
+    width: 100%;
+    margin-top: 5px;
+    color: #614C3C;
+    font-size: 16px;
+    letter-spacing: 1px;
+    cursor: pointer;
+    background: transparent;
+    border: 1px solid #614C3C;
+    border-radius: 30px;
+    box-shadow: inset 0 0 0 0 #614C3C;
+    transition: .3s;
+    -webkit-transition: .3s;
+  }
+  
+  .login-form button:hover,
+  .login-form input[type=submit]:hover {
+    color: #ffffff;
+    box-shadow: inset 250px 0 0 0 #614C3C;
+  }
+  
+  .middel{
+    margin: 10px;
+  }
+
+  .signupimg{
+border-radius: 100px;
+  }
+  button {
+    --border-radius: 25px;
+    --border-width: 7px;
+    appearance: none;
+    position: relative;
+    padding: 1em 2em;
+    border: 0;
+    background-color: #212121;
+    font-family: "Roboto", Arial, "Segoe UI", sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    color: #ffff;
+    z-index: 2;
+  }
+  
+  button::after {
+    --m-i: linear-gradient(#000, #000);
+    --m-o: content-box, padding-box;
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    padding: var(--border-width);
+    background-image: conic-gradient(
+          #ff0080,
+          #ff0080,
+          #ff0080,
+          #ff0080,
+          #ff0080,
+          #ff0080,
+          #ff0080
+      );
+    -webkit-mask-image: var(--m-i), var(--m-i);
+    mask-image: var(--m-i), var(--m-i);
+    -webkit-mask-origin: var(--m-o);
+    mask-origin: var(--m-o);
+    mask-clip: var(--m-o);
+    mask-composite: exclude;
+    -webkit-mask-composite: destination-out;
+    filter: hue-rotate(0);
+    animation: rotate-hue634 linear 500ms infinite;
+    animation-play-state: paused;
+    border-radius: 20px;
+    border-color: #000;
+  }
+  
+  button:hover::after {
+    animation-play-state: running;
+    border-radius: 10px;
+  }
+  
+  @keyframes rotate-hue634 {
+    to {
+      filter: hue-rotate(1turn);
+    }
+  }
+  
+  button,
+  button::after {
+    box-sizing: border-box;
+    border-radius: 20px;
+  }
+  
+  button:active {
+    --border-width: 5px;
+  }
+  
+  .bn {
+    padding: 0.9em 1.6em;
+    border: none;
+    outline: none;
+    color: #FFF;
+    font-family: inherit;
+    font-weight: 500;
+    font-size: 17px;
+    cursor: pointer;
+    position: relative;
+    z-index: 0;
+    border-radius: 32px;
+  }
+  
+  .bn::after {
+    content: "";
+    z-index: -1;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(46, 46, 46);
+    left: 0;
+    top: 0;
+    border-radius: 10px;
+  }
+  
+  .bn::before {
+    content: "";
+    background: linear-gradient(
+      45deg,
+      #07d888, #e40851, #2f00ff, #00ff37,
+        #ec0808, #2600ff, #0bd157, #2f00ff
+  );
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    background-size: 600%;
+    z-index: -1;
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    filter: blur(8px);
+    animation: glowing345 20s linear infinite;
+    transition: opacity .3s ease-in-out;
+    border-radius: 20px;
+    opacity: 0;
+  }
+  
+  @keyframes glowing345 {
+    0% {
+      background-position: 0 0;
+    }
+  
+    50% {
+      background-position: 400% 0;
+    }
+  
+    100% {
+      background-position: 0 0;
+    }
+  }
+  
+  .bn:hover::before {
+    opacity: 1;
+  }
+  
+  .bn:active:after {
+    background: transparent;
+  }
+  
+  .bn:active {
+    color: #000;
+    font-weight: bold;
+  }
