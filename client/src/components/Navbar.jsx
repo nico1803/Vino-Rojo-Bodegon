@@ -55,7 +55,7 @@ export default function Navbar() {
             <div className="relative inline-block h-[70px] w-[70px] group">
 
               <button className="p-[16px] cursor-pointer">
-                <img className="w-[50px] flex items-center rounded-[12px]" src={googleUser?.user ? googleUser.user.imageUrl : UserPhoto} />
+                <img className="w-[50px] flex items-center rounded-[12px]" src={UserPhoto} />
               </button>
 
               <ul className="hidden absolute w-max z-50 group-hover:block">

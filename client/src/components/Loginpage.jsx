@@ -14,7 +14,7 @@ function Login() {
     "773413580776-bs3kqrn62tfkdmjhek5d5d0gdt3c2cke.apps.googleusercontent.com";
 
   const history = useNavigate();
-  //const [user, setUser] = useState({});
+  const [user, setUser] = useState({});
   const [loggeIn, setLoggetInfo] = useState(false);
   //state para guardar el input del email y el password, y si hay mas input se añade a este objeto
 const [formData, setFormData]=useState({
