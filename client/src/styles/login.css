@@ -1,94 +1,225 @@
-/*Magic card*/
-.cardlogin {
-    width: 500px;
-    height: 450px;
-    background: #f5f5f5;
-    overflow: visible;
-    box-shadow: 0 5px 20px 2px rgba(0,0,0,0.1);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: absolute;
-top: 50%;
-left: 50%;
--webkit-transform: translate(-50%, -50%);
-border-radius: 30px;
-   }
-   
-   .cardg-info {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 2em;
-    padding: 0 1rem;
-   }
-   
-   .cardg-img {
-    --size: 100px;
-    width: var(--size);
-    height: var(--size);
-    border-radius: 50%;
-    transform: translateY(-50%);
-    position: relative;
-    transition: all .3s ease-in-out;
-   }
-   
-   .cardg-img::before {
-    content: "";
-    border-radius: inherit;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 90%;
-    height: 90%;
-    transform: translate(-50%, -50%);
-   }
-   @font-face {
-    font-family: "Questrial";
-    src: url("../fonts/Questrial-Regular.ttf");
-   }
-   /*Text*/
-   
-   .text-body {
-    font-size: .8em;
-    text-align: center;
-    color: #6f6d78;
-    font-weight: 400;
-    font-style: italic;
-    font-family: "Questrial";
-    margin-bottom: 30px;
-   }
-   
-.profile-image{
-    margin: 10px;
+
+/* sda */
+
+/* * * * * General CSS * * * * */
+
+.cuerpito {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: #666666;
+
 }
-/* this button is inspired from this -- https://www.newline.co/pricing */
-.buttonl {
+
+.wrapper {
+  margin: 0 auto;
+  width: 400%;
+  max-width: 1240px;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.container {
+  position: relative;
+  width: 100%;
+  max-width: 650px;
+  height: auto;
+  display: flex;
+  background: #ffffff;
+  box-shadow: 0 0 5px #999999;
+}
+
+.credit {
+  position: relative;
+  margin: 25px auto 0 auto;
+  width: 100%;
+  text-align: center;
+  color: #666666;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.credit a {
+  color: #222222;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.col-left,
+.col-right {
+  padding: 30px;
+  display: flex;
+}
+
+.col-left {
+  width: 70%;
+  -webkit-clip-path: polygon(0 0, 0% 100%, 100% 0);
+  clip-path: polygon(0 0, 0% 100%, 100% 0);
+  background: #614C3C;
+}
+
+.col-right {
+  padding: 60px 30px;
+  width: 50%;
+  margin-left: -10%;
+}
+
+@media(max-width: 575.98px) {
+  .container {
+    flex-direction: column;
+    box-shadow: none;
+  }
+
+  .col-left,
+  .col-right {
+    width: 100%;
+    margin: 0;
+    -webkit-clip-path: none;
+    clip-path: none;
+  }
+
+  .col-right {
+    padding: 30px;
+  }
+}
+
+.login-text {
+  position: relative;
+  width: 100%;
+  color: #ffffff;
+}
+
+.login-text h2 {
+  margin: 0 0 15px 0;
+  font-size: 30px;
+  font-weight: 700;
+}
+
+.login-text p {
+  margin: 0 0 20px 0;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 22px;
+}
+
+.login-text .btn {
+  display: inline-block;
+  padding: 7px 20px;
+  font-size: 16px;
+  letter-spacing: 1px;
+  text-decoration: none;
+  border-radius: 30px;
+  color: #ffffff;
+  outline: none;
+  border: 1px solid #ffffff;
+  box-shadow: inset 0 0 0 0 #614C3C;
+  transition: .3s;
+  -webkit-transition: .3s;
+}
+.photo{
+  border-radius: 50px;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 5px;
+  }
+
+.login-text .btn:hover {
+  color: #614C3C;
+  box-shadow: inset 150px 0 0 0 #ffffff;
+}
+
+.login-form {
+  position: relative;
+  width: 100%;
+}
+
+.login-form h2 {
+  margin: 0 0 15px 0;
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.login-form p {
+  margin: 0 0 10px 0;
+  text-align: left;
+  color: #666666;
+  font-size: 15px;
+}
+
+.login-form p:last-child {
+  margin: 0;
+  padding-top: 3px;
+}
+
+.login-form p a {
+  color: #614C3C;
+  font-size: 14px;
+  text-decoration: none;
+}
+
+.login-form label {
+  display: block;
+  width: 100%;
+  margin-bottom: 2px;
+  letter-spacing: .5px;
+}
+
+.login-form p:last-child label {
+  width: 60%;
+  float: left;
+}
+
+.login-form label span {
+  color: #ff574e;
+  padding-left: 2px;
+}
+
+.login-form input {
+  display: block;
+  width: 100%;
+  height: 35px;
+  padding: 0 10px;
+  outline: none;
+  border: 1px solid #cccccc;
+  border-radius: 30px;
+}
+
+.login-form input:focus {
+  border-color: #ff574e;
+}
+
+.login-form button,
+.login-form input[type=submit] {
+  display: inline-block;
+  width: 100%;
   margin-top: 5px;
-  margin-bottom: 20px;
-    --width: 150px;
-    --timing: 2s;
-    border: 0;
-    width: var(--width);
-    padding-block: 1em;
-    color: #fff;
-    font-weight: bold;
-    font-size: 1em;
-    background: rgb(64, 192, 87);
-    transition: all 0.2s;
-    border-radius: 3px;
-  }
-  
-  .buttonl:hover {
-    background-image: linear-gradient(to right,#ea4335, #ea4335 16.65%, rgb(190, 75, 219) 16.65%, rgb(190, 75, 219) 33.3%, #4285f4 33.3%, #4285f4 49.95%, #34a853 49.95%,#34a853 66.6%,#fbbc05 66.6%, #fbbc05 83.25%, rgb(253, 126, 20) 83.25%, rgb(253, 126, 20) 100%, rgb(250, 82, 82) 100%);
-    animation: var(--timing) linear dance6123 infinite;
-    transform: scale(1.1) translateY(-1px);
-  }
-  
-  @keyframes dance6123 {
-    to {
-      background-position: var(--width);
-    }
-  }
-  
-  
+  color: #614C3C;
+  font-size: 16px;
+  letter-spacing: 1px;
+  cursor: pointer;
+  background: transparent;
+  border: 1px solid #614C3C;
+  border-radius: 30px;
+  box-shadow: inset 0 0 0 0 #614C3C;
+  transition: .3s;
+  -webkit-transition: .3s;
+}
+
+.login-form button:hover,
+.login-form input[type=submit]:hover {
+  color: #ffffff;
+  box-shadow: inset 250px 0 0 0 #614C3C;
+}
+
+.middel{
+  margin: 10px;
+}
+
+.errors{
+  font-style: italic;
+ line-height:-500px
+ }

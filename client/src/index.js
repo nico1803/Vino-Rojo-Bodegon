@@ -4,7 +4,11 @@ import App from './App';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { store } from './redux/store';
+import axios from 'axios';
 import './index.css';
+import 'remixicon/fonts/remixicon.css';
+
+axios.defaults.baseURL = "http://localhost:3001";
 
 
 // const root = ReactDOM.createRoot(document.getElementById('root'));
