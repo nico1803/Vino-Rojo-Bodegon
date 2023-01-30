@@ -10,9 +10,6 @@ import axios from "axios";
 function Login() {
   //const dispatch = useDispatch();
 
-  const clientID =
-    "773413580776-bs3kqrn62tfkdmjhek5d5d0gdt3c2cke.apps.googleusercontent.com";
-
   const history = useNavigate();
   const [user, setUser] = useState({});
   const [loggeIn, setLoggetInfo] = useState(false);
@@ -41,14 +38,14 @@ const expcorreo= /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$/
   // const handleLogout = () => {
   //   setUser({});
   // };
-  useEffect(() => {
-    function start() {
-      gapi.client.init({
-        clientId: clientID,
-      });
-    }
-    gapi.load("client:auth2", start);
-  });
+  // useEffect(() => {
+  //   function start() {
+  //     gapi.client.init({
+  //       clientId: clientID,
+  //     });
+  //   }
+  //   gapi.load("client:auth2", start);
+  // });
 
 
    async function handlesubmit(e) {
