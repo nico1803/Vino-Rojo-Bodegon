@@ -3,7 +3,6 @@ import { useState, useEffect } from "react";
 import swal from "sweetalert";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { Error } from "mongoose";
 
 
 function SignUp() {
@@ -27,7 +26,7 @@ function SignUp() {
 
   console.log("envio de correo confirmación a:", semail);
   const [formData, setFormData] = useState({
-    username: "",
+    name: "",
     email: "",
     password: "",
     repeatpassword: "",
@@ -104,31 +103,37 @@ function SignUp() {
         headers: { "Content-Type": "application/json" },
       });
       const datajuan = await create.json(); 
-      if(datajuan === 400){ return(swal("UY!", "este correo ya está en uso", "error"))
+      if(datajuan.status === 400){
+        swal("LO SIENTO","El correo ya está en uso.", "error")
+
+      //////////////////////ENVIO DE CORREO Y PUSH //////////////
+      }else if(datajuan.status !== 400){
+const res = await fetch("http://localhost:3001/email", {
+        method: "POST",
+        body: JSON.stringify({semail}),
+        headers:{
+          "Content-Type": "application/json"
         }
-      //////////////////////ENVIO DE CORREO //////////////
-        const res = await fetch("http://localhost:3001/email", {
-          method: "POST",
-          body: JSON.stringify({semail}),
-          headers:{
-            "Content-Type": "application/json"
-          }
-        });
-        const data2 = await res.json();
-        if(data2.status === 401 || !data2){
-          console.log("error");
-        }else{
-          console.log("email send!");
-        }
+      });
+      const data2 = await res.json();
+      console.log(data2.status);
+      if(data2.status === 401 || !data2 ){
+        console.log("error");
+      }else{
+        console.log("email send!");
+      }
+          swal("¡ESTUPENDO!", "Ahora inicia sesión!", "success") &&
+          history("/login")
+      
+      
+      }
+    }
+      
+
+        
         
 
-    if (formData) {
-      return (
-        swal("¡ESTUPENDO!", "Ahora inicia sesión!", "success") &&
-        history("/login")
-      );
-    }
-  }
+  
   /////////////////////////////////////////////
   /////
   ////
@@ -145,18 +150,16 @@ function SignUp() {
   function validation(formData) {
     let errors = {};
 
-    if (!formData.username) {
-      errors.username = "El usuario es requerido.";
-    } else if (!expusuario.test(formData.username)) {
-      errors.username =
+    if (!formData.name) {
+      errors.name = "El usuario es requerido.";
+    } else if (!expusuario.test(formData.name)) {
+      errors.name =
         "Tu usuario debe contener más de 3 caracteres o no pasarte de los 15, y no puede contener numeros.";
     }
     if (!formData.email) {
       errors.email = "El email es requerido.";
     } else if (!expcorreo.test(formData.email)) {
       errors.email = "Esto no parece un email.";
-    } else if(datajuan === Error){
-      errors.email = "Este correo ya esta en uso."
     }
     
     if (!formData.password) {
@@ -191,7 +194,7 @@ function SignUp() {
           </div>
           <div className="col-right">
             <div className="login-form">
-              <h2>Login</h2>
+              <h2>Registrate!</h2>
 
               <div>
                 <form onSubmit={(e) => handlesubmit(e)}>
@@ -203,12 +206,12 @@ function SignUp() {
                       type="text"
                       placeholder="Usuario"
                       required
-                      value={formData.username}
-                      name="username"
+                      value={formData.name}
+                      name="name"
                       onChange={handlerChange}
                     />
-                    {error.username && (
-                      <p className="errors">{error.username}</p>
+                    {error.name && (
+                      <p className="errors">{error.name}</p>
                     )}
                   </p>
                   <p>

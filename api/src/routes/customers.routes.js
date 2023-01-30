@@ -20,12 +20,12 @@ router.post('/', async (req, res) => {
     const findCustomer = await findCustomerByEmail(email);
     if (!findCustomer) {
       await createCustomer(name, email, password);
-      res.status(200).send('Usuario creado');
+      res.status(200).json({status:200,smg: 'Usuario creado'});
     } else {
-      res.status(400).send('Este email ya existe');
+      res.status(400).json({status:400, smg:"este correo ya existe"})
     }
   } catch (error) {
-    res.send(error);
+    res.status(200).json({status:400,error})
   }
 });
 
