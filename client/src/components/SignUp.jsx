@@ -4,7 +4,6 @@ import swal from "sweetalert";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
-
 function SignUp() {
   ///////STATE'S --- EXPRESIONES/////////
   const dispatch = useDispatch();
@@ -16,13 +15,7 @@ function SignUp() {
 
   const history = useNavigate();
   const [error, setError] = useState({});
-  const [semail, setSemail] = useState("")
-
-///->
-  // const[email,setEmail]=useState("");
-  // console.log("confirmar correo;", email);
-  // const[username, setUsername]=useState("");
-  // console.log("confirmar usurio;", username);
+  const [semail, setSemail] = useState("");
 
   console.log("envio de correo confirmación a:", semail);
   const [formData, setFormData] = useState({
@@ -32,11 +25,9 @@ function SignUp() {
     repeatpassword: "",
   });
 
-
-
   //state para guardar el input del email y el password, y si hay mas input se añade a este objeto
 
-//// HANDLER CHANGE //////
+  //// HANDLER CHANGE //////
   const handlerChange = (e) => {
     e.preventDefault();
     setFormData({
@@ -49,102 +40,47 @@ function SignUp() {
         [e.target.name]: e.target.value,
       })
     );
-    setSemail(
-      e.target.value = formData.email
-  )
-  // setEmail(
-  //   e.target.value = formData.email
-  // )
-  // setUsername(
-  //   e.target.value = formData.username
-  // )
+    setSemail((e.target.value = formData.email));
   };
 
-/////// HANDLER SUBMIT ///////
+  /////// HANDLER SUBMIT ///////
   async function handlesubmit(e) {
     e.preventDefault();
-////////////////VALIDACION CORREO////////////
-// const emailv = await fetch("http://localhost:3001/email", {
-//   method: "GET",
-//   body: JSON.stringify({email}),
-//   headers:{
-//     "Content-Type": "application/json"
-//   }
-// });
-// const data3 = await emailv.json();
-// if(data3.status === 401 || !data3){
-//   swal("¡NOO!", "Parece que el correo ya esta en uso.", "error")
-// }else{
-//   console.log("Correo en buen estado");
-// }
-//////// VALIDACION USERNAME////////
-// const usernamev = await fetch("http://localhost:3001/username", {
-//   method: "POST",
-//   body: JSON.stringify({username}),
-//   headers:{
-//     "Content-Type": "application/json"
-//   }
-// });
-// const data4 = await usernamev.json();
-// if(data4.status === 401 || !data4){
-//   swal("¡NOO!", "Parece que el usurio ya esta en uso.", "error")
-// }else{
-//   console.log("Correo en buen estado");
-// }
 
     ///////////////////CREACION USUARIO////////////////////
-      //envia la info de los inputs convertida a un json (formData)
-      const data = JSON.stringify(formData);
-      console.log(data);
-      //envio un fecth a la url del servidor que va a la ruta del post de customers con un objeto de configuracion donde le paso el metodo de la request, el body que contiene la data en formato json y un header para especificar que es un json el que estoy  enviando
-      const create = await fetch("http://localhost:3001/login", {
-        method: "POST",
-        body: data,
-        headers: { "Content-Type": "application/json" },
-      });
-      const datajuan = await create.json(); 
-      if(datajuan.status === 400){
-        swal("LO SIENTO","El correo ya está en uso.", "error")
+    //envia la info de los inputs convertida a un json (formData)
+    const data = JSON.stringify(formData);
+    console.log(data);
+    //envio un fecth a la url del servidor que va a la ruta del post de customers con un objeto de configuracion donde le paso el metodo de la request, el body que contiene la data en formato json y un header para especificar que es un json el que estoy  enviando
+    const create = await fetch("http://localhost:3001/login", {
+      method: "POST",
+      body: data,
+      headers: { "Content-Type": "application/json" },
+    });
+    const datajuan = await create.json();
+    if (datajuan.status === 400) {
+      swal("LO SIENTO", "El correo ya está en uso.", "error");
 
       //////////////////////ENVIO DE CORREO Y PUSH //////////////
-      }else if(datajuan.status !== 400){
-const res = await fetch("http://localhost:3001/email", {
+    } else if (datajuan.status !== 400) {
+      const res = await fetch("http://localhost:3001/email", {
         method: "POST",
-        body: JSON.stringify({semail}),
-        headers:{
-          "Content-Type": "application/json"
-        }
+        body: JSON.stringify({ semail }),
+        headers: {
+          "Content-Type": "application/json",
+        },
       });
       const data2 = await res.json();
       console.log(data2.status);
-      if(data2.status === 401 || !data2 ){
+      if (data2.status === 401 || !data2) {
         console.log("error");
-      }else{
+      } else {
         console.log("email send!");
       }
-          swal("¡ESTUPENDO!", "Ahora inicia sesión!", "success") &&
-          history("/login")
-      
-      
-      }
+      swal("¡ESTUPENDO!", "Ahora inicia sesión!", "success") &&
+        history("/login");
     }
-      
-
-        
-        
-
-  
-  /////////////////////////////////////////////
-  /////
-  ////
-  ///
-  //
-  //state.id // formData.email = formData.email = return "correo ya existe"
-  //
-  ///
-  ////
-  /////
-  //////////////////////////////////////
+  }
 
   ///// VALIDATION /////
   function validation(formData) {
@@ -161,7 +97,7 @@ const res = await fetch("http://localhost:3001/email", {
     } else if (!expcorreo.test(formData.email)) {
       errors.email = "Esto no parece un email.";
     }
-    
+
     if (!formData.password) {
       errors.password = "La contraseña es requerida.";
     } else if (!expcontraseña.test(formData.password)) {
@@ -175,7 +111,7 @@ const res = await fetch("http://localhost:3001/email", {
     }
     return errors;
   }
-  //mandar user - email al back, desde el back hacer la validacion desde el back y retornar la validacion desde el back si existe.
+ 
 
   ////// CUERPO HTML /////
   return (
@@ -210,9 +146,7 @@ const res = await fetch("http://localhost:3001/email", {
                       name="name"
                       onChange={handlerChange}
                     />
-                    {error.name && (
-                      <p className="errors">{error.name}</p>
-                    )}
+                    {error.name && <p className="errors">{error.name}</p>}
                   </p>
                   <p>
                     <label>
@@ -224,10 +158,16 @@ const res = await fetch("http://localhost:3001/email", {
                       required
                       name="email"
                       value={formData.email}
-                      onChange={(e)=> handlerChange(e) }
+                      onChange={(e) => handlerChange(e)}
                     />
-                    {error.email && <p className="errors
-                    ">{error.email}</p>}
+                    {error.email && (
+                      <p
+                        className="errors
+                    "
+                      >
+                        {error.email}
+                      </p>
+                    )}
                   </p>
                   <p>
                     <label>
