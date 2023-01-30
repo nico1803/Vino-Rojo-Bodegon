@@ -1,23 +1,20 @@
 import "../styles/login.css";
 import { useState, useEffect } from "react";
 import { gapi } from "gapi-script";
-import GoogleLogin from "react-google-login";
-import LogGoogle from "../assets/google.png";
 import swal from "sweetalert";
 import { useNavigate } from "react-router-dom";
-import { GoogleLogout } from "react-google-login";
-import { useDispatch, useSelector } from "react-redux";
-import { getUser } from "../redux/actions.js";
+//import { useDispatch, useSelector } from "react-redux";
+//import { getUser } from "../redux/actions.js";
 import axios from "axios";
 
 function Login() {
-  const dispatch = useDispatch();
+  //const dispatch = useDispatch();
 
   const clientID =
     "773413580776-bs3kqrn62tfkdmjhek5d5d0gdt3c2cke.apps.googleusercontent.com";
 
   const history = useNavigate();
-  const [user, setUser] = useState({});
+  //const [user, setUser] = useState({});
   const [loggeIn, setLoggetInfo] = useState(false);
   //state para guardar el input del email y el password, y si hay mas input se añade a este objeto
 const [formData, setFormData]=useState({
@@ -27,23 +24,23 @@ const [formData, setFormData]=useState({
 // const expRegular = /^[a-zA-Z]{2,15}$/;
 const expcorreo= /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$/
 
-  const onSuccess = (response) => {
-    setUser(response.profileObj);
+  // const onSuccess = (response) => {
+  //   setUser(response.profileObj);
 
-    dispatch(getUser(response.profileObj));
+  //   dispatch(getUser(response.profileObj));
 
-    dispatch(getUser(response.profileObj))
+  //   dispatch(getUser(response.profileObj))
     
-    console.log(response)
+  //   console.log(response)
 
-    document.getElementsByClassName("btn").hidden = true;
-  };
-  const onFailure = (response) => {
-    console.log("Something went wrong");
-  };
-  const handleLogout = () => {
-    setUser({});
-  };
+  //   document.getElementsByClassName("btn").hidden = true;
+  // };
+  // const onFailure = (response) => {
+  //   console.log("Something went wrong");
+  // };
+  // const handleLogout = () => {
+  //   setUser({});
+  // };
   useEffect(() => {
     function start() {
       gapi.client.init({
@@ -129,22 +126,7 @@ const handlerChange = (e)=>{
                 </div>
 
                 <div>
-                  {user.email === undefined ? (
-                    <GoogleLogin
-                      clientId={clientID}
-                      onSuccess={onSuccess}
-                      onFailure={onFailure}
-                      isSignedIn={true}
-                      buttonText="Continue  with Google"
-                      cookiePolicy={"single_host_origin"}
-                    />
-                  ) : (
-                    <GoogleLogout
-                      clientId={clientID}
-                      buttonText="Logout"
-                      onLogoutSuccess={handleLogout}
-                    ></GoogleLogout>
-                  )}
+                 
                 </div>
                 <div className="middel"><strong>  O Ingresa con: </strong> </div>
                 <form onSubmit={handlesubmit}>

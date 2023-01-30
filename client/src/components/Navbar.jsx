@@ -3,13 +3,12 @@ import { Link } from "react-router-dom";
 import logoImg from "../assets/LogoBarril.png";
 import UserPhoto from "../assets/user.png";
 import "../styles/navbar.css";
-import GoogleLogin from "react-google-login";
-import { useSelector } from 'react-redux';
+//import { useSelector } from 'react-redux';
 
 
 
 export default function Navbar() {
-  const googleUser = useSelector((state) => state)
+  //const googleUser = useSelector((state) => state)
 
   return (
     <section className="h-[70px] bg-[#614C3C] shadow-[0_8px_16px_-8px_rgba(0,0,0,0.4)] flex items-center">
