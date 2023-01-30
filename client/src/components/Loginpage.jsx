@@ -52,8 +52,23 @@ const expcorreo= /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$/
     }
     gapi.load("client:auth2", start);
   });
-  function handlesubmit(e) {
+
+
+   async function handlesubmit(e) {
     e.preventDefault();
+    try {
+      //envia la info de los inputs convertida a un json (formData)
+      //envio un fecth a la url del servidor que va a la ruta del post de customers con un objeto de configuracion donde le paso el metodo de la request, el body que contiene la data en formato json y un header para especificar que es un json el que estoy  enviando
+      const {data: {ok, token}} = await axios.post("http://localhost:3001/login/signin", formData);
+      if (ok) {
+        console.log("token -->", token)
+        localStorage.setItem('token', token)
+      }
+    
+    } catch (err) {
+      console.error(err);
+    }
+
     if(!formData.email){return swal("UPS!", "¡Antes escribe tu email!", "warning")}
     if(!expcorreo.test(formData.email)){return swal ("UPS!", "Esto no parece un email.","warning" )}
     if(!formData.password){return swal("UPS", "Antes escribe tu contraseña!", "warning")}
@@ -79,28 +94,12 @@ const handlerChange = (e)=>{
     ...formData,
     [e.target.name]:e.target.value
   })
-  console.log(formData)
+
 }
 
 
 
 
-const handleSubmit = async e => {
-    e.preventDefault();
-    console.log('handleSubmit')
-try {
-  //envia la info de los inputs convertida a un json (formData)
-  //envio un fecth a la url del servidor que va a la ruta del post de customers con un objeto de configuracion donde le paso el metodo de la request, el body que contiene la data en formato json y un header para especificar que es un json el que estoy  enviando
-  const {data: {ok, token}} = await axios.post("http://localhost:3001/login/signin", formData);
-  if (ok) {
-    console.log("token -->", token)
-    localStorage.setItem('token', token)
-  }
-
-} catch (err) {
-  console.error(err);
-}
-  };
 
   return (
     <div className="cuerpito">
@@ -148,7 +147,7 @@ try {
                   )}
                 </div>
                 <div className="middel"><strong>  O Ingresa con: </strong> </div>
-                <form onSubmit={handleSubmit}>
+                <form onSubmit={handlesubmit}>
                   <p>
                     <label>
                       Dirección Email<span>*</span>
