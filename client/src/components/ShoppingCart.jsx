@@ -11,7 +11,7 @@ export default function ShoppingCart() {
   const carro = useSelector((state)=> state);
 
   return (
-    <div>{carro.cart.map((el, i) => {return (<><Card food={el} key={i} /><button onClick={()=>dispatch(cartRemove(el._id))}>X ELIMIAR CARD X</button></>)})}
+    <div>{carro.cart.map((el, i) => {return (<><Card food={el} key={i} /><button className='flex' onClick={()=>dispatch(cartRemove(el._id))}>X ELIMIAR CARD X</button></>)})}
     <p href="">holas este es el carrito</p>
     </div>
 
