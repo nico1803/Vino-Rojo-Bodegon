@@ -75,18 +75,40 @@ async function handleSubmit(e) {
     e.preventDefault();  
 
     try {
-      const {data: {ok, token, message}} = await axios.post("http://localhost:3001/login/signin",formData)
-       console.log(message)
+      const {data: {ok, token, message, status}} = await axios.post("http://localhost:3001/login/signin",formData)
+      if(status === 400){
+        swal({
+          title: "Oppps...",
+          text: "Algo salio mal, verifica tus datos.",
+          icon: "error",
+          buttons: true,
+          dangerMode: true,
+        })
+        .then((willDelete) => {
+          if (willDelete) {
+            swal("Asegurate que tus datos sean correctos.", {
+              icon: "warning", 
+            });
+          } else {
+            swal({
+              title:"Ummm...",
+              text:"No puedes ingresar si no tienes cuenta.",
+              icon:"error",
+            });
+          }
+        });
+      } else if(ok && status !==400){
 
-    if(ok){
+        console.log("token -->", token)
+        localStorage.setItem('token', token)
+        const frontToken=localStorage.getItem("token", token);
+        console.log(frontToken)
+  
+        swal("¡GENIAL!", "Disfruta  nuetra pagina!", "success") && history("/")
+      }
 
-      console.log("token -->", token)
-      localStorage.setItem('token', token)
-      const frontToken=localStorage.getItem("token", token);
-      console.log(frontToken)
 
-      swal("¡GENIAL!", "Disfruta  nuetra pagina!", "success") && history("/")
-    }
+
     
     } catch (error) {
       console.log(error.response.data.message)
