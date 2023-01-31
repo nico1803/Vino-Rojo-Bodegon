@@ -71,30 +71,6 @@ export default function Detail() {
           <span className="more">Mouse over the card for more info</span>
         </div>
       </div>
-      <div className="content-star">
-        {[...Array(5)].map((star, i) => {
-          const ratingValue = i + i;
-
-          return (
-            <label key={i}>
-              <input
-                type="radio"
-                name="rating"
-                value={food.review}
-                onClick={() => setRating(ratingValue)}
-              />
-              <FaStar
-                className="star"
-                color={ratingValue <= (hover || rating) ? "#ffc107" : "#e4e5e9"}
-                size={35}
-                onMouseEnter={() => setHover(ratingValue)}
-                onMouseLeave={() => setHover(null)}
-              />
-
-            </label>
-          );
-        })}
-      </div>
     </div>
   );
 }
