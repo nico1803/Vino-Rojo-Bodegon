@@ -72,37 +72,27 @@ const handlerChange = (e)=>{
 
 
 async function handleSubmit(e) {
-    e.preventDefault();
-  
-  //envia la info de los inputs convertida a un json (formData)
-  //envio un fecth a la url del servidor que va a la ruta del post de customers con un objeto de configuracion donde le paso el metodo de la request, el body que contiene la data en formato json y un header para especificar que es un json el que estoy  enviando
-  
-  const data = JSON.stringify(formData);
-  console.log(data);
-  //envio un fecth a la url del servidor que va a la ruta del post de customers con un objeto de configuracion donde le paso el metodo de la request, el body que contiene la data en formato json y un header para especificar que es un json el que estoy  enviando
-  const validate1 = await fetch("http://localhost:3001/login/Signin", {
-    method: "POST",
-    body: data,
-    headers: { "Content-Type": "application/json" },
-  });
-  const at = validate1.json();
-  console.log("soy el status", at);
-  if(at.status === 400){
-    return swal({
-      icon: 'error',
-      title: 'Oops...',
-      text: 'Parece que este correo no esta en uso!',
-      footer: '<a href="/signup">¿Quieres crear una cuenta?</a>'
-    })
-  }else if(at.status !== 400){
-    const {data: {ok, token}} = validate1
+    e.preventDefault();  
+
+    try {
+      const {data: {ok, token, message}} = await axios.post("http://localhost:3001/login/signin",formData)
+       console.log(message)
+
     if(ok){
+
       console.log("token -->", token)
       localStorage.setItem('token', token)
-    }
+      const frontToken=localStorage.getItem("token", token);
+      console.log(frontToken)
+
+      swal("¡GENIAL!", "Disfruta  nuetra pagina!", "success") && history("/")
     }
     
- swal("¡GENIAL!", "Disfruta  nuetra pagina!", "success") && history("/")
+    } catch (error) {
+      console.log(error.response.data.message)
+    }
+    
+ 
     
   }
 
