@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 
 function SignUp() {
-  ///////STATE'S --- EXPRESIONES/////////
+  ///////STATE'S --- EXPRESIONES REGULARES /////////
   const dispatch = useDispatch();
   const expcorreo = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$/;
   const expcontraseña = /^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$/;
@@ -18,11 +18,6 @@ function SignUp() {
   const [error, setError] = useState({});
   const [semail, setSemail] = useState("")
 
-///->
-  // const[email,setEmail]=useState("");
-  // console.log("confirmar correo;", email);
-  // const[username, setUsername]=useState("");
-  // console.log("confirmar usurio;", username);
 
   console.log("envio de correo confirmación a:", semail);
   const [formData, setFormData] = useState({
@@ -34,7 +29,7 @@ function SignUp() {
 
 
 
-  //state para guardar el input del email y el password, y si hay mas input se añade a este objeto
+
 
 //// HANDLER CHANGE //////
   const handlerChange = (e) => {
@@ -52,47 +47,14 @@ function SignUp() {
     setSemail(
       e.target.value = formData.email
   )
-  // setEmail(
-  //   e.target.value = formData.email
-  // )
-  // setUsername(
-  //   e.target.value = formData.username
-  // )
+
   };
 
 /////// HANDLER SUBMIT ///////
   async function handlesubmit(e) {
     e.preventDefault();
-////////////////VALIDACION CORREO////////////
-// const emailv = await fetch("http://localhost:3001/email", {
-//   method: "GET",
-//   body: JSON.stringify({email}),
-//   headers:{
-//     "Content-Type": "application/json"
-//   }
-// });
-// const data3 = await emailv.json();
-// if(data3.status === 401 || !data3){
-//   swal("¡NOO!", "Parece que el correo ya esta en uso.", "error")
-// }else{
-//   console.log("Correo en buen estado");
-// }
-//////// VALIDACION USERNAME////////
-// const usernamev = await fetch("http://localhost:3001/username", {
-//   method: "POST",
-//   body: JSON.stringify({username}),
-//   headers:{
-//     "Content-Type": "application/json"
-//   }
-// });
-// const data4 = await usernamev.json();
-// if(data4.status === 401 || !data4){
-//   swal("¡NOO!", "Parece que el usurio ya esta en uso.", "error")
-// }else{
-//   console.log("Correo en buen estado");
-// }
 
-    ///////////////////CREACION USUARIO////////////////////
+    ///////////////////CREACION USUARIO Y VALIDACION DE EMAIL ////////////////////
       //envia la info de los inputs convertida a un json (formData)
       const data = JSON.stringify(formData);
       console.log(data);
@@ -103,6 +65,7 @@ function SignUp() {
         headers: { "Content-Type": "application/json" },
       });
       const datajuan = await create.json(); 
+      console.log("gola",datajuan);
       if(datajuan.status === 400){
         swal("LO SIENTO","El correo ya está en uso.", "error")
 
@@ -133,18 +96,7 @@ const res = await fetch("http://localhost:3001/email", {
         
         
 
-  
-  /////////////////////////////////////////////
-  /////
-  ////
-  ///
-  //
-  //state.id // formData.email = formData.email = return "correo ya existe"
-  //
-  ///
-  ////
-  /////
-  //////////////////////////////////////
+
 
   ///// VALIDATION /////
   function validation(formData) {
