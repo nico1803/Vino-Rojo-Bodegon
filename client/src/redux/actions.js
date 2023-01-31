@@ -1,14 +1,16 @@
 import axios from 'axios';
 
-export const GET_FOODS = 'GET_FOODS'
-export const GET_USER = 'GET_USER'
-export const POST_FOOD = 'POST_FOOD'
-export const FOOD_BY_TYPE = 'FOOD_BY_TYPE'
-export const GET_FOODS_BY_NAME = 'GET_FOODS_BY_NAME'
-export const CART_ADD = 'CART_ADD'
-export const CART_REMOVE = 'CART_REMOVE'
-export const CART_UP = 'CART_UP'
-export const CART_DOWN = 'CART_DOWN'
+export const GET_FOODS = 'GET_FOODS';
+export const GET_USER = 'GET_USER';
+export const POST_FOOD = 'POST_FOOD';
+export const FOOD_BY_TYPE = 'FOOD_BY_TYPE';
+export const GET_FOODS_BY_NAME = 'GET_FOODS_BY_NAME';
+export const CART_ADD = 'CART_ADD';
+export const CART_REMOVE = 'CART_REMOVE';
+export const CART_UP = 'CART_UP';
+export const CART_DOWN = 'CART_DOWN';
+
+//RUTA RAILWAY: https://vino-rojo-bodegon-production.up.railway.app/foods
 
 
 export const getFoods = () => {
