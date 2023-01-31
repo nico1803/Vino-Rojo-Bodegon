@@ -13,12 +13,13 @@ function Login() {
   const history = useNavigate();
   const [user, setUser] = useState({});
   const [loggeIn, setLoggetInfo] = useState(false);
+
   //state para guardar el input del email y el password, y si hay mas input se añade a este objeto
 const [formData, setFormData]=useState({
   email:"",
   password:""
 });
-// const expRegular = /^[a-zA-Z]{2,15}$/;
+const expRegular = /^[a-zA-Z]{2,15}$/;
 const expcorreo= /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$/
 
   // const onSuccess = (response) => {
