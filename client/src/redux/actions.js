@@ -7,6 +7,8 @@ export const FOOD_BY_TYPE = 'FOOD_BY_TYPE'
 export const GET_FOODS_BY_NAME = 'GET_FOODS_BY_NAME'
 export const CART_ADD = 'CART_ADD'
 export const CART_REMOVE = 'CART_REMOVE'
+export const CART_UP = 'CART_UP'
+export const CART_DOWN = 'CART_DOWN'
 
 
 export const getFoods = () => {
@@ -68,7 +70,6 @@ export function getFoodsByName(name){
 
 export function cartAdd(payload){
     return async function(dispatch){
-        console.log(payload)
         dispatch({
             type: 'CART_ADD',
             payload
@@ -78,7 +79,6 @@ export function cartAdd(payload){
 
 export function cartRemove(payload){
     return async function(dispatch){
-        console.log(payload)
         dispatch({
             type: 'CART_REMOVE',
             payload
@@ -86,3 +86,20 @@ export function cartRemove(payload){
     }
 }
 
+export function cartUp(payload){
+    return async function(dispatch){
+        dispatch({
+            type: 'CART_UP',
+            payload
+        })
+    }
+}
+
+export function cartDown(payload){
+    return async function(dispatch){
+        dispatch({
+            type: 'CART_DOWN',
+            payload
+        })
+    }
+}
