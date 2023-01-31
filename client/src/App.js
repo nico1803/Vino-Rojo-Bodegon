@@ -8,8 +8,8 @@ import SignUp from "./components/SignUp"
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import ShoppingCart from './components/ShoppingCart'
-
-
+import Forgetpassword from './components/ForgerPassword';
+import Aboutus from './components/Aboutus';
 
 
 function App() {
@@ -28,6 +28,10 @@ function App() {
         <Route path='/contact' element={<Contact/>}/>
 
         <Route path='/cart' element={<ShoppingCart/>}/>
+
+        <Route path='/forgetpassword' element={<Forgetpassword/>}/>
+
+        <Route path='/aboutus' element={<Aboutus/>}/>
       </Routes>
     <Footer/>
   </>);

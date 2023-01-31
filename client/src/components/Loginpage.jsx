@@ -12,48 +12,17 @@ function Login() {
 
  
   const history = useNavigate();
-  const [user, setUser] = useState({});
-  const [loggeIn, setLoggetInfo] = useState(false);
   //state para guardar el input del email y el password, y si hay mas input se añade a este objeto
   const [error, setError] = useState({});
-const [formData, setFormData]=useState({
-  email:"",
-  password:""
-});
-const expRegular = /^[a-zA-Z]{2,15}$/;
-const expcorreo= /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$/
-
-  // const onSuccess = (response) => {
-  //   setUser(response.profileObj);
-
-  //   dispatch(getUser(response.profileObj));
-
-  //   dispatch(getUser(response.profileObj))
-    
-  //   console.log(response)
-
-  //   document.getElementsByClassName("btn").hidden = true;
-  // };
-  // const onFailure = (response) => {
-  //   console.log("Something went wrong");
-  // };
-  // const handleLogout = () => {
-  //   setUser({});
-  // };
-
-  // function handlesubmit(e) {
-  //   e.preventDefault();
-  //   if(!formData.email){return swal("UPS!", "¡Antes escribe tu email!", "warning")}
-  //   if(!expcorreo.test(formData.email)){return swal ("UPS!", "Esto no parece un email.","warning" )}
-  //   if(!formData.password){return swal("UPS", "Antes escribe tu contraseña!", "warning")}
-  //     if(formData.email && formData.password ) {
-  //       return swal("¡GENIAL!", "Disfruta  nuetra pagina!", "success") && history("/")
-  //       } 
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+  });
+  const expRegular = /^[a-zA-Z]{2,15}$/;
+  const expcorreo = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$/;
 
 
-  // }
-
-
+///// HANDLE CHANGE /////
 const handlerChange = (e)=>{
   e.preventDefault();
   setFormData({
@@ -68,9 +37,7 @@ const handlerChange = (e)=>{
   );
 }
 
-
-
-
+///HANDLE SUBMIT////////
 async function handleSubmit(e) {
     e.preventDefault();  
 
@@ -117,11 +84,6 @@ async function handleSubmit(e) {
  
     
   }
-
-//   const {data: {ok, token}} = await axios.post("http://localhost:3001/login/signin", formData);
-//   if (ok) {
-
-
 
 
   ///// VALIDATION /////
@@ -205,7 +167,7 @@ async function handleSubmit(e) {
                     </button>
                   </p>
                   <p>
-                    <a href="https://www.youtube.com/watch?v=pF-3S-HTJSg" target="_blank">Forget Password?</a>
+                    <a href="/forgetpassword">Forget Password?</a>
                   </p>
                 </form>
               </div>
