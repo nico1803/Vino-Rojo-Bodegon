@@ -1,6 +1,6 @@
 
 
-import { GET_FOODS, GET_USER, POST_FOOD, FOOD_BY_TYPE, GET_FOODS_BY_NAME, CART_ADD, CART_REMOVE} from "./actions";
+import { GET_FOODS, GET_USER, POST_FOOD, FOOD_BY_TYPE, GET_FOODS_BY_NAME, CART_ADD, CART_REMOVE, CART_UP, CART_DOWN} from "./actions";
 
 
 const initialState = {
@@ -8,6 +8,7 @@ const initialState = {
     foods: [],
     user:[],
     cart: [],
+    numberCart:0,
 }
 
 export default function rootReducer(state = initialState, action) {
@@ -41,10 +42,38 @@ export default function rootReducer(state = initialState, action) {
             }
         }
         case CART_ADD: {
-            let product = state.allFoods.filter(item=>item._id===action.payload)
-            return {
+            if(state.numberCart===0){
+                let cart = {
+                    id:action.payload._id,
+                    quantity:1,
+                    name:action.payload.name,
+                    image:action.payload.image,
+                    price:action.payload.price
+                } 
+                state.cart.push(cart); 
+            }
+            else{
+                let check = false;
+                state.cart.map((item,key)=>{
+                    if(item.id===action.payload._id){
+                        state.cart[key].quantity++;
+                        check=true;
+                    };
+                });
+                if(!check){
+                    let _cart = {
+                        id:action.payload._id,
+                        quantity:1,
+                        name:action.payload.name,
+                        image:action.payload.image,
+                        price:action.payload.price
+                    }
+                    state.cart.push(_cart);
+                }
+            }
+            return{
                 ...state,
-                cart: state.cart.concat(product)
+                numberCart:state.numberCart+1
             }
         }
         case CART_REMOVE: {
@@ -53,6 +82,23 @@ export default function rootReducer(state = initialState, action) {
                 cart: state.cart.filter(item=>item._id!==action.payload)
             }
         }
+        case CART_UP:
+                state.numberCart++
+                state.cart[action.payload].quantity++;
+              
+               return{
+                   ...state
+               }
+        case CART_DOWN:
+                let quantity = state.cart[action.payload].quantity;
+                if(quantity>1){
+                    state.numberCart--;
+                    state.cart[action.payload].quantity--;
+                }
+              
+                return{
+                    ...state
+                } 
         default:
             return state;
     }
