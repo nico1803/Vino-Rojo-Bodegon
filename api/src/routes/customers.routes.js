@@ -37,7 +37,7 @@ router.post('/signin', async (req, res) => {
     console.log(user);
     //si existe el usuario verifica la contraseña
     if (user) {
-      const comparePassword = bcryp.compare(req.body.password, user.password);
+      const comparePassword = await bcryp.compare(req.body.password, user.password);
       //si la contraseña es correcta genera el token
       if (comparePassword) {
         const token = generatorToken({id: user._id, email: user.email});
