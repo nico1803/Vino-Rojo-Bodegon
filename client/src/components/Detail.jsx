@@ -58,7 +58,7 @@ export default function Detail() {
             </div>
             <div className="stats">
               <div>
-                <button onClick={()=>dispatch(cartAdd(food._id))} className="buttonpay">añadir</button>
+                <button onClick={()=>dispatch(cartAdd(food))} className="buttonpay">añadir</button>
               </div>
             </div>
           </div>

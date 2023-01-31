@@ -20,12 +20,12 @@ router.post('/', async (req, res) => {
     const findCustomer = await findCustomerByEmail(email);
     if (!findCustomer) {
       await createCustomer(name, email, password);
-      res.status(200).json({status:200,smg: 'Usuario creado'});
+      res.status(200).json({ status: 200, smg: 'Usuario creado' });
     } else {
-      res.status(400).json({status:400, smg:"este correo ya existe"})
+      res.status(400).json({ status: 400, smg: 'este correo ya existe' });
     }
   } catch (error) {
-    res.status(200).json({status:400,error})
+    res.status(200).json({ status: 400, error });
   }
 });
 
@@ -37,17 +37,21 @@ router.post('/signin', async (req, res) => {
     console.log(user);
     //si existe el usuario verifica la contraseña
     if (user) {
-      const comparePassword = await bcryp.compare(req.body.password, user.password);
+      const comparePassword = await bcryp.compare(
+        req.body.password,
+        user.password
+      );
+
       //si la contraseña es correcta genera el token
       if (comparePassword) {
-        const token = generatorToken({id: user._id, email: user.email});
+        const token = generatorToken({ id: user._id, email: user.email });
         console.log(token);
         res.send({ ok: true, message: 'Welcome our app!', token: token });
       } else {
-        res.send('password incorrect');
+        res.send({ok:false, message:'password incorrect'});
       }
     } else {
-      res.status(400).send('email incorrect or not exist');
+      res.status(400).send({ok:false, message:'email incorrect or not exist'});
     }
   } catch (error) {
     console.log(error);
@@ -134,16 +138,19 @@ const tokenValidation = (req, res, next) => {
       .status(400)
       .send('You must provide a token on Authorization header');
   }
-  const {id, email} = jwt.verify(req.headers.authorization, process.env.SECRET_KEY);
-  const emailIsAuthenticated = email === req.params.email
-  if (emailIsAuthenticated) return next()
+  const { id, email } = jwt.verify(
+    req.headers.authorization,
+    process.env.SECRET_KEY
+  );
+  const emailIsAuthenticated = email === req.params.email;
+  if (emailIsAuthenticated) return next();
   return res.status(401).send({
     ok: false,
-    message: "You are not authorized to access this information."
-  })
-}
+    message: 'You are not authorized to access this information.',
+  });
+};
 
-router.get('/sensibleInformation/:email', tokenValidation,  (req, res) => {
+router.get('/sensibleInformation/:email', tokenValidation, (req, res) => {
   return res.send({
     user: req.params.email,
     debit_card_number: '1244 1234 1234 1234',
