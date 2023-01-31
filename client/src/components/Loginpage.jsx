@@ -98,12 +98,15 @@ async function handleSubmit(e) {
           }
         });
       } else if(ok && status !==400){
-
+        
+        //guardar token en local storage
         console.log("token -->", token)
         localStorage.setItem('token', token)
-        const frontToken=localStorage.getItem("token", token);
-        console.log(frontToken)
-  
+        //incluir el token usando axios
+        
+        const axiosToken = axios.defaults.headers.common["authorization"] = localStorage.getItem("token", token);
+        console.log(axiosToken);
+        console.log( axios.defaults.headers.common)
         swal("¡GENIAL!", "Disfruta  nuetra pagina!", "success") && history("/")
       }
 
@@ -118,8 +121,7 @@ async function handleSubmit(e) {
     
   }
 
-//   const {data: {ok, token}} = await axios.post("http://localhost:3001/login/signin", formData);
-//   if (ok) {
+
 
 
 
