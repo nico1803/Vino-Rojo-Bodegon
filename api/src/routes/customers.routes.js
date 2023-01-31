@@ -41,7 +41,6 @@ router.post('/signin', async (req, res) => {
         req.body.password,
         user.password
       );
-
       //si la contraseña es correcta genera el token
       if (comparePassword) {
         const token = generatorToken({ id: user._id, email: user.email });

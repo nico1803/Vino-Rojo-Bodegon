@@ -43,7 +43,7 @@ export default function Detail() {
   return (
 
     <div className="center">
-      <div className="card green">
+      <div className="card green mb-[1em]">
         <div className="additional">
           <div className="user-card">
             <img className="imgproduct" src={food.image} alt="product image" />
@@ -71,7 +71,8 @@ export default function Detail() {
           <span className="more">Mouse over the card for more info</span>
         </div>
       </div>
-      <div className="content-star">
+
+      <div className="content-star mb-[10em]">
         {[...Array(5)].map((star, i) => {
           const ratingValue = i + i;
 
@@ -95,6 +96,7 @@ export default function Detail() {
           );
         })}
       </div>
+
     </div>
   );
 }
