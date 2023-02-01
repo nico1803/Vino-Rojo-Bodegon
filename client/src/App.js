@@ -7,7 +7,7 @@ import Navbar from './components/Navbar';
 import SignUp from "./components/SignUp"
 import Contact from './components/Contact';
 import Footer from './components/Footer';
-import ShoppingCart from './components/ShoppingCart'
+import ShoppingCart from './components/Cart-Components/ShoppingCart'
 
 
 
