@@ -1,5 +1,4 @@
 import React from 'react';
-import '../styles/home.css';
 import Filters from './Filters';
 import Recipescard from './RecipesCard';
 import ProductoImage from "../assets/LogoBarril.png";

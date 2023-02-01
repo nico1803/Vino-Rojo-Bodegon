@@ -6,7 +6,7 @@ export default function Aboutus() {
       <main className="page-content">
         <div className="cardAbout">
           <div className="content">
-            <h2 className="title">Sebastián Grajales</h2>
+            <h2 className="titleAbout">Sebastián Grajales</h2>
             <p className="copy">
               De dia Programador, de noche Batman.
             </p>
@@ -17,7 +17,7 @@ export default function Aboutus() {
         </div>
         <div className="cardAbout">
           <div className="content">
-            <h2 className="title">Name</h2>
+            <h2 className="titleAbout">Name</h2>
             <p className="copy">
               Description
             </p>
@@ -27,7 +27,7 @@ export default function Aboutus() {
         </div>
         <div className="cardAbout">
           <div className="content">
-            <h2 className="title">Name</h2>
+            <h2 className="titleAbout">Name</h2>
             <p className="copy">
               Description
             </p>
@@ -37,7 +37,7 @@ export default function Aboutus() {
         </div>
         <div className="cardAbout">
           <div className="content">
-            <h2 className="title">Name</h2>
+            <h2 className="titleAbout">Name</h2>
             <p className="copy">
               Description
             </p>
@@ -47,7 +47,7 @@ export default function Aboutus() {
         </div>
         <div className="cardAbout">
           <div className="content">
-            <h2 className="title">Name</h2>
+            <h2 className="titleAbout">Name</h2>
             <p className="copy">
               Description
             </p>
@@ -57,7 +57,7 @@ export default function Aboutus() {
         </div>
         <div className="cardAbout">
           <div className="content">
-            <h2 className="title">Name</h2>
+            <h2 className="titleAbout">Name</h2>
             <p className="copy">
               Description
             </p>
@@ -67,7 +67,7 @@ export default function Aboutus() {
         </div>
         <div className="cardAbout">
           <div className="content">
-            <h2 className="title">Name</h2>
+            <h2 className="titleAbout">Name</h2>
             <p className="copy">
               Description
             </p>
@@ -77,7 +77,7 @@ export default function Aboutus() {
         </div>
         <div className="cardAbout">
           <div className="content">
-            <h2 className="title">Name</h2>
+            <h2 className="titleAbout">Name</h2>
             <p className="copy">
               Description
             </p>

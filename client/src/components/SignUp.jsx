@@ -207,6 +207,7 @@ const res = await fetch("http://localhost:3001/email", {
                   </p>
                   <p>
                     <button
+                    className="buttonsignup"
                       type="submit"
                       disabled={
                         error.username ||
