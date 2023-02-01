@@ -78,7 +78,7 @@ export default function rootReducer(state = initialState, action) {
         case CART_REMOVE: {
             return {
                 ...state,
-                cart: state.cart.filter(item=>item._id!==action.payload)
+                cart: state.cart.filter(item=>item.id!==action.payload)
             }
         }
         case CART_UP:
