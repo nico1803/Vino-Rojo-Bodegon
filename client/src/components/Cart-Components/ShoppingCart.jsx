@@ -24,17 +24,11 @@ export default function ShoppingCart() {
 
       <div className='flex p-[5px] bg-[#282c34] flex justify-between'>
           <Link to={"/"}>
-            <button className='text-white bg-[#614C3C] hover:bg-[#271e18] p-[5px] rounded-lg'>Seguir Comprando</button>
+            <button className='text-white bg-[#614C3C] hover:bg-[#271e18] p-[5px] rounded-lg'>Ver Menu</button>
           </Link>
         
           <div className='flex'>
-            
-            <div className='w-[150px]'>
-              <p className='text-white'>Total: {}</p>
-            </div>
-
             <button className='text-white bg-[#614C3C] hover:bg-[#271e18] p-[5px] rounded-lg font-bold'>Finalizar compra</button>
-
           </div>
 
         </div>
@@ -47,15 +41,14 @@ export default function ShoppingCart() {
         <div>
           <span>
             <i className='IoCartOutline'></i>
-        </span>
-      </div>
+          </span>
+        </div>
 
         {
         carro.cart.map((el, id) => {return (
-          <div className='rounded-lg relative m-[10px]'>
+          <div className='rounded-lg relative m-[10px] bg-[#971b1b]' key={id}>
 
             <CardCarrito food={el} key={id} />
-
 
             <div className='absolute bottom-[15px] left-[600px] z-50 bg-[#971b1b] hover:bg-[#d61313] p-[5px] rounded-lg'>
               <button className='flex text-s text-center text-[#fff]' onClick={()=>dispatch(cartRemove(el._id))}>Remover Plato</button>
@@ -80,7 +73,7 @@ export default function ShoppingCart() {
           <div className='flex'>
             
             <div className='w-[150px]'>
-              <p className='text-white'>Total: {}</p>
+              <p className='text-black bg-white rounded-full p-[5px] m-[5px]'>Total: ${}</p>
             </div>
 
             <button className='text-white bg-[#614C3C] hover:bg-[#271e18] p-[5px] rounded-lg font-bold'>Finalizar compra</button>
