@@ -21,7 +21,7 @@ export default function Navbar() {
         <div className="flex justify-end w-[1750px]">
 
           <div className="bg-[#614C3C] hover:bg-[#271e18]">
-            <Link to={null}>
+            <Link to={"/aboutus"}>
               <div className=" w-[150px] h-[70px] text-center text-[#fff] block py-[18px]">
                 <h3 className="">Nosotros</h3>
               </div>

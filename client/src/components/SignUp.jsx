@@ -7,7 +7,6 @@ import { useDispatch, useSelector } from "react-redux";
 
 function SignUp() {
   ///////STATE'S --- EXPRESIONES REGULARES /////////
-  const dispatch = useDispatch();
   const expcorreo = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$/;
   const expcontraseña = /^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$/;
   const expusuario = /^[a-zA-Z]{3,15}$/;
@@ -17,9 +16,8 @@ function SignUp() {
   const history = useNavigate();
   const [error, setError] = useState({});
   const [semail, setSemail] = useState("")
-
-
   console.log("envio de correo confirmación a:", semail);
+  
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -91,12 +89,6 @@ const res = await fetch("http://localhost:3001/email", {
       
       }
     }
-      
-
-        
-        
-
-
 
   ///// VALIDATION /////
   function validation(formData) {
@@ -215,6 +207,7 @@ const res = await fetch("http://localhost:3001/email", {
                   </p>
                   <p>
                     <button
+                    className="buttonsignup"
                       type="submit"
                       disabled={
                         error.username ||
