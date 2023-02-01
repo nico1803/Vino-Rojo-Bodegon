@@ -13,11 +13,35 @@ export default function ShoppingCart() {
   const dispatch = useDispatch();
   const carro = useSelector((state)=> state);
 
+
+
+  if (!carro?.cart.length) return (
+    <div className='bg-[#282c34] rounded-lg m-3 p-3'>
+
+      <div className='flex justify-center'>
+        <p className='text-white'>Tu Carrito esta vacio</p>
+      </div>
+
+      <div className='flex p-[5px] bg-[#282c34] flex justify-between'>
+          <Link to={"/"}>
+            <button className='text-white bg-[#614C3C] hover:bg-[#271e18] p-[5px] rounded-lg'>Seguir Comprando</button>
+          </Link>
+        
+          <div className='flex'>
+            
+            <div className='w-[150px]'>
+              <p className='text-white'>Total: {}</p>
+            </div>
+
+            <button className='text-white bg-[#614C3C] hover:bg-[#271e18] p-[5px] rounded-lg font-bold'>Finalizar compra</button>
+
+          </div>
+
+        </div>
+    </div>
+  )
   return (
     <div>
-
-      
-
       <div className='bg-[#282c34] rounded-lg m-3 p-3'>
 
         <div>
@@ -26,12 +50,11 @@ export default function ShoppingCart() {
         </span>
       </div>
 
-        {carro.cart.map((el, id) => {return (
+        {
+        carro.cart.map((el, id) => {return (
           <div className='rounded-lg relative m-[10px]'>
 
-            <div className=''>
-              <CardCarrito food={el} key={id} />
-            </div>
+            <CardCarrito food={el} key={id} />
 
 
             <div className='absolute bottom-[15px] left-[600px] z-50 bg-[#971b1b] hover:bg-[#d61313] p-[5px] rounded-lg'>
