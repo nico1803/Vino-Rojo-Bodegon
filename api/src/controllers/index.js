@@ -101,5 +101,10 @@ const updateCustomer = async (id, name, password, email) => {
     return await Customer.findByIdAndUpdate(id, {name, password, email});
 }
 
-module.exports = {getFoods, deleteCustomer, getCustomers, createFood, findById, deleteFood, 
+const updateCart = async (id, cart, numberCart) => {
+    return await Customer.findByIdAndUpdate(id, {cart: [cart]})
+};
+// [{}, {}, {}]
+//  {$push: {cart: {$each: cart}}}
+module.exports = {getFoods, updateCart, deleteCustomer, getCustomers, createFood, findById, deleteFood, 
                   editFood, createCustomer, getByType, emailValidation, updateCustomer, createDrink, getDrinks, findByIdDrink, deleteDrink, editDrink, findCustomerByEmail, };
