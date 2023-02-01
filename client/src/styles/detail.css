@@ -3,13 +3,10 @@
   font-family: 'Lilita One';
   src: url("../fonts/LilitaOne-Regular.ttf");
 }
-html, body {
-background: #ebebeb;
-}
 
 .center {
 position: absolute;
-top: 22%;
+top: 40%;
 left: 50%;
 -webkit-transform: translate(-50%, -50%);
 }

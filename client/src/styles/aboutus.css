@@ -25,7 +25,7 @@
 		 grid-template-columns: repeat(4, 1fr);
 	}
 }
- .card {
+ .cardAbout {
 	 position: relative;
 	 display: flex;
 	 align-items: flex-end;
@@ -38,11 +38,11 @@
 	 box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1), 0 2px 2px rgba(0, 0, 0, 0.1), 0 4px 4px rgba(0, 0, 0, 0.1), 0 8px 8px rgba(0, 0, 0, 0.1), 0 16px 16px rgba(0, 0, 0, 0.1);
 }
  @media (min-width: 600px) {
-	 .card {
+	 .cardAbout {
 		 height: 350px;
 	}
 }
- .card:before {
+ .cardAbout:before {
 	 content: '';
 	 position: absolute;
 	 top: 0;
@@ -54,7 +54,7 @@
 	 transition: transform calc(var(--d) * 1.5) var(--e);
 	 pointer-events: none;
 }
- .card:after {
+ .cardAbout:after {
 	 content: '';
 	 display: block;
 	 position: absolute;
@@ -67,28 +67,28 @@
 	 transform: translateY(-50%);
 	 transition: transform calc(var(--d) * 2) var(--e);
 }
- .card:nth-child(1):before {
+ .cardAbout:nth-child(1):before {
 	 background-image: url("../assets/sebas.png");
 }
- .card:nth-child(2):before {
+ .cardAbout:nth-child(2):before {
 	 background-image: url(https://images.unsplash.com/photo-1533903345306-15d1c30952de?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max&ixid=eyJhcHBfaWQiOjE0NTg5fQ);
 }
- .card:nth-child(3):before {
+ .cardAbout:nth-child(3):before {
 	 background-image: url(https://images.unsplash.com/photo-1545243424-0ce743321e11?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max&ixid=eyJhcHBfaWQiOjE0NTg5fQ);
 }
- .card:nth-child(4):before {
+ .cardAbout:nth-child(4):before {
 	 background-image: url(https://images.unsplash.com/photo-1531306728370-e2ebd9d7bb99?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max&ixid=eyJhcHBfaWQiOjE0NTg5fQ);
 }
-.card:nth-child(5):before {
+.cardAbout:nth-child(5):before {
     background-image: url(https://images.unsplash.com/photo-1517021897933-0e0319cfbc28?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max&ixid=eyJhcHBfaWQiOjE0NTg5fQ);
 }
-.card:nth-child(6):before {
+.cardAbout:nth-child(6):before {
     background-image: url(https://images.unsplash.com/photo-1533903345306-15d1c30952de?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max&ixid=eyJhcHBfaWQiOjE0NTg5fQ);
 }
-.card:nth-child(7):before {
+.cardAbout:nth-child(7):before {
     background-image: url(https://images.unsplash.com/photo-1545243424-0ce743321e11?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max&ixid=eyJhcHBfaWQiOjE0NTg5fQ);
 }
-.card:nth-child(8):before {
+.cardAbout:nth-child(8):before {
     background-image: url(https://images.unsplash.com/photo-1531306728370-e2ebd9d7bb99?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max&ixid=eyJhcHBfaWQiOjE0NTg5fQ);
 }
  .content {
@@ -154,7 +154,7 @@
     outline-offset: 3px;
 }
  @media (hover: hover) and (min-width: 600px) {
-	 .card:after {
+	 .cardAbout:after {
 		 transform: translateY(0);
 	}
 	 .content {
@@ -165,24 +165,24 @@
 		 transform: translateY(1rem);
 		 transition: transform var(--d) var(--e), opacity var(--d) var(--e);
 	}
-	 .card:hover, .card:focus-within {
+	 .cardAbout:hover, .cardAbout:focus-within {
 		 align-items: center;
 	}
-	 .card:hover:before, .card:focus-within:before {
+	 .cardAbout:hover:before, .cardAbout:focus-within:before {
 		 transform: translateY(-4%);
 	}
-	 .card:hover:after, .card:focus-within:after {
+	 .cardAbout:hover:after, .cardAbout:focus-within:after {
 		 transform: translateY(-50%);
 	}
-	 .card:hover .content, .card:focus-within .content {
+	 .cardAbout:hover .content, .cardAbout:focus-within .content {
 		 transform: translateY(0);
 	}
-	 .card:hover .content > *:not(.title), .card:focus-within .content > *:not(.title) {
+	 .cardAbout:hover .content > *:not(.title), .cardAbout:focus-within .content > *:not(.title) {
 		 opacity: 1;
 		 transform: translateY(0);
 		 transition-delay: calc(var(--d) / 8);
 	}
-	 .card:focus-within:before, .card:focus-within:after, .card:focus-within .content, .card:focus-within .content > *:not(.title) {
+	 .cardAbout:focus-within:before, .cardAbout:focus-within:after, .cardAbout:focus-within .content, .cardAbout:focus-within .content > *:not(.title) {
 		 transition-duration: 0s;
 	}
 }
