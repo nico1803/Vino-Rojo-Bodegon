@@ -104,7 +104,7 @@
  .content > * + * {
 	 margin-top: 1rem;
 }
- .title {
+ .titleAbout {
 	 font-size: 1.3rem;
 	 font-weight: bold;
 	 line-height: 1.2;
@@ -160,7 +160,7 @@
 	 .content {
 		 transform: translateY(calc(100% - 4.5rem));
 	}
-	 .content > *:not(.title) {
+	 .content > *:not(.titleAbout) {
 		 opacity: 0;
 		 transform: translateY(1rem);
 		 transition: transform var(--d) var(--e), opacity var(--d) var(--e);
@@ -177,12 +177,12 @@
 	 .cardAbout:hover .content, .cardAbout:focus-within .content {
 		 transform: translateY(0);
 	}
-	 .cardAbout:hover .content > *:not(.title), .cardAbout:focus-within .content > *:not(.title) {
+	 .cardAbout:hover .content > *:not(.titleAbout), .cardAbout:focus-within .content > *:not(.titleAbout) {
 		 opacity: 1;
 		 transform: translateY(0);
 		 transition-delay: calc(var(--d) / 8);
 	}
-	 .cardAbout:focus-within:before, .cardAbout:focus-within:after, .cardAbout:focus-within .content, .cardAbout:focus-within .content > *:not(.title) {
+	 .cardAbout:focus-within:before, .cardAbout:focus-within:after, .cardAbout:focus-within .content, .cardAbout:focus-within .content > *:not(.titleAbout) {
 		 transition-duration: 0s;
 	}
 }

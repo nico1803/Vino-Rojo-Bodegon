@@ -4,11 +4,13 @@ export const GET_FOODS = 'GET_FOODS';
 export const GET_USER = 'GET_USER';
 export const POST_FOOD = 'POST_FOOD';
 export const FOOD_BY_TYPE = 'FOOD_BY_TYPE';
+export const EDIT_FOOD = 'EDIT_FOOD';
 export const GET_FOODS_BY_NAME = 'GET_FOODS_BY_NAME';
 export const CART_ADD = 'CART_ADD';
 export const CART_REMOVE = 'CART_REMOVE';
 export const CART_UP = 'CART_UP';
 export const CART_DOWN = 'CART_DOWN';
+
 
 //RUTA RAILWAY: https://vino-rojo-bodegon-production.up.railway.app/foods
 
@@ -34,7 +36,19 @@ export function getUser(user){
         })
     }
 };
-
+export function editFood(id, foodEditada) {
+    return async function (dispatch) {
+      try {
+        const json = await axios.put(`http://localhost:3001/foods/edit/${id}`, foodEditada);
+        return dispatch({
+          type: 'EDIT_FOOD',
+          payload: json.data,
+        });
+      } catch (error) {
+        console.log("No pude modificar ela comida", error);
+      }
+    };
+  }
 export function postFood(payload){
     return async function(dispatch){
       await axios.post('/foods.routes',payload)

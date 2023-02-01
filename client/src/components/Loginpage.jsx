@@ -167,7 +167,7 @@ async function handleSubmit(e) {
                       }
                     >
                       {" "}
-                      Crear{" "}
+                      Iniciar Sesión{" "}
                     </button>
                   </p>
                   <p>
