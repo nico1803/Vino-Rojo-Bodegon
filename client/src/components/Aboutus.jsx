@@ -2,7 +2,7 @@ import "../styles/aboutus.css";
 
 export default function Aboutus() {
   return (
-    <div className="allbody">
+
       <main className="page-content">
         <div className="cardAbout">
           <div className="content">
@@ -86,6 +86,5 @@ export default function Aboutus() {
           </div>
         </div>
       </main>
-    </div>
   );
 }
