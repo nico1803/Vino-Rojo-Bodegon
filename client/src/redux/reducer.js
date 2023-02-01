@@ -1,5 +1,4 @@
 
-
 import { GET_FOODS, GET_USER, POST_FOOD, FOOD_BY_TYPE, GET_FOODS_BY_NAME, CART_ADD, CART_REMOVE, CART_UP, CART_DOWN} from "./actions";
 
 
@@ -79,7 +78,7 @@ export default function rootReducer(state = initialState, action) {
         case CART_REMOVE: {
             return {
                 ...state,
-                cart: state.cart.filter(item=>item._id!==action.payload)
+                cart: state.cart.filter(item=>item.id!==action.payload)
             }
         }
         case CART_UP:
