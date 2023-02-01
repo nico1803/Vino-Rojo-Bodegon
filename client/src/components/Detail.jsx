@@ -3,22 +3,17 @@ import { useParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import axios from "axios";
 import "../styles/detail.css";
-import { FaStar } from "react-icons/fa";
-import { postFood, cartAdd } from "../redux/actions";
+import { cartAdd } from "../redux/actions";
+import { FaStar } from "react-icons/fa"
+
+
+
+
 
 export default function Detail() {
   let { id } = useParams();
   let [food, setfood] = useState([]);
-  const [rating, setRating] = useState(null);
-  const [hover, setHover] = useState(null)
-  const [inputForm, setInputForm] = useState({
-    review: '',
-  })
-
-  const [error, setError] = useState({})
-  // const [hoverStar, setHoverStar] = useState(undefined)
   const dispatch = useDispatch()
-  // const allFoods = useSelector((state) => state.allFoods)
 
   useEffect(() => {
 
@@ -28,76 +23,67 @@ export default function Detail() {
       })
   }, []);
 
-  function handleSubmit(e) {
-    e.preventDefault();
-    dispatch(postFood(setfood))
-    alert('Tu comentario se envio correctamente')
-  }
-  function handleChange(e) {
-    setInputForm({
-      ...inputForm,
-      [e.target.name]: e.target.value
-    })
-  }
 
   return (
-
-    <div className="center">
-      <div className="card green mb-[1em]">
-        <div className="additional">
-          <div className="user-card">
-            <img className="imgproduct" src={food.image} alt="product image" />
-            <div className="points center">${food.price}</div>
-          </div>
-          <div className="more-info">
-            <h1>{food.name}</h1>
-            <div className="coords">
-              <span>
-                {food.description}
-              </span>
+    <div>
+      <div className="center">
+        <div className="card green mb-[1em]">
+          <div className="additional">
+            <div className="user-card">
+              <img className="imgproduct" src={food.image} alt="product image" />
+              <div className="points center">${food.price}</div>
             </div>
-            <div className="stats">
-              <div>
-                <button onClick={()=>dispatch(cartAdd(food))} className="buttonpay">añadir</button>
+            <div className="more-info">
+              <h1>{food.name}</h1>
+              <div className="coords">
+                <span>
+                  {food.description}
+                </span>
+              </div>
+              <div className="stats">
+                <div>
+                  <button onClick={() => dispatch(cartAdd(food))} className="buttonpay">añadir</button>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-        <div className="general">
-          <h1>{food.name}</h1>
-          <p>
-            {food.description}
-          </p>
-          <span className="more">Mouse over the card for more info</span>
+          <div className="general">
+            <h1>{food.name}</h1>
+            <p>
+              {food.description}
+            </p>
+            <span className="more">Mouse over the card for more info</span>
+          </div>
         </div>
       </div>
-<<<<<<< HEAD
-=======
-      <div className="content-star mb-[10em]">
-        {[...Array(5)].map((star, i) => {
-          const ratingValue = i + i;
+      
+      <form className="container-star">
+        <div className="star-widget">
+          <input type="radio" name="rate" id="rate-5" />
+          <label htmlFor="rate-5" ><FaStar /></label>
+          <input type="radio" name="rate" id="rate-4" />
+          <label htmlFor="rate-4" ><FaStar /></label>
+          <input type="radio" name="rate" id="rate-3" />
+          <label htmlFor="rate-3" ><FaStar /></label>
+          <input type="radio" name="rate" id="rate-2" />
+          <label htmlFor="rate-2" ><FaStar /></label>
+          <input type="radio" name="rate" id="rate-1" />
+          <label htmlFor="rate-1"><FaStar /></label>
 
-          return (
-            <label key={i}>
-              <input
-                type="radio"
-                name="rating"
-                value={food.review}
-                onClick={() => setRating(ratingValue)}
-              />
-              <FaStar
-                className="star"
-                color={ratingValue <= (hover || rating) ? "#ffc107" : "#e4e5e9"}
-                size={35}
-                onMouseEnter={() => setHover(ratingValue)}
-                onMouseLeave={() => setHover(null)}
-              />
+          <header></header>
+          <div className="textarea">
+            <textarea cols="30" placeholder="Describe que te parecio..."></textarea>
+          </div>
+          <div className="btn">
+            <button type="submit">Enviar</button>
+          </div>
 
-            </label>
-          );
-        })}
-      </div>
->>>>>>> a30ca19d3cc2ba06335f043fb972fc751293006f
+
+        </div>
+
+      </form>
+
     </div>
+
   );
 }
