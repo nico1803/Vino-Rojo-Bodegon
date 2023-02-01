@@ -11,12 +11,13 @@ import ShoppingCart from './components/Cart-Components/ShoppingCart'
 import Forgetpassword from './components/ForgerPassword';
 import Aboutus from './components/Aboutus';
 
-
 function App() {
   return (<>
     <Navbar/>
       <Routes>
+        
         <Route exact path='/login' element={<Login/>}/>
+
         <Route path='/' element={<Home/>}/>
 
         <Route path='/detail/:id' element={<Detail/>}/>
@@ -32,6 +33,7 @@ function App() {
         <Route path='/forgetpassword' element={<Forgetpassword/>}/>
 
         <Route path='/aboutus' element={<Aboutus/>}/>
+
       </Routes>
     <Footer/>
   </>);

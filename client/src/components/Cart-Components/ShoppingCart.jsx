@@ -18,7 +18,7 @@ export default function ShoppingCart() {
 
       
 
-      <div className='bg-[#0e12df] rounded-lg m-3 p-3'>
+      <div className='bg-[#282c34] rounded-lg m-3 p-3'>
 
         <div>
           <span>
@@ -27,36 +27,44 @@ export default function ShoppingCart() {
       </div>
 
         {carro.cart.map((el, id) => {return (
-          <div className='rounded-lg bg-[#e91111]	relative m-[10px]'>
+          <div className='rounded-lg relative m-[10px]'>
 
             <div className=''>
               <CardCarrito food={el} key={id} />
             </div>
 
 
-            <div className='absolute bottom-[15px] left-[600px] z-50 bg-[#971b1b] p-[5px] rounded-lg'>
-              <button className='flex text-xl text-white' onClick={()=>dispatch(cartRemove(el._id))}>Remover Plato</button>
+            <div className='absolute bottom-[15px] left-[600px] z-50 bg-[#971b1b] hover:bg-[#d61313] p-[5px] rounded-lg'>
+              <button className='flex text-s text-center text-[#fff]' onClick={()=>dispatch(cartRemove(el._id))}>Remover Plato</button>
             </div>
 
             <div className='absolute bottom-[10px] left-[400px] z-50'>
-              <img className='w-[40px] h-[40px] cursor-pointer' src={Plus} alt="+" onClick={()=>dispatch(cartUp(id))}/>
+              <img className='w-[40px] h-[40px] cursor-pointer' src={Plus} alt="Plus.png" onClick={()=>dispatch(cartUp(id))}/>
             </div>
 
             <div className='absolute bottom-[10px] left-[500px] z-50'>
-              <img className='w-[40px] h-[40px] cursor-pointer' src={Minus} alt="-" onClick={()=>dispatch(cartDown(id))}/>
+              <img className='w-[40px] h-[40px] cursor-pointer' src={Minus} alt="Minus.Png" onClick={()=>dispatch(cartDown(id))}/>
             </div>
 
           </div>)})
         }
 
-        <Link to={"/"}>
-          <button className='text-white'>Seguir Comprando</button>
-        </Link>
+        <div className='flex p-[5px] bg-[#282c34] flex justify-between'>
+          <Link to={"/"}>
+            <button className='text-white bg-[#614C3C] hover:bg-[#271e18] p-[5px] rounded-lg'>Seguir Comprando</button>
+          </Link>
+        
+          <div className='flex'>
+            
+            <div className='w-[150px]'>
+              <p className='text-white'>Total: {}</p>
+            </div>
 
-        <p>Total: {}</p>
+            <button className='text-white bg-[#614C3C] hover:bg-[#271e18] p-[5px] rounded-lg font-bold'>Finalizar compra</button>
 
-        <button className='text-white'>Finalizar compra</button>
+          </div>
 
+        </div>
       </div>
 
     </div>
