@@ -82,7 +82,7 @@ router.get('/customers', async (req, res) => {
 //     res.send(error);
 //   }
 // });
-/////// ------->
+/////// ------>
 
 // router.post('/email', async (req, res) => {
 //   const { email } = req.body;

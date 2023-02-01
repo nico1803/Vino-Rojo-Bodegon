@@ -92,7 +92,7 @@ const emailValidation = async (email) => {
 //     } else {
 //         return true;
 //     }
-// };
+// }; 
 const deleteCustomer = async (id) => {
     return await Customer.findByIdAndDelete(id);
 };
