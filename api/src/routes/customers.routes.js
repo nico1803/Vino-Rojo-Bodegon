@@ -10,7 +10,7 @@ const {
   updateCart,
 } = require('../controllers/index');
 const bcryp = require('bcryptjs');
-const { generatorToken } = require('../auth/auth');
+const { generatorToken, verifyToken } = require('../auth/auth');
 
 const router = Router();
 
@@ -168,5 +168,14 @@ router.put('/updateCart/:id', async (req, res) => {
     res.send(error)
   }
 })
+
+router.get('/verifyAdmin', verifyToken, async (req, res) => {
+  const token = req.headers.authorization;
+  const decoded = jwt.verify(token, process.env.SECRET_KEY);
+  if(decoded.user.admin === true) {
+    return res.send('Este user es admin')
+  }
+  return res.status(400).send('No tienes los permisos necesarios')
+});
 
 module.exports = router;
