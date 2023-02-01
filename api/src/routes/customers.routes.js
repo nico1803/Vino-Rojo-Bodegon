@@ -7,6 +7,7 @@ const {
   deleteCustomer,
   updateCustomer,
   findCustomerByEmail,
+  updateCart,
 } = require('../controllers/index');
 const bcryp = require('bcryptjs');
 const { generatorToken } = require('../auth/auth');
@@ -81,7 +82,7 @@ router.get('/customers', async (req, res) => {
 //     res.send(error);
 //   }
 // });
-/////// ------->
+/////// ------>
 
 // router.post('/email', async (req, res) => {
 //   const { email } = req.body;
@@ -155,5 +156,17 @@ router.get('/sensibleInformation/:email', tokenValidation, (req, res) => {
     debit_card_number: '1244 1234 1234 1234',
   });
 });
+
+// RUTAS PARA EL CART 
+router.put('/updateCart/:id', async (req, res) => {
+  const {id} = req.params;
+  const {cart, numberCart} = req.body; // --- id: customer._id, cart: [{id, name, image, price}]
+  try {
+    await updateCart(id, cart, numberCart);
+    return res.status(200).send('El carrito fue actualizado')
+  } catch (error) {
+    res.send(error)
+  }
+})
 
 module.exports = router;
