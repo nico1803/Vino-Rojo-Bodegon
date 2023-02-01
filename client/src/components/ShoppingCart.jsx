@@ -15,7 +15,7 @@ export default function ShoppingCart() {
     
     <button className='text-6xl' onClick={()=>dispatch(cartUp(id))}>+</button>
     <CardCarrito food={el} key={id} />
-    <button className='flex text-xl text-red-600' onClick={()=>dispatch(cartRemove(el._id))}>X ELIMIAR CARD X</button>
+    <button className='flex text-xl text-red-600' onClick={()=>dispatch(cartRemove(el.id))}>X ELIMIAR CARD X</button>
     <button className='text-6xl' onClick={()=>dispatch(cartDown(id))}>-</button><br/>
     
     </div>)})}
