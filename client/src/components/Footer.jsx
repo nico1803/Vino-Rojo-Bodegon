@@ -26,6 +26,10 @@ export default function Footer () {
                     <li>
                         <a className='text-white-400 hover:text-red-400 duration-300 text-md cursor-pointer leading-6' 
                         href=""><h1 className='mb-1 font-semibold'>SOBRE NOSOTROS</h1></a>
+                        <span className='flex'>
+                            <button className="bg-red-400 hover:bg-red-500 duration-300 px-2 py-2 mt-5 rounded-md text-white md:w-auto w-full" >Admin Dashboard</button>
+                        </span>
+                        
                     </li>
                     <li>
                         <a className='text-white-400 hover:text-red-400 duration-300 text-md cursor-pointer leading-6' 
@@ -42,6 +46,7 @@ export default function Footer () {
                     </li>
                 </ul>
             </div>
+            
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 text-center pt-2 text-gray-400 text-sm pb-8">
                 <span>© 2023. All rights reserved.</span>
                 <a className='flex justify-end items-center' href="https://www.instagram.com/vino.rojo.bodegon/"><AiOutlineInstagram className='inline-flex items-center w-[1.6em] h-[1.6em] rounded-full p-1 bg-gray-700 text-xl hover:text-gray-100 hover:bg-red-500 duration-300'/><span className='p-1 text-md'>Instagram</span></a>
