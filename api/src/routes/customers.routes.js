@@ -160,7 +160,7 @@ router.get('/sensibleInformation/:email', tokenValidation, (req, res) => {
 // RUTAS PARA EL CART 
 router.put('/updateCart/:id', async (req, res) => {
   const {id} = req.params;
-  const {cart, numberCart} = req.body; // --- id: customer._id, cart: [{id, name, image, price}] 
+  const {cart, numberCart} = req.body; // --- id: customer._id, cart: [{id, name, image, price}]
   try {
     await updateCart(id, cart, numberCart);
     return res.status(200).send('El carrito fue actualizado')
