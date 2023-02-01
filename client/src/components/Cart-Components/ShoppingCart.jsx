@@ -13,7 +13,7 @@ export default function ShoppingCart() {
   const dispatch = useDispatch();
   const carro = useSelector((state)=> state);
 
-
+  let price = carro.cart.map(e=>e.price*e.quantity).reduce((a,current)=>a+current,0)
 
   if (!carro?.cart.length) return (
     <div className='bg-[#282c34] rounded-lg m-3 p-3'>
@@ -51,7 +51,7 @@ export default function ShoppingCart() {
             <CardCarrito food={el} key={id} />
 
             <div className='absolute bottom-[15px] left-[600px] z-50 bg-[#971b1b] hover:bg-[#d61313] p-[5px] rounded-lg'>
-              <button className='flex text-s text-center text-[#fff]' onClick={()=>dispatch(cartRemove(el._id))}>Remover Plato</button>
+              <button className='flex text-s text-center text-[#fff]' onClick={()=>dispatch(cartRemove(el.id))}>Remover Plato</button>
             </div>
 
             <div className='absolute bottom-[10px] left-[400px] z-50'>
@@ -73,7 +73,7 @@ export default function ShoppingCart() {
           <div className='flex'>
             
             <div className='w-[150px]'>
-              <p className='text-black bg-white rounded-full p-[5px] m-[5px]'>Total: ${}</p>
+              <p className='text-black bg-white rounded-full p-[5px] m-[5px]'>Total: ${price}</p>
             </div>
 
             <button className='text-white bg-[#614C3C] hover:bg-[#271e18] p-[5px] rounded-lg font-bold'>Finalizar compra</button>

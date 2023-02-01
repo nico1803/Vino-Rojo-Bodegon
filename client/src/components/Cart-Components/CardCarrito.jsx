@@ -5,7 +5,6 @@ import { useDispatch } from 'react-redux';
 
 //name, image, description, price, review, type, _id
 export default function CardCarrito({food}) {
-    console.log(food);
     return (
                 
         <div className="flex bg-white rounded-lg" >
