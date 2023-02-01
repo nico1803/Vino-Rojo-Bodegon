@@ -21,7 +21,7 @@ const schema = mongoose.Schema({
         type: 'Array' // [{id, name, image, price, 3}, {}]
     },
     numberCart: {
-        type: 'Number' // 2
+        type: 'Number'// 2
     },
     timestamp:{
         type: 'Date',
