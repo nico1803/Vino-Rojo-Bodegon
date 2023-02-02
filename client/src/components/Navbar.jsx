@@ -11,56 +11,6 @@ export default function Navbar() {
 
   return (
 
-<<<<<<< HEAD
-        <div className="flex items-center">
-          <Link to="/">
-              <img className="w-[50px] rounded-full mx-[10px]" src={logoImg} alt="Logo image" />
-          </Link>
-        </div>
-
-        <div className="flex justify-end w-[1750px]">
-
-          <span className='flex'>
-            <Link to={"/admin"}>
-              <button className="bg-red-400 hover:bg-red-500 duration-300 px-2 py-2 mt-5 rounded-md text-white md:w-auto w-full" >Admin Dashboard</button>
-            </Link>
-          </span>
-
-          <div className="hover:bg-[#271e18]">
-            <Link to={"/aboutus"}>
-              <div className=" w-[150px] h-[70px] text-center text-[#fff] block py-[18px]">
-                <h3 className="">Nosotros</h3>
-              </div>
-            </Link>
-          </div>
-
-          <div className="hover:bg-[#271e18]">
-            <Link to={null}>
-              <div className="w-[150px] h-[70px] text-center text-[#fff] block py-[18px]">
-                <h3>Servicios</h3>
-              </div>
-            </Link>
-          </div>
-
-          <div className=" hover:bg-[#271e18]">
-            <Link to={"/contact"}>
-              <div className="w-[150px] h-[70px] text-center text-[#fff] block py-[18px]">
-                <h3>Contacto</h3>
-              </div>
-            </Link>
-          </div>
-
-          <div className="hover:bg-[#271e18]">
-            <Link to={"/cart"}>
-              <h3 className="w-[150px] h-[70px] text-center text-[#fff] block py-[18px]">Carrito</h3>
-            </Link>
-          </div>
-
-            <div className="relative inline-block h-[70px] w-[70px] group">
-
-              <button className="p-[16px] cursor-pointer">
-                <img className="w-[50px] flex items-center rounded-[12px]" src={UserPhoto} />
-=======
     <nav className="w-full bg-gray-900 shadow text-white">
       <div className="justify-between px-4 mx-auto lg:max-w-7xl md:items-center md:flex md:px-8"> 
         <div>
@@ -98,7 +48,6 @@ export default function Navbar() {
                                   />
                             </svg>
                                 )}
->>>>>>> c56cefdfbab5c59545eae5a4d9600b8939acc4df
               </button>
             </div>
           </div>
