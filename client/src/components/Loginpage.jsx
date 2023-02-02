@@ -66,25 +66,34 @@ async function handleSubmit(e) {
         });
       } else if(ok && status !==400){
         
-        //guardar token en local storage
+        //guardar token en la local storage
         console.log("token -->", token)
         localStorage.setItem('token', token)
-        //incluir el token usando axios
+
+       // traer el token y guardarlo en una variable
+       const tokenFront = localStorage.getItem("token", token)
+     
+      const config ={
+        headers:{
+          authorization: tokenFront,
+        }
+      }
+      console.log(config)
+      
+      //ruta de prueba para enviar el token
+      const apiServer = await axios(`http://localhost:3001/login/sensibleInformation/${formData.email}`,config);
+      const response= apiServer.data;
+      console.log(response)
+
         
-        const axiosToken = axios.defaults.headers.common["authorization"] = localStorage.getItem("token", token);
-        console.log(axiosToken);
-        console.log( axios.defaults.headers.common)
+        
         swal("¡GENIAL!", "Disfruta  nuetra pagina!", "success") && history("/")
       }
-
-
-
     
     } catch (error) {
-      console.log(error.response.data.message)
+      console.log(error.response.data)
     }
-    
- 
+
     
   }
 

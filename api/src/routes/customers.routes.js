@@ -14,6 +14,29 @@ const { generatorToken, verifyToken } = require('../auth/auth');
 
 const router = Router();
 
+
+//Middleware
+const tokenValidation = (req, res, next) => {
+  if (!req.headers.authorization) {
+    return res
+      .status(400)
+      .send('You must provide a token on Authorization header');
+  }
+  const { id, email } = jwt.verify(
+    req.headers.authorization,
+    process.env.SECRET_KEY
+  );
+  const emailIsAuthenticated = email === req.params.email;
+  console.log(emailIsAuthenticated)
+  if (emailIsAuthenticated) return next();
+  return res.status(401).send({
+    ok: false,
+    message: 'You are not authorized to access this information.',
+  });
+};
+
+
+
 //creacion o registro de customers
 router.post('/', async (req, res) => {
   const { name, email, password } = req.body;
@@ -23,7 +46,7 @@ router.post('/', async (req, res) => {
       await createCustomer(name, email, password);
       res.status(200).json({ status: 200, smg: 'Usuario creado' });
     } else {
-      res.status(400).json({ status: 400, smg: 'este correo ya existe' });
+      res.status(400).json({ status: 400, smg: 'Este correo ya existe' });
     }
   } catch (error) {
     res.status(200).json({ status: 400, error });
@@ -132,25 +155,8 @@ router.put('/:id', async (req, res) => {
   }
 });
 
-const tokenValidation = (req, res, next) => {
-  if (!req.headers.authorization) {
-    return res
-      .status(400)
-      .send('You must provide a token on Authorization header');
-  }
-  const { id, email } = jwt.verify(
-    req.headers.authorization,
-    process.env.SECRET_KEY
-  );
-  const emailIsAuthenticated = email === req.params.email;
-  if (emailIsAuthenticated) return next();
-  return res.status(401).send({
-    ok: false,
-    message: 'You are not authorized to access this information.',
-  });
-};
 
-router.get('/sensibleInformation/:email', tokenValidation, (req, res) => {
+router.get('/sensibleInformation/:email', verifyToken, (req, res) => {
   return res.send({
     user: req.params.email,
     debit_card_number: '1244 1234 1234 1234',
