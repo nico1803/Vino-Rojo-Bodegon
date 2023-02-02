@@ -69,7 +69,7 @@ router.post('/signin', async (req, res) => {
       if (comparePassword) {
         const token = generatorToken({ id: user._id, email: user.email, admin: user.admin});
         console.log(token);
-        res.send({status: 200, ok: true, message: 'Welcome our app!', token: token });
+        res.send({status: 200, ok: true, message: 'Welcome our app!', token: token, user });
       } else {
         res.send({status: 400, ok:false, message:'password incorrect'});
       }

@@ -42,7 +42,12 @@ async function handleSubmit(e) {
     e.preventDefault();  
 
     try {
-      const {data: {ok, token, message, status}} = await axios.post("http://localhost:3001/login/signin",formData)
+      const {data: {ok, token,status, user}} = await axios.post("http://localhost:3001/login/signin",formData);
+      
+     const infoStorage= localStorage.setItem("userId", user._id );
+     console.log(infoStorage)
+
+
       if(status === 400){
         swal({
           title: "Oppps...",
