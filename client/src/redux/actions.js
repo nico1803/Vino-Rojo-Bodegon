@@ -17,7 +17,7 @@ export const CART_DOWN = 'CART_DOWN';
 
 export const getFoods = () => {
     return async (dispatch) => {
-        try {      
+        try {
             let data = await axios.get('http://localhost:3001/foods');       
             return dispatch({ type: GET_FOODS, payload: data.data });
         } catch(e) {
@@ -26,13 +26,13 @@ export const getFoods = () => {
     }
 };
 
-export function getUser(user){
-    console.log('user form actions: ', user)
-    return function(dispatch) {
+export function getUser(id){
+    return async function(dispatch) {
+        let user = await axios.get(`http://localhost:3001/login/customers/${id}`)
+        console.log(user.data);
         return dispatch({
             type: 'GET_USER',
-            payload: user
-
+            payload: user.data
         })
     }
 };
@@ -85,13 +85,20 @@ export function getFoodsByName(name){
 }
 
 export function cartAdd(payload){
-    return async function(dispatch){
-        dispatch({
-            type: 'CART_ADD',
-            payload
-        })
+    let id = localStorage.getItem('userId')
+    if(id) {
+        return async function(dispatch){
+            dispatch({
+                type: 'CART_ADD',
+                payload
+            })
+        console.log(payload);
+        await axios.put(`http://localhost:3001/login/updateCart/${id}`, payload)
+        }
+    } else {
+        alert('Tienes que tener tu sesión inciada para agregar cosas al carrito')
+    } 
     }
-}
 
 export function cartRemove(payload){
     return async function(dispatch){

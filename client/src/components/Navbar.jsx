@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import logoImg from "../assets/LogoBarril.png";
 import UserPhoto from "../assets/user.png";
-
+import { getUser } from "../redux/actions";
 
 
 export default function Navbar() {
