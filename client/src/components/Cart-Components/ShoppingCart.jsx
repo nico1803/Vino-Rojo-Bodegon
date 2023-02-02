@@ -22,7 +22,7 @@ export default function ShoppingCart() {
         <p className='text-white'>Tu Carrito esta vacio</p>
       </div>
 
-      <div className='flex p-[5px] bg-[#282c34] flex justify-between'>
+      <div className='flex p-[5px] bg-[#282c34] justify-between'>
           <Link to={"/"}>
             <button className='text-white bg-[#614C3C] hover:bg-[#271e18] p-[5px] rounded-lg'>Ver Menu</button>
           </Link>
@@ -65,7 +65,7 @@ export default function ShoppingCart() {
           </div>)})
         }
 
-        <div className='flex p-[5px] bg-[#282c34] flex justify-between'>
+        <div className='flex p-[5px] bg-[#282c34] justify-between'>
           <Link to={"/"}>
             <button className='text-white bg-[#614C3C] hover:bg-[#271e18] p-[5px] rounded-lg'>Seguir Comprando</button>
           </Link>
