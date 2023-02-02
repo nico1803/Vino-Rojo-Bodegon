@@ -2,9 +2,6 @@
   font-family: 'Lilita One';
   src: url("../fonts/LilitaOne-Regular.ttf");
 }
-html, body {
-background: #FCEEB5;
-}
 
 .center {
 position: absolute;

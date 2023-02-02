@@ -7,10 +7,7 @@ import { useNavigate } from "react-router-dom";
 //import { getUser } from "../redux/actions.js";
 import axios from "axios";
 
-function Login() {
-  //const dispatch = useDispatch();
-
- 
+function Login() { 
   const history = useNavigate();
   //state para guardar el input del email y el password, y si hay mas input se añade a este objeto
   const [error, setError] = useState({});
@@ -20,7 +17,6 @@ function Login() {
   });
   const expRegular = /^[a-zA-Z]{2,15}$/;
   const expcorreo = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$/;
-
 
 ///// HANDLE CHANGE /////
 const handlerChange = (e)=>{
@@ -40,7 +36,6 @@ const handlerChange = (e)=>{
 ///HANDLE SUBMIT////////
 async function handleSubmit(e) {
     e.preventDefault();  
-
     try {
       const {data: {ok, token, message, status}} = await axios.post("http://localhost:3001/login/signin",formData)
       if(status === 400){
@@ -76,19 +71,10 @@ async function handleSubmit(e) {
         console.log( axios.defaults.headers.common)
         swal("¡GENIAL!", "Disfruta  nuetra pagina!", "success") && history("/")
       }
-
-
-
-    
     } catch (error) {
       console.log(error.response.data.message)
     }
-    
- 
-    
   }
-
-
 
   ///// VALIDATION /////
   function validation(formData) {
@@ -125,8 +111,7 @@ async function handleSubmit(e) {
           <div className="col-right">
             <div className="login-form">
               <h2>Inicio de Sesión.</h2>
-
-              <div >
+            <div >
                 <form onSubmit={(e) => handleSubmit(e)}>
                   <p>
                     <label>

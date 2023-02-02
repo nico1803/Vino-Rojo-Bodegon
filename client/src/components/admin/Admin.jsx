@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import Recipescard from '../RecipesCard';
 import CardAdmin from './CardAdmin';
 import { getFoods } from "../../redux/actions";
 
@@ -9,7 +8,6 @@ import { getFoods } from "../../redux/actions";
 export default function Dashboard() {
   let dispatch = useDispatch();
   const carro = useSelector((state)=> state);
-  console.log(carro)
 
   useEffect(()=>{
     dispatch(getFoods())

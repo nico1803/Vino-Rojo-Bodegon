@@ -1,26 +1,22 @@
 import React from 'react';
 import Filters from './Filters';
 import Recipescard from './RecipesCard';
-import ProductoImage from "../assets/LogoBarril.png";
-import { Link } from 'react-router-dom';
 
 
 export default function Home() {
 
   return (
   <>
-    <div>
-      <Filters/>
-    </div>
+    <div className='flex w-full'>
 
-    <div>
-      <Recipescard/>
-    </div>
+      <div className='m-10 rounded-lg w-1/4 flex-auto'>
+        <Filters/>
+      </div>
 
-    <div className="flex justify-center w-[30rem] h-[30rem] m-10 rounded-lg" >
-      <Link to="/detail">
-        <img src={ProductoImage} className='w-[30rem] h-[30rem] rounded-lg'/>
-      </Link>
+      <div className='w-2/3 max-w-2/3 flex-auto'>
+        <Recipescard/>
+      </div>
+
     </div>
   </>)
 };
