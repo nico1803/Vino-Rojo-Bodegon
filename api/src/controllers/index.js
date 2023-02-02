@@ -38,6 +38,10 @@ const findById = async (id) => {
     return await Food.findById(id);
 };
 
+const findUserById = async (id) => {
+    return await Customer.findById(id);
+};
+
 const findByIdDrink = async (id) => {
     return await Drink.findById(id);
 };
@@ -106,5 +110,5 @@ const updateCart = async (id, cart, numberCart) => {
 }; 
 // [{}, {}, {}]
 //  {$push: {cart: {$each: cart}}}
-module.exports = {getFoods, updateCart, deleteCustomer, getCustomers, createFood, findById, deleteFood, 
+module.exports = {getFoods, findUserById, updateCart, deleteCustomer, getCustomers, createFood, findById, deleteFood, 
                   editFood, createCustomer, getByType, emailValidation, updateCustomer, createDrink, getDrinks, findByIdDrink, deleteDrink, editDrink, findCustomerByEmail, };
