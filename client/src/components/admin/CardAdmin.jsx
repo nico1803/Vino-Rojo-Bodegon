@@ -1,10 +1,8 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import{ cartUp, } from '../../redux/actions'
-import { useDispatch } from 'react-redux';
+
 
 //name, image, description, price, review, type, _id
-export default function CardCarrito({food}) {
+export default function CardAdmin({food}) {
     return (
                 
         <div className="flex bg-white rounded-lg" >

@@ -22,9 +22,14 @@ export default function Detail() {
         setfood(value.data)
       })
   }, []);
+  const btn = document.querySelector("button")
+  const post = document.querySelector(".post")
+  const widget = document.querySelector(".star-widget")
+  const editBtn = document.querySelector(".edit")
 
 
   return (
+
     <div>
       <div className="center">
         <div className="card green mb-[1em]">
@@ -56,8 +61,11 @@ export default function Detail() {
           </div>
         </div>
       </div>
-      
-      <form className="container-star">
+      <div className="container-star">
+        <div className="post">
+          <div className="text">Gracias por tu calificacion!</div>
+          <div className="edit" onClick={() => { widget.style.display = "block"; post.style.display = "none"; return false }}>EDIT</div>
+        </div>
         <div className="star-widget">
           <input type="radio" name="rate" id="rate-5" />
           <label htmlFor="rate-5" ><FaStar /></label>
@@ -69,20 +77,18 @@ export default function Detail() {
           <label htmlFor="rate-2" ><FaStar /></label>
           <input type="radio" name="rate" id="rate-1" />
           <label htmlFor="rate-1"><FaStar /></label>
-
-          <header></header>
-          <div className="textarea">
-            <textarea cols="30" placeholder="Describe que te parecio..."></textarea>
-          </div>
-          <div className="btn">
-            <button type="submit">Enviar</button>
-          </div>
-
-
+          <form action="#">
+            <header></header>
+            <div className="textarea">
+              <textarea cols="30" placeholder="Describe que te parecio..."></textarea>
+            </div>
+            <div className="btn">
+              <button type="submit" onClick={() => { widget.style.display = "none"; post.style.display = "block"; return false }}>Enviar</button>
+            </div>
+          </form>
         </div>
 
-      </form>
-
+      </div>
     </div>
 
   );

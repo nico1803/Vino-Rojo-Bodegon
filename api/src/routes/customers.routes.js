@@ -10,7 +10,7 @@ const {
   updateCart,
 } = require('../controllers/index');
 const bcryp = require('bcryptjs');
-const { generatorToken } = require('../auth/auth');
+const { generatorToken, verifyToken } = require('../auth/auth');
 
 const router = Router();
 
@@ -44,7 +44,7 @@ router.post('/signin', async (req, res) => {
       );
       //si la contraseña es correcta genera el token
       if (comparePassword) {
-        const token = generatorToken({ id: user._id, email: user.email });
+        const token = generatorToken({ id: user._id, email: user.email, admin: user.admin});
         console.log(token);
         res.send({status: 200, ok: true, message: 'Welcome our app!', token: token });
       } else {
@@ -112,8 +112,13 @@ router.get('/customers', async (req, res) => {
 // });
 
 router.delete('/:id', async (req, res) => {
+  const token = req.headers.authorization;
+  const decoded = jwt.verify(token, process.env.SECRET_KEY);
   const { id } = req.params;
   try {
+    if(decoded.user.admin === false){
+      return res.status(400)
+    }
     await deleteCustomer(id);
     res.status(200).send('El usuario fue eliminado');
   } catch (error) {
@@ -121,10 +126,15 @@ router.delete('/:id', async (req, res) => {
   }
 });
 
-router.put('/:id', async (req, res) => {
+router.put('/:id', verifyToken, async (req, res) => {
+  const token = req.headers.authorization;
+  const decoded = jwt.verify(token, process.env.SECRET_KEY);
   const { id } = req.params;
   const { name, email, password } = req.body;
   try {
+    if(decoded.user.admin === false){
+      return res.status(400)
+    }
     await updateCustomer(id, name, password, email);
     res.status(200).send('La constraseña fue actualizada');
   } catch (error) {
@@ -168,5 +178,14 @@ router.put('/updateCart/:id', async (req, res) => {
     res.send(error)
   }
 })
+
+router.get('/verifyAdmin', verifyToken, async (req, res) => {
+  const token = req.headers.authorization;
+  const decoded = jwt.verify(token, process.env.SECRET_KEY);
+  if(decoded.user.admin === true) {
+    return res.send('Este user es admin')
+  }
+  return res.status(400).send('No tienes los permisos necesarios')
+});
 
 module.exports = router;
