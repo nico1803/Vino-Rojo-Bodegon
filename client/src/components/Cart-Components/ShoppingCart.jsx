@@ -13,7 +13,7 @@ export default function ShoppingCart() {
   const dispatch = useDispatch();
   const carro = useSelector((state)=> state);
 
-
+  const TotalCost = 0;
 
   if (!carro?.cart.length) return (
     <div className='bg-[#282c34] rounded-lg m-3 p-3'>
@@ -73,7 +73,7 @@ export default function ShoppingCart() {
           <div className='flex'>
             
             <div className='w-[150px]'>
-              <p className='text-black bg-white rounded-full p-[5px] m-[5px]'>Total: ${}</p>
+              <p className='text-black bg-white rounded-full p-[5px] m-[5px]'>Total: ${TotalCost}</p>
             </div>
 
             <button className='text-white bg-[#614C3C] hover:bg-[#271e18] p-[5px] rounded-lg font-bold'>Finalizar compra</button>

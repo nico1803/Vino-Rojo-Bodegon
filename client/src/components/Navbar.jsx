@@ -19,7 +19,7 @@ export default function Navbar() {
 
         <div className="flex justify-end w-[1750px]">
 
-          <div className="bg-[#614C3C] hover:bg-[#271e18]">
+          <div className="hover:bg-[#271e18]">
             <Link to={"/aboutus"}>
               <div className=" w-[150px] h-[70px] text-center text-[#fff] block py-[18px]">
                 <h3 className="">Nosotros</h3>
@@ -27,7 +27,7 @@ export default function Navbar() {
             </Link>
           </div>
 
-          <div className="bg-[#614C3C] hover:bg-[#271e18]">
+          <div className="hover:bg-[#271e18]">
             <Link to={null}>
               <div className="w-[150px] h-[70px] text-center text-[#fff] block py-[18px]">
                 <h3>Servicios</h3>
@@ -35,7 +35,7 @@ export default function Navbar() {
             </Link>
           </div>
 
-          <div className="bg-[#614C3C] hover:bg-[#271e18]">
+          <div className=" hover:bg-[#271e18]">
             <Link to={"/contact"}>
               <div className="w-[150px] h-[70px] text-center text-[#fff] block py-[18px]">
                 <h3>Contacto</h3>
@@ -43,7 +43,7 @@ export default function Navbar() {
             </Link>
           </div>
 
-          <div className="bg-[#614C3C] hover:bg-[#271e18]">
+          <div className="hover:bg-[#271e18]">
             <Link to={"/cart"}>
               <h3 className="w-[150px] h-[70px] text-center text-[#fff] block py-[18px]">Carrito</h3>
             </Link>
