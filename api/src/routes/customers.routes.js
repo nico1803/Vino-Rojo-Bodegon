@@ -57,7 +57,7 @@ router.post('/', async (req, res) => {
 router.post('/signin', async (req, res) => {
   const { email } = req.body;
   try {
-    const user = await findCustomerByEmail(email);
+    const user = await findCustomerByEmail(email); 
     console.log(user);
     //si existe el usuario verifica la contraseña
     if (user) {
