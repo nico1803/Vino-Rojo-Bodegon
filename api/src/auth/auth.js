@@ -11,7 +11,7 @@ const generatorToken =(user)=>{
 const verifyToken = (req, res, next) => {
   const token = req.headers.authorization;
   if (!token) {
-    return res.status(401).json({ ok: false, message: 'Token no proporcionado' });
+    return res.status(401).json({ ok: false, msj: 'Token no proporcionado' });
   } else {
     const decoded = jwt.verify(token, process.env.SECRET_KEY);
     console.log(decoded)
