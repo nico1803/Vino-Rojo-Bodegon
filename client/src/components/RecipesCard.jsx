@@ -22,12 +22,7 @@ export default function Recipescard() {
         <Loading/>
     )
     return(
-<<<<<<< HEAD
         <div className="bg-slate-900 p-3 m-5 rounded-lg">
-=======
-        <div className="mt-5">
-            <div className="bg-slate-900 p-3 m-5 rounded-lg w-2/3 max-w-2/3 float-right">
->>>>>>> c56cefdfbab5c59545eae5a4d9600b8939acc4df
 
             <div className="p-5 ">
                 <SearchBar/>
