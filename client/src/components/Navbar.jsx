@@ -19,6 +19,12 @@ export default function Navbar() {
 
         <div className="flex justify-end w-[1750px]">
 
+          <span className='flex'>
+            <Link to={"/admin"}>
+              <button className="bg-red-400 hover:bg-red-500 duration-300 px-2 py-2 mt-5 rounded-md text-white md:w-auto w-full" >Admin Dashboard</button>
+            </Link>
+          </span>
+
           <div className="hover:bg-[#271e18]">
             <Link to={"/aboutus"}>
               <div className=" w-[150px] h-[70px] text-center text-[#fff] block py-[18px]">

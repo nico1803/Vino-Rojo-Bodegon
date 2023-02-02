@@ -10,8 +10,10 @@ export default function Aboutus() {
             <p className="copy">
               De dia Programador, de noche, también.
             </p>
-            <a href="https://www.linkedin.com/in/sebasti%C3%A1n-grajales-morales-14a277212/" target="blank"><button class="btn1" >LinkedIn</button></a>
-            <a href="https://www.linkedin.com/in/sebasti%C3%A1n-grajales-morales-14a277212/" target="blank"><button class="btn">Github</button></a>
+
+            <a href="https://www.linkedin.com/in/sebasti%C3%A1n-grajales-morales-14a277212/" target="blank"><button className="btn1" >LinkedIn</button></a>
+
+            <a href="https://www.linkedin.com/in/sebasti%C3%A1n-grajales-morales-14a277212/" target="blank"><button className="btn">Github</button></a>
             
           </div>
         </div>
@@ -21,8 +23,8 @@ export default function Aboutus() {
             <p className="copy">
               Description
             </p>
-            <button class="btn1">LinkedIn</button>
-            <button class="btn">Github</button>
+            <button className="btn1">LinkedIn</button>
+            <button className="btn">Github</button>
           </div>
         </div>
         <div className="cardAbout">
@@ -31,8 +33,8 @@ export default function Aboutus() {
             <p className="copy">
               Description
             </p>
-            <button class="btn1">LinkedIn</button>
-            <button class="btn">Github</button>
+            <button className="btn1">LinkedIn</button>
+            <button className="btn">Github</button>
           </div>
         </div>
         <div className="cardAbout">
@@ -41,8 +43,8 @@ export default function Aboutus() {
             <p className="copy">
               Description
             </p>
-            <button class="btn1">LinkedIn</button>
-            <button class="btn">Github</button>
+            <button className="btn1">LinkedIn</button>
+            <button className="btn">Github</button>
           </div>
         </div>
         <div className="cardAbout">
@@ -51,8 +53,8 @@ export default function Aboutus() {
             <p className="copy">
               Description
             </p>
-            <button class="btn1">LinkedIn</button>
-            <button class="btn">Github</button>
+            <button classNamne="btn1">LinkedIn</button>
+            <button className="btn">Github</button>
           </div>
         </div>
         <div className="cardAbout">
@@ -61,8 +63,8 @@ export default function Aboutus() {
             <p className="copy">
               Description
             </p>
-            <button class="btn1">LinkedIn</button>
-            <button class="btn">Github</button>
+            <button className="btn1">LinkedIn</button>
+            <button className="btn">Github</button>
           </div>
         </div>
         <div className="cardAbout">
@@ -71,8 +73,8 @@ export default function Aboutus() {
             <p className="copy">
               Description
             </p>
-            <button class="btn1">LinkedIn</button>
-            <button class="btn">Github</button>
+            <button className="btn1">LinkedIn</button>
+            <button className="btn">Github</button>
           </div>
         </div>
         <div className="cardAbout">
@@ -81,8 +83,8 @@ export default function Aboutus() {
             <p className="copy">
               Description
             </p>
-            <button class="btn1">LinkedIn</button>
-            <button class="btn">Github</button>
+            <button className="btn1">LinkedIn</button>
+            <button className="btn">Github</button>
           </div>
         </div>
       </main>

@@ -21,9 +21,6 @@ const [formData, setFormData]=useState({
 });
 const expcorreo= /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$/
 
-
-
-
 const handlerChange = (e)=>{
   e.preventDefault();
   setFormData({
@@ -38,19 +35,11 @@ const handlerChange = (e)=>{
   );
   setSemail(
     e.target.value = formData.email
-)
-  
-}
-
-
-
+)}
 
 async function handleSubmit(e) {
     e.preventDefault();  
 
-    
- 
-    
   }
 
 
@@ -64,7 +53,6 @@ async function handleSubmit(e) {
     } else if (!expcorreo.test(formData.email)) {
       errors.email = "Esto no parece un email.";
     }
-
     return errors;
   }
 /// CUERPO HTML ////////
@@ -75,8 +63,8 @@ async function handleSubmit(e) {
           <div className="col-right1">
             <div className="login-form1">
               <h2>Restablecimiento.</h2>
-<p>Por favor, diligencie su correo electronico con el cual se registro en VinoRojo Bodegón, para así, restablecer su contraseña.</p>
-<br />
+              <p>Por favor, diligencie su correo electronico con el cual se registro en VinoRojo Bodegón, para así, restablecer su contraseña.</p>
+              <br />
               <div >
                 <form onSubmit={(e) => handleSubmit(e)}>
                   <p>
@@ -107,14 +95,13 @@ async function handleSubmit(e) {
                       Validar{" "}
                     </button>
                   </p>
-
                 </form>
               </div>
             </div>
           </div>
         </div>
       </div>
-      </div>
+    </div>
   );
 }
 export default Forgetpassword;

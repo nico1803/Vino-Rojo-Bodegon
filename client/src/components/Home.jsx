@@ -9,7 +9,7 @@ export default function Home() {
 
   return (
   <>
-   <div>
+    <div>
       <Filters/>
     </div>
 
