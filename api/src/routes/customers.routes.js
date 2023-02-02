@@ -112,8 +112,13 @@ router.get('/customers', async (req, res) => {
 // });
 
 router.delete('/:id', async (req, res) => {
+  const token = req.headers.authorization;
+  const decoded = jwt.verify(token, process.env.SECRET_KEY);
   const { id } = req.params;
   try {
+    if(decoded.user.admin === false){
+      return res.status(400)
+    }
     await deleteCustomer(id);
     res.status(200).send('El usuario fue eliminado');
   } catch (error) {
@@ -121,10 +126,15 @@ router.delete('/:id', async (req, res) => {
   }
 });
 
-router.put('/:id', async (req, res) => {
+router.put('/:id', verifyToken, async (req, res) => {
+  const token = req.headers.authorization;
+  const decoded = jwt.verify(token, process.env.SECRET_KEY);
   const { id } = req.params;
   const { name, email, password } = req.body;
   try {
+    if(decoded.user.admin === false){
+      return res.status(400)
+    }
     await updateCustomer(id, name, password, email);
     res.status(200).send('La constraseña fue actualizada');
   } catch (error) {

@@ -11,7 +11,7 @@ const verifyToken = (req, res, next) => {
   const token = req.headers.authorization;
 
   if (!token) {
-    return res.status(401).json({ ok: false, msj: 'Token no proporcionado' });
+    return res.status(401).json({ status: false, msj: 'Token no proporcionado, no tienes acceso a esta información' });
   } else {
     const decoded = jwt.verify(token, process.env.SECRET_KEY);
     req.userId = decoded.id;
