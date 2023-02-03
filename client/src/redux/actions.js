@@ -18,7 +18,7 @@ export const CART_DOWN = 'CART_DOWN';
 export const getFoods = () => {
     return async (dispatch) => {
         try {
-            let data = await axios.get('http://localhost:3001/foods');       
+            let data = await axios.get('/foods');       
             return dispatch({ type: GET_FOODS, payload: data.data });
         } catch(e) {
             console.error(e);
@@ -28,7 +28,7 @@ export const getFoods = () => {
 
 export function getUser(id){
     return async function(dispatch) {
-        let user = await axios.get(`http://localhost:3001/login/customers/${id}`)
+        let user = await axios.get(`/login/customers/${id}`)
         console.log(user.data);
         return dispatch({
             type: 'GET_USER',
@@ -39,7 +39,7 @@ export function getUser(id){
 export function editFood(id, foodEditada) {
     return async function (dispatch) {
       try {
-        const json = await axios.put(`http://localhost:3001/foods/edit/${id}`, foodEditada);
+        const json = await axios.put(`/foods/edit/${id}`, foodEditada);
         return dispatch({
           type: 'EDIT_FOOD',
           payload: json.data,
@@ -61,7 +61,7 @@ export function postFood(payload){
 
 export function foodTypes(payload) {
     return async function(dispatch){
-        const filtered = await axios.get(`http://localhost:3001/filters/${payload}`)
+        const filtered = await axios.get(`/filters/${payload}`)
         dispatch ({
             type: 'FOOD_BY_TYPE',
             payload: filtered.data
@@ -72,7 +72,7 @@ export function foodTypes(payload) {
 export function getFoodsByName(name){
     return async function(dispatch){
        try{
-        const resu =  await axios.get(`http://localhost:3001/foods?name=${name}`)
+        const resu =  await axios.get(`/foods?name=${name}`)
         dispatch({
             type: "GET_FOODS_BY_NAME",
             payload: resu.data
@@ -93,7 +93,7 @@ export function cartAdd(payload){
                 payload
             })
         console.log(payload);
-        await axios.put(`http://localhost:3001/login/updateCart/${id}`, payload)
+        await axios.put(`/login/updateCart/${id}`, payload)
         }
     } else {
         alert('Tienes que tener tu sesión inciada para agregar cosas al carrito')
