@@ -1,6 +1,6 @@
 const {Router} = require('express');
-const {getFoods, createFood, findById, deleteFood, editFood} = require('../controllers/index');
-
+const {getFoods, createFood, findById, deleteFood, editFood, disableFood, ableFood, getAbleFoods} = require('../controllers/index');
+const jwt = require('jsonwebtoken');
 const router = Router();
 
 // router.get('/', async (req, res) => {
@@ -33,6 +33,15 @@ router.get("/", async (req, res) => {
       res.status(400).json({ error: error.message });
     }
   });
+
+  router.get('/able', async (req, res) => {
+    try {
+      const foods = await getAbleFoods();
+      res.status(200).send(foods);
+    } catch (error) {
+      res.send(error)
+    }
+  })
 
 router.post('/post', async (req, res) => {
     const {name, image, type, description, price} = req.body;
@@ -73,6 +82,26 @@ router.put('/edit/:idFood', async (req, res) => {
     } catch (error) {
         res.status(400).send(error);
     }
+});
+
+router.get('/disableFood/:id', async (req, res) => {
+  const {id} = req.params;
+  try {
+      await disableFood(id);
+      return res.status(200).send('El plato fue desabilitado');
+  } catch (error) {
+    res.send(error)
+  }
+});
+
+router.get('/ableFood/:id', async (req, res) => {
+  const {id} = req.params;
+  try {
+    await ableFood(id);
+    return res.status(200).send('El plato fue habilitado');
+} catch (error) {
+  res.send(error)
+}
 })
 
 module.exports = router;

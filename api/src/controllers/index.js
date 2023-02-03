@@ -12,6 +12,15 @@ const getFoods = async () => {
          console.log(error);
      }     
 };
+
+const getAbleFoods = async () => {
+    try {
+         return await Food.find({available: true}).lean();
+      } catch (error) {
+         console.log(error);
+     }     
+};
+
 const getDrinks = async () => {
     try {
          return await Drink.find().lean();
@@ -131,5 +140,16 @@ const updateCart = async (id, cart, numberCart) => {
 }; 
 // [{}, {}, {}]
 //  {$push: {cart: {$each: cart}}}
-module.exports = {getFoods, findUserById, updateCart, deleteCustomer, getCustomers, createFood, findById, deleteFood, 
+
+const disableFood = async (id) => {
+    return await Food.findByIdAndUpdate(id, {available: false});
+};
+
+const ableFood = async (id) => {
+    return await Food.findByIdAndUpdate(id, {available: true});
+};
+
+
+
+module.exports = {getFoods, findUserById, getAbleFoods, disableFood, ableFood, updateCart, deleteCustomer, getCustomers, createFood, findById, deleteFood, 
                   editFood, createCustomer, getByType, emailValidation, updateCustomer, createDrink, getDrinks, findByIdDrink, deleteDrink, editDrink, findCustomerByEmail,getReview, createReview, findByIdReview };
