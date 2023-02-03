@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { foodTypes, getFoods } from "../redux/actions";
+import { drinksTypes, foodTypes, getDrinks, getFoods } from "../redux/actions";
 
 
 export default function Filters() {
@@ -9,9 +9,11 @@ export default function Filters() {
     function handleClick(event) {
         dispatch(foodTypes(event));
     };
-
-    const handleClear = () => {
-        dispatch(getFoods())
+     function handleDrinks(e){
+        dispatch(drinksTypes(e))
+     };
+    const handleClear = (e) => {
+        dispatch(getDrinks(e))
     }
 
     return (
@@ -81,13 +83,13 @@ export default function Filters() {
             
             
 
-            <div className="hover:bg-rose-900 bg-[#720f10] p-3 rounded-full w-[5rem] h-[5rem] m-5" onClick={null}>
+            <div className="hover:bg-rose-900 bg-[#720f10] p-3 rounded-full w-[5rem] h-[5rem] m-5" onClick={()=> handleDrinks("Vinos")}>
 
                 <span className="text-gray-200 flex justify-center">
                     <i className="ri-goblet-line text-[40px]"></i>
                 </span>
 
-                <span className="text-gray-200 flex justify-center m-2">
+                <span className="text-gray-200 flex justify-center m-2" >
                     Bodega
                 </span>
             </div> 

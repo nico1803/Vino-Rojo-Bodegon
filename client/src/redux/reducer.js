@@ -1,5 +1,5 @@
 
-import { GET_FOODS, GET_USER, POST_FOOD, FOOD_BY_TYPE,EDIT_FOOD, GET_FOODS_BY_NAME, CART_ADD, CART_REMOVE, CART_UP, CART_DOWN } from "./actions";
+import { GET_FOODS, GET_USER, POST_FOOD, FOOD_BY_TYPE,EDIT_FOOD, GET_FOODS_BY_NAME, CART_ADD, CART_REMOVE, CART_UP, CART_DOWN,DRINK_BY_TYPE,GET_DRINKS } from "./actions";
 
 
 const initialState = {
@@ -8,6 +8,7 @@ const initialState = {
     user: [],
     cart: [],
     numberCart: 0,
+    drinks:[]
 }
 
 export default function rootReducer(state = initialState, action) {
@@ -16,6 +17,12 @@ export default function rootReducer(state = initialState, action) {
             return {
                 ...state,
                 allFoods: action.payload,
+            }
+        }
+        case GET_DRINKS: {
+            return {
+                ...state,
+                drinks: action.payload,
             }
         }
         case GET_FOODS_BY_NAME:
@@ -38,6 +45,12 @@ export default function rootReducer(state = initialState, action) {
             return {
                 ...state,
                 allFoods: action.payload
+            }
+        }
+        case DRINK_BY_TYPE: {
+            return {
+                ...state,
+                drinks: action.payload
             }
         }
         case EDIT_FOOD:

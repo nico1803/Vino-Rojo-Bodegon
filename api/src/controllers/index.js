@@ -106,7 +106,10 @@ const findCustomerByEmail = async(email)=>{
 const getByType = async (type) => {
     return await Food.find({type: type}).lean();
 }
-
+//traer bebidas x type
+const getDrinkByType = async (type) => {
+    return await Drink.find({type: type}).lean();
+}
 const getCustomers = async () => {
     return await Customer.find().lean();
 };
@@ -152,4 +155,4 @@ const ableFood = async (id) => {
 
 
 module.exports = {getFoods, findUserById, getAbleFoods, disableFood, ableFood, updateCart, deleteCustomer, getCustomers, createFood, findById, deleteFood, 
-                  editFood, createCustomer, getByType, emailValidation, updateCustomer, createDrink, getDrinks, findByIdDrink, deleteDrink, editDrink, findCustomerByEmail,getReview, createReview, findByIdReview };
+                  editFood, createCustomer, getByType, emailValidation, updateCustomer, createDrink, getDrinks, findByIdDrink, deleteDrink, editDrink,getDrinkByType, findCustomerByEmail,getReview, createReview, findByIdReview };
