@@ -12,6 +12,15 @@ const getFoods = async () => {
          console.log(error);
      }     
 };
+
+const getAbleFoods = async () => {
+    try {
+         return await Food.find({available: true}).lean();
+      } catch (error) {
+         console.log(error);
+     }     
+};
+
 const getDrinks = async () => {
     try {
          return await Drink.find().lean();
@@ -142,5 +151,5 @@ const ableFood = async (id) => {
 
 
 
-module.exports = {getFoods, findUserById, disableFood, ableFood, updateCart, deleteCustomer, getCustomers, createFood, findById, deleteFood, 
+module.exports = {getFoods, findUserById, getAbleFoods, disableFood, ableFood, updateCart, deleteCustomer, getCustomers, createFood, findById, deleteFood, 
                   editFood, createCustomer, getByType, emailValidation, updateCustomer, createDrink, getDrinks, findByIdDrink, deleteDrink, editDrink, findCustomerByEmail,getReview, createReview, findByIdReview };
