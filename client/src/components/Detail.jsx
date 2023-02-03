@@ -61,21 +61,22 @@ export default function Detail() {
           </div>
         </div>
       </div>
-      <div className="container-star">
+      {/* STAR */}
+      <form action="#" className="container-star">
         <div className="post">
           <div className="text">Gracias por tu calificacion!</div>
           <div className="edit" onClick={() => { widget.style.display = "block"; post.style.display = "none"; return false }}>EDIT</div>
         </div>
         <div className="star-widget">
-          <input type="radio" name="rate" id="rate-5" />
+          <input value={5}  type="radio" name="rate" id="rate-5" />
           <label htmlFor="rate-5" ><FaStar /></label>
-          <input type="radio" name="rate" id="rate-4" />
+          <input value={4} type="radio" name="rate" id="rate-4" />
           <label htmlFor="rate-4" ><FaStar /></label>
-          <input type="radio" name="rate" id="rate-3" />
+          <input value={3} type="radio" name="rate" id="rate-3" />
           <label htmlFor="rate-3" ><FaStar /></label>
-          <input type="radio" name="rate" id="rate-2" />
+          <input value={2} type="radio" name="rate" id="rate-2" />
           <label htmlFor="rate-2" ><FaStar /></label>
-          <input type="radio" name="rate" id="rate-1" />
+          <input value={1} type="radio" name="rate" id="rate-1" />
           <label htmlFor="rate-1"><FaStar /></label>
           <form action="#">
             <header></header>
@@ -88,7 +89,7 @@ export default function Detail() {
           </form>
         </div>
 
-      </div>
+      </form>
     </div>
 
   );

@@ -2,6 +2,7 @@
 const Food = require('../models/foods');
 const Drink = require('../models/drinks')
 const Customer = require('../models/customers');
+const Review = require('../models/review')
 const bcrypt = require ('bcryptjs');
 
 const getFoods = async () => {
@@ -17,7 +18,15 @@ const getDrinks = async () => {
       } catch (error) {
          console.log(error);
      }     
-};   
+};
+
+const getReview = async () => {
+    try {
+         return await Review.find().lean();
+      } catch (error) {
+         console.log(error);
+     }     
+}; 
     
 const createFood = async (name, image, type, description, price) => {
     try {
@@ -34,6 +43,14 @@ const createDrink = async (name, image, type, description, price) => {
     }
 };
 
+const createReview = async (score, commentary) => {
+    try {
+        return await Review.create({score, commentary})
+    } catch (error) {
+        console.log(error);
+    }
+};
+
 const findById = async (id) => {
     return await Food.findById(id);
 };
@@ -44,6 +61,10 @@ const findUserById = async (id) => {
 
 const findByIdDrink = async (id) => {
     return await Drink.findById(id);
+};
+
+const findByIdReview = async (id) => {
+    return await Review.findById(id);
 };
 
 
@@ -111,4 +132,4 @@ const updateCart = async (id, cart, numberCart) => {
 // [{}, {}, {}]
 //  {$push: {cart: {$each: cart}}}
 module.exports = {getFoods, findUserById, updateCart, deleteCustomer, getCustomers, createFood, findById, deleteFood, 
-                  editFood, createCustomer, getByType, emailValidation, updateCustomer, createDrink, getDrinks, findByIdDrink, deleteDrink, editDrink, findCustomerByEmail, };
+                  editFood, createCustomer, getByType, emailValidation, updateCustomer, createDrink, getDrinks, findByIdDrink, deleteDrink, editDrink, findCustomerByEmail,getReview, createReview, findByIdReview };
