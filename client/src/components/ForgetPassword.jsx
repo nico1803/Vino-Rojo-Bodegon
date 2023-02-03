@@ -15,11 +15,10 @@ function Forgetpassword() {
 
   //estado para el input email
   const [email,setEmail]=useState("");
-  console.log(email)
   //estado de errores
   const [error, setError] = useState({});
   //envio de correo
-  const [semail, setSemail] = useState("")
+  const [semail,setSemail]=useState("");
   console.log("envio de correo confirmación a:", semail);
 
   //validacion del formato del email
@@ -34,20 +33,55 @@ const handlerChange = (e)=>{
     validation(e.target.value)
   );
   setSemail(
-    e.target.value = email
+    e.target.value
 )};
 
 
 async function handleSubmit(e) {
     e.preventDefault();  
     try {
-      const api= await axios.post("http://localhost:3001/login/forgetpassword",{email})
-      const response= api.data;
-      console.log(response.message)
-      //enviarle el email al usuario
-      history(`/resetPassword/${response.resetToken}`)
+      const {data: {resetToken, message}} = await axios.post("http://localhost:3001/login/forgetpassword",{email})
+      console.log("soy el mensaje:", message)
+   console.log("soy el token:", resetToken)
+      if(message === "Usuario encontrado"){
+        const sendemail = await axios.post(`http://localhost:3001/email/reset/${resetToken}`, {semail})
+       console.log("asadasdasda", sendemail)
+        const datavalidate = await sendemail.data; 
+        console.log("holasoy yo:", datavalidate)
+
+      console.log(datavalidate.status);
+      if(datavalidate.status === 401 || !datavalidate ){
+        console.log("error");
+      }else{
+        console.log("email send!");
+      }
+      }
+      swal("¡LISTO!", "Te hemos enviado un correo para restablecer tu contraseña, recuerda que tienes 20 mins para realizar este cambio.", "success") &&
+      history("/login")
+
+      
     } catch (error) {
-      console.log(error.response.data.message)
+      swal({
+        title: "Oppps...",
+        text: "Parece que este correo no existe, crea una cuenta!",
+        icon: "error",
+        buttons: true,
+        dangerMode: true,
+      })
+      .then((willDelete) => {
+        if (willDelete) {
+          swal("Sigue el paso a paso!", {
+            icon: "warning", 
+          });
+          history("/signup")
+        } else {
+          swal({
+            title:"Ummm...",
+            text:"No podemos hacer cambio de contraseña a una cuenta inexistente o recientemente hiciste una petición de cambio de contraseña.",
+            icon:"error",
+          });
+        }
+      });
     }
   }
 
@@ -90,6 +124,7 @@ async function handleSubmit(e) {
                     {error.email && <p className="errors1">{error.email}</p>}
                   </p>
                   <p>
+                  
                   <button
                       type="submit"
                       disabled={
