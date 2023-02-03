@@ -1,16 +1,12 @@
-import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import logoImg from "../assets/LogoBarril.png";
-import UserPhoto from "../assets/user.png";
-import { getUser } from "../redux/actions";
 
 
 export default function Navbar() {
   const [navbar, setNavbar] = useState(false);
 
   return (
-
     <nav className="w-full bg-gray-900 shadow text-white">
       <div className="justify-between px-4 mx-auto lg:max-w-7xl md:items-center md:flex md:px-8"> 
         <div>
