@@ -23,6 +23,7 @@ export default function Recipescard() {
     )
     return(
         <div className="bg-slate-900 p-3 m-5 rounded-lg">
+
             <div className="p-5 ">
                 <SearchBar/>
             </div>
