@@ -8,9 +8,10 @@ import SignUp from "./components/SignUp"
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import ShoppingCart from './components/Cart-Components/ShoppingCart'
-import Forgetpassword from './components/ForgerPassword';
+import Forgetpassword from './components/ForgetPassword';
 import Aboutus from './components/Aboutus';
 import Admin from './components/admin/Admin';
+import ResetPassword from './components/ResetPassword';
 
 function App() {
   return (<>
@@ -32,6 +33,8 @@ function App() {
         <Route path='/cart' element={<ShoppingCart/>}/>
 
         <Route path='/forgetpassword' element={<Forgetpassword/>}/>
+
+        <Route exact path={"/resetPassword/:resetToken"} element={<ResetPassword/>}/>  
 
         <Route path='/aboutus' element={<Aboutus/>}/>
 

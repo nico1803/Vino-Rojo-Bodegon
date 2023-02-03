@@ -12,45 +12,53 @@ function Forgetpassword() {
 
  
   const history = useNavigate();
-  //state para guardar el input del email y el password, y si hay mas input se añade a este objeto
+
+  //estado para el input email
+  const [email,setEmail]=useState("");
+  console.log(email)
+  //estado de errores
   const [error, setError] = useState({});
+  //envio de correo
   const [semail, setSemail] = useState("")
   console.log("envio de correo confirmación a:", semail);
-const [formData, setFormData]=useState({
-  email:"",
-});
+
+  //validacion del formato del email
 const expcorreo= /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$/
+
 
 const handlerChange = (e)=>{
   e.preventDefault();
-  setFormData({
-    ...formData,
-    [e.target.name]:e.target.value
-  });
+  console.log("funciona")
+  setEmail(e.target.value);
   setError(
-    validation({
-      ...formData,
-      [e.target.name]: e.target.value,
-    })
+    validation(e.target.value)
   );
   setSemail(
-    e.target.value = formData.email
-)}
+    e.target.value = email
+)};
+
 
 async function handleSubmit(e) {
     e.preventDefault();  
-
+    try {
+      const api= await axios.post("http://localhost:3001/login/forgetpassword",{email})
+      const response= api.data;
+      console.log(response.message)
+      //enviarle el email al usuario
+      history(`/resetPassword/${response.resetToken}`)
+    } catch (error) {
+      console.log(error.response.data.message)
+    }
   }
 
 
 
-
   ///// VALIDATION /////
-  function validation(formData) {
+  function validation(email) {
     let errors = {};
-    if (!formData.email) {
+    if (!email) {
       errors.email = "El email es requerido.";
-    } else if (!expcorreo.test(formData.email)) {
+    } else if (!expcorreo.test(email)) {
       errors.email = "Esto no parece un email.";
     }
     return errors;
@@ -73,11 +81,11 @@ async function handleSubmit(e) {
                     </label>
                     <input
                       type="email"
-                      value={formData.email}
+                      value={email}
                       placeholder="Email"
                       required
                       name="email"
-                      onChange={handlerChange}
+                      onChange={(e)=>handlerChange(e)}
                     />
                     {error.email && <p className="errors1">{error.email}</p>}
                   </p>
@@ -85,10 +93,7 @@ async function handleSubmit(e) {
                   <button
                       type="submit"
                       disabled={
-
-                        error.email ||
-                        error.password 
-
+                        error.email  
                       }
                     >
                       {" "}
