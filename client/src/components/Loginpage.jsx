@@ -39,9 +39,11 @@ async function handleSubmit(e) {
     try {
       const {data: {ok, token,status, user}} = await axios.post("http://localhost:3001/login/signin",formData);
       
-     const infoStorage= localStorage.setItem("userId", user._id );
-     console.log(infoStorage)
 
+      // RRRRREEEEEEEVIIIIIISSSSSAAAAAARRRR
+      // const infoStorage= localStorage.setItem("userId", user._id );
+      // console.log("hola, soy  el infoStorage", infoStorage)
+      
 
       if(status === 400){
         swal({
@@ -66,6 +68,7 @@ async function handleSubmit(e) {
         });
       } else if(ok && status !==400){
         
+
         //guardar token en la local storage
         console.log("token -->", token)
         localStorage.setItem('token', token)
@@ -91,7 +94,7 @@ async function handleSubmit(e) {
       }
     
     } catch (error) {
-      console.log(error.response.data)
+      console.log(error.response.data.response)
     }
 
     
