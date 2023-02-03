@@ -130,9 +130,9 @@ const res = await fetch("http://localhost:3001/email", {
             <div className="login-text">
               <h2>¡Gracias por confiar en nosotros!</h2>
               <p>
-                Create your account.
+                Sigue el paso a paso.
                 <br />
-                It's totally free.
+                ¡ Es muy facil !
               </p>
             </div>
           </div>
@@ -195,7 +195,7 @@ const res = await fetch("http://localhost:3001/email", {
                     </label>
                     <input
                       type="password"
-                      placeholder="Repite tu contraseña"
+                      placeholder="Repite tu Contraseña"
                       value={formData.repeatpassword}
                       required
                       name="repeatpassword"
