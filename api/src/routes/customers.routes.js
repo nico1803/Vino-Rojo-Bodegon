@@ -8,9 +8,12 @@ const {
   updateCustomer,
   findCustomerByEmail,
   updateCart,
+  findUserById,
 } = require('../controllers/index');
 const bcryp = require('bcryptjs');
 const { generatorToken, verifyToken } = require('../auth/auth');
+
+
 
 const router = Router();
 
@@ -193,5 +196,70 @@ router.get('/verifyAdmin', verifyToken, async (req, res) => {
   }
   return res.status(400).send('No tienes los permisos necesarios')
 });
+
+//rutas para cambiar la contraseña
+
+//verifica si existe el correo, si existe le genera un nuevo token
+router.post("/forgetpassword", async(req,res)=>{
+  const{email}=req.body;
+   try {
+    const user = await findCustomerByEmail(email)
+    if (!user) {
+      return res
+        .status(400)
+        .json({ message: 'No existe un usuario con ese correo electrónico' });
+    }
+    //genera un nuevo token
+    const resetToken = jwt.sign({ id: user._id }, process.env.RESET_PASSWORD_KEY, { expiresIn: '20m'});
+    console.log(resetToken)
+    //hacemos el proceso de enviar el email
+    //const resetLink = `http://localhost:3000/resetpassword/${resetToken}`;
+    // console.log(resetLink)
+    return res.status(200).json({ message: 'Usuario encontrado', resetToken });
+  } catch (err) {
+    return res
+      .status(500)
+      .json({ message: 'No se pudo restablecer la contraseña' });
+  }
+});
+
+//recibe la nueva contraseña y la hashea
+
+router.post('/resetpassword/:resetToken', async (req, res) => {
+  try {
+    const { resetToken } = req.params;
+    console.log(resetToken);
+    const { password } = req.body;
+    console.log(password);
+    // verifica el token nuevo
+    const decoded = jwt.verify(resetToken, process.env.RESET_PASSWORD_KEY);
+    console.log(decoded);
+    // buscar el user por el id desde el token nuevo
+    const user = await findUserById(decoded.id);
+    console.log(user);
+    if (!user) {
+      return res
+        .status(400)
+        .json({ message: 'No existe un usuario con ese ID' });
+    }
+    // hashea la nueva contraseña
+    const salt = await bcryp.genSalt(10);
+    const hashedPassword = await bcryp.hash(password, salt);
+    // actualiza la contraseña del user
+    user.password = hashedPassword;
+    await user.save();
+    return res.status(200).json({
+      ok: true,
+      message: 'Su contraseña ha sido restablecida con éxito',
+    });
+  } catch (error) {
+    return res.json({
+      ok: false,
+      message: 'No se ha reestablecido su contraseña',
+    });
+  }
+});
+
+
 
 module.exports = router;
