@@ -21,14 +21,14 @@ export default function Aboutus() {
             href="https://github.com/Naanita"
             target="blank"
           >
-            <button className="btn">Github</button>
+            <button className="btn2">Github</button>
           </a>
         </div>
       </div>
       <div className="cardAbout">
         <div className="content">
           <h2 className="titleAbout">Dario Rojas</h2>
-          <p className="copy">Description</p>
+          <p className="copy"></p>
           <a
             href="https://www.linkedin.com/in/dario-rojas-991899251/"
             target="blank"
@@ -40,7 +40,7 @@ export default function Aboutus() {
             href="https://github.com/dariorojas6"
             target="blank"
           >
-            <button className="btn">Github</button>
+            <button className="btn2">Github</button>
           </a>
         </div>
       </div>
@@ -59,7 +59,7 @@ export default function Aboutus() {
             href="https://www.linkedin.com/in/sebasti%C3%A1n-grajales-morales-14a277212/"
             target="blank"
           >
-            <button className="btn">Github</button>
+            <button className="btn2">Github</button>
           </a>
         </div>
       </div>
@@ -78,7 +78,7 @@ export default function Aboutus() {
             href="https://www.linkedin.com/in/sebasti%C3%A1n-grajales-morales-14a277212/"
             target="blank"
           >
-            <button className="btn">Github</button>
+            <button className="btn2">Github</button>
           </a>
         </div>
       </div>
@@ -97,7 +97,7 @@ export default function Aboutus() {
             href="https://www.linkedin.com/in/sebasti%C3%A1n-grajales-morales-14a277212/"
             target="blank"
           >
-            <button className="btn">Github</button>
+            <button className="btn2">Github</button>
           </a>
         </div>
       </div>
@@ -116,7 +116,7 @@ export default function Aboutus() {
             href="https://www.linkedin.com/in/sebasti%C3%A1n-grajales-morales-14a277212/"
             target="blank"
           >
-            <button className="btn">Github</button>
+            <button className="btn2">Github</button>
           </a>
         </div>
       </div>
@@ -135,7 +135,7 @@ export default function Aboutus() {
             href="https://www.linkedin.com/in/sebasti%C3%A1n-grajales-morales-14a277212/"
             target="blank"
           >
-            <button className="btn">Github</button>
+            <button className="btn2">Github</button>
           </a>
         </div>
       </div>
@@ -154,7 +154,7 @@ export default function Aboutus() {
             href="https://www.linkedin.com/in/sebasti%C3%A1n-grajales-morales-14a277212/"
             target="blank"
           >
-            <button className="btn">Github</button>
+            <button className="btn2">Github</button>
           </a>
         </div>
       </div>
