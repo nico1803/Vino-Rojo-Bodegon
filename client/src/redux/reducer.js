@@ -70,7 +70,7 @@ export default function rootReducer(state = initialState, action) {
             }
             else {
                 let check = false;
-                state.cart.map((item, key) => {
+                state.cart.forEach((item, key) => {
                     if (item.id === action.payload._id) {
                         state.cart[key].quantity++;
                         check = true;

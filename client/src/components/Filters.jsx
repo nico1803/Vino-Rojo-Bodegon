@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { drinksTypes, foodTypes, getDrinks, getFoods } from "../redux/actions";
+import { drinksTypes, foodTypes, getDrinks } from "../redux/actions";
 
 
 export default function Filters() {
