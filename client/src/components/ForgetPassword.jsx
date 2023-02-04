@@ -63,23 +63,24 @@ async function handleSubmit(e) {
     } catch (error) {
       swal({
         title: "Oppps...",
-        text: "Parece que este correo no existe, crea una cuenta!",
+        text: "Parece que este correo no existe, crea una cuenta.",
         icon: "error",
         buttons: true,
         dangerMode: true,
       })
       .then((willDelete) => {
         if (willDelete) {
-          swal("Sigue el paso a paso!", {
+          swal("Sigue el paso a paso.", {
             icon: "warning", 
           });
           history("/signup")
         } else {
           swal({
             title:"Ummm...",
-            text:"No podemos hacer cambio de contraseña a una cuenta inexistente o recientemente hiciste una petición de cambio de contraseña.",
+            text:"No podemos hacer cambio de contraseña a una cuenta inexistente.",
             icon:"error",
           });
+
         }
       });
     }

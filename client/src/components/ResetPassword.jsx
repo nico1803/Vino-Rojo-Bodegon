@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import "../styles/forgetpassword.css";
+import swal from "sweetalert";
 const ResetPassword = () => {
   const history = useNavigate();
 
@@ -37,6 +38,7 @@ const ResetPassword = () => {
 
       const response = api.data;
       console.log(response.message);
+      swal("¡SIUUUUUUU!", "tu contraseña ha sido cambiada existosamente.", "success") &&
       history("/login");
     } catch (error) {
       console.log(error.response);
