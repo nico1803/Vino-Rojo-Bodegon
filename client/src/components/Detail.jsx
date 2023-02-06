@@ -15,17 +15,22 @@ export default function Detail() {
   let [food, setfood] = useState([]);
   const dispatch = useDispatch()
 
-  useEffect(() => {
 
+  //Un get aca??? no deberias usar los actions?
+  useEffect(() => {
+    // eslint-disable-next-line
     const food = axios.get(`http://localhost:3001/foods/${id}`)
       .then(function (value) {
         setfood(value.data)
       })
+      // eslint-disable-next-line
   }, []);
-  const btn = document.querySelector("button")
+
+
+  //const btn = document.querySelector("button")
   const post = document.querySelector(".post")
   const widget = document.querySelector(".star-widget")
-  const editBtn = document.querySelector(".edit")
+  //const editBtn = document.querySelector(".edit")
 
 
   return (
@@ -35,7 +40,7 @@ export default function Detail() {
         <div className="card green mb-[1em]">
           <div className="additional">
             <div className="user-card">
-              <img className="imgproduct" src={food.image} alt="product image" />
+              <img className="imgproduct" src={food.image} alt="product_image" />
               <div className="points center">${food.price}</div>
             </div>
             <div className="more-info">

@@ -1,8 +1,7 @@
 import "../styles/login.css";
-import { useState, useEffect } from "react";
+import { useState} from "react";
 import swal from "sweetalert";
 import { useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
 
 
 function SignUp() {

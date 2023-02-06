@@ -3,15 +3,24 @@ import Card from "./Card";
 import SearchBar from "./SearchBar";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getFoods } from "../redux/actions";
+import { getFoods, getDrinks } from "../redux/actions";
 import Loading from "./Loading";
 
 export default function Recipescard() {
     const dispatch = useDispatch();
     const recetas = useSelector((state) => state.allFoods)
+    const bebidas = useSelector((state) => state.drinks)
+
+    const [menu, setMenu] = useState();
+
     useEffect(()=>{
         dispatch(getFoods())
+        dispatch(getDrinks())
     }, [dispatch]);
+
+    useEffect(()=>{
+        setMenu([...recetas, ...bebidas])
+    },[recetas, bebidas])
 
     let [visible, setVisible] = useState(12);
     const showMoreFoods = () => {
@@ -28,8 +37,8 @@ export default function Recipescard() {
                 <SearchBar/>
             </div>
 
-            <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-4 h-[960px] grid-flow-row auto-rows-max overflow-auto scroll-smooth">
-                {recetas?.slice(0, visible).map((el, i) => {return (<Card food={el} key={i} />)})}
+            <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-4 h-[1280px] grid-flow-row auto-rows-max overflow-auto scroll-smooth">
+                {menu?.slice(0, visible).map((el, i) => {return (<Card food={el} key={i} />)})}
             </div>
                 
             <div className="flex justify-center mt-3">
