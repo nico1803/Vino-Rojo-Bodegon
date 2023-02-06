@@ -88,7 +88,7 @@ router.get('/disableFood/:id', async (req, res) => {
   const {id} = req.params;
   try {
       await disableFood(id);
-      return res.status(200).send('El plato fue desabilitado');
+      return res.status(200).send('El plato fue deshabilitado');
   } catch (error) {
     res.send(error)
   }
