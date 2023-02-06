@@ -9,10 +9,10 @@ export default function Filters() {
     function handleClick(event) {
         dispatch(foodTypes(event));
     };
-     function handleDrinks(e){
+     function handleDrinksType(e){
         dispatch(drinksTypes(e))
      };
-    const handleClear = (e) => {
+    const handleDrinks = (e) => {
         dispatch(getDrinks(e))
     }
 
@@ -83,7 +83,7 @@ export default function Filters() {
             
             
 
-            <div className="hover:bg-rose-900 bg-[#720f10] p-3 rounded-full w-[5rem] h-[5rem] m-5" onClick={()=> handleDrinks("Vinos")}>
+            <div className="hover:bg-rose-900 bg-[#720f10] p-3 rounded-full w-[5rem] h-[5rem] m-5" onClick={()=> handleDrinksType("Vinos")}>
 
                 <span className="text-gray-200 flex justify-center">
                     <i className="ri-goblet-line text-[40px]"></i>
@@ -94,7 +94,7 @@ export default function Filters() {
                 </span>
             </div> 
 
-            <div className="hover:bg-rose-900 bg-[#720f10] p-3 rounded-full w-[5rem] h-[5rem] m-5" onClick={() => handleClear()}>
+            <div className="hover:bg-rose-900 bg-[#720f10] p-3 rounded-full w-[5rem] h-[5rem] m-5" onClick={() => handleDrinks()}>
 
                 <span className="text-gray-200 flex justify-center">
                     <i className="ri-filter-off-line text-[40px]"></i>

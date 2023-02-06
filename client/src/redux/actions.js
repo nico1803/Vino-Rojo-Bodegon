@@ -32,7 +32,7 @@ export const getFoods = () => {
 export const getDrinks = () => {
     return async (dispatch) => {
         try {
-            let data = await axios.get('http://localhost:3001/drinks');       
+            let data = await axios.get('/drinks');       
             return dispatch({ type: GET_DRINKS, payload: data.data });
         } catch(e) {
             console.error(e);
@@ -84,7 +84,7 @@ export function foodTypes(payload) {
 };
 export function drinksTypes(payload) {
     return async function(dispatch){
-        const filtered = await axios.get(`/drinks`)
+        const filtered = await axios.get(`/filters/drinks/${payload}`)
         dispatch ({
             type: 'DRINK_BY_TYPE',
             payload: filtered.data
