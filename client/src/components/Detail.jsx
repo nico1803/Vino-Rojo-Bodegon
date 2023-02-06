@@ -39,7 +39,7 @@ export default function Detail() {
               <div className="points center">${food.price}</div>
             </div>
             <div className="more-info">
-              <h1>{food.name}</h1>
+              <h1 className="animate__animated animate__pulse animate__infinite	infinite  animate__delay-3s">{food.name}</h1>
               <div className="coords">
                 <span>
                   {food.description}
@@ -47,7 +47,7 @@ export default function Detail() {
               </div>
               <div className="stats">
                 <div>
-                  <button onClick={() => dispatch(cartAdd(food))} className="buttonpay">añadir</button>
+                  <button onClick={() => dispatch(cartAdd(food))} className="buttonpay animate__animated animate__tada animate__infinite	infinite  animate__delay-2s">añadir</button>
                 </div>
               </div>
             </div>
@@ -62,7 +62,8 @@ export default function Detail() {
         </div>
       </div>
       {/* STAR */}
-      <form action="#" className="container-star">
+      <div className="animate__animated animate__lightSpeedInLeft  animate__delay-2s">
+      <form action="#" className="container-star ">
         <div className="post">
           <div className="text">Gracias por tu calificacion!</div>
           <div className="edit" onClick={() => { widget.style.display = "block"; post.style.display = "none"; return false }}>EDIT</div>
@@ -90,6 +91,7 @@ export default function Detail() {
         </div>
 
       </form>
+      </div>
     </div>
 
   );

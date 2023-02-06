@@ -7,6 +7,7 @@ import { store } from './redux/store';
 import axios from 'axios';
 import './index.css';
 import 'remixicon/fonts/remixicon.css';
+import 'animate.css/animate.min.css';
 
 axios.defaults.baseURL = "http://localhost:3001";
 

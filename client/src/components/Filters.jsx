@@ -9,10 +9,10 @@ export default function Filters() {
     function handleClick(event) {
         dispatch(foodTypes(event));
     };
-     function handleDrinks(e){
+     function handleDrinksType(e){
         dispatch(drinksTypes(e))
      };
-    const handleClear = (e) => {
+    const handleDrinks = (e) => {
         dispatch(getDrinks(e))
     }
 
@@ -22,7 +22,7 @@ export default function Filters() {
         <div className="text-center mt-5">
                 <p className="font-bold text-white">Menu</p>
         </div>
-        <div className="justify-center bg-slate-900 rounded-lg grid grid-cols-2 gap-8 place-items-center h-auto m-5 p-5">
+        <div className="justify-center bg-slate-900 rounded-lg grid grid-cols-2 gap-8 place-items-center h-auto m-5 p-5 animate__animated animate__backInLeft">
 
             
 
@@ -79,11 +79,11 @@ export default function Filters() {
         <div className="text-center mt-5">
             <p className="font-bold text-white">Bebidas</p>
         </div>
-        <div className="justify-center bg-slate-900 rounded-lg grid grid-cols-2 gap-8 place-items-center h-auto m-5 p-5">
+        <div className="justify-center bg-slate-900 rounded-lg grid grid-cols-2 gap-8 place-items-center h-auto m-5 p-5 animate__animated  animate__backInLeft">
             
             
 
-            <div className="hover:bg-rose-900 bg-[#720f10] p-3 rounded-full w-[5rem] h-[5rem] m-5" onClick={()=> handleDrinks("Vinos")}>
+            <div className="hover:bg-rose-900 bg-[#720f10] p-3 rounded-full w-[5rem] h-[5rem] m-5" onClick={()=> handleDrinksType("Vinos")}>
 
                 <span className="text-gray-200 flex justify-center">
                     <i className="ri-goblet-line text-[40px]"></i>
@@ -94,7 +94,7 @@ export default function Filters() {
                 </span>
             </div> 
 
-            <div className="hover:bg-rose-900 bg-[#720f10] p-3 rounded-full w-[5rem] h-[5rem] m-5" onClick={() => handleClear()}>
+            <div className="hover:bg-rose-900 bg-[#720f10] p-3 rounded-full w-[5rem] h-[5rem] m-5" onClick={() => handleDrinks()}>
 
                 <span className="text-gray-200 flex justify-center">
                     <i className="ri-filter-off-line text-[40px]"></i>
@@ -110,7 +110,7 @@ export default function Filters() {
         <div className="text-center mt-5">
             <p className="font-bold text-white">Otros</p>
         </div>
-        <div className="justify-center bg-slate-900 rounded-lg grid grid-cols-2 gap-8 place-items-center h-auto m-5 p-5">
+        <div className="justify-center bg-slate-900 rounded-lg grid grid-cols-2 gap-8 place-items-center h-auto m-5 p-5 animate__animated  animate__backInLeft">
 
             
 
