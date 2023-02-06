@@ -22,7 +22,7 @@ export default function Filters() {
         <div className="text-center mt-5">
                 <p className="font-bold text-white">Menu</p>
         </div>
-        <div className="justify-center bg-slate-900 rounded-lg grid grid-cols-2 gap-8 place-items-center h-auto m-5 p-5">
+        <div className="justify-center bg-slate-900 rounded-lg grid grid-cols-2 gap-8 place-items-center h-auto m-5 p-5 animate__animated animate__backInLeft">
 
             
 
@@ -79,7 +79,7 @@ export default function Filters() {
         <div className="text-center mt-5">
             <p className="font-bold text-white">Bebidas</p>
         </div>
-        <div className="justify-center bg-slate-900 rounded-lg grid grid-cols-2 gap-8 place-items-center h-auto m-5 p-5">
+        <div className="justify-center bg-slate-900 rounded-lg grid grid-cols-2 gap-8 place-items-center h-auto m-5 p-5 animate__animated  animate__backInLeft">
             
             
 
@@ -110,7 +110,7 @@ export default function Filters() {
         <div className="text-center mt-5">
             <p className="font-bold text-white">Otros</p>
         </div>
-        <div className="justify-center bg-slate-900 rounded-lg grid grid-cols-2 gap-8 place-items-center h-auto m-5 p-5">
+        <div className="justify-center bg-slate-900 rounded-lg grid grid-cols-2 gap-8 place-items-center h-auto m-5 p-5 animate__animated  animate__backInLeft">
 
             
 
