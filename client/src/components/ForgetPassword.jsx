@@ -39,11 +39,11 @@ const handlerChange = (e)=>{
 async function handleSubmit(e) {
     e.preventDefault();  
     try {
-      const {data: {resetToken, message}} = await axios.post("https://vino-rojo-bodegon-production.up.railway.app/login/forgetpassword",{email})
+      const {data: {resetToken, message}} = await axios.post(`${(process.env.NODE_ENV === 'development' ? 'http://localhost:3001/' : 'https://vino-rojo-bodegon-production.up.railway.app/')}login/forgetpassword`,{email})
       console.log("soy el mensaje:", message)
    console.log("soy el token:", resetToken)
       if(message === "Usuario encontrado"){
-        const sendemail = await axios.post(`https://vino-rojo-bodegon-production.up.railway.app/email/reset/${resetToken}`, {semail})
+        const sendemail = await axios.post(`${(process.env.NODE_ENV === 'development' ? 'http://localhost:3001/' : 'https://vino-rojo-bodegon-production.up.railway.app/')}email/reset/${resetToken}`, {semail})
        console.log("asadasdasda", sendemail)
         const datavalidate = await sendemail.data; 
         console.log("holasoy yo:", datavalidate)

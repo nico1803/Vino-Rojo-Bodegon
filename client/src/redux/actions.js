@@ -20,7 +20,7 @@ export const GET_ABLE_FOOD = 'GET_ABLE_FOOD';
 export const VERIFY_ADMIN = 'VERIFY_ADMIN';
 
 
-//RUTA RAILWAY: https://vino-rojo-bodegon-production.up.railway.app/foods
+//RUTA RAILWAY: ${(process.env.NODE_ENV === 'development' ? 'http://localhost:3001/' : 'https://vino-rojo-bodegon-production.up.railway.app/')}foods
 
 
 export const getFoods = () => {
@@ -164,7 +164,7 @@ export function verifyAdmin() {
     return async function(dispatch){
         try {
             let token = localStorage.getItem('token')
-            let verify = await axios.get(`https://vino-rojo-bodegon-production.up.railway.app/login/verifyAdmin/${token}`)
+            let verify = await axios.get(`${(process.env.NODE_ENV === 'development' ? 'http://localhost:3001/' : 'https://vino-rojo-bodegon-production.up.railway.app/')}login/verifyAdmin/${token}`)
             if(dispatch){
                 dispatch ({
                     type: 'VERIFY_ADMIN',
