@@ -35,9 +35,11 @@ export default function Detail() {
 
   return (
 
-    <div>
-      <div className="center">
-        <div className="card green mb-[1em]">
+    <div className="">
+
+      {/**Card */}
+      <div className="w-100% m-5 bg-[#f006] flex justify-center">
+        <div className="w-[750px] h-[350px] bg-white shadow-[0_8px_16px_-8px_rgba(0,0,0,0.4)] rounded-[30px] relative text-center hover:w-100% flex block">
           <div className="additional">
             <div className="user-card">
               <img className="imgproduct" src={food.image} alt="product_image" />
@@ -66,6 +68,7 @@ export default function Detail() {
           </div>
         </div>
       </div>
+      
       {/* STAR */}
       <div className="animate__animated animate__lightSpeedInLeft  animate__delay-2s">
       <form action="#" className="container-star ">

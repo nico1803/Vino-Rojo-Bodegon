@@ -33,20 +33,6 @@ export const getFoods = () => {
         }
     }
 };
-<<<<<<< HEAD
-export const getDrinks = () => {
-    return async (dispatch) => {
-        try {
-            let data = await axios.get('http://localhost:3001/drinks');       
-            return dispatch({ type: GET_DRINKS, payload: data.data });
-        } catch(e) {
-            console.error(e);
-        }
-    }
-};
-=======
-
->>>>>>> 8a755eff40aa40aec0d3076b607b2a9c3fd5ba40
 
 export function getUser(id){
     return async function(dispatch) {
