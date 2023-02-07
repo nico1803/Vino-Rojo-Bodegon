@@ -87,7 +87,7 @@ const ResetPassword = () => {
                     )}
                   </p>
                   <p>
-                    <button type="submit" disabled={error.email}>
+                    <button type="submit" disabled={error.password}>
                       {" "}
                       Cambiar{" "}
                     </button>

@@ -5,7 +5,6 @@ const foods = require('./foods.routes');
 const customers = require('./customers.routes');
 const filters = require ('./filters.routes');
 const email = require("./email.routes");
-
 router.use('/foods', foods);
 router.use('/login', customers);
 router.use('/filters', filters);
