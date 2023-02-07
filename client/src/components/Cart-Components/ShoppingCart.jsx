@@ -1,14 +1,33 @@
-import React from 'react';
+import React,{useEffect} from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import CardCarrito from './CardCarrito'
 import {cartRemove, cartUp, cartDown} from '../../redux/actions'
 import Plus from "../../assets/plus.png"
 import Minus from "../../assets/minus.png"
 import { Link } from 'react-router-dom';
-
-
+//import axios from 'axios';
+import { useMercadopago } from 'react-sdk-mercadopago';
 
 export default function ShoppingCart() {
+   //mp                                        //'YOUR_PUBLIC_KEY'
+   const mercadopago = useMercadopago.v2('TEST-2868c785-73d9-4f35-8a0a-45daa2a8efa5', {
+    locale: 'es-AR'
+});
+
+useEffect(() => {
+    if (mercadopago) {
+        mercadopago.checkout({
+            preference: {
+              //YOUR_PREFERENCE_ID
+                id: '1300590179-869c4eae-64e0-4553-94d1-85381770e355'
+            },
+            render: {
+                container: '.cho-container',
+                label: 'Pagar',
+            }
+        })
+    }
+}, [mercadopago]);
 
   const dispatch = useDispatch();
   const carro = useSelector((state)=> state);
@@ -34,6 +53,7 @@ export default function ShoppingCart() {
         </div>
     </div>
   )
+ 
   return (
     <div>
       <div className='bg-[#282c34] rounded-lg m-3 p-3'>
@@ -77,7 +97,10 @@ export default function ShoppingCart() {
             </div>
 
             <button className='text-white bg-[#614C3C] hover:bg-[#271e18] p-[5px] rounded-lg font-bold'>Finalizar compra</button>
-
+             
+             <div>
+               <div class="cho-container" />
+             </div>
           </div>
 
         </div>
