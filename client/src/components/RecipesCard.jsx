@@ -9,7 +9,6 @@ import Loading from "./Loading";
 export default function Recipescard() {
     const dispatch = useDispatch();
     const recetas = useSelector((state) => state.allFoods)
-    const bebidas = useSelector((state) => state.drinks)
 
     const [menu, setMenu] = useState();
 
@@ -19,8 +18,8 @@ export default function Recipescard() {
     }, [dispatch]);
 
     useEffect(()=>{
-        setMenu([...recetas, ...bebidas])
-    },[recetas, bebidas])
+        setMenu([...recetas])
+    },[recetas])
 
     let [visible, setVisible] = useState(12);
     const showMoreFoods = () => {

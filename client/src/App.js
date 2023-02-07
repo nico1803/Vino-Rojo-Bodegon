@@ -12,6 +12,9 @@ import Forgetpassword from './components/ForgetPassword';
 import Aboutus from './components/Aboutus';
 import Admin from './components/admin/Admin';
 import ResetPassword from './components/ResetPassword';
+import ProfileUser from './components/ProfileUser';
+import EditProfile from './components/EditProfile';
+import SobreNos from './components/SobreNos';
 
 function App() {
   return (<>
@@ -30,15 +33,23 @@ function App() {
 
         <Route path='/contact' element={<Contact/>}/>
 
+        <Route path='/aboutus' element={<SobreNos/>}/>
+
         <Route path='/cart' element={<ShoppingCart/>}/>
 
         <Route path='/forgetpassword' element={<Forgetpassword/>}/>
 
         <Route exact path={"/resetPassword/:resetToken"} element={<ResetPassword/>}/>  
 
-        <Route path='/aboutus' element={<Aboutus/>}/>
+        <Route path='/team' element={<Aboutus/>}/>
 
         <Route path='/admin' element={<Admin/>}/>
+
+        <Route path='/profile/' element={<ProfileUser/>}/>
+
+        <Route path='/editprofile' element={<EditProfile/>}/>
+
+
       </Routes>
     <Footer/>
   </>);

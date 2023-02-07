@@ -2,13 +2,10 @@ const {Router} = require('express');
 require('dotenv').config();
 const router = Router();
 const foods = require('./foods.routes');
-const drinks = require('./drinks.routes.js');
 const customers = require('./customers.routes');
 const filters = require ('./filters.routes');
 const email = require("./email.routes");
-
 router.use('/foods', foods);
-router.use('/drinks', drinks);
 router.use('/login', customers);
 router.use('/filters', filters);
 router.use("/email", email);
@@ -33,8 +30,8 @@ router.post("/create_preference", (req, res) => {
 			}
 		],
 		back_urls: {
-			"success": "http://localhost:3000/feedback",
-			"failure": "http://localhost:3000/feedback",
+			"success": "http://localhost:3000/success",
+			"failure": "http://localhost:3000/failure",
 			"pending": ""
 		},
 		auto_return: "approved",
@@ -44,7 +41,7 @@ router.post("/create_preference", (req, res) => {
 
 	mercadopago.preferences.create(preference)
 		.then(function (response) {
-			res.status(200).json({ response });
+			res.status(200).json({ id: response.body.id });
 		}).catch(function (error) {
 			res.status(400).send(error);
 			console.log(error);

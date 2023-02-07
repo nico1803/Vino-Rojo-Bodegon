@@ -1,8 +1,6 @@
 
 const Food = require('../models/foods');
-const Drink = require('../models/drinks')
 const Customer = require('../models/customers');
-const Review = require('../models/review')
 const bcrypt = require ('bcryptjs');
 
 const getFoods = async () => {
@@ -21,22 +19,7 @@ const getAbleFoods = async () => {
      }     
 };
 
-const getDrinks = async () => {
-    try {
-         return await Drink.find().lean();
-      } catch (error) {
-         console.log(error);
-     }     
-};
-
-const getReview = async () => {
-    try {
-         return await Review.find().lean();
-      } catch (error) {
-         console.log(error);
-     }     
-}; 
-    
+ 
 const createFood = async (name, image, type, description, price) => {
     try {
         return await Food.create({name, image, type, description, price})
@@ -44,21 +27,7 @@ const createFood = async (name, image, type, description, price) => {
         console.log(error);
     }
 };
-const createDrink = async (name, image, type, description, price) => {
-    try {
-        return await Drink.create({name, image, type, description, price})
-    } catch (error) {
-        console.log(error);
-    }
-};
 
-const createReview = async (score, commentary) => {
-    try {
-        return await Review.create({score, commentary})
-    } catch (error) {
-        console.log(error);
-    }
-};
 
 const findById = async (id) => {
     return await Food.findById(id);
@@ -68,29 +37,12 @@ const findUserById = async (id) => {
     return await Customer.findById(id);
 };
 
-const findByIdDrink = async (id) => {
-    return await Drink.findById(id);
-};
-
-const findByIdReview = async (id) => {
-    return await Review.findById(id);
-};
-
-
 const deleteFood = async (id) => {
     return await Food.findByIdAndDelete(id);
 };
 
-const deleteDrink = async (id) => {
-    return await Drink.findByIdAndDelete(id);
-};
-
 const editFood = async (id, name, image, description, price, type) => { // 'image': 'hola' 
     return await Food.findByIdAndUpdate(id, {name, price, description, type, image});
-};
-
-const editDrink = async (id, name, image, description, price, type) => { // 'image': 'hola' 
-    return await Drink.findByIdAndUpdate(id, {name, price, description, type, image});
 };
 
 const createCustomer = async (name, email, hashedPassword) => {
@@ -106,10 +58,7 @@ const findCustomerByEmail = async(email)=>{
 const getByType = async (type) => {
     return await Food.find({type: type}).lean();
 }
-//traer bebidas x type
-const getDrinkByType = async (type) => {
-    return await Drink.find({type: type}).lean();
-}
+
 const getCustomers = async () => {
     return await Customer.find().lean();
 };
@@ -155,4 +104,4 @@ const ableFood = async (id) => {
 
 
 module.exports = {getFoods, findUserById, getAbleFoods, disableFood, ableFood, updateCart, deleteCustomer, getCustomers, createFood, findById, deleteFood, 
-                  editFood, createCustomer, getByType, emailValidation, updateCustomer, createDrink, getDrinks, findByIdDrink, deleteDrink, editDrink,getDrinkByType, findCustomerByEmail,getReview, createReview, findByIdReview };
+                  editFood, createCustomer, getByType, emailValidation, updateCustomer, findCustomerByEmail, };

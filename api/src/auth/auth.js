@@ -18,7 +18,7 @@ const verifyToken = (req, res, next) => {
 
     //consulta a la base de datos
     const customer = Customer.findById(decoded.user.id);
-    req.userId = decoded.id;
+    req.userId = decoded.user.id;
     if(!customer){
       return res.status(404).json({ok:false, message:"User not found"})
     }else{

@@ -33,6 +33,7 @@ export const getFoods = () => {
         }
     }
 };
+<<<<<<< HEAD
 export const getDrinks = () => {
     return async (dispatch) => {
         try {
@@ -43,6 +44,9 @@ export const getDrinks = () => {
         }
     }
 };
+=======
+
+>>>>>>> 8a755eff40aa40aec0d3076b607b2a9c3fd5ba40
 
 export function getUser(id){
     return async function(dispatch) {
