@@ -30,7 +30,9 @@ const handlerChange = (e)=>{
       [e.target.name]: e.target.value,
     })
   );
-}
+};
+
+
 
 ///HANDLE SUBMIT////////
 async function handleSubmit(e) {
@@ -66,9 +68,12 @@ async function handleSubmit(e) {
         console.log("token -->", token)
         localStorage.setItem('token', token)
         
-        //guardo el id del usuario en la local storage
-        const infoStorage= localStorage.setItem("userId", user._id );
-        console.log(infoStorage)
+        //guardo la informacion del usuario en la local storage
+        localStorage.setItem("userId", user._id );
+        localStorage.setItem("name",user.name);
+        localStorage.setItem("email",user.email);
+        localStorage.setItem("image",user.image);
+    
 
        // traer el token y guardarlo en una variable
        const tokenFront = localStorage.getItem("token", token)
@@ -179,6 +184,7 @@ async function handleSubmit(e) {
                   <p>
                     <a href="/forgetpassword">Forget Password?</a>
                   </p>
+                 {/*  <button onClick={handlerLoginout}>Cerrar Sesion</button> */}
                 </form>
               </div>
             </div>

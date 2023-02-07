@@ -28,6 +28,9 @@ const schema = mongoose.Schema({
     timestamp:{
         type: 'Date',
         default: new Date(),
+    },
+    image:{
+        type:"String"
     }
 }); 
 
