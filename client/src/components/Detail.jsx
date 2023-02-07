@@ -19,7 +19,7 @@ export default function Detail() {
   //Un get aca??? no deberias usar los actions?
   useEffect(() => {
     // eslint-disable-next-line
-    const food = axios.get(`http://localhost:3001/foods/${id}`)
+    const food = axios.get(`${(process.env.NODE_ENV === 'development' ? 'http://localhost:3001/' : 'https://vino-rojo-bodegon-production.up.railway.app/')}foods/${id}`)
       .then(function (value) {
         setfood(value.data)
       })

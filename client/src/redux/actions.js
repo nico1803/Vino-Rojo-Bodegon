@@ -14,13 +14,13 @@ export const CART_UP = 'CART_UP';
 export const CART_DOWN = 'CART_DOWN';
 export const DRINK_BY_TYPE = 'DRINK_BY_TYPE';
 export const GET_DRINKS = 'GET_DRINKS';
-export const DISABLE_FOOD = 'DISABLE_FOOD';
-export const ABLE_FOOD =  'ABLE_FOOD';
+// export const DISABLE_FOOD = 'DISABLE_FOOD';
+// export const ABLE_FOOD =  'ABLE_FOOD';
 export const GET_ABLE_FOOD = 'GET_ABLE_FOOD';
 export const VERIFY_ADMIN = 'VERIFY_ADMIN';
 
 
-//RUTA RAILWAY: https://vino-rojo-bodegon-production.up.railway.app/foods
+//RUTA RAILWAY: ${(process.env.NODE_ENV === 'development' ? 'http://localhost:3001/' : 'https://vino-rojo-bodegon-production.up.railway.app/')}foods
 
 
 export const getFoods = () => {
@@ -150,28 +150,6 @@ export function cartDown(payload){
     }
 }
 
-export function disableFood(id) {
-    return async function(dispatch){
-        const disabled = await axios.get(`/foods/disableFood/${id}`)
-        console.log(disabled.data);
-        dispatch ({
-            type: 'DISABLE_FOOD',
-            payload: disabled.data
-        })
-    };
-};
-
-export function ableFood(id) {
-    return async function(dispatch){
-        const abled = await axios.get(`/foods/ableFood/${id}`)
-        console.log(abled.data);
-        dispatch ({
-            type: 'ABLE_FOOD',
-            payload: abled.data
-        })
-    };
-};
-
 export function getAbleFood() {
     return async function(dispatch){
         let data = await axios.get('foods/able')
@@ -186,11 +164,13 @@ export function verifyAdmin() {
     return async function(dispatch){
         try {
             let token = localStorage.getItem('token')
-            let verify = await axios.get(`http://localhost:3001/login/verifyAdmin/${token}`)
-            dispatch ({
-                type: 'VERIFY_ADMIN',
-                payload: verify.data
-            })
+            let verify = await axios.get(`${(process.env.NODE_ENV === 'development' ? 'http://localhost:3001/' : 'https://vino-rojo-bodegon-production.up.railway.app/')}login/verifyAdmin/${token}`)
+            if(dispatch){
+                dispatch ({
+                    type: 'VERIFY_ADMIN',
+                    payload: verify.data
+                })
+            }
         } catch (error) {
             console.log(error)
         }
