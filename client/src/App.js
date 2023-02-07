@@ -12,6 +12,8 @@ import Forgetpassword from './components/ForgetPassword';
 import Aboutus from './components/Aboutus';
 import Admin from './components/admin/Admin';
 import ResetPassword from './components/ResetPassword';
+import ProfileUser from './components/ProfileUser';
+import EditProfile from './components/EditProfile';
 
 function App() {
   return (<>
@@ -39,6 +41,12 @@ function App() {
         <Route path='/aboutus' element={<Aboutus/>}/>
 
         <Route path='/admin' element={<Admin/>}/>
+
+        <Route path='/profile/' element={<ProfileUser/>}/>
+
+        <Route path='/editprofile' element={<EditProfile/>}/>
+
+
       </Routes>
     <Footer/>
   </>);

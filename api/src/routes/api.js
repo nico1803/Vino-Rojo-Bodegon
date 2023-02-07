@@ -6,12 +6,12 @@ const customers = require('./customers.routes');
 const filters = require ('./filters.routes');
 const email = require("./email.routes");
 //sdk
-const mercadopago = require("mercadopago");
-// REPLACE WITH YOUR ACCESS TOKEN AVAILABLE IN: https://developers.mercadopago.com/panel
- mercadopago.configure({
-	access_token: "TEST-3414226777276232-020119-07d7de57a2a1d95355c1e25fd9a86aba-1300590179",
-  // vendedor:TEST-3414226777276232-020119-07d7de57a2a1d95355c1e25fd9a86aba-1300590179
-}); 
+// const mercadopago = require("mercadopago");
+// // REPLACE WITH YOUR ACCESS TOKEN AVAILABLE IN: https://developers.mercadopago.com/panel
+//  mercadopago.configure({
+// 	access_token: "TEST-3414226777276232-020119-07d7de57a2a1d95355c1e25fd9a86aba-1300590179",
+//   // vendedor:TEST-3414226777276232-020119-07d7de57a2a1d95355c1e25fd9a86aba-1300590179
+// }); 
 router.use('/foods', foods);
 router.use('/drinks', drinks);
 router.use('/login', customers);
