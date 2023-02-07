@@ -33,7 +33,7 @@ router.get('/:type', async (req, res) => {
     }
 });
 
-router.get('/:type', async (req, res) => {
+router.get('/drinks/:type', async (req, res) => {
     const {type} = req.params;
     try {
         const encontrados = await getDrinkByType(type);

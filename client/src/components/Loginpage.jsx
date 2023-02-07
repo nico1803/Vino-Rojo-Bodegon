@@ -1,6 +1,5 @@
 import "../styles/login.css";
-import { useState, useEffect } from "react";
-import { gapi } from "gapi-script";
+import { useState} from "react";
 import swal from "sweetalert";
 import { useNavigate } from "react-router-dom";
 //import { useDispatch, useSelector } from "react-redux";
@@ -15,7 +14,7 @@ function Login() {
     email: "",
     password: "",
   });
-  const expRegular = /^[a-zA-Z]{2,15}$/;
+  //const expRegular = /^[a-zA-Z]{2,15}$/;
   const expcorreo = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$/;
 
 ///// HANDLE CHANGE /////

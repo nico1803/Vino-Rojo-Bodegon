@@ -101,8 +101,6 @@ const ResetPassword = () => {
     </div>
   );
 };
-{
-  /* <input type="password" value={password} onChange={(e) => handlerChange(e)} />
-{ error.password && <p>{error.password}</p>} */
-}
 export default ResetPassword;
+/* <input type="password" value={password} onChange={(e) => handlerChange(e)} />
+{ error.password && <p>{error.password}</p>} */

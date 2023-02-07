@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { drinksTypes, foodTypes, getDrinks, getFoods } from "../redux/actions";
+import { drinksTypes, foodTypes } from "../redux/actions";
 
 
 export default function Filters() {
@@ -9,12 +9,12 @@ export default function Filters() {
     function handleClick(event) {
         dispatch(foodTypes(event));
     };
-     function handleDrinks(e){
-        dispatch(drinksTypes(e))
-     };
-    const handleClear = (e) => {
-        dispatch(getDrinks(e))
-    }
+
+
+    const buttonCss = "hover:bg-[#c51b1e] bg-[#720f10] p-3 rounded-full w-[5rem] h-[5rem] m-5 "
+    const SelectedButtonCss = "hover:bg-rose-900 bg-[#720f10] p-3 rounded-full w-[5rem] h-[5rem] m-5 border-1 border-white"
+
+    let selected = false;
 
     return (
     <div className="">
@@ -22,11 +22,10 @@ export default function Filters() {
         <div className="text-center mt-5">
                 <p className="font-bold text-white">Menu</p>
         </div>
-        <div className="justify-center bg-slate-900 rounded-lg grid grid-cols-2 gap-8 place-items-center h-auto m-5 p-5">
+        <div className="justify-center bg-slate-900 rounded-lg grid sm:grid-cols-1 md:grid-cols-2 sm:gap-4 md:gap-8 place-items-center h-auto m-5 p-5 animate__animated animate__backInLeft" >
 
-            
 
-            <div className="hover:bg-rose-900 bg-[#720f10] p-3 rounded-full w-[5rem] h-[5rem] m-5" onClick={() => handleClick("Entrada")}>
+            <div className={selected ? SelectedButtonCss : buttonCss} onClick={() => handleClick("Entrada")}>
 
                 <span className="text-gray-200 flex justify-center">
                     <i className="ri-knife-line text-[40px]"></i>
@@ -38,7 +37,7 @@ export default function Filters() {
 
             </div>
 
-            <div className="hover:bg-rose-900 bg-[#720f10] p-3 rounded-full w-[5rem] h-[5rem] m-5" onClick={() => handleClick("Plato Principal")}>
+            <div className={buttonCss} onClick={() => handleClick("Plato Principal")}>
 
                 <span className="text-gray-200 flex justify-center">
                     <i className="ri-restaurant-2-line text-[40px]"></i>
@@ -50,7 +49,7 @@ export default function Filters() {
 
             </div>
 
-            <div className="hover:bg-rose-900 bg-[#720f10] p-3 rounded-full w-[5rem] h-[5rem] m-5" onClick={() => handleClick("Guarnicion")}>
+            <div className={buttonCss} onClick={() => handleClick("Guarnicion")}>
 
                 <span className="text-gray-200 flex justify-center">
                     <i className="ri-seedling-line text-[40px]"></i>
@@ -62,7 +61,7 @@ export default function Filters() {
 
             </div>
 
-            <div className="hover:bg-rose-900 bg-[#720f10] p-3 rounded-full w-[5rem] h-[5rem] m-5" onClick={() => handleClick("Postre")}>
+            <div className={buttonCss} onClick={() => handleClick("Postre")}>
 
                 <span className="text-gray-200 flex justify-center">
                     <i className="ri-trophy-line text-[40px]"></i>
@@ -79,29 +78,62 @@ export default function Filters() {
         <div className="text-center mt-5">
             <p className="font-bold text-white">Bebidas</p>
         </div>
-        <div className="justify-center bg-slate-900 rounded-lg grid grid-cols-2 gap-8 place-items-center h-auto m-5 p-5">
+        <div className="justify-center bg-slate-900 rounded-lg grid sm:grid-cols-1 md:grid-cols-3 sm:gap-2 md:gap-4 place-items-center h-auto m-5 p-5 animate__animated  animate__backInLeft">
             
             
 
-            <div className="hover:bg-rose-900 bg-[#720f10] p-3 rounded-full w-[5rem] h-[5rem] m-5" onClick={()=> handleDrinks("Vinos")}>
+            <div className={buttonCss} onClick={()=> handleClick("Aguas")}>
 
                 <span className="text-gray-200 flex justify-center">
                     <i className="ri-goblet-line text-[40px]"></i>
                 </span>
 
                 <span className="text-gray-200 flex justify-center m-2" >
-                    Bodega
+                    Aguas
                 </span>
-            </div> 
+            </div>
 
-            <div className="hover:bg-rose-900 bg-[#720f10] p-3 rounded-full w-[5rem] h-[5rem] m-5" onClick={() => handleClear()}>
+            <div className={buttonCss} onClick={() => handleClick("Gaseosas")}>
 
                 <span className="text-gray-200 flex justify-center">
-                    <i className="ri-filter-off-line text-[40px]"></i>
+                    <i className="ri-goblet-line text-[40px]"></i>
                 </span>
 
                 <span className="text-gray-200 flex justify-center text-center m-2 leading-[18px]">
-                    Otros
+                    Gaseosas
+                </span>
+            </div>
+
+            <div className={buttonCss} onClick={() => handleClick("Cervezas")}>
+
+                <span className="text-gray-200 flex justify-center">
+                    <i className="ri-goblet-line text-[40px]"></i>
+                </span>
+
+                <span className="text-gray-200 flex justify-center text-center m-2 leading-[18px]">
+                    Cervezas
+                </span>
+            </div>
+
+            <div className={buttonCss} onClick={() => handleClick("Vinos")}>
+
+                <span className="text-gray-200 flex justify-center">
+                    <i className="ri-goblet-line text-[40px]"></i>
+                </span>
+
+                <span className="text-gray-200 flex justify-center text-center m-2 leading-[18px]">
+                    Vinos
+                </span>
+            </div>
+
+            <div className={buttonCss} onClick={() => handleClick("Tragos")}>
+
+                <span className="text-gray-200 flex justify-center">
+                    <i className="ri-goblet-line text-[40px]"></i>
+                </span>
+
+                <span className="text-gray-200 flex justify-center text-center m-2 leading-[18px]">
+                    Tragos
                 </span>
             </div>
             
@@ -110,11 +142,11 @@ export default function Filters() {
         <div className="text-center mt-5">
             <p className="font-bold text-white">Otros</p>
         </div>
-        <div className="justify-center bg-slate-900 rounded-lg grid grid-cols-2 gap-8 place-items-center h-auto m-5 p-5">
+        <div className="justify-center bg-slate-900 rounded-lg grid sm:grid-cols-1 md:grid-cols-2 sm:gap-4 md:gap-8 place-items-center h-auto m-5 p-5 animate__animated  animate__backInLeft">
 
             
 
-            <div className="hover:bg-rose-900 bg-[#720f10] p-3 rounded-full w-[5rem] h-[5rem] m-5" onClick={null}>
+            <div className={buttonCss} onClick={null}>
 
                 <span className="text-gray-200 flex justify-center">
                     <i className="ri-goblet-line text-[40px]"></i>
@@ -125,7 +157,7 @@ export default function Filters() {
                 </span>
             </div> 
 
-            <div className="hover:bg-rose-900 bg-[#720f10] p-3 rounded-full w-[5rem] h-[5rem] m-5" onClick={null}>
+            <div className={buttonCss} onClick={null}>
 
                 <span className="text-gray-200 flex justify-center">
                     <i className="ri-filter-off-line text-[40px]"></i>

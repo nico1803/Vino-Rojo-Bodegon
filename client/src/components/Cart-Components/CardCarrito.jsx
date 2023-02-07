@@ -1,7 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import{ cartUp, } from '../../redux/actions'
-import { useDispatch } from 'react-redux';
 
 //name, image, description, price, review, type, _id
 export default function CardCarrito({food}) {

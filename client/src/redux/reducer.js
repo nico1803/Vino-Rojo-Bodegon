@@ -19,12 +19,6 @@ export default function rootReducer(state = initialState, action) {
                 allFoods: action.payload,
             }
         }
-        case GET_DRINKS: {
-            return {
-                ...state,
-                drinks: action.payload,
-            }
-        }
         case GET_FOODS_BY_NAME:
             return {
                 ...state,
@@ -47,12 +41,6 @@ export default function rootReducer(state = initialState, action) {
                 allFoods: action.payload
             }
         }
-        case DRINK_BY_TYPE: {
-            return {
-                ...state,
-                drinks: action.payload
-            }
-        }
         case EDIT_FOOD:
             return {
                 ...state,
@@ -70,7 +58,7 @@ export default function rootReducer(state = initialState, action) {
             }
             else {
                 let check = false;
-                state.cart.map((item, key) => {
+                state.cart.forEach((item, key) => {
                     if (item.id === action.payload._id) {
                         state.cart[key].quantity++;
                         check = true;

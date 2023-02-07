@@ -15,17 +15,22 @@ export default function Detail() {
   let [food, setfood] = useState([]);
   const dispatch = useDispatch()
 
-  useEffect(() => {
 
+  //Un get aca??? no deberias usar los actions?
+  useEffect(() => {
+    // eslint-disable-next-line
     const food = axios.get(`http://localhost:3001/foods/${id}`)
       .then(function (value) {
         setfood(value.data)
       })
+      // eslint-disable-next-line
   }, []);
-  const btn = document.querySelector("button")
+
+
+  //const btn = document.querySelector("button")
   const post = document.querySelector(".post")
   const widget = document.querySelector(".star-widget")
-  const editBtn = document.querySelector(".edit")
+  //const editBtn = document.querySelector(".edit")
 
 
   return (
@@ -35,11 +40,11 @@ export default function Detail() {
         <div className="card green mb-[1em]">
           <div className="additional">
             <div className="user-card">
-              <img className="imgproduct" src={food.image} alt="product image" />
+              <img className="imgproduct" src={food.image} alt="product_image" />
               <div className="points center">${food.price}</div>
             </div>
             <div className="more-info">
-              <h1>{food.name}</h1>
+              <h1 className="animate__animated animate__pulse animate__infinite	infinite  animate__delay-3s">{food.name}</h1>
               <div className="coords">
                 <span>
                   {food.description}
@@ -47,7 +52,7 @@ export default function Detail() {
               </div>
               <div className="stats">
                 <div>
-                  <button onClick={() => dispatch(cartAdd(food))} className="buttonpay">añadir</button>
+                  <button onClick={() => dispatch(cartAdd(food))} className="buttonpay animate__animated animate__tada animate__infinite	infinite  animate__delay-2s">añadir</button>
                 </div>
               </div>
             </div>
@@ -62,7 +67,8 @@ export default function Detail() {
         </div>
       </div>
       {/* STAR */}
-      <form action="#" className="container-star">
+      <div className="animate__animated animate__lightSpeedInLeft  animate__delay-2s">
+      <form action="#" className="container-star ">
         <div className="post">
           <div className="text">Gracias por tu calificacion!</div>
           <div className="edit" onClick={() => { widget.style.display = "block"; post.style.display = "none"; return false }}>EDIT</div>
@@ -90,6 +96,7 @@ export default function Detail() {
         </div>
 
       </form>
+      </div>
     </div>
 
   );

@@ -14,24 +14,25 @@ export default function Dashboard() {
 }, [dispatch]);
 
   return (<>
-  <div className=''>
-    <h3 className='text-2xl font-black'>ADMIN DASHBOARD</h3>
-  </div>
-  {
+  <div className='b bg-gray-300'>
+    <h3 className='text-2xl p-5 text-center font-black'>ADMIN DASHBOARD</h3>
+    {
         carro.allFoods.map((el, id) => {return (
-          <div className='rounded-lg relative m-[10px] bg-[#971b1b]' key={id}>
+          <div className='rounded-lg relative m-2' key={id}>
 
             <CardAdmin food={el} key={id} />
 
-            <div className='absolute bottom-[15px] left-[600px] z-50 bg-[#971b1b] hover:bg-[#d61313] p-[5px] rounded-lg'>
+            <div className='absolute bottom-[15px] left-[800px] z-50 bg-[#971b1b] hover:bg-[#d61313] p-[5px] rounded-lg'>
               <button className='flex text-s text-center text-[#fff]' >DESACTIVAR PLATO</button>
             </div>
-            <div className='absolute bottom-[15px] left-[400px] z-50 bg-[#971b1b] hover:bg-[#d61313] p-[5px] rounded-lg'>
-              <button className='flex text-s text-center text-[#fff]' >ATIVAR PLATO</button>
+            <div className='absolute bottom-[15px] left-[600px] z-50 bg-[#971b1b] hover:bg-[#d61313] p-[5px] rounded-lg'>
+              <button className='flex text-s text-center text-[#fff]' >ACTIVAR PLATO</button>
             </div>
 
           </div>)})
         }
+  </div>
+  
   
   </>);
 }

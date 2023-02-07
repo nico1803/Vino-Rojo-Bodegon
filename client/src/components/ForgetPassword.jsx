@@ -1,6 +1,5 @@
 import "../styles/forgetpassword.css";
-import { useState, useEffect } from "react";
-import { gapi } from "gapi-script";
+import { useState } from "react";
 import swal from "sweetalert";
 import { useNavigate } from "react-router-dom";
 //import { useDispatch, useSelector } from "react-redux";
