@@ -9,7 +9,7 @@ export default function Footer () {
                     <span className="text-red-400">Vino Rojo</span> Bodegon
                 </h1>
                 <span>© 2023. All rights reserved.</span>
-                <a className='flex justify-end items-center' href="https://www.instagram.com/vino.rojo.bodegon/">
+                <a className='flex justify-end items-center' href="https://www.instagram.com/vino.rojo.bodegon/" target='_blank'>
                     <AiOutlineInstagram className='inline-flex items-center w-[1.6em] h-[1.6em] rounded-full p-1 bg-gray-700 text-xl hover:text-gray-100 hover:bg-red-500 duration-300'/>
                     <span className='p-1 text-md'>Instagram</span>
                 </a>

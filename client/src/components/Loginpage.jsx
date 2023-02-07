@@ -87,7 +87,9 @@ async function handleSubmit(e) {
 
         
         
-        swal("¡GENIAL!", "Disfruta  nuetra pagina!", "success") && history("/")
+      await swal("¡GENIAL!", "Disfruta  nuetra pagina!", "success")
+      history('/') 
+      window.location.reload()
       }
     
     } catch (error) {

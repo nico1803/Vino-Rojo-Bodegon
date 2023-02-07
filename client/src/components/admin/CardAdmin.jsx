@@ -11,9 +11,7 @@ export default function CardAdmin({food}) {
                 <div className="p-6 flex flex-col justify-start leading-normal">
                     <h5 className="text-gray-900 text-xl font-medium mb-2">{food.name}</h5>
 
-                    <p className="text-gray-900 text-s">Precio: ${food.price*food.quantity}</p>
-
-                    <p className="text-gray-400 text-s">Cantidad: {food.quantity}</p>
+                    <p className="text-gray-900 text-s">Precio: ${food.price}</p>
                 </div>
             </div> 
         </div>

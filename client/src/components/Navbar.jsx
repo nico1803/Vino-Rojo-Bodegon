@@ -1,10 +1,36 @@
-import React, { useState } from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import logoImg from "../assets/LogoBarril.png";
+import { verifyAdmin } from "../redux/actions";
 
 
 export default function Navbar() {
   const [navbar, setNavbar] = useState(false);
+  const dispatch = useDispatch();
+
+  const permisos = useSelector((state) => state.token);
+
+  useEffect(()=>{
+    let token = localStorage.getItem('token'); 
+    if (token) {
+    dispatch(verifyAdmin())
+    console.log('adentro')
+    }
+    console.log('afuera')
+    console.log(permisos)
+    
+}, [dispatch]);
+
+  // async function verifyAdmin1(){
+  //   let token = localStorage.getItem('token')
+  //   if(token){
+  //     let verify = await axios.get(`http://localhost:3001/login/verifyAdmin/${token}`)
+  //     console.log(verify)
+  //     console.log(verify.data)
+  //   }
+  // }
 
   return (
     <nav className="w-full bg-gray-900 shadow text-white">
@@ -58,7 +84,7 @@ export default function Navbar() {
                   <li><Link to="/" href={e => {e.preventDefault()}} className="hover:text-gray-200">Home</Link></li>
                   <li><Link to={"/aboutus"} href={e => {e.preventDefault()}} className="hover:text-gray-200">Sobre Nosotros</Link></li>
                   <li><Link to={"/contact"} href={e => {e.preventDefault()}} className="hover:text-gray-200">Contacto</Link></li>
-                  <li><Link to={"/admin"} href={e => {e.preventDefault()}} className="hover:text-gray-200">Admin</Link></li>
+                  {permisos === true ? <li><Link to={"/admin"} href={e => {e.preventDefault()}} onClick={verifyAdmin()} className="hover:text-gray-200">Admin</Link></li> : ''}
                   <Link className="flex items-center hover:text-gray-200 md:pl-10 " to={"/cart"}>
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
