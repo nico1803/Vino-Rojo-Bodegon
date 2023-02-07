@@ -26,6 +26,11 @@ const schema = mongoose.Schema({
          type:'String',
         require: true, 
     },
+    available: {
+        type: 'Boolean',
+        require: true,
+        default: true
+    },
     timestamp:{
         type: 'Date',
         default: new Date(),

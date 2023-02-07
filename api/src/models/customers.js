@@ -15,13 +15,24 @@ const schema = mongoose.Schema({
         require:true,
     },
     admin: {
-        default: false
+        type: "boolean",
+        default: false,
+        require: true
+    },
+    cart: {
+        type: 'Array' // [{id, name, image, price, 3}, {}]
+    },
+    numberCart: {
+        type: 'Number' // 2
     },
     timestamp:{
         type: 'Date',
         default: new Date(),
+    },
+    image:{
+        type:"String"
     }
-});
+}); 
 
 const Customer = mongoose.model('customer', schema);
 module.exports = Customer

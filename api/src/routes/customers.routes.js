@@ -7,11 +7,34 @@ const {
   deleteCustomer,
   updateCustomer,
   findCustomerByEmail,
+  updateCart,
+  findUserById,
 } = require('../controllers/index');
 const bcryp = require('bcryptjs');
-const { generatorToken } = require('../auth/auth');
+const { generatorToken, verifyToken } = require('../auth/auth');
+const Customer = require('../models/customers');
 
 const router = Router();
+
+//Middleware
+const tokenValidation = (req, res, next) => {
+  if (!req.headers.authorization) {
+    return res
+      .status(400)
+      .send('You must provide a token on Authorization header');
+  }
+  const { id, email } = jwt.verify(
+    req.headers.authorization,
+    process.env.SECRET_KEY
+  );
+  const emailIsAuthenticated = email === req.params.email;
+  console.log(emailIsAuthenticated);
+  if (emailIsAuthenticated) return next();
+  return res.status(401).send({
+    ok: false,
+    message: 'You are not authorized to access this information.',
+  });
+};
 
 //creacion o registro de customers
 router.post('/', async (req, res) => {
@@ -20,12 +43,12 @@ router.post('/', async (req, res) => {
     const findCustomer = await findCustomerByEmail(email);
     if (!findCustomer) {
       await createCustomer(name, email, password);
-      res.status(200).json({status:200,smg: 'Usuario creado'});
+      res.status(200).json({ status: 200, smg: 'Usuario creado' });
     } else {
-      res.status(400).json({status:400, smg:"este correo ya existe"})
+      res.status(400).json({ status: 400, smg: 'Este correo ya existe' });
     }
   } catch (error) {
-    res.status(200).json({status:400,error})
+    res.status(200).json({ status: 400, error });
   }
 });
 
@@ -37,17 +60,34 @@ router.post('/signin', async (req, res) => {
     console.log(user);
     //si existe el usuario verifica la contraseña
     if (user) {
-      const comparePassword = bcryp.compare(req.body.password, user.password);
+      const comparePassword = await bcryp.compare(
+        req.body.password,
+        user.password
+      );
       //si la contraseña es correcta genera el token
       if (comparePassword) {
-        const token = generatorToken({id: user._id, email: user.email});
+        const token = generatorToken({
+          id: user._id,
+          email: user.email,
+          admin: user.admin,
+        });
         console.log(token);
-        res.send({ ok: true, message: 'Welcome our app!', token: token });
+        res.send({
+          status: 200,
+          ok: true,
+          message: 'Welcome our app!',
+          token: token,
+          user,
+        });
       } else {
-        res.send('password incorrect');
+        res.send({ status: 400, ok: false, message: 'password incorrect' });
       }
     } else {
-      res.status(400).send('email incorrect or not exist');
+      res.status(400).send({
+        status: 400,
+        ok: false,
+        message: 'email incorrect or not exist',
+      });
     }
   } catch (error) {
     console.log(error);
@@ -78,7 +118,7 @@ router.get('/customers', async (req, res) => {
 //     res.send(error);
 //   }
 // });
-/////// ------->
+/////// ------>
 
 // router.post('/email', async (req, res) => {
 //   const { email } = req.body;
@@ -108,8 +148,13 @@ router.get('/customers', async (req, res) => {
 // });
 
 router.delete('/:id', async (req, res) => {
+  const token = req.headers.authorization;
+  const decoded = jwt.verify(token, process.env.SECRET_KEY);
   const { id } = req.params;
   try {
+    if (decoded.user.admin === false) {
+      return res.status(400);
+    }
     await deleteCustomer(id);
     res.status(200).send('El usuario fue eliminado');
   } catch (error) {
@@ -117,10 +162,15 @@ router.delete('/:id', async (req, res) => {
   }
 });
 
-router.put('/:id', async (req, res) => {
+router.put('/:id', verifyToken, async (req, res) => {
+  const token = req.headers.authorization;
+  const decoded = jwt.verify(token, process.env.SECRET_KEY);
   const { id } = req.params;
   const { name, email, password } = req.body;
   try {
+    if (decoded.user.admin === false) {
+      return res.status(400);
+    }
     await updateCustomer(id, name, password, email);
     res.status(200).send('La constraseña fue actualizada');
   } catch (error) {
@@ -128,26 +178,185 @@ router.put('/:id', async (req, res) => {
   }
 });
 
-const tokenValidation = (req, res, next) => {
-  if (!req.headers.authorization) {
-    return res
-      .status(400)
-      .send('You must provide a token on Authorization header');
-  }
-  const {id, email} = jwt.verify(req.headers.authorization, process.env.SECRET_KEY);
-  const emailIsAuthenticated = email === req.params.email
-  if (emailIsAuthenticated) return next()
-  return res.status(401).send({
-    ok: false,
-    message: "You are not authorized to access this information."
-  })
-}
-
-router.get('/sensibleInformation/:email', tokenValidation,  (req, res) => {
+router.get('/sensibleInformation/:email', verifyToken, (req, res) => {
   return res.send({
     user: req.params.email,
     debit_card_number: '1244 1234 1234 1234',
   });
 });
 
+// RUTAS PARA EL CART
+router.put('/updateCart/:id', verifyToken, async (req, res) => {
+  const { id } = req.params;
+  const { cart, numberCart } = req.body; // --- id: customer._id, cart: [{id, name, image, price}]
+  try {
+    await updateCart(id, cart, numberCart);
+    return res.status(200).send('El carrito fue actualizado');
+  } catch (error) {
+    res.send(error);
+  }
+});
+
+// router.get('/verifyAdmin', verifyToken, async (req, res) => {
+//   const token = req.headers.authorization;
+//   const decoded = jwt.verify(token, process.env.SECRET_KEY);
+//   if (decoded.user.admin === true) {
+//     return res.send('Este user es admin');
+//   }
+//   return res.status(400).send('No tienes los permisos necesarios');
+// });
+
+router.get('/verifyAdmin/:token', async (req, res) => {
+  const {token} = req.params;
+  if (!token) {
+    return res.status(400).send(false)
+  }
+  const decoded = jwt.verify(token, process.env.SECRET_KEY);
+  if(decoded.user.admin === true) {
+    return res.status(200).send(true)
+  }
+  return res.status(400).send(false)
+});
+//rutas para cambiar la contraseña
+
+//verifica si existe el correo, si existe le genera un nuevo token
+router.post('/forgetpassword', async (req, res) => {
+  const { email } = req.body;
+  try {
+    const user = await findCustomerByEmail(email);
+    if (!user) {
+      return res
+        .status(400)
+        .json({ message: 'No existe un usuario con ese correo electrónico' });
+    }
+    //genera un nuevo token
+    const resetToken = jwt.sign(
+      { id: user._id },
+      process.env.RESET_PASSWORD_KEY,
+      { expiresIn: '20m' }
+    );
+    console.log(resetToken);
+    //hacemos el proceso de enviar el email
+    //const resetLink = `http://localhost:3000/resetpassword/${resetToken}`;
+    // console.log(resetLink)
+    return res.status(200).json({ message: 'Usuario encontrado', resetToken });
+  } catch (err) {
+    return res
+      .status(500)
+      .json({ message: 'No se pudo restablecer la contraseña' });
+  }
+});
+
+//recibe la nueva contraseña y la hashea
+
+router.post('/resetpassword/:resetToken', async (req, res) => {
+  try {
+    const { resetToken } = req.params;
+    console.log(resetToken);
+    const { password } = req.body;
+    console.log(password);
+    // verifica el token nuevo
+    const decoded = jwt.verify(resetToken, process.env.RESET_PASSWORD_KEY);
+    console.log(decoded);
+    // buscar el user por el id desde el token nuevo
+    const user = await findUserById(decoded.id);
+    console.log(user);
+    if (!user) {
+      return res
+        .status(400)
+        .json({ message: 'No existe un usuario con ese ID' });
+    }
+    // hashea la nueva contraseña
+    const salt = await bcryp.genSalt(10);
+    const hashedPassword = await bcryp.hash(password, salt);
+    // actualiza la contraseña del user
+    user.password = hashedPassword;
+    await user.save();
+    return res.status(200).json({
+      ok: true,
+      message: 'Su contraseña ha sido restablecida con éxito',
+    });
+  } catch (error) {
+    return res.json({
+      ok: false,
+      message: 'No se ha reestablecido su contraseña',
+    });
+  }
+});
+
+
+
+//recibe la informacion del formulario para editar el perfil y los actualiza en la base de datos
+router.post('/update/:id', async (req, res) => {
+  const { id } = req.params;
+  console.log(id);
+  const { name, image } = req.body;
+  console.log(req.body);
+  try {
+    const user = await Customer.findByIdAndUpdate(id, {
+      name: name,
+      image: image,
+    });
+    await user.save();
+    if (user) {
+      return res.json({
+        ok: true,
+        msj: 'Usuario actualizado exitosamente',
+        name: name,
+        image: image,
+      });
+    } else {
+      return res.json({
+        ok: false,
+        msj: 'No fue posible actualizar al usuario',
+      });
+    }
+  } catch (error) {
+    console.log(error);
+  }
+});
+
 module.exports = router;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//detalle del customer
+// router.get('/profile', verifyToken, async (req, res) => {
+
+//   try {
+//     const user = await Customer.findById(req.userId);
+//     console.log(req.userId)
+//     console.log(user)
+//     if (!user) {
+//       res.json({ ok: false });
+//     }
+//     res.json([
+//       true,
+//     [
+//      user.name,
+//      user.email,
+//      user.image
+//       ]
+//     ]
+//     );
+//   } catch (error) {
+//     console.log(error);
+//   }
+// });

@@ -1,5 +1,5 @@
 const {Router} = require('express');
-const {getFoods, getByType} = require('../controllers/index');
+const {getFoods, getByType,getDrinkByType} = require('../controllers/index');
 
 const router = Router();
 
@@ -32,6 +32,17 @@ router.get('/:type', async (req, res) => {
         res.send(error);
     }
 });
+
+router.get('/drinks/:type', async (req, res) => {
+    const {type} = req.params;
+    try {
+        const encontrados = await getDrinkByType(type);
+        res.status(200).send(encontrados);
+    } catch (error) {
+        res.send(error);
+    }
+});
+
 
 
 module.exports = router;
