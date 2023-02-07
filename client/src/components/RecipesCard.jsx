@@ -3,7 +3,7 @@ import Card from "./Card";
 import SearchBar from "./SearchBar";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getFoods, getDrinks } from "../redux/actions";
+import { getFoods } from "../redux/actions";
 import Loading from "./Loading";
 
 export default function Recipescard() {

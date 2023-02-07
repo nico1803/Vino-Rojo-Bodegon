@@ -32,14 +32,14 @@ export default function Detail() {
   const widget = document.querySelector(".star-widget")
   //const editBtn = document.querySelector(".edit")
 
-
+  //"w-[750px] h-[350px] bg-white shadow-[0_8px_16px_-8px_rgba(0,0,0,0.4)] rounded-[30px] relative text-center hover:w-100% flex block"
   return (
 
     <div className="">
 
       {/**Card */}
       <div className="w-100% m-5 bg-[#f006] flex justify-center">
-        <div className="w-[750px] h-[350px] bg-white shadow-[0_8px_16px_-8px_rgba(0,0,0,0.4)] rounded-[30px] relative text-center hover:w-100% flex block">
+        <div className="card green">
           <div className="additional">
             <div className="user-card">
               <img className="imgproduct" src={food.image} alt="product_image" />
