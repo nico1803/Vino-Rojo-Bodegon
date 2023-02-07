@@ -14,7 +14,7 @@ export default function Filters() {
     };
 
 
-    const buttonCss = "hover:bg-[#c51b1e] bg-[#720f10] p-3 rounded-full w-[5rem] h-[5rem] m-5 "
+    const buttonCss = "hover:bg-[#c51b1e] bg-[#720f10] p-3 rounded-full sm:h-[4rem] sm:w-[4rem] md:w-[5rem] md:h-[5rem] lg:w-[7rem] lg:h-[7rem] m-5"
     const SelectedButtonCss = "hover:bg-rose-900 bg-[#720f10] p-3 rounded-full w-[5rem] h-[5rem] m-5 border border-1 border-white"
 
     
@@ -27,33 +27,17 @@ export default function Filters() {
         </div>
         <div className="justify-center bg-slate-900 rounded-lg grid sm:grid-cols-1 md:grid-cols-2 sm:gap-4 md:gap-8 place-items-center h-auto m-5 p-5 animate__animated animate__backInLeft" >
 
-            {
-                selected===1 ?
-                    <div className={SelectedButtonCss} onClick={() => handleClick("Entrada",1)}>
+            <div className={selected===1 ? SelectedButtonCss : buttonCss} onClick={() => handleClick("Entrada",1)}>
 
-                    <span className="text-gray-200 flex justify-center">
-                        <i className="ri-knife-line text-[40px]"></i>
-                    </span>
+                <span className="text-gray-200 flex justify-center absolute">
+                    <i className="ri-knife-line sm:text-[20px] md:text-[40px]"></i>
+                </span>
 
-                    <span className="text-gray-200 flex justify-center m-2">
-                        ENTRADAS
-                    </span>
+                <span className="text-gray-200 flex justify-center m-2 absolute">
+                    ENTRADAS
+                </span>
 
-                    </div>
-                :    
-                    <div className={buttonCss} onClick={() => handleClick("Entrada",1)}>
-
-                        <span className="text-gray-200 flex justify-center">
-                            <i className="ri-knife-line text-[40px]"></i>
-                        </span>
-
-                        <span className="text-gray-200 flex justify-center m-2">
-                            ENTRADAS
-                        </span>
-
-                    </div>
-
-            }
+            </div>
             
 
             <div className={selected===2 ? SelectedButtonCss : buttonCss} onClick={() => handleClick("Plato Principal",2)}>
