@@ -38,7 +38,7 @@ const handlerChange = (e)=>{
 async function handleSubmit(e) {
     e.preventDefault();  
     try {
-      const {data: {ok, token,status, user}} = await axios.post("http://localhost:3001/login/signin",formData);
+      const {data: {ok, token,status, user}} = await axios.post("https://vino-rojo-bodegon-production.up.railway.app/login/signin",formData);
        
       if(status === 400){
         swal({
@@ -86,7 +86,7 @@ async function handleSubmit(e) {
       console.log(config)
       
       //ruta de prueba para enviar el token
-      const apiServer = await axios(`http://localhost:3001/login/sensibleInformation/${formData.email}`,config);
+      const apiServer = await axios(`https://vino-rojo-bodegon-production.up.railway.app/login/sensibleInformation/${formData.email}`,config);
       const response= apiServer.data;
       console.log(response)
 

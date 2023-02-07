@@ -164,7 +164,7 @@ export function verifyAdmin() {
     return async function(dispatch){
         try {
             let token = localStorage.getItem('token')
-            let verify = await axios.get(`http://localhost:3001/login/verifyAdmin/${token}`)
+            let verify = await axios.get(`https://vino-rojo-bodegon-production.up.railway.app/login/verifyAdmin/${token}`)
             if(dispatch){
                 dispatch ({
                     type: 'VERIFY_ADMIN',

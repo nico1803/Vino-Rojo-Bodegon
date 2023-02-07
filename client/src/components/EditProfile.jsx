@@ -34,7 +34,7 @@ const EditProfile = ()=>{
      console.log("pasa algo")
      const data = {name, image};
      try {
-      const apiServer = await axios.post(`http://localhost:3001/login/update/${id}`,data);
+      const apiServer = await axios.post(`https://vino-rojo-bodegon-production.up.railway.app/login/update/${id}`,data);
       console.log(data)
       const server= apiServer.data;
       console.log(server)
@@ -113,7 +113,7 @@ export default EditProfile;
 //     e.preventDefault();
 //     try {
 //       const data = { name, imageUrl };
-//       const response = await axios.post(`http://localhost:3001/login/update/${id}`, data);
+//       const response = await axios.post(`https://vino-rojo-bodegon-production.up.railway.app/login/update/${id}`, data);
 //       const user = response.data;
 //       localStorage.setItem("name", user.name);
 //       history("/profile");

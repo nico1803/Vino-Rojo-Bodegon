@@ -28,7 +28,7 @@ export default function Navbar() {
   // async function verifyAdmin1(){
   //   let token = localStorage.getItem('token')
   //   if(token){
-  //     let verify = await axios.get(`http://localhost:3001/login/verifyAdmin/${token}`)
+  //     let verify = await axios.get(`https://vino-rojo-bodegon-production.up.railway.app/login/verifyAdmin/${token}`)
   //     console.log(verify)
   //     console.log(verify.data)
   //   }

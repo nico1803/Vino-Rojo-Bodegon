@@ -56,7 +56,7 @@ function SignUp() {
       const data = JSON.stringify(formData);
       console.log(data);
       //envio un fecth a la url del servidor que va a la ruta del post de customers con un objeto de configuracion donde le paso el metodo de la request, el body que contiene la data en formato json y un header para especificar que es un json el que estoy  enviando
-      const create = await fetch("http://localhost:3001/login", {
+      const create = await fetch("https://vino-rojo-bodegon-production.up.railway.app/login", {
         method: "POST",
         body: data,
         headers: { "Content-Type": "application/json" },
@@ -68,7 +68,7 @@ function SignUp() {
 
       //////////////////////ENVIO DE CORREO Y PUSH //////////////
       }else if(datajuan.status !== 400){
-const res = await fetch("http://localhost:3001/email", {
+const res = await fetch("https://vino-rojo-bodegon-production.up.railway.app/email", {
         method: "POST",
         body: JSON.stringify({semail}),
         headers:{
