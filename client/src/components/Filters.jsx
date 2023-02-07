@@ -8,6 +8,8 @@ export default function Filters() {
 
     function handleClick(event) {
         dispatch(foodTypes(event));
+
+        selected = true;
     };
 
 
@@ -17,9 +19,9 @@ export default function Filters() {
 
 
     const buttonCss = "hover:bg-[#c51b1e] bg-[#720f10] p-3 rounded-full w-[5rem] h-[5rem] m-5 "
-    const SelectedButtonCss = "hover:bg-rose-900 bg-[#720f10] p-3 rounded-full w-[5rem] h-[5rem] m-5 border-1 border-white"
+    const SelectedButtonCss = "hover:bg-rose-900 bg-[#720f10] p-3 rounded-full w-[5rem] h-[5rem] m-5 border border-1 border-white"
 
-    let selected = false;
+    let selected = 0;
 
     return (
     <div className="">
