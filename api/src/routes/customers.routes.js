@@ -197,22 +197,25 @@ router.put('/updateCart/:id', verifyToken, async (req, res) => {
   }
 });
 
-router.get('/verifyAdmin', verifyToken, async (req, res) => {
-  const token = req.headers.authorization;
-  const decoded = jwt.verify(token, process.env.SECRET_KEY);
-  if (decoded.user.admin === true) {
-    return res.send('Este user es admin');
-  }
-  return res.status(400).send('No tienes los permisos necesarios');
-});
+// router.get('/verifyAdmin', verifyToken, async (req, res) => {
+//   const token = req.headers.authorization;
+//   const decoded = jwt.verify(token, process.env.SECRET_KEY);
+//   if (decoded.user.admin === true) {
+//     return res.send('Este user es admin');
+//   }
+//   return res.status(400).send('No tienes los permisos necesarios');
+// });
 
-router.get('/verifyAdmin/:token', verifyToken, async (req, res) => {
+router.get('/verifyAdmin/:token', async (req, res) => {
   const {token} = req.params;
+  if (!token) {
+    return res.status(400).send(false)
+  }
   const decoded = jwt.verify(token, process.env.SECRET_KEY);
   if(decoded.user.admin === true) {
-    return res.send('Este user es admin')
+    return res.status(200).send(true)
   }
-  return res.status(400).send('No tienes los permisos necesarios')
+  return res.status(400).send(false)
 });
 //rutas para cambiar la contraseña
 

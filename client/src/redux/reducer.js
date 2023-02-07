@@ -1,11 +1,12 @@
 
-import { GET_FOODS, GET_USER, POST_FOOD, FOOD_BY_TYPE,EDIT_FOOD, GET_FOODS_BY_NAME, CART_ADD, CART_REMOVE, CART_UP, CART_DOWN} from "./actions";
+import { GET_FOODS, GET_USER, POST_FOOD, FOOD_BY_TYPE,EDIT_FOOD, GET_FOODS_BY_NAME, CART_ADD, CART_REMOVE, CART_UP, CART_DOWN,DRINK_BY_TYPE,GET_DRINKS, DISABLE_FOOD, ABLE_FOOD, GET_ABLE_FOOD, VERIFY_ADMIN } from "./actions";
 
 
 const initialState = {
     allFoods: [],
     foods: [],
     user: [],
+    token: [],
     cart: [],
     numberCart: 0,
     drinks:[]
@@ -99,9 +100,25 @@ export default function rootReducer(state = initialState, action) {
                 state.numberCart--;
                 state.cart[action.payload].quantity--;
             }
-
+        case DISABLE_FOOD:
             return {
-                ...state
+                ...state,
+                allFoods: action.payload
+            }
+        case ABLE_FOOD:
+            return {
+                ...state,
+                allFoods: action.payload
+            }
+        case GET_ABLE_FOOD:
+            return {
+                ...state,
+                allFoods: action.payload
+            }
+        case VERIFY_ADMIN:
+            return {
+                ...state,
+                token: action.payload
             }
         default:
             return state;
