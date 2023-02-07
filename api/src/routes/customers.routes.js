@@ -197,14 +197,14 @@ router.put('/updateCart/:id', verifyToken, async (req, res) => {
   }
 });
 
-router.get('/verifyAdmin', verifyToken, async (req, res) => {
-  const token = req.headers.authorization;
-  const decoded = jwt.verify(token, process.env.SECRET_KEY);
-  if (decoded.user.admin === true) {
-    return res.send('Este user es admin');
-  }
-  return res.status(400).send('No tienes los permisos necesarios');
-});
+// router.get('/verifyAdmin', verifyToken, async (req, res) => {
+//   const token = req.headers.authorization;
+//   const decoded = jwt.verify(token, process.env.SECRET_KEY);
+//   if (decoded.user.admin === true) {
+//     return res.send('Este user es admin');
+//   }
+//   return res.status(400).send('No tienes los permisos necesarios');
+// });
 
 router.get('/verifyAdmin/:token', async (req, res) => {
   const {token} = req.params;

@@ -10,12 +10,12 @@ export default function Dashboard() {
   // const carro = useSelector((state)=> state);
   const recetas = useSelector((state) => state.allFoods)
 
-  function handleClickDisable(e) {
-    dispatch(disableFood(e));
+  function handleClickDisable(id) {
+    dispatch(disableFood(id));
 };
 
-function handleClickAble(e) {
-  dispatch(ableFood(e));
+function handleClickAble(id) {
+  dispatch(ableFood(id));
 };
 
   useEffect(()=>{
@@ -26,7 +26,7 @@ function handleClickAble(e) {
   <div className='b bg-gray-300'>
     <h3 className='text-2xl p-5 text-center font-black'>ADMIN DASHBOARD</h3>
     {
-        carro.allFoods.map((el, id) => {return (
+        recetas.map((el, id) => {return (
           <div className='rounded-lg relative m-2' key={id}>
 
             <CardAdmin food={el} key={id} />
