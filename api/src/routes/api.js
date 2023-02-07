@@ -26,7 +26,7 @@ router.post("/create_preference", (req, res) => {
 			{
 				title: req.body.title,
 				description:req.body.description,
-				unit_price: Number(req.body.unit_price),
+				unit_price: (req.body.unit_price),
 				quantity: Number(req.body.quantity),
 			}
 		],
@@ -36,12 +36,13 @@ router.post("/create_preference", (req, res) => {
 			"pending": ""
 		},
 		auto_return: "approved",
-		//no acepte pagos pendientes,solo tarjetas
+		//no acepte pagos efectivo (pendientes),solo tarjetas
 		binary_mode:true,
 	};
 
 	mercadopago.preferences.create(preference)
 		.then(function (response) {
+			//id: response.body.id
 			res.status(200).json({ id: response.body.id });
 		}).catch(function (error) {
 			res.status(400).send(error);
