@@ -13,11 +13,6 @@ export default function Filters() {
     };
 
 
-     function handleDrinksType(e){
-        dispatch(drinksTypes(e))
-     };
-
-
     const buttonCss = "hover:bg-[#c51b1e] bg-[#720f10] p-3 rounded-full w-[5rem] h-[5rem] m-5 "
     const SelectedButtonCss = "hover:bg-rose-900 bg-[#720f10] p-3 rounded-full w-[5rem] h-[5rem] m-5 border border-1 border-white"
 
@@ -89,7 +84,7 @@ export default function Filters() {
             
             
 
-            <div className={buttonCss} onClick={()=> handleDrinksType("Aguas")}>
+            <div className={buttonCss} onClick={()=> handleClick("Aguas")}>
 
                 <span className="text-gray-200 flex justify-center">
                     <i className="ri-goblet-line text-[40px]"></i>
@@ -100,18 +95,18 @@ export default function Filters() {
                 </span>
             </div>
 
-            <div className={buttonCss} onClick={() => handleDrinksType("Gaseosa")}>
+            <div className={buttonCss} onClick={() => handleClick("Gaseosas")}>
 
                 <span className="text-gray-200 flex justify-center">
                     <i className="ri-goblet-line text-[40px]"></i>
                 </span>
 
                 <span className="text-gray-200 flex justify-center text-center m-2 leading-[18px]">
-                    Gaseosa
+                    Gaseosas
                 </span>
             </div>
 
-            <div className={buttonCss} onClick={() => handleDrinksType("Cervezas")}>
+            <div className={buttonCss} onClick={() => handleClick("Cervezas")}>
 
                 <span className="text-gray-200 flex justify-center">
                     <i className="ri-goblet-line text-[40px]"></i>
@@ -122,7 +117,7 @@ export default function Filters() {
                 </span>
             </div>
 
-            <div className={buttonCss} onClick={() => handleDrinksType("Vinos")}>
+            <div className={buttonCss} onClick={() => handleClick("Vinos")}>
 
                 <span className="text-gray-200 flex justify-center">
                     <i className="ri-goblet-line text-[40px]"></i>
@@ -133,7 +128,7 @@ export default function Filters() {
                 </span>
             </div>
 
-            <div className={buttonCss} onClick={() => handleDrinksType("Tragos")}>
+            <div className={buttonCss} onClick={() => handleClick("Tragos")}>
 
                 <span className="text-gray-200 flex justify-center">
                     <i className="ri-goblet-line text-[40px]"></i>

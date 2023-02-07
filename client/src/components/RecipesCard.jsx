@@ -3,24 +3,22 @@ import Card from "./Card";
 import SearchBar from "./SearchBar";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getFoods, getDrinks } from "../redux/actions";
+import { getFoods} from "../redux/actions";
 import Loading from "./Loading";
 
 export default function Recipescard() {
     const dispatch = useDispatch();
     const recetas = useSelector((state) => state.allFoods)
-    const bebidas = useSelector((state) => state.drinks)
 
     const [menu, setMenu] = useState();
 
     useEffect(()=>{
         dispatch(getFoods())
-        dispatch(getDrinks())
     }, [dispatch]);
 
     useEffect(()=>{
-        setMenu([...recetas, ...bebidas])
-    },[recetas, bebidas])
+        setMenu([...recetas])
+    },[recetas])
 
     let [visible, setVisible] = useState(12);
     const showMoreFoods = () => {

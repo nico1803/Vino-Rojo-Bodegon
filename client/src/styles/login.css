@@ -59,7 +59,7 @@
   width: 70%;
   -webkit-clip-path: polygon(0 0, 0% 100%, 100% 0);
   clip-path: polygon(0 0, 0% 100%, 100% 0);
-  background: #614C3C;
+  background: #030120;
 }
 
 .col-right {
@@ -129,7 +129,7 @@
 
 .login-text .btn:hover {
   color: #614C3C;
-  box-shadow: inset 150px 0 0 0 #ffffff;
+  box-shadow: inset 150px 0 0 0 #58d8ff;
 }
 
 .login-form {
@@ -212,7 +212,7 @@
 .login-form button:hover,
 .login-form input[type=submit]:hover {
   color: #ffffff;
-  box-shadow: inset 250px 0 0 0 #614C3C;
+  box-shadow: inset 250px 0 0 0 #004875;
 }
 
 .middel{

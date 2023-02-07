@@ -197,6 +197,14 @@ router.get('/verifyAdmin', verifyToken, async (req, res) => {
   return res.status(400).send('No tienes los permisos necesarios')
 });
 
+router.get('/verifyAdmin/:token', verifyToken, async (req, res) => {
+  const {token} = req.params;
+  const decoded = jwt.verify(token, process.env.SECRET_KEY);
+  if(decoded.user.admin === true) {
+    return res.send('Este user es admin')
+  }
+  return res.status(400).send('No tienes los permisos necesarios')
+});
 //rutas para cambiar la contraseña
 
 //verifica si existe el correo, si existe le genera un nuevo token

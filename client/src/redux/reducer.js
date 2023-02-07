@@ -19,12 +19,6 @@ export default function rootReducer(state = initialState, action) {
                 allFoods: action.payload,
             }
         }
-        case GET_DRINKS: {
-            return {
-                ...state,
-                drinks: action.payload,
-            }
-        }
         case GET_FOODS_BY_NAME:
             return {
                 ...state,
@@ -45,12 +39,6 @@ export default function rootReducer(state = initialState, action) {
             return {
                 ...state,
                 allFoods: action.payload
-            }
-        }
-        case DRINK_BY_TYPE: {
-            return {
-                ...state,
-                drinks: action.payload
             }
         }
         case EDIT_FOOD:
