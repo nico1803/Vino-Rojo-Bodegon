@@ -1,22 +1,23 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { drinksTypes, foodTypes } from "../redux/actions";
+import { foodTypes } from "../redux/actions";
 
 
 export default function Filters() {
     const dispatch = useDispatch();
+    let selected = 0;
 
-    function handleClick(event) {
+    function handleClick(event, number) {
         dispatch(foodTypes(event));
-
-        selected = true;
+        selected = number;
+        console.log(selected)
     };
 
 
     const buttonCss = "hover:bg-[#c51b1e] bg-[#720f10] p-3 rounded-full w-[5rem] h-[5rem] m-5 "
     const SelectedButtonCss = "hover:bg-rose-900 bg-[#720f10] p-3 rounded-full w-[5rem] h-[5rem] m-5 border border-1 border-white"
 
-    let selected = 0;
+    
 
     return (
     <div className="">
@@ -26,20 +27,36 @@ export default function Filters() {
         </div>
         <div className="justify-center bg-slate-900 rounded-lg grid sm:grid-cols-1 md:grid-cols-2 sm:gap-4 md:gap-8 place-items-center h-auto m-5 p-5 animate__animated animate__backInLeft" >
 
+            {
+                selected===1 ?
+                    <div className={SelectedButtonCss} onClick={() => handleClick("Entrada",1)}>
 
-            <div className={selected ? SelectedButtonCss : buttonCss} onClick={() => handleClick("Entrada")}>
+                    <span className="text-gray-200 flex justify-center">
+                        <i className="ri-knife-line text-[40px]"></i>
+                    </span>
 
-                <span className="text-gray-200 flex justify-center">
-                    <i className="ri-knife-line text-[40px]"></i>
-                </span>
+                    <span className="text-gray-200 flex justify-center m-2">
+                        ENTRADAS
+                    </span>
 
-                <span className="text-gray-200 flex justify-center m-2">
-                    ENTRADAS
-                </span>
+                    </div>
+                :    
+                    <div className={buttonCss} onClick={() => handleClick("Entrada",1)}>
 
-            </div>
+                        <span className="text-gray-200 flex justify-center">
+                            <i className="ri-knife-line text-[40px]"></i>
+                        </span>
 
-            <div className={buttonCss} onClick={() => handleClick("Plato Principal")}>
+                        <span className="text-gray-200 flex justify-center m-2">
+                            ENTRADAS
+                        </span>
+
+                    </div>
+
+            }
+            
+
+            <div className={selected===2 ? SelectedButtonCss : buttonCss} onClick={() => handleClick("Plato Principal",2)}>
 
                 <span className="text-gray-200 flex justify-center">
                     <i className="ri-restaurant-2-line text-[40px]"></i>
@@ -51,7 +68,7 @@ export default function Filters() {
 
             </div>
 
-            <div className={buttonCss} onClick={() => handleClick("Guarnicion")}>
+            <div className={selected===3 ? SelectedButtonCss : buttonCss} onClick={() => handleClick("Guarnicion",3)}>
 
                 <span className="text-gray-200 flex justify-center">
                     <i className="ri-seedling-line text-[40px]"></i>
