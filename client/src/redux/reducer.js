@@ -100,16 +100,6 @@ export default function rootReducer(state = initialState, action) {
                 state.numberCart--;
                 state.cart[action.payload].quantity--;
             }
-        case DISABLE_FOOD:
-            return {
-                ...state,
-                allFoods: action.payload
-            }
-        case ABLE_FOOD:
-            return {
-                ...state,
-                allFoods: action.payload
-            }
         case GET_ABLE_FOOD:
             return {
                 ...state,
