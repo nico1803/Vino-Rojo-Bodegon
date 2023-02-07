@@ -31,8 +31,8 @@ router.post("/create_preference", (req, res) => {
 			}
 		],
 		back_urls: {
-			"success": "http://localhost:3000/feedback",
-			"failure": "http://localhost:3000/feedback",
+			"success": "http://localhost:3000/success",
+			"failure": "http://localhost:3000/failure",
 			"pending": ""
 		},
 		auto_return: "approved",
@@ -42,7 +42,7 @@ router.post("/create_preference", (req, res) => {
 
 	mercadopago.preferences.create(preference)
 		.then(function (response) {
-			res.status(200).json({ response });
+			res.status(200).json({ id: response.body.id });
 		}).catch(function (error) {
 			res.status(400).send(error);
 			console.log(error);

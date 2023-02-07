@@ -152,6 +152,7 @@
 
 .login-form p:last-child {
   margin: 0;
+  text-align: center;
   padding-top: 3px;
 }
 
@@ -195,8 +196,9 @@
 .login-form button,
 .login-form input[type=submit] {
   display: inline-block;
-  width: 100%;
+  width: 49%;
   margin-top: 5px;
+  margin-left: 25%;
   color: #614C3C;
   font-size: 16px;
   letter-spacing: 1px;
