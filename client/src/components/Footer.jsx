@@ -1,5 +1,7 @@
 import React from 'react';
 import {AiOutlineInstagram} from "react-icons/ai";
+import { BiLaptop } from "react-icons/bi";
+
 
 export default function Footer () {
     return (
@@ -13,7 +15,13 @@ export default function Footer () {
                     <span className='p-1 text-md'>Instagram</span>
                 </a>
                 {/* <span>© 2023. All rights reserved.Developer Team</span> */}
-                <a href="/team">© 2023. All rights reserved.Developer Team</a>
+                <a href="/team">
+                <BiLaptop className='inline-flex items-center w-[1.6em] h-[1.6em] rounded-full p-1 bg-gray-700 text-xl hover:text-gray-100 hover:bg-red-500 duration-300'/>
+                   <span>Developer Team </span> 
+                </a>
+                <div>
+                    <span>© 2023. All rights reserved.</span>
+                </div>
             </div>
         </footer>
     )
