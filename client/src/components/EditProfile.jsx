@@ -60,6 +60,7 @@ const EditProfile = ()=>{
       console.log(server)
 
         localStorage.setItem("name", server.name)
+        localStorage.setItem("image", server.image)
        
 
      history("/profile")
@@ -73,6 +74,7 @@ const EditProfile = ()=>{
 
 
      return(
+      
       <figure class="snip1336">
   <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/sample87.jpg" alt="sample87" />
   <figcaption>

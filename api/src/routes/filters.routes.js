@@ -1,11 +1,11 @@
 const {Router} = require('express');
-const {getFoods, getByType,getDrinkByType} = require('../controllers/index');
+const {getFoods, getByType,getDrinkByType, getAbleFoods} = require('../controllers/index');
 
 const router = Router();
 
 router.get('/priceMinMax' , async (req, res) => {
     try {
-        const data = await getFoods();
+        const data = await getAbleFoods();
         const ordenado = data.map(e => e).sort((a, b) => Number(a.price) - Number(b.price));
         res.status(200).send(ordenado);
     } catch (error) {
@@ -15,7 +15,7 @@ router.get('/priceMinMax' , async (req, res) => {
 
 router.get('/priceMaxMin' , async (req, res) => {
     try {
-        const data = await getFoods();
+        const data = await getAbleFoods();
         const ordenado = data.map(e => e).sort((a, b) => Number(b.price) - Number(a.price));
         res.status(200).send(ordenado);
     } catch (error) {
