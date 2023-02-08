@@ -2,6 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import defaultImage from "../assets/user.png";
 import {  useState } from "react";
 import axios from "axios"
+import "../styles/editprofile.css";
 
 const imageParser = (event, setState) => {
   if (event.target.files[0]) {
@@ -72,23 +73,51 @@ const EditProfile = ()=>{
 
 
      return(
-      <div>
-          <h3>Editar perfil</h3>
-        <form onSubmit={handlerSubmit} >
-          <label > Nombre   <input type="text" onChange={handlerChange} value={name} />
-          </label>
-          <img src={image} alt="" height={"100px"} width={"100px"} />
-          <label > Editar la foto
+      <figure class="snip1336">
+  <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/sample87.jpg" alt="sample87" />
+  <figcaption>
+    <img src={image} alt="profile-sample4" class="profile" />
+    <form onSubmit={handlerSubmit} >
+    <div class="button-wrapper">
+  <span class="label">
+    Cambia tu foto
+  </span>
+  
+    <input type="file" accept="image/*" name="upload" id="upload" class="upload-box"  onChange={handleChangeImage}/>
+  
+</div>
+    {/* <label > Cambia tu foto.
               <input type="file"  accept="image/*" onChange={handleChangeImage}/>
-          </label>
+          </label> */}
+          <br />
+          <br />
+          <div class="input-group">
+  <input required="" type="text" name="text" autocomplete="off" class="input" onChange={handlerChange} value={name}/>
+  <label class="user-label">Nuevo nombre de usuario.</label>
+</div>
+    
+
          <br />
          <br />
-         <button type="submit">Ver Perfil</button>
+         <a><button type="submit" class="follow">Guardar cambios</button></a>
+           
+  
         </form>
             
-         <Link to={"/profile"}><button>Cancelar Cambios</button></Link>   
+        <Link to={"/profile"}><button>Cancelar Cambios</button></Link> 
+
+  </figcaption>
+</figure>
+
+ 
+
+
+      
+      // <div>
+      //     <h3>Editar perfil</h3>
+      
   
-      </div>
+      // </div>
      )
   };
 
