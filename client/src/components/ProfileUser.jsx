@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import defaultImage from "../assets/user.png";
+import defaultImage from "../assets/arte.png";
 import axios from "axios";
+import "../styles/profile.css";
 
 const imageParser = (event, setState) => {
     if (event.target.files[0]) {
@@ -38,17 +39,27 @@ const ProfileUser = ()=>{
 
 
     return(
-        <div>
-            <h2>Perfil del usuario</h2>
-            <br />
-            <h4>{name}</h4>
-            <br />
-            <h4>{email}</h4>
-            <img src={image } alt="Imagen del perfil" height={"100px"} width={"100px"}/>
-            <br />
-            <Link to={"/editprofile"}><button >Editar Perfil</button></Link>
 
-        </div>
+<div class="containerProfile">
+  <div class="service-details">
+    <img src={image? image: defaultImage}/>
+    <div class="service-hover-text">
+      <h3>{name}</h3>
+      <h4>{email}</h4>
+      <p>¡Hola {name}! Estamos muy felices de que estes aqui, esperamos que igual que nosotros, disfrutes los platos.</p>
+      
+      
+    </div>
+    <div class="service-white service-text">
+      <p>{name}</p>
+      <Link to={"/editprofile"}><button>Editar perfil</button></Link>
+    </div>
+  </div>
+</div>
+
+
+
+
     )
 
 };
