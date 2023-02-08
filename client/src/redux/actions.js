@@ -19,7 +19,6 @@ export const CART_DOWN = 'CART_DOWN';
 export const GET_ABLE_FOOD = 'GET_ABLE_FOOD';
 export const VERIFY_ADMIN = 'VERIFY_ADMIN';
 
-
 //RUTA RAILWAY: ${(process.env.NODE_ENV === 'development' ? 'http://localhost:3001/' : 'https://vino-rojo-bodegon-production.up.railway.app/')}foods
 
 
