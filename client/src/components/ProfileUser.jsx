@@ -3,14 +3,30 @@ import { Link, useParams } from "react-router-dom";
 import defaultImage from "../assets/user.png";
 import axios from "axios";
 
+const imageParser = (event, setState) => {
+    if (event.target.files[0]) {
+        var file = event.target.files[0];
+        if (parseInt(file.size) < 100000) {
+            var reader = new FileReader();
+            reader.onloadend = function () {                
+                setState(reader.result)
+            }
+            reader.readAsDataURL(file);
+  
+        }
+        else {
+            event.target.value = null;
+        }
+    }
+  };
+  
+
 
 const ProfileUser = ()=>{
 
-
-    
     const[name,setName]=useState("");
     const[email,setEmail]=useState("");
-    const[image,setImage]=useState( defaultImage);
+    const[image,setImage]=useState( localStorage.getItem("image") || defaultImage);
     console.log(image)
 
     
@@ -19,10 +35,6 @@ const ProfileUser = ()=>{
       setEmail(localStorage.getItem("email"))
       setImage(localStorage.getItem("image"));
     },[]);
-
-    
-
-
 
 
     return(
