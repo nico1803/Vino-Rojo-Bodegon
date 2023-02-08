@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import CardAdmin from './CardAdmin';
 import Loading from '../Loading';
-import { getFoods, getAbleFood } from "../../redux/actions";
+import { getFoods } from "../../redux/actions";
 import axios from 'axios';
 
 

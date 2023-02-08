@@ -6,14 +6,14 @@ export const GET_FOODS = 'GET_FOODS';
 export const GET_USER = 'GET_USER';
 export const POST_FOOD = 'POST_FOOD';
 export const FOOD_BY_TYPE = 'FOOD_BY_TYPE';
+export const MIN_MAX = "MIN_MAX";
+export const MAX_MIN = "MAX_MIN";
 export const EDIT_FOOD = 'EDIT_FOOD';
 export const GET_FOODS_BY_NAME = 'GET_FOODS_BY_NAME';
 export const CART_ADD = 'CART_ADD';
 export const CART_REMOVE = 'CART_REMOVE';
 export const CART_UP = 'CART_UP';
 export const CART_DOWN = 'CART_DOWN';
-export const DRINK_BY_TYPE = 'DRINK_BY_TYPE';
-export const GET_DRINKS = 'GET_DRINKS';
 // export const DISABLE_FOOD = 'DISABLE_FOOD';
 // export const ABLE_FOOD =  'ABLE_FOOD';
 export const GET_ABLE_FOOD = 'GET_ABLE_FOOD';
@@ -76,15 +76,26 @@ export function foodTypes(payload) {
         })
     };
 };
-export function drinksTypes(payload) {
+
+export function priceMintoMax() {
     return async function(dispatch){
-        const filtered = await axios.get(`/drinks`)
-        dispatch ({
-            type: 'DRINK_BY_TYPE',
-            payload: filtered.data
+        const Ordered = await axios.get(`/filters/priceMinMax`)
+        dispatch({
+            type: "MIN_MAX",
+            payload: Ordered.data
         })
-    };
-};
+    } 
+}
+
+export function priceMaxtoMin(){
+    return async function(dispatch){
+        const Ordered = await axios.get(`/filters/priceMaxMin`)
+        dispatch({
+            type: "MAX_MIN",
+            payload: Ordered.data
+        })
+    }
+}
 
 export function getFoodsByName(name){
     return async function(dispatch){

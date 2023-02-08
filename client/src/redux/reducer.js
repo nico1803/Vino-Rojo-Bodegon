@@ -1,5 +1,5 @@
 
-import { GET_FOODS, GET_USER, POST_FOOD, FOOD_BY_TYPE,EDIT_FOOD, GET_FOODS_BY_NAME, CART_ADD, CART_REMOVE, CART_UP, CART_DOWN,DRINK_BY_TYPE,GET_DRINKS, DISABLE_FOOD, ABLE_FOOD, GET_ABLE_FOOD, VERIFY_ADMIN } from "./actions";
+import { GET_FOODS, GET_USER, POST_FOOD, FOOD_BY_TYPE,EDIT_FOOD, GET_FOODS_BY_NAME, CART_ADD, CART_REMOVE, CART_UP, CART_DOWN, DISABLE_FOOD, ABLE_FOOD, GET_ABLE_FOOD, VERIFY_ADMIN, MIN_MAX, MAX_MIN } from "./actions";
 
 
 const initialState = {
@@ -37,6 +37,18 @@ export default function rootReducer(state = initialState, action) {
                 allFoods: [action.payload, ...state.allFoods]
             }
         case FOOD_BY_TYPE: {
+            return {
+                ...state,
+                allFoods: action.payload
+            }
+        }
+        case MIN_MAX: {
+            return {
+                ...state,
+                allFoods: action.payload
+            }
+        }
+        case MAX_MIN: {
             return {
                 ...state,
                 allFoods: action.payload
