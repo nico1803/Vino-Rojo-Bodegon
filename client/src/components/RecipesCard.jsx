@@ -35,7 +35,7 @@ export default function Recipescard() {
                 <SearchBar/>
             </div>
 
-            <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-4 h-[1280px] grid-flow-row auto-rows-max overflow-auto scroll-smooth">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 h-[1280px] grid-flow-row auto-rows-max overflow-auto scroll-smooth">
                 {menu?.slice(0, visible).map((el, i) => {return (<Card food={el} key={i} />)})}
             </div>
                 

@@ -17,10 +17,7 @@ export default function Navbar() {
     let token = localStorage.getItem('token'); 
     if (token) {
     dispatch(verifyAdmin())
-    console.log('adentro')
     }
-    console.log('afuera')
-    console.log(permisos)
     
 }, [dispatch]);
 
