@@ -33,17 +33,6 @@ router.get('/:type', async (req, res) => {
     }
 });
 
-router.get('/drinks/:type', async (req, res) => {
-    const {type} = req.params;
-    try {
-        const encontrados = await getDrinkByType(type);
-        res.status(200).send(encontrados);
-    } catch (error) {
-        res.send(error);
-    }
-});
-
-
 
 module.exports = router;
 
