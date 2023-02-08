@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { foodTypes } from "../redux/actions";
+import { foodTypes, priceMaxtoMin, priceMintoMax } from "../redux/actions";
 
 
 export default function Filters() {
@@ -12,6 +12,16 @@ export default function Filters() {
         selected = number;
         console.log(selected)
     };
+
+    function handleClickMinMax() {
+        dispatch(priceMintoMax())
+    }
+
+    function handleClickMaxMin() {
+        dispatch(priceMaxtoMin())
+    }
+
+
 
 
     const buttonCss = "hover:bg-[#c51b1e] bg-[#720f10] p-3 m-5 rounded-full w-[3rem] h-[3rem] sm:h-[4rem] sm:w-[4rem] md:w-[4rem] md:h-[4rem] lg:w-[5rem] lg:h-[5rem]"
@@ -147,16 +157,16 @@ export default function Filters() {
         </div>
 
         <div className="text-center mt-5">
-            <p className="font-bold text-white">Otros</p>
+            <p className="font-bold text-white">Precios</p>
         </div>
-        <div className="justify-center bg-slate-900 rounded-lg grid sm:grid-cols-1 md:grid-cols-2 sm:gap-4 md:gap-8 place-items-center h-auto m-5 p-5 animate__animated  animate__backInLeft">
+        <div className="justify-center bg-slate-900 rounded-lg grid sm:grid-cols-1 md:grid-cols-2 sm:gap-4 md:gap-8 place-items-center h-auto m-5 p-5 animate__animated  animate__backInLeft lg:h-[200px]">
 
             
 
-            <div className={buttonCss} onClick={null}>
+            <div className={buttonCss} onClick={() => handleClickMaxMin()}>
 
                 <span className="text-gray-200 flex justify-center">
-                    <i className={"ri-goblet-line "+  IconCss}></i>
+                    <i className={"ri-goblet-line mt-3"+  IconCss}></i>
                 </span>
 
                 <span className={TextClass}>
@@ -164,7 +174,7 @@ export default function Filters() {
                 </span>
             </div> 
 
-            <div className={buttonCss} onClick={null}>
+            <div className={buttonCss} onClick={() => handleClickMinMax()}>
 
                 <span className="text-gray-200 flex justify-center">
                     <i className={"ri-filter-off-line "+  IconCss}></i>
