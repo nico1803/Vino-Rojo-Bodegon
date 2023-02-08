@@ -48,7 +48,7 @@ export default function Filters() {
                 </span>
 
                 <span className={TextClass}>
-                    ENTRADAS
+                    Entradas
                 </span>
 
             </div>
@@ -61,7 +61,7 @@ export default function Filters() {
                 </span>
 
                 <span className={TextClass}>
-                    PRINCIPAL
+                    Principal
                 </span>
 
             </div>
@@ -73,7 +73,7 @@ export default function Filters() {
                 </span>
 
                 <span className={TextClass}>
-                    GUARNICION
+                    Guarnición
                 </span>
 
             </div>
@@ -85,7 +85,7 @@ export default function Filters() {
                 </span>
 
                 <span className={TextClass}>
-                    POSTRES
+                    Postres
                 </span>
 
             </div>
@@ -166,7 +166,7 @@ export default function Filters() {
             <div className={buttonCss} onClick={() => handleClickMaxMin()}>
 
                 <span className="text-gray-200 flex justify-center">
-                    <i className={"ri-goblet-line mt-3"+  IconCss}></i>
+                    <i className={IconCss}>+</i>
                 </span>
 
                 <span className={TextClass}>
@@ -177,7 +177,7 @@ export default function Filters() {
             <div className={buttonCss} onClick={() => handleClickMinMax()}>
 
                 <span className="text-gray-200 flex justify-center">
-                    <i className={"ri-filter-off-line "+  IconCss}></i>
+                    <i className={IconCss}>-</i>
                 </span>
 
                 <span className={TextClass}>

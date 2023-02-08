@@ -4,6 +4,7 @@ import axios from 'axios';
 import CardEdit from './CardEdit';
 
 
+
 //name, image, description, price, review, type, _id
 export default function CardAdmin({food}) {
 
