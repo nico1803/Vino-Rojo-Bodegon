@@ -89,7 +89,7 @@ const handlerLoginout =(e)=>{
                 }`}
                 >
                 <ul className="items-center justify-center space-y-8 md:flex md:space-x-7 md:space-y-0">
-                  <li><Link to="/" href={e => {e.preventDefault()}} className="hover:text-gray-200">Home</Link></li>
+                  <li><Link to="/" href={e => {e.preventDefault()}} className="md:hidden lg:block hover:text-gray-200">Home</Link></li>
                   <li><Link to={"/aboutus"} href={e => {e.preventDefault()}} className="hover:text-gray-200">Sobre Nosotros</Link></li>
                   <li><Link to={"/contact"} href={e => {e.preventDefault()}} className="hover:text-gray-200">Contacto</Link></li>
                   {permisos === true ? <li><Link to={"/admin"} href={e => {e.preventDefault()}} onClick={verifyAdmin()} className="hover:text-gray-200">Admin</Link></li> : ''}
@@ -107,8 +107,8 @@ const handlerLoginout =(e)=>{
                     </svg>
                     <span className="md:hidden  pl-2"> Login</span>
                   </Link>
-                    {token ?  <Link to={"/profile"}><button >Perfil</button></Link>  : null}
-                    {token ? <button onClick={handlerLoginout}>Cerrar Sesion</button>  : <Link to={"/login"}><button >Iniciar Sesion</button></Link> }
+                    {token ?  <Link className="flex items-center hover:text-gray-200 md:pl-10 " to={"/profile"}><button >Perfil</button></Link>  : null}
+                    {token ? <button onClick={handlerLoginout}>Cerrar Sesion</button>  : <Link className="flex items-center hover:text-gray-200 md:pl-10 " to={"/login"}><button >Iniciar Sesion</button></Link> }
                 </ul>
           </div>
         </div>
