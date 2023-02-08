@@ -5,7 +5,7 @@ import { BiLaptop } from "react-icons/bi";
 
 export default function Footer () {
     return (
-        <footer className="text-white absolute inset-x-0">
+        <footer className="text-white absolute inset-x-0 bottom-0">
 
             <div className="flex flex-col md:flex-row md:items-center md:justify-around sm:px-12 px-4 bg-slate-900 py-7 ">
 
