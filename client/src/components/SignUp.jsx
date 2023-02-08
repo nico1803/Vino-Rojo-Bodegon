@@ -54,7 +54,7 @@ function SignUp() {
     ///////////////////CREACION USUARIO Y VALIDACION DE EMAIL ////////////////////
       //envia la info de los inputs convertida a un json (formData)
       const data = JSON.stringify(formData);
-      console.log(data);
+      
       //envio un fecth a la url del servidor que va a la ruta del post de customers con un objeto de configuracion donde le paso el metodo de la request, el body que contiene la data en formato json y un header para especificar que es un json el que estoy  enviando
       const create = await fetch(`${(process.env.NODE_ENV === 'development' ? 'http://localhost:3001/' : 'https://vino-rojo-bodegon-production.up.railway.app/')}login`, {
         method: "POST",
