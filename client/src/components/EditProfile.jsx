@@ -59,6 +59,7 @@ const EditProfile = ()=>{
       console.log(server)
 
         localStorage.setItem("name", server.name)
+        localStorage.setItem("image", server.image)
        
 
      history("/profile")
@@ -79,11 +80,11 @@ const EditProfile = ()=>{
           </label>
           <img src={image} alt="" height={"100px"} width={"100px"} />
           <label > Editar la foto
-              <input type="file"  accept="image/*" onChange={handleChangeImage}/>
+              <input type="file" onChange={(e)=>handleChangeImage(e)}/>
           </label>
          <br />
          <br />
-         <button type="submit">Ver Perfil</button>
+         <button type="submit">Guardar Perfil</button>
         </form>
             
          <Link to={"/profile"}><button>Cancelar Cambios</button></Link>   
