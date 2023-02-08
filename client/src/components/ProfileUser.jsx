@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import defaultImage from "../assets/user.png";
-import axios from "axios";
-
+/*
 const imageParser = (event, setState) => {
     if (event.target.files[0]) {
         var file = event.target.files[0];
@@ -19,7 +18,7 @@ const imageParser = (event, setState) => {
         }
     }
   };
-  
+**/ 
 
 
 const ProfileUser = ()=>{
