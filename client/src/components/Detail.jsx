@@ -76,7 +76,7 @@ export default function Detail() {
 
                 <div className="">
                   <div>
-                    <button onClick={() => dispatch(cartAdd(food))} className="text-white bg-[#614C3C] hover:bg-[#271e18] p-[5px] rounded-lg animate__animated animate__tada animate__infinite	infinite  animate__delay-2s">añadir</button>
+                    <button onClick={() => dispatch(cartAdd(food))} className="text-white bg-[#614C3C] hover:bg-[#271e18] p-[5px] rounded-lg">añadir</button>
                   </div>
                 </div>
               </div>
@@ -125,3 +125,5 @@ export default function Detail() {
 
   );
 }
+
+//animate__animated animate__tada animate__infinite	infinite  animate__delay-2s
