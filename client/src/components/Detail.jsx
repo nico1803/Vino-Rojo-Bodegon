@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import { cartAdd } from "../redux/actions";
 import { FaStar } from "react-icons/fa"
@@ -14,7 +14,6 @@ export default function Detail() {
   let { id } = useParams();
   let [food, setfood] = useState([]);
   const dispatch = useDispatch()
-
 
   //Un get aca??? no deberias usar los actions?
   useEffect(() => {
@@ -76,7 +75,9 @@ export default function Detail() {
 
                 <div className="">
                   <div>
-                    <button onClick={() => dispatch(cartAdd(food))} className="text-white bg-[#720f10] hover:bg-[#c51b1e] p-[5px] rounded-lg">añadir</button>
+                    <button onClick={() => {
+                      dispatch(cartAdd(food))
+                    }} className="text-white bg-[#720f10] hover:bg-[#c51b1e] p-[5px] rounded-lg">Añadir</button>
                   </div>
                 </div>
               </div>

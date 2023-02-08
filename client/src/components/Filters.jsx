@@ -48,7 +48,7 @@ export default function Filters() {
                 </span>
 
                 <span className={TextClass}>
-                    ENTRADAS
+                    Entradas
                 </span>
 
             </div>
@@ -61,7 +61,7 @@ export default function Filters() {
                 </span>
 
                 <span className={TextClass}>
-                    PRINCIPAL
+                    Principal
                 </span>
 
             </div>
@@ -73,7 +73,7 @@ export default function Filters() {
                 </span>
 
                 <span className={TextClass}>
-                    GUARNICION
+                    Guarnición
                 </span>
 
             </div>
@@ -85,7 +85,7 @@ export default function Filters() {
                 </span>
 
                 <span className={TextClass}>
-                    POSTRES
+                    Postres
                 </span>
 
             </div>

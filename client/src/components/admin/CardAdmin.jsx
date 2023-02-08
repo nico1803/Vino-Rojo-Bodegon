@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import axios from 'axios';
 
 
+
 //name, image, description, price, review, type, _id
 export default function CardAdmin({food}) {
 

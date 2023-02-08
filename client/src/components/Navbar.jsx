@@ -29,6 +29,7 @@ export default function Navbar() {
 const handlerLoginout =(e)=>{
   e.preventDefault();
   localStorage.removeItem("userId")
+  localStorage.removeItem("cart")
   localStorage.removeItem("email")
   localStorage.removeItem("name")
   localStorage.removeItem("token")

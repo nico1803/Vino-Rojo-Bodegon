@@ -2,17 +2,20 @@
 import { GET_FOODS, GET_USER, POST_FOOD, FOOD_BY_TYPE,EDIT_FOOD, GET_FOODS_BY_NAME, CART_ADD, CART_REMOVE, CART_UP, CART_DOWN, DISABLE_FOOD, ABLE_FOOD, GET_ABLE_FOOD, VERIFY_ADMIN, MIN_MAX, MAX_MIN } from "./actions";
 
 
-const initialState = {
-    allFoods: [],
-    foods: [],
-    user: [],
-    token: [],
-    cart: [],
-    numberCart: 0,
-    drinks:[]
+const initialState = () => {
+    const cartInLocalStorage = localStorage.getItem("cart")
+    const initialCart = cartInLocalStorage ? JSON.parse(cartInLocalStorage) : []
+    return {
+        allFoods: [],
+        foods: [],
+        user: [],
+        token: [],
+        cart: initialCart,
+        numberCart: initialCart.length,
+    };
 }
 
-export default function rootReducer(state = initialState, action) {
+export default function rootReducer(state = initialState(), action) {
     switch (action.type) {
         case GET_FOODS: {
             return {
@@ -88,21 +91,24 @@ export default function rootReducer(state = initialState, action) {
                     state.cart.push(_cart);
                 }
             }
-            return {
+            localStorage.setItem('cart', JSON.stringify(state.cart))
+                return {
                 ...state,
                 numberCart: state.numberCart + 1
             }
         }
         case CART_REMOVE: {
+            const newCart = state.cart.filter(item => item.id !== action.payload)
+            localStorage.setItem('cart', JSON.stringify(newCart))
             return {
                 ...state,
-                cart: state.cart.filter(item => item.id !== action.payload)
+                cart: newCart
             }
         }
         case CART_UP:
             state.numberCart++
             state.cart[action.payload].quantity++;
-
+            localStorage.setItem('cart', JSON.stringify(state.cart))
             return {
                 ...state
             }
@@ -111,6 +117,8 @@ export default function rootReducer(state = initialState, action) {
             if (quantity > 1) {
                 state.numberCart--;
                 state.cart[action.payload].quantity--;
+
+                localStorage.setItem('cart', JSON.stringify(state.cart))
             }
         case GET_ABLE_FOOD:
             return {
