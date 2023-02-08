@@ -15,7 +15,7 @@ const router = Router();
 router.get("/", async (req, res) => {
     try {
       const { name } = req.query;
-      const allFoods= await getFoods();
+      const allFoods = await getAbleFoods();
   
       if (name) {
         const foodName = allFoods.filter((food) =>
