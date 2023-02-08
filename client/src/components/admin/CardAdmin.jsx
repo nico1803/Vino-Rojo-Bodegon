@@ -1,5 +1,7 @@
 import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
+import CardEdit from './CardEdit';
 
 
 //name, image, description, price, review, type, _id
@@ -20,6 +22,11 @@ export default function CardAdmin({food}) {
             {!food.available && <div className='flex items-center justify-center absolute bottom-[15px] left-[600px] w-44 z-50 bg-[#36971b] hover:bg-[#41f40f] p-[5px] rounded-lg'>
               <button onClick={() => axios.get(`/foods/ableFood/${food._id}`)} className='flex text-s text-center text-[#fff]' >ACTIVAR PLATO</button>
             </div>}
+            <div className='flex items-center justify-center absolute bottom-[15px] left-[820px] w-44 z-50 bg-[#5499C7] hover:bg-[#5DADE2] p-[5px] rounded-lg'>
+                <Link to={'/cardedit'}>
+                    <button className='flex text-s text-center text-[#fff]'>MODIFICAR</button>
+                </Link>
+            </div>
         </div>
     )
 };
