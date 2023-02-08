@@ -20,7 +20,10 @@ export default function Home() {
         <Recipescard/>
       </div>
 
+
     </div>
+
+    <div className='w-[100%] h-[200px] sm:h-[150px] md:h-0 sheeshh, ignora que este div existe! es una solucion mediocre para un problema con el footer con el responsive'></div>
   </>)
 };
 
