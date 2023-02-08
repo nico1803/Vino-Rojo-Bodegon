@@ -32,6 +32,7 @@ useEffect(() => {
   const dispatch = useDispatch();
   const carro = useSelector((state)=> state);
 
+
   let price = carro.cart.map(e=>e.price*e.quantity).reduce((a,current)=>a+current,0)
 
   if (!carro?.cart.length) return (
@@ -42,9 +43,9 @@ useEffect(() => {
       </div>
 
       <div className='flex p-[5px] bg-[#282c34] justify-between'>
-          <Link to={"/"}>
+          <a href="/">
             <button className='text-white bg-[#614C3C] hover:bg-[#271e18] p-[5px] rounded-lg'>Ver Menu</button>
-          </Link>
+          </a>
         
           <div className='flex'>
             <button className='text-white bg-[#614C3C] hover:bg-[#271e18] p-[5px] rounded-lg font-bold'>Finalizar compra</button>

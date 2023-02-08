@@ -32,14 +32,14 @@ if (!recetas || !recetas.length) return <Loading/>
         recetas.map((el, id) => {return (
           <div className='rounded-lg relative m-2' key={id}>
 
-            <CardAdmin food={el} key={id} />
+            <CardAdmin food={el} key={id} id={el._id} />
 
-            <div className='absolute bottom-[15px] left-[800px] z-50 bg-[#971b1b] hover:bg-[#d61313] p-[5px] rounded-lg'>
+           {el.available && <div className='flex items-center justify-center absolute bottom-[15px] left-[600px] w-44 z-50 bg-[#971b1b] hover:bg-[#d61313] p-[5px] rounded-lg'>
               <button onClick={() => axios.get(`/foods/disableFood/${el._id}`)} className='flex text-s text-center text-[#fff]' >DESACTIVAR PLATO</button>
-            </div>
-            <div className='absolute bottom-[15px] left-[600px] z-50 bg-[#971b1b] hover:bg-[#d61313] p-[5px] rounded-lg'>
+            </div>}
+            {!el.available && <div className='flex items-center justify-center absolute bottom-[15px] left-[600px] w-44 z-50 bg-[#36971b] hover:bg-[#41f40f] p-[5px] rounded-lg'>
               <button onClick={() => axios.get(`/foods/ableFood/${el._id}`)} className='flex text-s text-center text-[#fff]' >ACTIVAR PLATO</button>
-            </div>
+            </div>}
 
           </div>)})
         }
