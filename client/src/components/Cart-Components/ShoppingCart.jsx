@@ -44,11 +44,11 @@ useEffect(() => {
 
       <div className='flex p-[5px] bg-[#282c34] justify-between'>
           <a href="/">
-            <button className='text-white bg-[#614C3C] hover:bg-[#271e18] p-[5px] rounded-lg'>Ver Menu</button>
+            <button className='text-white bg-[#720f10] hover:bg-[#c51b1e] p-[5px] rounded-lg'>Ver Menu</button>
           </a>
         
           <div className='flex'>
-            <button className='text-white bg-[#614C3C] hover:bg-[#271e18] p-[5px] rounded-lg font-bold'>Finalizar compra</button>
+            <button className='text-white bg-[#720f10] hover:bg-[#c51b1e] p-[5px] rounded-lg font-bold'>Finalizar compra</button>
           </div>
 
         </div>

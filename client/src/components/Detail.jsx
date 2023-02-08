@@ -65,18 +65,18 @@ export default function Detail() {
             <div className="flex justify-between p-5">
               <div>
                 <Link to={"/"}>
-                  <button className='text-white bg-[#614C3C] hover:bg-[#271e18] p-[5px] rounded-lg mr-2'>Seguir Comprando</button>
+                  <button className='text-white bg-[#720f10] hover:bg-[#c51b1e] p-[5px] rounded-lg mr-2'>Seguir Comprando</button>
                 </Link>
               </div>
 
               <div className="flex">
-                <div className="bg-[#614c3c] rounded-full text-white grid content-center mr-3 px-2">
+                <div className="bg-[#720f10] rounded-full text-white grid content-center mr-3 px-2">
                   ${food.price}
                 </div>
 
                 <div className="">
                   <div>
-                    <button onClick={() => dispatch(cartAdd(food))} className="text-white bg-[#614C3C] hover:bg-[#271e18] p-[5px] rounded-lg">añadir</button>
+                    <button onClick={() => dispatch(cartAdd(food))} className="text-white bg-[#720f10] hover:bg-[#c51b1e] p-[5px] rounded-lg">añadir</button>
                   </div>
                 </div>
               </div>
