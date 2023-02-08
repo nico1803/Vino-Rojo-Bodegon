@@ -43,7 +43,7 @@ const handlerLoginout =(e)=>{
         <div>
           <div className="flex items-center justify-between py-3 md:py-5 md:block">
             <a className="flex items-center" href="/">
-              <img className="w-[60px]" src={logoImg} alt="" /><h2 className=" pl-5 text-2xl font-bold">VINO ROJO.</h2>
+              <img className="w-[60px]" src={'https://cdn-icons-png.flaticon.com/512/1600/1600583.png'} alt="" /><h2 className=" pl-5 text-2xl font-bold">VINO ROJO.</h2>
             </a>
             <div className="md:hidden">
               <button className="p-2 text-white-700 rounded-md outline-none focus:border-gray-400 focus:border"
