@@ -39,7 +39,7 @@ async function handleSubmit(e) {
     e.preventDefault();  
     try {
       const {data: {ok, token,status, user}} = await axios.post(`${(process.env.NODE_ENV === 'development' ? 'http://localhost:3001/' : 'https://vino-rojo-bodegon-production.up.railway.app/')}login/signin`,formData);
-       
+       console.log( "database",user)
       if(status === 400){
         swal({
           title: "Oppps...",

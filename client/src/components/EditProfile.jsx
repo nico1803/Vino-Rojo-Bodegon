@@ -53,11 +53,12 @@ const EditProfile = ()=>{
      e.preventDefault();
      console.log("pasa algo")
      const data = {name, image};
+     console.log( "prueba", name,image)
      try {
       const apiServer = await axios.post(`${(process.env.NODE_ENV === 'development' ? 'http://localhost:3001/' : 'https://vino-rojo-bodegon-production.up.railway.app/')}login/update/${id}`,data);
       console.log(data)
       const server= apiServer.data;
-      console.log(server)
+      console.log( "server",server)
 
         localStorage.setItem("name", server.name)
         localStorage.setItem("image", server.image)

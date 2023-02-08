@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 import { Link} from "react-router-dom";
-import defaultImage from "../assets/arte.png";
+import defaultImage from "../assets/user.png";
 import axios from "axios";
 import "../styles/profile.css";
 
@@ -29,14 +29,14 @@ const ProfileUser = ()=>{
 
     const[name,setName]=useState("");
     const[email,setEmail]=useState("");
-    const[image,setImage]=useState( localStorage.getItem("image") || defaultImage);
+    const[image,setImage]=useState(defaultImage);
     console.log(image)
 
     
     useEffect(()=>{
       setName(localStorage.getItem("name"));
       setEmail(localStorage.getItem("email"))
-      setImage(localStorage.getItem("image"));
+      setImage( localStorage.getItem("image")  !== undefined && localStorage.getItem("image")  !== "undefined" ? localStorage.getItem("image")  : defaultImage );
     },[]);
 
 
@@ -44,7 +44,7 @@ const ProfileUser = ()=>{
 
 <div class="containerProfile">
   <div class="service-details">
-    <img src={image? image: defaultImage}/>
+    <img src={ image ? image : defaultImage }/>
     <div class="service-hover-text">
       <h3>{name}</h3>
       <h4>{email}</h4>
