@@ -3,7 +3,26 @@ import defaultImage from "../assets/user.png";
 import {  useState } from "react";
 import axios from "axios"
 
+const imageParser = (event, setState) => {
+  if (event.target.files[0]) {
+      var file = event.target.files[0];
+      if (parseInt(file.size) < 100000) {
+          var reader = new FileReader();
+          reader.onloadend = function () {                
+              setState(reader.result)
+          }
+          reader.readAsDataURL(file);
+
+      }
+      else {
+          event.target.value = null;
+      }
+  }
+};
+
+
 const EditProfile = ()=>{
+  
   const history=useNavigate();
 
 
@@ -13,7 +32,7 @@ const EditProfile = ()=>{
 
        //estados para la informacion del usuario
       const[name, setName]= useState("");
-      const [image, setImage] = useState(  localStorage.getItem("image") || defaultImage);
+      const [image, setImage] = useState( "" || defaultImage);
 
 
   // //Handler para el el nombre
@@ -24,7 +43,7 @@ const EditProfile = ()=>{
 
   //  //Handler para la imagen
    const handleChangeImage = e => {
-       setImage(URL.createObjectURL(e.target.files[0]));
+       imageParser(e,setImage)
      };
      console.log(image);
 
@@ -60,7 +79,7 @@ const EditProfile = ()=>{
           </label>
           <img src={image} alt="" height={"100px"} width={"100px"} />
           <label > Editar la foto
-              <input type="file"  onChange={handleChangeImage}/>
+              <input type="file"  accept="image/*" onChange={handleChangeImage}/>
           </label>
          <br />
          <br />
