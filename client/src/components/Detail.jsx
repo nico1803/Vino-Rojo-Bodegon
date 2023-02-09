@@ -55,13 +55,13 @@ export default function Detail() {
               <h1 className=" animate__animated animate__pulse animate__infinite	infinite  animate__delay-3s">{food.name}</h1>
             </div>
 
-            <div className=" h-[60%] m-5 p-5 flex justify-center ">
+            <div className=" h-[60%] m-6 p-5 flex justify-center ">
               <span className="tracking-wide text-center">
                 {food.description}
               </span>
             </div>
 
-            <div className="flex justify-between p-5">
+            <div className="flex justify-around sm:flex-wrap gap-3 p-3">
               <div>
                 <Link to={"/"}>
                   <button className='text-white bg-[#720f10] hover:bg-[#c51b1e] p-[5px] rounded-lg mr-2'>Seguir Comprando</button>
@@ -69,7 +69,7 @@ export default function Detail() {
               </div>
 
               <div className="flex">
-                <div className="bg-[#720f10] rounded-full text-white grid content-center mr-3 px-2">
+                <div className="bg-[#720f10] rounded-full text-white grid content-center mr-3 px-2 ">
                   ${food.price}
                 </div>
 
