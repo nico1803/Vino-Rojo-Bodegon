@@ -287,7 +287,7 @@ router.post('/resetpassword/:resetToken', async (req, res) => {
 
 
 //recibe la informacion del formulario para editar el perfil y los actualiza en la base de datos
-router.post('/update/:id', async (req, res) => {
+router.post('/update/:id', verifyToken, async (req, res) => {
   const { id } = req.params;
   console.log(id);
   const { name, image } = req.body;
