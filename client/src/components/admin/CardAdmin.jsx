@@ -24,7 +24,7 @@ export default function CardAdmin({food}) {
               <button onClick={() => axios.get(`/foods/ableFood/${food._id}`)} className='flex text-s text-center text-[#fff]' >ACTIVAR PLATO</button>
             </div>}
             <div className='flex items-center justify-center absolute bottom-[15px] left-[820px] w-44 z-50 bg-[#5499C7] hover:bg-[#5DADE2] p-[5px] rounded-lg'>
-                <Link to={'/cardedit'}>
+                <Link to={'/cardedit/id:'}>
                     <button className='flex text-s text-center text-[#fff]'>MODIFICAR</button>
                 </Link>
             </div>

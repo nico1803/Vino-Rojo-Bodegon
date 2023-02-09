@@ -46,7 +46,7 @@ function App() {
 
         <Route path='/admin' element={<Admin/>}/>
 
-        <Route path='/cardedit' element={<CardEdit/>}/>
+        <Route path='/cardedit/id:' element={<CardEdit/>}/>
 
         <Route path='/profile/' element={<ProfileUser/>}/>
 
