@@ -5,6 +5,9 @@ const foods = require('./foods.routes');
 const customers = require('./customers.routes');
 const filters = require ('./filters.routes');
 const email = require("./email.routes");
+
+
+
 router.use('/foods', foods);
 router.use('/login', customers);
 router.use('/filters', filters);
@@ -19,16 +22,9 @@ const mercadopago = require("mercadopago");
 }); 
 ///////mp routes sdk //////////////////
 router.post("/create_preference", (req, res) => {
-    //const product = req.body;
+
 	let preference = {
-		items: [
-			{
-				title: req.body.title,
-				description:req.body.description,
-				unit_price: (req.body.unit_price),
-				quantity: Number(req.body.quantity),
-			}
-		],
+		items: req.body, 
 		back_urls: {
 			"success": "http://localhost:3000/success",
 			"failure": "http://localhost:3000/failure",
@@ -37,16 +33,21 @@ router.post("/create_preference", (req, res) => {
 		auto_return: "approved",
 		//no acepte pagos efectivo (pendientes),solo tarjetas
 		binary_mode:true,
+		//notification_url:"http://localhost:3001/feedback"
+
 	};
+     
 
 	mercadopago.preferences.create(preference)
 		.then(function (response) {
 			//id: response.body.id
-			res.status(200).json({ id: response.body.id });
+			res.status(200).json( response );
 		}).catch(function (error) {
 			res.status(400).send(error);
 			console.log(error);
 		});
+
+	
 });
 
 router.get('/feedback', function (req, res) {
@@ -56,6 +57,7 @@ router.get('/feedback', function (req, res) {
 		MerchantOrder: req.query.merchant_order_id
 	});
 }); 
+
 
 
 

@@ -56,7 +56,7 @@ const findCustomerByEmail = async(email)=>{
 }
 
 const getByType = async (type) => {
-    return await Food.find({type: type}).lean();
+    return await Food.find({ available: true, type: type}).lean();
 }
 
 const getCustomers = async () => {

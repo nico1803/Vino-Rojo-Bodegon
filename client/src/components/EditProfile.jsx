@@ -2,8 +2,28 @@ import { Link, useNavigate } from "react-router-dom";
 import defaultImage from "../assets/user.png";
 import {  useState } from "react";
 import axios from "axios"
+import "../styles/editprofile.css";
+
+const imageParser = (event, setState) => {
+  if (event.target.files[0]) {
+      var file = event.target.files[0];
+      if (parseInt(file.size) < 100000) {
+          var reader = new FileReader();
+          reader.onloadend = function () {                
+              setState(reader.result)
+          }
+          reader.readAsDataURL(file);
+
+      }
+      else {
+          event.target.value = null;
+      }
+  }
+};
+
 
 const EditProfile = ()=>{
+  
   const history=useNavigate();
 
 
@@ -13,7 +33,7 @@ const EditProfile = ()=>{
 
        //estados para la informacion del usuario
       const[name, setName]= useState("");
-      const [image, setImage] = useState(  localStorage.getItem("image") || defaultImage);
+      const [image, setImage] = useState( "" || defaultImage);
 
 
   // //Handler para el el nombre
@@ -24,7 +44,7 @@ const EditProfile = ()=>{
 
   //  //Handler para la imagen
    const handleChangeImage = e => {
-       setImage(URL.createObjectURL(e.target.files[0]));
+       imageParser(e,setImage)
      };
      console.log(image);
 
@@ -33,13 +53,15 @@ const EditProfile = ()=>{
      e.preventDefault();
      console.log("pasa algo")
      const data = {name, image};
+     console.log( "prueba", name,image)
      try {
       const apiServer = await axios.post(`${(process.env.NODE_ENV === 'development' ? 'http://localhost:3001/' : 'https://vino-rojo-bodegon-production.up.railway.app/')}login/update/${id}`,data);
       console.log(data)
       const server= apiServer.data;
-      console.log(server)
+      console.log( "server",server)
 
         localStorage.setItem("name", server.name)
+        localStorage.setItem("image", server.image)
        
 
      history("/profile")
@@ -53,23 +75,52 @@ const EditProfile = ()=>{
 
 
      return(
-      <div>
-          <h3>Editar perfil</h3>
-        <form onSubmit={handlerSubmit} >
-          <label > Nombre   <input type="text" onChange={handlerChange} value={name} />
-          </label>
-          <img src={image} alt="" height={"100px"} width={"100px"} />
-          <label > Editar la foto
-              <input type="file"  onChange={handleChangeImage}/>
-          </label>
+      
+      <figure class="snip1336">
+  <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/sample87.jpg" alt="sample87" />
+  <figcaption>
+    <img src={image} alt="profile-sample4" class="profile" />
+    <form onSubmit={handlerSubmit} >
+    <div class="button-wrapper">
+  <span class="label">
+    Cambia tu foto
+  </span>
+  
+    <input type="file" accept="image/*" name="upload" id="upload" class="upload-box"  onChange={handleChangeImage}/>
+  
+</div>
+    {/* <label > Cambia tu foto.
+              <input type="file"  accept="image/*" onChange={handleChangeImage}/>
+          </label> */}
+          <br />
+          <br />
+          <div class="input-group">
+  <input required="" type="text" name="text" autocomplete="off" class="input" onChange={handlerChange} value={name}/>
+  <label class="user-label">Nuevo nombre de usuario.</label>
+</div>
+    
+
          <br />
          <br />
-         <button type="submit">Ver Perfil</button>
+         <a><button type="submit" class="follow">Guardar cambios</button></a>
+           
+  
         </form>
             
-         <Link to={"/profile"}><button>Cancelar Cambios</button></Link>   
+        <Link to={"/profile"}><button>Cancelar Cambios</button></Link> 
+
+  </figcaption>
+</figure>
+
+ 
+
+
+      
+      // <div>
+      //     <h3>Editar perfil</h3>
+      
   
-      </div>
+      // </div>
      )
   };
 

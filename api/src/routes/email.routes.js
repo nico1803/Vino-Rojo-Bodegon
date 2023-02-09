@@ -60,7 +60,7 @@ router.post("/reset/:resetToken", (req, res )=> {
             subject:"¡Hola! ¿Fuiste tú?", 
         html:`<h1>Detectamos una petición de cambio de contraseña.</h1>
         <p>Si no fuiste tu, ignora este correo, de lo contrario sigue el paso a paso, saludos!</p>
-         <a href="http://localhost:3000/resetPassword/${resetToken}"><img src="https://www.ivancepedacastro.com/wp-content/uploads/2020/08/boton-clic-aqui.png"/ height=30px width={50px}></a>`
+         <a href="https://vino-rojo-bodegon.vercel.app/resetPassword/${resetToken}"><img src="https://www.ivancepedacastro.com/wp-content/uploads/2020/08/boton-clic-aqui.png"/ height=30px width={50px}></a>`
 
 
         
