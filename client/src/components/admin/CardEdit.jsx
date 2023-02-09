@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import { editFood } from '../../redux/actions';
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
@@ -8,14 +8,35 @@ import { useDispatch } from 'react-redux';
 
 export default function CardEdit() {
     let { id } = useParams();
+    const history = useNavigate();
     let [food, setfood] = useState({
         name:"",
         price:"",
         description:"",
         image:""
     });
+    const [image, setImage] = useState("");
 
-    console.log(food)
+    const imageParser = (event, setState) => {
+        if (event.target.files[0]) {
+            var file = event.target.files[0];
+            if (parseInt(file.size) < 100000) {
+                var reader = new FileReader();
+                reader.onloadend = function () {                
+                    setState(reader.result)
+                }
+                reader.readAsDataURL(file);
+      
+            }
+            else {
+                event.target.value = null;
+            }
+        }
+      };
+
+      const handleChangeImage = e => {
+        imageParser(e,setImage)
+      };
     
     useEffect(() => {
         // eslint-disable-next-line
@@ -29,16 +50,17 @@ export default function CardEdit() {
 
         const handleChange =(e)=>{
             setfood({...food,[e.target.name]: e.target.value});
-            console.log(e.target.name)
+            console.log(e.target.image)
            };
          function updatePost() {
              axios.put(`http://localhost:3001/foods/edit/${id}`, {
              name: food.name,
              description:food.description,
              price:food.price,
-             image:food.image
+             image: image
 
             }).then((response) => {
+                history('/')
               setfood(response.data);
            });
           }
@@ -53,8 +75,7 @@ export default function CardEdit() {
                 <div className=" m-5 flex flex-col w-[80%]">
                     <div className="text-2xl grid gap-5 justify-items-left font-bold text-center w-[60%]">
                         <input  name='name' onChange={handleChange} placeholder={food.name} />
-                         <input name='image' type='url' placeholder='Cambiar imagen' /> 
-                        <input name='image' onChange={handleChange}   className="block w-full text-sm text-gray-900 border border-gray-300 cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" id="file_input" type="file"></input>
+                         <input name='image' type='file' accept='image/*' class="upload-box" placeholder='Cambiar imagen' onChange={handleChangeImage}/> 
                         <input name='price'  onChange={handleChange}  placeholder={`$${food.price}`}/>
                         <textarea name='description' onChange={handleChange}  className='w-[100%] h-[100%] box-border resize-none border-2' placeholder={food.description} />
                     </div>
