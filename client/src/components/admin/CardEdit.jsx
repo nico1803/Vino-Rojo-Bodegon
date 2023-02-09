@@ -5,9 +5,18 @@ import axios from 'axios';
 import { useDispatch } from 'react-redux';
 
 
+
 export default function CardEdit() {
     let { id } = useParams();
-    let [food, setfood] = useState({});
+    let [food, setfood] = useState({
+        name:"",
+        price:"",
+        description:"",
+        image:""
+    });
+
+    console.log(food)
+    
     useEffect(() => {
         // eslint-disable-next-line
         const food = axios.get(`${(process.env.NODE_ENV === 'development' ? 'http://localhost:3001/' : 'https://vino-rojo-bodegon-production.up.railway.app/')}foods/${id}`)
@@ -16,8 +25,23 @@ export default function CardEdit() {
           })
           // eslint-disable-next-line
         }, []);
-        console.log(food.name)
-        
+        console.log(food.name);
+
+        const handleChange =(e)=>{
+            setfood({...food,[e.target.name]: e.target.value});
+            console.log(e.target.name)
+           };
+         function updatePost() {
+             axios.put(`http://localhost:3001/foods/edit/${id}`, {
+             name: food.name,
+             description:food.description,
+             price:food.price,
+             image:food.image
+
+            }).then((response) => {
+              setfood(response.data);
+           });
+          }
 
   return (
     <div>
@@ -28,14 +52,14 @@ export default function CardEdit() {
                 </div>
                 <div className=" m-5 flex flex-col w-[80%]">
                     <div className="text-2xl grid gap-5 justify-items-left font-bold text-center w-[60%]">
-                        <input onChange={(e) => (e.target.value)} placeholder={food.name} />
-                        {/* <input type='url' placeholder='Cambiar imagen' /> */}
-                        <input className="block w-full text-sm text-gray-900 border border-gray-300 cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" id="file_input" type="file"></input>
-                        <input placeholder={`$${food.price}`}/>
-                        <textarea className='w-[100%] h-[100%] box-border resize-none border-2' placeholder={food.description} />
+                        <input  name='name' onChange={handleChange} placeholder={food.name} />
+                         <input name='image' type='url' placeholder='Cambiar imagen' /> 
+                        <input name='image' onChange={handleChange}   className="block w-full text-sm text-gray-900 border border-gray-300 cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" id="file_input" type="file"></input>
+                        <input name='price'  onChange={handleChange}  placeholder={`$${food.price}`}/>
+                        <textarea name='description' onChange={handleChange}  className='w-[100%] h-[100%] box-border resize-none border-2' placeholder={food.description} />
                     </div>
                     <div className="flex justify-end p-5">
-                        <button className="text-white bg-[#720f10] hover:bg-[#c51b1e] p-[5px] rounded-lg">MODIFICAR</button>
+                        <button  onClick={updatePost} className="text-white bg-[#720f10] hover:bg-[#c51b1e] p-[5px] rounded-lg">MODIFICAR</button>
                     </div>
                 </div>
             </div>
