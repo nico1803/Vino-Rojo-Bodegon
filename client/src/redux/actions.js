@@ -25,7 +25,7 @@ export const VERIFY_ADMIN = 'VERIFY_ADMIN';
 export const getFoods = () => {
     return async (dispatch) => {
         try {
-            let data = await axios.get('/foods');       
+            let data = await axios.get(`${(process.env.NODE_ENV === 'development' ? 'http://localhost:3001/' : 'https://vino-rojo-bodegon-production.up.railway.app/')}/foods`);       
             return dispatch({ type: GET_FOODS, payload: data.data });
         } catch(e) {
             console.error(e);
@@ -35,7 +35,7 @@ export const getFoods = () => {
 
 export function getUser(id){
     return async function(dispatch) {
-        let user = await axios.get(`/login/customers/${id}`)
+        let user = await axios.get(`${(process.env.NODE_ENV === 'development' ? 'http://localhost:3001/' : 'https://vino-rojo-bodegon-production.up.railway.app/')}/login/customers/${id}`)
         console.log(user.data);
         return dispatch({
             type: 'GET_USER',
@@ -46,19 +46,19 @@ export function getUser(id){
 export function editFood(id, foodEditada) {
     return async function (dispatch) {
       try {
-        const json = await axios.put(`/foods/edit/${id}`, foodEditada);
+        const json = await axios.put(`${(process.env.NODE_ENV === 'development' ? 'http://localhost:3001/' : 'https://vino-rojo-bodegon-production.up.railway.app/')}/foods/edit/${id}`, foodEditada);
         return dispatch({
           type: 'EDIT_FOOD',
           payload: json.data,
         });
       } catch (error) {
-        console.log("No pude modificar ela comida", error);
+        console.log("No puede modificar la comida", error);
       }
     };
   }
 export function postFood(payload){
     return async function(dispatch){
-      await axios.post('/foods.routes',payload)
+      await axios.post(`${(process.env.NODE_ENV === 'development' ? 'http://localhost:3001/' : 'https://vino-rojo-bodegon-production.up.railway.app/')}/foods.routes`,payload)
         dispatch ({
             type: 'POST_FOOD',
             payload
@@ -68,7 +68,7 @@ export function postFood(payload){
 
 export function foodTypes(payload) {
     return async function(dispatch){
-        const filtered = await axios.get(`/filters/${payload}`)
+        const filtered = await axios.get(`${(process.env.NODE_ENV === 'development' ? 'http://localhost:3001/' : 'https://vino-rojo-bodegon-production.up.railway.app/')}/filters/${payload}`)
         dispatch ({
             type: 'FOOD_BY_TYPE',
             payload: filtered.data
@@ -78,7 +78,7 @@ export function foodTypes(payload) {
 
 export function priceMintoMax() {
     return async function(dispatch){
-        const Ordered = await axios.get(`/filters/priceMinMax`)
+        const Ordered = await axios.get(`${(process.env.NODE_ENV === 'development' ? 'http://localhost:3001/' : 'https://vino-rojo-bodegon-production.up.railway.app/')}/filters/priceMinMax`)
         dispatch({
             type: "MIN_MAX",
             payload: Ordered.data
@@ -88,7 +88,7 @@ export function priceMintoMax() {
 
 export function priceMaxtoMin(){
     return async function(dispatch){
-        const Ordered = await axios.get(`/filters/priceMaxMin`)
+        const Ordered = await axios.get(`${(process.env.NODE_ENV === 'development' ? 'http://localhost:3001/' : 'https://vino-rojo-bodegon-production.up.railway.app/')}/filters/priceMaxMin`)
         dispatch({
             type: "MAX_MIN",
             payload: Ordered.data
@@ -99,7 +99,7 @@ export function priceMaxtoMin(){
 export function getFoodsByName(name){
     return async function(dispatch){
        try{
-        const resu =  await axios.get(`/foods?name=${name}`)
+        const resu =  await axios.get(`${(process.env.NODE_ENV === 'development' ? 'http://localhost:3001/' : 'https://vino-rojo-bodegon-production.up.railway.app/')}/foods?name=${name}`)
         dispatch({
             type: "GET_FOODS_BY_NAME",
             payload: resu.data
@@ -120,7 +120,7 @@ export function cartAdd(payload){
                 payload
             })
         console.log(payload);
-        await axios.put(`/login/updateCart/${id}`, payload)
+        await axios.put(`${(process.env.NODE_ENV === 'development' ? 'http://localhost:3001/' : 'https://vino-rojo-bodegon-production.up.railway.app/')}/login/updateCart/${id}`, payload)
         }
     } else {
         swal({
@@ -162,7 +162,7 @@ export function cartDown(payload){
 
 export function getAbleFood() {
     return async function(dispatch){
-        let data = await axios.get('foods/able')
+        let data = await axios.get(`${(process.env.NODE_ENV === 'development' ? 'http://localhost:3001/' : 'https://vino-rojo-bodegon-production.up.railway.app/')}foods/able`)
         dispatch ({
             type: 'GET_ABLE_FOOD',
             payload: data.data

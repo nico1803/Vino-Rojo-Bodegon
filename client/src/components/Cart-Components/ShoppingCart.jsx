@@ -21,7 +21,7 @@ export default function ShoppingCart() {
 
     function handleMercadoPago(e) {
     try{
-      axios.post('http://localhost:3001/create_preference',carro.cart.map(mapFoodInCartToFoodInMercadoPago))
+      axios.post(`${(process.env.NODE_ENV === 'development' ? 'http://localhost:3001/' : 'https://vino-rojo-bodegon-production.up.railway.app/')}/create_preference`,carro.cart.map(mapFoodInCartToFoodInMercadoPago))
       .then((res)=> window.location.href = res.data.body.init_point);
 
     }catch(error){
