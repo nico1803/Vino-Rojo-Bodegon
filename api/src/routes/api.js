@@ -26,8 +26,8 @@ router.post("/create_preference", (req, res) => {
 	let preference = {
 		items: req.body, 
 		back_urls: {
-			"success": "http://localhost:3000/success",
-			"failure": "http://localhost:3000/failure",
+			"success": "https://vino-rojo-bodegon.vercel.app/success",
+			"failure": "https://vino-rojo-bodegon.vercel.app/failure",
 			"pending": ""
 		},
 		auto_return: "approved",

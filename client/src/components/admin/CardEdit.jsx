@@ -53,7 +53,7 @@ export default function CardEdit() {
             console.log(e.target.image)
            };
          function updatePost() {
-             axios.put(`http://localhost:3001/foods/edit/${id}`, {
+             axios.put(`${(process.env.NODE_ENV === 'development' ? 'http://localhost:3001/' : 'https://vino-rojo-bodegon-production.up.railway.app/')}foods/edit/${id}`, {
              name: food.name,
              description:food.description,
              price:food.price,
