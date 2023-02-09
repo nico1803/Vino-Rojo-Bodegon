@@ -4,7 +4,6 @@ import axios from 'axios';
 // import CardEdit from './CardEdit';
 
 
-
 //name, image, description, price, review, type, _id
 export default function CardAdmin({food}) {
 
@@ -28,6 +27,6 @@ export default function CardAdmin({food}) {
                     <button className='flex text-s text-center text-[#fff]'>MODIFICAR</button>
                 </Link>
             </div>
-        </div>
+            </div>
     )
 };
