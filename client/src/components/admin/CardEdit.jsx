@@ -57,7 +57,7 @@ export default function CardEdit() {
              name: food.name,
              description:food.description,
              price:food.price,
-             image: image
+             image: image === '' ? food.image : image
 
             }).then((response) => {
                 history('/')

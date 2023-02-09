@@ -20,10 +20,10 @@ export default function CardAdmin({food}) {
                 </div>
             </div> 
             {food.available && <div className='flex items-center justify-center absolute bottom-[15px] left-[600px] w-44 z-50 bg-[#971b1b] hover:bg-[#d61313] p-[5px] rounded-lg'>
-              <button onClick={() => axios.get(`/foods/disableFood/${food._id}`)} className='flex text-s text-center text-[#fff]' >DESACTIVAR PLATO</button>
+              <button onClick={() => axios.get(`${(process.env.NODE_ENV === 'development' ? 'http://localhost:3001/' : 'https://vino-rojo-bodegon-production.up.railway.app/')}foods/disableFood/${food._id}`)} className='flex text-s text-center text-[#fff]' >DESACTIVAR PLATO</button>
             </div>}
             {!food.available && <div className='flex items-center justify-center absolute bottom-[15px] left-[600px] w-44 z-50 bg-[#36971b] hover:bg-[#41f40f] p-[5px] rounded-lg'>
-              <button onClick={() => axios.get(`/foods/ableFood/${food._id}`)} className='flex text-s text-center text-[#fff]' >ACTIVAR PLATO</button>
+              <button onClick={() => axios.get(`${(process.env.NODE_ENV === 'development' ? 'http://localhost:3001/' : 'https://vino-rojo-bodegon-production.up.railway.app/')}foods/ableFood/${food._id}`)} className='flex text-s text-center text-[#fff]' >ACTIVAR PLATO</button>
             </div>}
             <div className='flex items-center justify-center absolute bottom-[15px] left-[820px] w-44 z-50 bg-[#5499C7] hover:bg-[#5DADE2] p-[5px] rounded-lg'>
                 <Link to={`/cardEdit/${food._id}`}>
