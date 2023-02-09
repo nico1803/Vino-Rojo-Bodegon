@@ -76,14 +76,8 @@ export default function CardEdit() {
                 <div className=" m-5 flex flex-col w-[80%]">
                     <div className="text-2xl grid gap-5 justify-items-left font-bold text-center w-[60%]">
                         <input  name='name' onChange={handleChange} placeholder={food.name} />
-<<<<<<< HEAD
-                        <input name='image' type='url' placeholder='Cambiar imagen' /> 
-                        <input name='image' onChange={handleChange}  className="block w-full text-sm text-gray-900 border border-gray-300 cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" id="file_input" type="file"></input>
-                        <input name='price' onChange={handleChange}  placeholder={`$${food.price}`}/>
-=======
                          <input name='image' type='file' accept='image/*' class="upload-box" placeholder='Cambiar imagen' onChange={handleChangeImage}/> 
                         <input name='price'  onChange={handleChange}  placeholder={`$${food.price}`}/>
->>>>>>> 5f759e2ccefb94e907e7108d0be2d327ad9ac7fc
                         <textarea name='description' onChange={handleChange}  className='w-[100%] h-[100%] box-border resize-none border-2' placeholder={food.description} />
                     </div>
                     <div className="flex justify-end p-5">
