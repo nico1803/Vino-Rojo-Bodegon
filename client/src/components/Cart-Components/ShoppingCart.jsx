@@ -14,6 +14,7 @@ export default function ShoppingCart() {
 
   const dispatch = useDispatch();
   const carro = useSelector((state)=> state);
+  const cart = localStorage.getItem('cart')
 
   //mercado Pago
   const mapFoodInCartToFoodInMercadoPago = (foodInCart) => { return {...foodInCart, title: foodInCart.name, unit_price: foodInCart.price} }
@@ -34,7 +35,7 @@ export default function ShoppingCart() {
   let price = carro.cart.map(e=>e.price*e.quantity).reduce((a,current)=>a+current,0)
    
 
-  if (!carro?.cart.length) return (
+  if (!cart) return (
     <div className='bg-[#282c34] rounded-lg m-3 p-3'>
 
       <div className='flex justify-center'>
