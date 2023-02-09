@@ -28,19 +28,12 @@ const EditProfile = ()=>{
 
 
   const id = localStorage.getItem("userId");
-  const token = localStorage.getItem("token")
 
-  const config ={
-    headers:{
-      authorization:token,
-    }
-  }
 
 
        //estados para la informacion del usuario
       const[name, setName]= useState("");
       const [image, setImage] = useState( "" || defaultImage);
-      const [loading, setLoading] = useState(false);
 
 
   // //Handler para el el nombre
@@ -50,30 +43,8 @@ const EditProfile = ()=>{
    console.log(name);
 
   //  //Handler para la imagen
-   const handleChangeImage = async(e) => {
-    const files = e.target.files;
-    const data = new FormData();
-    data.append('file', files[0]);
-    data.append('upload_preset', 'imagenes');
-    setLoading(true);
-
-    try {
-      const res = await axios.post(
-        'https://api.cloudinary.com/v1_1/dgnnglyjx/image/upload',
-        data,
-        {
-          headers: { 'Content-Type': 'multipart/form-data' },
-        }
-      );
-
-      const file = res.data;
-      console.log(res);
-      setImage(file.secure_url);
-      setLoading(false);
-    } catch (error) {
-      console.error(error);
-    }
-      //  imageParser(e,setImage)
+   const handleChangeImage = e => {
+       imageParser(e,setImage)
      };
      console.log(image);
 
@@ -84,7 +55,7 @@ const EditProfile = ()=>{
      const data = {name, image};
      console.log( "prueba", name,image)
      try {
-      const apiServer = await axios.post(`${(process.env.NODE_ENV === 'development' ? 'http://localhost:3001/' : 'https://vino-rojo-bodegon-production.up.railway.app/')}login/update/${id}`,data,config);
+      const apiServer = await axios.post(`${(process.env.NODE_ENV === 'development' ? 'http://localhost:3001/' : 'https://vino-rojo-bodegon-production.up.railway.app/')}login/update/${id}`,data);
       console.log(data)
       const server= apiServer.data;
       console.log( "server",server)
