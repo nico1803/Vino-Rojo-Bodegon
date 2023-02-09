@@ -3,7 +3,7 @@ import Card from "./Card";
 import SearchBar from "./SearchBar";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getFoods} from "../redux/actions";
+import { getAbleFood} from "../redux/actions";
 import Loading from "./Loading";
 
 export default function Recipescard() {
@@ -13,7 +13,7 @@ export default function Recipescard() {
     const [menu, setMenu] = useState();
 
     useEffect(()=>{
-        dispatch(getFoods())
+        dispatch(getAbleFood())
     }, [dispatch]);
 
     useEffect(()=>{
@@ -35,7 +35,7 @@ export default function Recipescard() {
                 <SearchBar/>
             </div>
 
-            <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-4 h-[1280px] grid-flow-row auto-rows-max overflow-auto scroll-smooth">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 h-[1280px] grid-flow-row auto-rows-max overflow-auto scroll-smooth">
                 {menu?.slice(0, visible).map((el, i) => {return (<Card food={el} key={i} />)})}
             </div>
                 

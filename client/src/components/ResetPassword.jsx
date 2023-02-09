@@ -32,7 +32,7 @@ const ResetPassword = () => {
     //enviar la nueva contraseña al servidor y actualizar en la cuenta del usuario
     try {
       const api = await axios.post(
-        `http://localhost:3001/login/resetpassword/${resetToken}`,
+        `${(process.env.NODE_ENV === 'development' ? 'http://localhost:3001/' : 'https://vino-rojo-bodegon-production.up.railway.app/')}login/resetpassword/${resetToken}`,
         { password }
       );
 
@@ -87,7 +87,7 @@ const ResetPassword = () => {
                     )}
                   </p>
                   <p>
-                    <button type="submit" disabled={error.email}>
+                    <button type="submit" disabled={error.password}>
                       {" "}
                       Cambiar{" "}
                     </button>

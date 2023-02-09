@@ -12,7 +12,10 @@ import Forgetpassword from './components/ForgetPassword';
 import Aboutus from './components/Aboutus';
 import Admin from './components/admin/Admin';
 import ResetPassword from './components/ResetPassword';
+import ProfileUser from './components/ProfileUser';
+import EditProfile from './components/EditProfile';
 import SobreNos from './components/SobreNos';
+import CardEdit from './components/admin/CardEdit';
 
 function App() {
   return (<>
@@ -42,6 +45,14 @@ function App() {
         <Route path='/team' element={<Aboutus/>}/>
 
         <Route path='/admin' element={<Admin/>}/>
+
+        <Route path='/cardEdit/:id' element={<CardEdit/>}/>
+
+        <Route path='/profile/' element={<ProfileUser/>}/>
+
+        <Route path='/editprofile' element={<EditProfile/>}/>
+
+
       </Routes>
     <Footer/>
   </>);

@@ -30,14 +30,16 @@ const handlerChange = (e)=>{
       [e.target.name]: e.target.value,
     })
   );
-}
+};
+
+
 
 ///HANDLE SUBMIT////////
 async function handleSubmit(e) {
     e.preventDefault();  
     try {
-      const {data: {ok, token,status, user}} = await axios.post("http://localhost:3001/login/signin",formData);
-       
+      const {data: {ok, token,status, user}} = await axios.post(`${(process.env.NODE_ENV === 'development' ? 'http://localhost:3001/' : 'https://vino-rojo-bodegon-production.up.railway.app/')}login/signin`,formData);
+       console.log( "database",user)
       if(status === 400){
         swal({
           title: "Oppps...",
@@ -66,9 +68,12 @@ async function handleSubmit(e) {
         console.log("token -->", token)
         localStorage.setItem('token', token)
         
-        //guardo el id del usuario en la local storage
-        const infoStorage= localStorage.setItem("userId", user._id );
-        console.log(infoStorage)
+        //guardo la informacion del usuario en la local storage
+        localStorage.setItem("userId", user._id );
+        localStorage.setItem("name",user.name);
+        localStorage.setItem("email",user.email);
+        localStorage.setItem("image",user.image);
+    
 
        // traer el token y guardarlo en una variable
        const tokenFront = localStorage.getItem("token", token)
@@ -81,13 +86,15 @@ async function handleSubmit(e) {
       console.log(config)
       
       //ruta de prueba para enviar el token
-      const apiServer = await axios(`http://localhost:3001/login/sensibleInformation/${formData.email}`,config);
+      const apiServer = await axios(`${(process.env.NODE_ENV === 'development' ? 'http://localhost:3001/' : 'https://vino-rojo-bodegon-production.up.railway.app/')}login/sensibleInformation/${formData.email}`,config);
       const response= apiServer.data;
       console.log(response)
 
         
         
-        swal("¡GENIAL!", "Disfruta  nuetra pagina!", "success") && history("/")
+      await swal("¡GENIAL!", "Disfruta  nuestra pagina!", "success")
+      history('/') 
+      window.location.reload()
       }
     
     } catch (error) {
@@ -179,6 +186,7 @@ async function handleSubmit(e) {
                   <p>
                     <a href="/forgetpassword">Forget Password?</a>
                   </p>
+                 {/*  <button onClick={handlerLoginout}>Cerrar Sesion</button> */}
                 </form>
               </div>
             </div>

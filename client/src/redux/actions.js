@@ -6,17 +6,20 @@ export const GET_FOODS = 'GET_FOODS';
 export const GET_USER = 'GET_USER';
 export const POST_FOOD = 'POST_FOOD';
 export const FOOD_BY_TYPE = 'FOOD_BY_TYPE';
+export const MIN_MAX = "MIN_MAX";
+export const MAX_MIN = "MAX_MIN";
 export const EDIT_FOOD = 'EDIT_FOOD';
 export const GET_FOODS_BY_NAME = 'GET_FOODS_BY_NAME';
 export const CART_ADD = 'CART_ADD';
 export const CART_REMOVE = 'CART_REMOVE';
 export const CART_UP = 'CART_UP';
 export const CART_DOWN = 'CART_DOWN';
-export const DRINK_BY_TYPE = 'DRINK_BY_TYPE';
-export const GET_DRINKS = 'GET_DRINKS';
+// export const DISABLE_FOOD = 'DISABLE_FOOD';
+// export const ABLE_FOOD =  'ABLE_FOOD';
+export const GET_ABLE_FOOD = 'GET_ABLE_FOOD';
+export const VERIFY_ADMIN = 'VERIFY_ADMIN';
 
-
-//RUTA RAILWAY: https://vino-rojo-bodegon-production.up.railway.app/foods
+//RUTA RAILWAY: ${(process.env.NODE_ENV === 'development' ? 'http://localhost:3001/' : 'https://vino-rojo-bodegon-production.up.railway.app/')}foods
 
 
 export const getFoods = () => {
@@ -29,7 +32,6 @@ export const getFoods = () => {
         }
     }
 };
-
 
 export function getUser(id){
     return async function(dispatch) {
@@ -74,6 +76,25 @@ export function foodTypes(payload) {
     };
 };
 
+export function priceMintoMax() {
+    return async function(dispatch){
+        const Ordered = await axios.get(`/filters/priceMinMax`)
+        dispatch({
+            type: "MIN_MAX",
+            payload: Ordered.data
+        })
+    } 
+}
+
+export function priceMaxtoMin(){
+    return async function(dispatch){
+        const Ordered = await axios.get(`/filters/priceMaxMin`)
+        dispatch({
+            type: "MAX_MIN",
+            payload: Ordered.data
+        })
+    }
+}
 
 export function getFoodsByName(name){
     return async function(dispatch){
@@ -138,3 +159,31 @@ export function cartDown(payload){
         })
     }
 }
+
+export function getAbleFood() {
+    return async function(dispatch){
+        let data = await axios.get('foods/able')
+        dispatch ({
+            type: 'GET_ABLE_FOOD',
+            payload: data.data
+        })
+    };
+};
+
+export function verifyAdmin() {
+    return async function(dispatch){
+        try {
+            let token = localStorage.getItem('token')
+            let verify = await axios.get(`${(process.env.NODE_ENV === 'development' ? 'http://localhost:3001/' : 'https://vino-rojo-bodegon-production.up.railway.app/')}login/verifyAdmin/${token}`)
+            if(dispatch){
+                dispatch ({
+                    type: 'VERIFY_ADMIN',
+                    payload: verify.data
+                })
+            }
+        } catch (error) {
+            console.log(error)
+        }
+    }
+};
+
