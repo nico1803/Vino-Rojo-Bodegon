@@ -1,10 +1,13 @@
-import React,{useEffect} from 'react';
+import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import CardCarrito from './CardCarrito'
 import {cartRemove, cartUp, cartDown} from '../../redux/actions'
 import Plus from "../../assets/plus.png"
 import Minus from "../../assets/minus.png"
 import { Link } from 'react-router-dom';
+import axios from 'axios';
+
+
 
 export default function ShoppingCart() {
   
@@ -12,8 +15,24 @@ export default function ShoppingCart() {
   const dispatch = useDispatch();
   const carro = useSelector((state)=> state);
 
+  //mercado Pago
+  const mapFoodInCartToFoodInMercadoPago = (foodInCart) => { return {...foodInCart, title: foodInCart.name, unit_price: foodInCart.price} }
+
+    function handleMercadoPago(e) {
+    try{
+      axios.post('http://localhost:3001/create_preference',carro.cart.map(mapFoodInCartToFoodInMercadoPago))
+      .then((res)=> window.location.href = res.data.body.init_point);
+
+    }catch(error){
+      console.log(error)
+    }
+    
+  }
+
+  ///////////
 
   let price = carro.cart.map(e=>e.price*e.quantity).reduce((a,current)=>a+current,0)
+   
 
   if (!carro?.cart.length) return (
     <div className='bg-[#282c34] rounded-lg m-3 p-3'>
@@ -77,7 +96,7 @@ export default function ShoppingCart() {
               <p className='text-black bg-white rounded-full p-[5px] m-[5px]'>Total: ${price}</p>
             </div>
 
-            <button className='text-white bg-[#614C3C] hover:bg-[#271e18] p-[5px] rounded-lg font-bold'>Finalizar compra</button>
+            <button className='text-white bg-[#614C3C] hover:bg-[#271e18] p-[5px] rounded-lg font-bold' onClick={handleMercadoPago}>Finalizar compra</button>
              
              
           </div>
@@ -89,3 +108,13 @@ export default function ShoppingCart() {
   )
 }
 
+/* [
+
+              {
+                      "id": "123",
+                      "title": "comida",
+                      "description": " salsa",
+                      "unit_price": 1000,
+                      "quantity":1
+              }
+              ] */
