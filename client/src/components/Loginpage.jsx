@@ -92,7 +92,7 @@ async function handleSubmit(e) {
 
         
         
-      await swal("¡GENIAL!", "Disfruta  nuetra pagina!", "success")
+      await swal("¡GENIAL!", "Disfruta  nuestra pagina!", "success")
       history('/') 
       window.location.reload()
       }
