@@ -18,6 +18,7 @@ axios.defaults.baseURL = "http://localhost:3001";
 //     <App />
 //   </React.StrictMode>
 // );
+/*  */
 
 const rootElement = document.getElementById("root");
 const root = createRoot(rootElement);
