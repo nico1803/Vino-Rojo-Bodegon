@@ -4,7 +4,8 @@ const Customer= require("../models/customers")
 
 //funcion generadora de token 
 const generatorToken =(user)=>{
-  return jwt.sign({user}, process.env.SECRET_KEY, {expiresIn: (7 * 24) + "h"})
+  // {expiresIn: (7 * 24) + "h"} --> Ver como manejarlo antes de agregarlo. 
+  return jwt.sign({user}, process.env.SECRET_KEY)
 };
 
 //middleware para comprobar el token:
